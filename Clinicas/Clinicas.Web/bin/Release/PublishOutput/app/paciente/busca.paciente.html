@@ -1,0 +1,69 @@
+﻿<div class="modal-header" style="margin-bottom:10px;">
+    <button type="button" class="close" ng-click="vm.cancel()" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">×</span>
+    </button>
+    <h5 class="modal-title" id="myModalLabel">Buscar Paciente </h5>
+</div>
+<div class="modal-body">
+    <div class="modal-body">
+
+        <div class="alert alert-danger" ng-if="vm.FormMessage.length > 0" style="margin-bottom:10px;">
+            <div class="row">
+                <div class="col-md-12">
+                    <i class="fa fa-exclamation-triangle pull-left" style="font-size: 20px;"></i>
+                    {{vm.FormMessage}}
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <form class="form-horizontal" name="forms.cliente" ng-enter="vm.buscar()" ng-submit="vm.buscar()" role="form" id="form" autocomplete="off" novalidate>
+                    <div class="input-group" id="adv-search">
+                        <input class="form-control" id="nome" style="width:100%" name="nome"  ng-model="vm.nome" type="text" placeholder="Informe o nome do paciente..">
+                        <div class="input-group-btn">
+                            <button type="button" class="btn btn-primary" ng-click="vm.buscar()"><span class="fa fa-search" aria-hidden="true"></span> Pesquisar</button>
+                            <button type="button" class="btn btn-default" ng-click="vm.addpaciente(0)"><span class="fa fa-plus" aria-hidden="true"></span> Novo </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <br />
+        <div class="row white-bg dashboard-header" ng-if="vm.pacientes.length > 0">
+            <div class="row">
+                <div class="col-lg-12">
+                    <table class="table table-hover demo-table-dynamic" datatable="ng" dt-options="vm.dtOptions">
+                        <thead>
+                            <tr>
+                             
+                                <th style="width:30%;">Paciente</th>
+                                <th style="width:35%;">Mãe</th>
+                                <th style="width:25%;">Nascimento</th>
+                                <th style="width:10%;">Ações</th>
+                              
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="item in vm.pacientes"  >
+                                <td  ng-click="vm.addpaciente(item.IdPaciente)"> {{ item.Nome | uppercase }}</td>
+                                <td>{{ item.Mae | uppercase}}</td>
+                                <td>{{ item.DataNascimento | date:'dd/MM/yyyy' }}</td>
+                                <td>
+                                    <a class="btn btn-sm btn-primary" ng-click="vm.selecionar(item)">
+                                        <i class="fa fa-check"></i> Selecionar
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal-footer">
+    <button class="btn btn-default" ng-click="vm.cancel()">Cancelar</button>
+</div>
+

@@ -1,0 +1,30 @@
+﻿<div class="modal-header">
+    <h3 class="modal-title">{{ vm.State }} </h3>
+</div>
+<div class="modal-body">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-danger" ng-if="vm.FormMessage.length > 0">
+                <span><i class="fa fa-exclamation-triangle"></i> <strong>{{ vm.FormMessage }}</strong></span>
+            </div>
+            <form name="forms.hospital" role="form" block-ui="blockModalHospital">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group" show-errors>
+                            <label for="nome" class="control-label">Nome do Hospital</label>
+                            <input class="form-control bg-light" name="nome" ng-model="vm.hospital.Nome" maxlength="60" type="text" required>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+<div class="modal-footer">
+    <button class="btn btn-default" ng-click="vm.cancel()">Cancelar</button>
+    <button class="btn btn-primary" ng-click="vm.save()"><i class="fa fa-save"></i> Salvar</button>
+
+</div>
+

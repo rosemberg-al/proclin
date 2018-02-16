@@ -1,0 +1,75 @@
+﻿<div class="modal-header" style="margin-bottom:5px;">
+    <button type="button" class="close" ng-click="vm.cancel()" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">×</span>
+    </button>
+    <h5 class="modal-title" id="myModalLabel">Medidas Antropométricas</h5>
+</div>
+<div class="modal-body" block-ui="blockModal">
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="profile-header-title" style="background:#f5f5f5; padding:15px; border:#dfe4ed solid 1px; margin-bottom:20px;">
+                <h5>{{ vm.paciente.Nome }}</h5>
+                <div>
+                    <p> <i class="fa fa-calendar" aria-hidden="true"></i> Data de Nascimento: {{  vm.paciente.DataNascimento | date:'dd/MM/yyyy' }} - {{ vm.paciente.Idade  }} ano(s) </p>
+                    <p> <i class="fa fa-user" aria-hidden="true"></i> Mãe: {{ vm.paciente.Mae }} </p>
+                </div>
+            </div>
+
+            <div class="alert alert-danger" ng-if="vm.FormMessage.length > 0">
+                <span><i class="fa fa-exclamation-triangle"></i> <strong>{{ vm.FormMessage }}</strong></span>
+            </div>
+            <form name="forms.dados" role="form" >
+               
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="form-group" show-errors>
+                                <label for="tipo" class="control-label required">Profissional de Saúde</label>
+                                <select class="form-control m-b" ng-options="item.IdFuncionario as item.Nome for item in vm.profissionais" name="profissionalSelecionado" ng-model="vm.profissionalSelecionado" required></select>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="form-group" show-errors>
+                                <label for="Peso" class="control-label required">Peso</label>
+                                <input class="form-control bg-light" name="Peso" required ng-model="vm.medidaantropmetrica.Peso" type="text" ui-number-mask="2" ng-blur="vm.calcularImc()">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group" show-errors>
+                                <label for="Altura" class="control-label required">Altura</label>
+                                <input class="form-control bg-light" name="Altura" required ng-model="vm.medidaantropmetrica.Altura" type="text" ui-number-mask="2" ng-blur="vm.calcularImc()">
+                            </div>
+                        </div>
+                        <!--<div class="col-md-4">
+                            <div class="form-group" show-errors>
+                                <label for="imc" class="control-label required">IMC</label>
+                                <input class="form-control bg-light" name="imc" required ng-model="vm.medidaantropmetrica.Imc" type="text" readonly>
+                            </div>
+                        </div>-->
+                        <div class="col-md-4">
+                            <div class="form-group" show-errors>
+                                <label for="Data" class="control-label required">Data</label>
+                                <input class="form-control bg-light" name="Data" required ng-model="vm.medidaantropmetrica.Data" type="text" ui-date-mask>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group" show-errors>
+                                <label for="PerimetroCefalico" class="control-label required">Perímetro Cefálico</label>
+                                <input class="form-control bg-light" name="PerimetroCefalico" required ng-model="vm.medidaantropmetrica.PerimetroCefalico" type="text" ui-number-mask="2">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        
+                    </div>
+                </form>
+        </div>
+    </div>
+</div>
+<div class="modal-footer" block-ui="blockModal">
+    <button class="btn btn-default" ng-click="vm.cancel()">Cancelar</button>
+    <button class="btn btn-primary" ng-click="vm.save()"><i class="fa fa-save"></i> Salvar</button>
+
+</div>
+

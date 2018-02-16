@@ -1,0 +1,21 @@
+-- Create table mysql
+create table `RoleFeature`
+(
+  `Role_Id`    int(10) not null,
+  `Feature_Id` int(10) not null
+);
+ALTER TABLE `RoleFeature`
+  ADD CONSTRAINT `fk_role_feature` FOREIGN KEY (`Role_Id`) REFERENCES `Role` (`Id`);
+ALTER TABLE `RoleFeature`
+  ADD CONSTRAINT `fk_feature_role` FOREIGN KEY (`Feature_Id`) REFERENCES `Feature` (`Id`);
+
+
+
+
+
+
+
+
+
+
+

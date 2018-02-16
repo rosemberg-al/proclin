@@ -1,0 +1,60 @@
+﻿<div class="modal-header" style="margin-bottom:5px;">
+    <button type="button" class="close" ng-click="vm.cancel()" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">×</span>
+    </button>
+    <h5 class="modal-title" id="myModalLabel">Atestado</h5>
+</div>
+
+<div class="modal-body"  block-ui="blockModalHP">
+    <div class="row">
+        <div class="col-md-12">
+           
+            <div class="profile-header-title" style="background:#f5f5f5; padding:15px; border:#dfe4ed solid 1px; margin-bottom:20px;">
+                <h5>{{ vm.paciente.Nome }}</h5>
+                <div>
+                    <p> <i class="fa fa-calendar" aria-hidden="true"></i> Data de Nascimento: {{  vm.paciente.DataNascimento | date:'dd/MM/yyyy' }} - {{ vm.paciente.Idade  }} ano(s) </p>
+                    <p> <i class="fa fa-user" aria-hidden="true"></i> Mãe: {{ vm.paciente.Mae }} </p>
+               </div>
+            </div>
+
+            <div class="alert alert-danger" ng-if="vm.FormMessage.length > 0">
+                <span><i class="fa fa-exclamation-triangle"></i> <strong>{{ vm.FormMessage }}</strong></span>
+            </div>
+
+            <form name="forms.dados" role="form" block-ui="blockModalHP">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group" show-errors>
+                            <label for="tipo" class="control-label required">Profissional de Saúde</label>
+                            <select class="form-control m-b" ng-options="item.IdFuncionario as item.Nome for item in vm.profissionais" name="profissionalSelecionado" id="profissionalSelecionado" ng-change="vm.selecionarModelo()"  ng-model="vm.profissionalSelecionado" required></select>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group" show-errors>
+                            <label for="modelo" class="control-label">Modelo</label>
+                            <select class="form-control m-b" ng-options="item.IdModeloProntuario as item.NomeModelo for item in vm.modelos" name="modelo" ng-model="vm.modeloSelecionado" ng-change="vm.selecionarModelo()"></select>
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-12">
+                        <!-- , 'redo', 'undo', 'clear'     -->
+                        <div class="form-group" show-errors>
+                            <label for="htmlcontent" class="control-label required">Descrição</label>
+                            <text-angular style="height:400px;" ta-toolbar="[['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'pre'],
+				['bold', 'italics', 'underline', 'ul', 'ol'],
+				['justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull']]" ta-text-editor-class="form-control myform1-height" ta-html-editor-class="form-control myform1-height" name="htmlcontent" required ng-model="vm.atestado.Descricao"></text-angular>
+                        </div>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal-footer" block-ui="blockModalHP">
+    <button class="btn btn-default" ng-click="vm.cancel()">Cancelar</button>
+    <button class="btn btn-primary" ng-click="vm.save()" ><i class="fa fa-save"></i> Salvar</button>
+</div>

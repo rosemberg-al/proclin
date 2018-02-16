@@ -1,0 +1,61 @@
+﻿<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row" block-ui="blockListaPlanoContas">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Plnao de Contas </h5>
+                </div>
+                <div class="ibox-content">
+
+                    <div class="row">
+                        <div class="form-group pull-right">
+                            <button type="button" class="btn btn-primary" ng-click="vm.abrir(0)">
+                                <i class="fa fa-file-o"></i>
+                                <span class="bold">  Novo</span>
+                            </button>
+                        </div>
+                    </div>
+
+
+                    <div class="row" ng-if="vm.planoscontas.length > 0">
+                        <div class="col-md-12">
+                            <table class="table table-hover table-condensed table-striped" datatable="ng" dt-options="vm.dtOptions">
+                                <thead>
+                                    <tr class="bg-complete-lighter">
+                                        <th style="width: 40%">Código </th>
+                                        <th style="width: 15%">Nome</th>
+                                        <th style="width: 20%">Tipo</th>
+                                        <th style="width: 20%">Situação</th>
+                                        <th style="width: 10%">Ações</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="item in vm.planoscontas">
+                                        <td>{{item.IdPlanoConta}}</td>
+                                        <td>{{item.NmPlanoConta }}</td>
+                                        <td>{{item.Tipo == 'D' ? 'Despesa' : 'Receita' }}</td>
+                                        <td>
+                                            <span ng-class="{'label label-rounded label-danger': item.Situacao == 'I',
+                                                    'label label-rounded label-primary': item.Situacao == 'A'}">{{ item.Situacao == 'A' ? 'Ativo' : 'Inativo' }}</span>
+                                        </td>
+                                        <td>
+                                            <button type="button" ng-click="vm.abrir(item.IdPlanoConta)" class="btn btn-xs btn-white" data-toggle="tooltip" title="Editar"> <i class="fa fa-edit"></i> Editar </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="row" ng-if="vm.planoscontas.length == 0">
+                        <div class="col-md-12">
+                            <div class="alert alert-info bordered" role="alert">
+                                Não existem planos de contas cadastrados.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

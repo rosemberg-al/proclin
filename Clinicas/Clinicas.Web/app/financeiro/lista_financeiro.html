@@ -1,0 +1,103 @@
+﻿<section class="panel">
+    <div class="panel-heading">
+        <div class="margin-bottom-10">
+            <ul class="list-unstyled breadcrumb breadcrumb-custom" ng-cloak>
+                <li>
+                    <a href="#" class="active"><i class="icmn-home"></i> Página Inicial</a>
+                </li>
+                <li ng-repeat="item in $root.currentCrumbs" ng-cloak>
+                    <a href="#" class="active">{{ item.name }}</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="panel-body" block-ui="blockListaFinanceiro">
+
+        <div class="row">
+            <div class="col-md-12">
+                <h4> {{ vm.titulo }} </h4>
+            </div>
+
+            <div class="col-md-9">
+                <div class="input-group" id="adv-search">
+                    <input class="form-control" id="nome" name="nome" ng-model="vm.busca.Descricao" ng-enter="vm.pesquisar()" type="text" placeholder="Nome..">
+                    <div class="input-group-btn">
+                        <div class="btn-group" role="group">
+                            
+                            <button type="button" class="btn btn-primary" ng-click="vm.pesquisar()"><span class="fa fa-search" aria-hidden="true" tooltip="Pesquisar"></span> Pesquisar </button>
+                            <button type="button" class="btn btn-default" ng-click="vm.init()"><span class="fa fa-list" aria-hidden="true" tooltip="Ver todos"></span> Ver todos  </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 control-label text-left">
+                <div class="form-group pull-right">
+                    <a ng-click="vm.crud(vm.redirecionamento)" class="btn btn-primary">
+                        <i class="fa fa-plus-square-o"></i>
+                        <span class="bold">  Novo</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="alert alert-danger" ng-if="vm.FormMessage.length > 0">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <i class="fa fa-exclamation-triangle pull-left" style="font-size: 20px;"></i>
+                            {{vm.FormMessage}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="row">
+                    <div class="col-md-12">
+                        <table class="table table-hover table-condensed table-striped" datatable="ng" dt-options="vm.dtOptions">
+                            <thead>
+                                <tr class="bg-complete-lighter">
+                                    <th style="width: 7%">Código </th>
+                                    <th style="width: 18%">Nome</th>
+                                    <th style="width: 10%">Plano de Conta</th>
+                                    <th style="width: 10%">Valor</th>
+                                    <th style="width: 10%">Vencimento</th>
+                                    <th style="width: 10%">Data Acerto</th>
+                                    <th style="width: 10%">Valor Acerto</th>
+                                    <th style="width: 10%">Situação</th>
+                                    <th style="width: 30%">Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="item in vm.financeiros" ng-dblclick="vm.visualizar(item.IdFinanceiro, item.IdParcela)">
+                                    <td>{{item.IdParcela}}</td>
+                                    <td>{{item.NomeCliente }}</td>
+                                    <td>{{item.PlanoConta }}</td>
+                                    <td>{{item.Valor | currency:'' }}</td>
+                                    <td>{{item.DataVencimento | date: 'dd/MM/yyyy' }}</td>
+                                    <td>{{item.DataAcerto | date: 'dd/MM/yyyy' }}</td>
+                                    <td>{{item.TotalAcerto | currency:'' }}</td>
+                                    <td>
+                                        <span ng-class="{'label label-pill label-danger': item.Situacao == 'Excluido',
+                                                    'label label-pill label-primary': item.Situacao == 'Aberto',
+                                                    'label label-pill label-success': item.Situacao == 'Baixado'}">{{ item.Situacao }}</span>
+                                    </td>
+                                    <td>
+                                        <a ng-click="vm.editarparcela(item.IdParcela, item.IdFinanceiro)" class="btn btn-sm btn-icon btn-primary" data-toggle="tooltip" title="Editar" ng-if="item.Situacao!='Baixado' && item.Situacao!='Excluido'"> <i class="fa fa-edit"></i> Baixar </a>
+                                        <a ng-click="vm.excluir(item.IdFinanceiro, item.IdParcela)" class="btn btn-sm btn-icon btn-danger" data-toggle="tooltip" title="Excluir" ng-if="item.Situacao!='Baixado' && item.Situacao!='Excluido'"> <i class="fa fa-remove"></i> Excluir </a>
+                                    
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+

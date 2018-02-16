@@ -1,0 +1,48 @@
+﻿<div class="modal-body">
+    <div class="modal-header">
+        <h4 class="modal-title">{{vm.titulo}}</h4>
+        <small class="font-bold"></small>
+    </div>
+    <div class="modal-body">
+        <div class="alert alert-danger" ng-if="vm.FormMessage.length > 0">
+            <div class="row">
+                <div class="col-md-12">
+                    <i class="fa fa-exclamation-triangle pull-left" style="font-size: 20px;"></i>
+                    {{vm.FormMessage}}
+                </div>
+            </div>
+        </div>
+        <div class="row white-bg dashboard-header">
+            <div class="row" block-ui="blockModalPlanoContas">
+                <div class="col-lg-12">
+                    <form class="form-horizontal" name="forms.planocontas" role="form" ng-enter="vm.save()" ng-submit="vm.save()" id="form" autocomplete="off" novalidate>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Nome</label>
+                            <div class="col-sm-10"><input type="text" class="form-control" name="nome" ng-model="vm.planoconta.NmPlanoConta" maxlength="100" required></div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Tipo</label>
+                            <div class="col-sm-10">
+                                <select class="form-control m-b" ng-options="item.Key as item.Value for item in vm.tipos" name="tipos" ng-model="vm.tipoSelecionado" required></select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Status</label>
+                            <div class="col-sm-10">
+                                <label class="radio-inline">
+                                    <input type="radio" i-check ng-model="vm.SituacaoA" ng-value="A"  name="status" value="A" id="statusA"> Ativo
+                                </label> <label class="radio-inline">
+                                    <input type="radio" i-check ng-model="vm.SituacaoI" name="status" ng-value="I" value="I" id="statusI"> Inativo
+                                </label>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-white" ng-click="vm.cancel()">Fechar</button>
+        <button type="button" class="btn btn-primary pull-right" ng-click="vm.save()">Salvar</button>
+    </div>
+</div>

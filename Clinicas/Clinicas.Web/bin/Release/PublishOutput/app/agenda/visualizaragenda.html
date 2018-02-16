@@ -1,0 +1,96 @@
+﻿      
+<div class="modal-header" style="margin-bottom:10px;">
+    <button type="button" class="close" ng-click="vm.cancel()" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">×</span>
+    </button>
+    <h5 class="modal-title" id="myModalLabel"> Agendamento - {{ vm.agenda.IdAgenda  }}</h5>
+</div>
+
+        <div class="modal-body"  block-ui="block1">
+            <!--<div class="row">
+                <div class="col-md-12">
+                    <div class="pull-left">
+                        <h5><strong><span class="fa fa-time"></span>  Agendamento - {{ vm.agenda.IdAgenda  }}</strong> </h5>
+                    </div>
+                    <div class="pull-right" style="padding:10px;">
+                        <button type="button" ng-click="vm.confirmaratendimento()" class="btn btn-info btn-sm light fw600 ml10 ng-scope" ng-if="vm.agenda.Situacao=='Marcado'">
+                            <span class="fa fa-check"></span> Confirmar Atendimento
+                        </button>
+                        <button type="button" ng-click="vm.cancelar()" class="btn btn-danger btn-sm light fw600 ml10 ng-scope" ng-if="vm.agenda.Situacao=='Marcado' || vm.agenda.Situacao=='Realizado'  ">
+                            <span class="fa fa-remove""></span> Cancelar Atendimento
+                        </button>
+                    </div>
+                </div>
+            </div>-->
+            <div class="row" >
+                <div class="col-md-12">
+                    <div class="well well-sm" style="background:#f5f5f5">
+                        <div class="row">
+                            <div class="col-md-4" style="width:auto">
+                                <img src="../../assets/common/img/temp/avatars/sem-imagem-avatar.jpg" ng-if="vm.agenda.Foto.length == 0" style="width:200px; height:200px;" alt="" class="img-rounded img-responsive" />
+                                <img ng-src="{{vm.agenda.Foto}}" ng-if="vm.agenda.Foto.length > 0" style="width:200px; height:200px;" alt="" class="img-rounded img-responsive" />
+                            </div>
+                            <div class="col-md-8 no-margin">
+                                <h4>
+                                    <strong> <a tooltip="Visualizar Cadastro" style="cursor:pointer" ng-click="vm.crudPaciente(vm.agenda.IdPaciente)"> {{ vm.agenda.NmPaciente | uppercase }} </a>  </strong> 
+                                </h4>
+                                <p> <i class="glyphicon glyphicon-map-marker"></i> {{ vm.agenda.Endereco }} </p>
+                                <p> <i class="fa fa-calendar"></i> Data de Nascimento: {{ vm.agenda.DtNascimento  | date:'dd/MM/yyyy' }} </p>
+                                <p> <i class="fa fa-user"></i> Mãe: {{ vm.agenda.Mae }}  </p>
+                                <p> <i class="fa fa-envelope"></i> Email: {{ vm.agenda.Email }} </p>
+                                <p> <i class="fa fa-phone"></i> Telefone 1:  {{ vm.agenda.Telefone1 | tel }}  </p>
+                                <p> <i class="fa fa-phone"></i> Telefone 2:  {{ vm.agenda.Telefone2 | tel }}  </p>
+                                <!-- Split button -->
+                                <!--<div class="btn-group">
+                                    <button type="button" class="btn btn-primary">
+                                        Social
+                                    </button>
+                                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                                        <span class="caret"></span><span class="sr-only">Social</span>
+                                    </button>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li><a href="#">Twitter</a></li>
+                                        <li><a href="https://plus.google.com/+Jquery2dotnet/posts">Google +</a></li>
+                                        <li><a href="https://www.facebook.com/jquery2dotnet">Facebook</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="#">Github</a></li>
+                                    </ul>
+                                </div>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <p><span class="fa fa-share-alt"></span> <strong> Código:</strong>  {{ vm.agenda.IdAgenda }} </p>
+                     <p><span class="fa fa-calendar"></span> <strong> Data:</strong>  {{ vm.agenda.Data | date: 'dd/MM/yyyy'  }} - {{ vm.agenda.Hora | date: 'HH:mm'  }} </p>
+                    <p><span class="fa fa-medkit"></span> <strong>Procedimento:</strong>  {{ vm.agenda.NmProcedimento }} </p>
+                    <p><span class="fa fa-user-md"></span> <strong>Profissional de Saúde:</strong>  {{ vm.agenda.NmProfissionalSaude }} </p>
+                    <p><span class="fa fa-hospital-o"></span> <strong>Unidade:</strong>  {{ vm.agenda.UnidadeAtendimento }} </p>
+                    <p><span class="fa fa-briefcase"></span> <strong>Tipo:</strong>  {{ vm.agenda.Tipo }} </p>
+                    <p ng-if="vm.agenda.Tipo=='Convênio'"><span class="fa fa-home"></span> <strong>Convênio:</strong>  {{ vm.agenda.NmConvenio }} </p>
+
+                    <p><span class="fa fa-file"> Situação: </span> <span ng-class="{'label label-rounded label-danger': vm.agenda.Situacao == 'Cancelado',
+                                                    'label label-rounded label-success': vm.agenda.Situacao == 'Marcado',
+                                                     'label label-rounded label-info': vm.agenda.Situacao == 'Realizado' }">{{ vm.agenda.Situacao }}</span> </p>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer"  block-ui="block1">
+            <button type="button" ng-click="vm.cancelar()" tooltip="Cancelar Atendimento" class="btn btn-danger margin-left-5" ng-if="vm.agenda.Situacao=='Marcado' || vm.agenda.Situacao=='Realizado'  ">
+                <span class="fa fa-remove" "></span> Cancelar Atendimento
+            </button>
+            <button type="button" ng-click="vm.encaminharsalaespera()" tooltip="Sala de Espera" class="btn btn-success margin-left-5" ng-if="vm.agenda.Situacao=='Marcado' && vm.agenda.SalaEspera=='Nao'  ">
+                <span class="fa fa-users"></span> Sala de Espera
+            </button>
+
+            <button type="button" ng-click="vm.convocarPaciente()" tooltip="Chamar Paciente" class="btn btn-success margin-left-5" ng-if="vm.agenda.Situacao=='Marcado' && vm.agenda.SalaEspera=='Sim' ">
+                <span class="fa fa-tv"></span> Chamar Paciente
+            </button>
+
+            <button type="button" ng-click="vm.confirmaratendimento()" tooltip="Confirmar Atendimento"  class="btn btn-info margin-left-5" ng-if="vm.agenda.Situacao=='Marcado' "> <!--  && vm.agenda.SalaEspera=='Sim'  -->
+                <span class="fa fa-check"></span> Confirmar Atendimento
+            </button>
+        </div>

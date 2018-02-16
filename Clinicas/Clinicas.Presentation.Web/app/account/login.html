@@ -1,0 +1,77 @@
+﻿<div class="login-wrapper">
+    <!-- START Login Background Pic Wrapper-->
+    <div class="bg-pic">
+        <!-- START Background Pic-->
+        <img src="assets/img/bg-login.jpg" alt="" class="lazy">
+        <!-- END Background Pic-->
+        <!-- START Background Caption-->
+        <div class="bg-caption pull-bottom sm-pull-bottom text-white p-l-20 m-b-20">
+            <h2 class="semi-bold text-white">
+                Portal de Clinicas.<br /> Facilitando o seu dia a dia.
+            </h2>
+            <p class="small">
+                Para acessar o Portal de clinicas utilize as opções ao lado.
+            </p>
+        </div>
+        <!-- END Background Caption-->
+    </div>
+    <!-- END Login Background Pic Wrapper-->
+    <!-- START Login Right Container-->
+    <div class="login-container bg-white">
+        <div class="p-l-50 m-l-20 p-r-50 m-r-20 p-t-50 m-t-30 sm-p-l-15 sm-p-r-15 sm-p-t-40">
+            <img src="assets/img/portal_clinica_2x.png" alt="logo" width="350" height="26">
+            <p class="p-t-35">Entre com suas credenciais abaixo. <br/>Caso seja seu primeiro acesso, clique no botão <i>Primeiro Acesso</i> para fazer seu cadastro.</p>
+            <div class="alert alert-danger" ng-show="vm.message.length > 0"><i class="fa fa-warning"></i>&nbsp;<strong>{{ vm.message }}</strong> </div>
+            <!-- START Login Form -->
+            <form id="form-login" name="loginForm" class="p-t-15" role="form" ng-submit="vm.login()" novalidate>
+                <!-- START Form Control-->
+                <div class="form-group form-group-default" show-errors>
+                    <label>Login</label>
+                    <input type="text" name="username" ng-model="vm.User.UserName" placeholder="Informe o login" class="form-control" required>
+                    
+                </div>
+                <!-- END Form Control-->
+                <!-- START Form Control-->
+                <div class="form-group form-group-default" show-errors>
+                    <label>Senha</label>
+                    <input type="password" class="form-control" ng-model="vm.User.Password" name="Senha" placeholder="Informe sua Senha" required>
+                    
+                </div>
+                <!-- START Form Control-->
+                <!--<div class="row">
+                    <div class="col-md-6 no-padding">
+                        <div class="checkbox ">
+                            <input type="checkbox" ng-model="vm.User.Persistent" id="checkbox1">
+                            <label for="checkbox1">Mantenha-me conectado</label>
+                        </div>
+                    </div>
+                </div>-->
+                <!-- END Form Control-->
+                <button class="btn btn-primary m-t-10 btn-cons btn-animated from-top fa fa-arrow-right" type="submit"><span>Entrar</span></button>
+                <button class="btn btn-default m-t-10" type="button" ng-click="vm.doCadastro(true)" tooltip="Clique aqui caso seja o seu primeiro acesso">Primeiro acesso</button>
+            </form>
+            <div class="row m-t-30">
+                <div class="col-md-12">
+                    <a ui-sref="lostPassword" class="text-info m-t-20">» Esqueci minha senha</a>
+                </div>
+                <!--<div class="col-md-12">
+                    <a ui-sref="createAccount" class="text-info small m-t-20">» Quero me cadastrar</a>
+                </div>-->
+            </div>
+
+            <!--END Login Form-->
+            <div class="row m-t-30">
+                <div class="m-b-30 p-r-80 sm-m-t-20 sm-p-r-15 sm-p-b-20 clearfix">
+                    <div class="col-md-12 no-padding m-t-10">
+                        <p>
+                            <small>
+                                &copy; Todos os direitos reservados.
+                            </small>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END Login Right Container-->
+</div>

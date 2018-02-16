@@ -1,0 +1,37 @@
+﻿<div class="modal-header">
+    <h3 class="modal-title">{{ vm.State }} </h3>
+</div>
+<div class="modal-body">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-danger" ng-if="vm.FormMessage.length > 0">
+                <span><i class="fa fa-exclamation-triangle"></i> <strong>{{ vm.FormMessage }}</strong></span>
+            </div>
+            <form name="forms.vacinascrud" role="form" block-ui="blockModalCrudVacina">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="form-group" show-errors>
+                            <label for="descricao" class="control-label required">Descrição da Vacina</label>
+                            <input class="form-control bg-light" name="descricao" ng-model="vm.vacina.Descricao" maxlength="100" type="text" required>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group" show-errors>
+                            <label for="Situacao" class="control-label required">Situação</label><br />
+                            <input type="radio" ng-model="vm.SituacaoA" i-check name="Situacao" value="A"> Ativo
+                            <input type="radio" ng-model="vm.SituacaoI" i-check name="Situacao" value="I"> Inativo
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+<div class="modal-footer">
+    <button class="btn btn-default" ng-click="vm.cancel()">Cancelar</button>
+    <button class="btn btn-primary" ng-click="vm.save()"><i class="fa fa-save"></i> Salvar</button>
+
+</div>
+

@@ -1,0 +1,70 @@
+﻿<style>
+    .dow-clickable .day {
+        background-color: #ffffff;
+    }
+
+    .event .day {
+        background-color: #fff0c3;
+    }
+</style>
+<div class="row" block-ui="blockModal">
+    <div class="col-md-12">
+        <div class="row">
+            <!--<div class="col-md-6">
+                <div class="form-group">
+                    <label for="Paciente" class="control-label required">Paciente</label>
+                    <select class="form-control m-b" ng-options="item.CdPaciente as item.NmPaciente for item in vm.pacientes" name="Paciente" id="Paciente" ng-model="vm.pacienteSelecionado" required></select>
+                </div>
+            </div>-->
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="profissional" class="control-label required">Profissional de Saúde</label>
+                    <select class="form-control m-b" ng-options="item.IdFuncionario as item.NmFuncionario for item in vm.profissionais" name="profissional" id="profissional" ng-model="vm.profissionalSelecionado"  required></select>
+                </div>
+            </div>
+        </div>
+        <form role="form" autocomplete="off" ng-show="vm.profissionalSelecionado != undefined">
+            <div class="row">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div id="tabHorario">
+                            <div class="row-fluid">
+                                <div class="span6 col-sm-6">
+                                    <h5>Marque o dia e hora desejados:</h5>
+                                    <div id="myCalendar"></div>
+                                    <div class="col-sm-4 pull-right">
+                                        <div style="background-color: #fff0c3; font-size: 10px; line-height: 25px; width: 115px; text-align: center; margin-top:5px;" class="pull-right">
+                                            <strong>Agenda Disponível</strong>
+                                        </div>
+                                        <div style="background-color: #ffffff; font-size: 10px; line-height: 25px; width: 115px; text-align: center; margin-top:5px;" class="pull-right">
+                                            <strong>Agenda Indisponível</strong>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="span6 col-sm-5">
+                                    <!--<div id="horaResult"></div>-->
+                                    <br />
+                                    <div id="divAgenda">
+                                        <!--<table class="table table-hover table-condensed table-striped" id="tableAgenda">
+                                            <thead>
+                                                <tr class="bg-complete-lighter">
+                                                    <th style="width: 15%">Hora </th>
+                                                    <th style="width: 20%">Situacao </th>
+                                                    <th style="width: 50%">Paciente</th>
+                                                    <th style="width: 15%">Ações</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody></tbody>
+                                        </table>-->
+                                    </div>
+                                   
+                                    <button type="button" class="btn btn-primary" ng-click="vm.agendar()" ng-show="vm.exibeBotaoAgendar"><i class="fa fa-calendar-o"></i> Confirmar Agendamento</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

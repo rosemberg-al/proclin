@@ -1,0 +1,60 @@
+﻿<div class="modal-header" style="margin-bottom:10px;">
+    <button type="button" class="close" ng-click="vm.cancel()" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">×</span>
+    </button>
+    <h5 class="modal-title" id="myModalLabel"><spna class="fa fa-camera"></spna> {{ vm.State }}</h5>
+</div>
+<div class="modal-body" block-ui="blockModalCpaciente">
+    <div class="row">
+        <div class="col-md-6" style="padding:10px; background:#D8D8D8; text-align:center">
+            <webcam channel="vm.channel"
+                    on-streaming="vm.onSuccess()"
+                    on-error="vm.onError(err)"
+                    on-stream="vm.onStream(stream)"></webcam>
+            <button type="button" class="btn btn-primary" ng-click="vm.makeSnapshot()" ng-disabled="vm.step > 1"><i class="fa fa-camera-retro"></i> Capturar Imagem</button>
+        </div>
+        <div class="col-md-6">
+            <canvas id="snapshot" width="320" height="240" ng-show="false"></canvas>
+        </div>
+        <div class="col-md-6">
+            <div class="col-md-12">
+                <div ng-show="vm.step == 2">
+                    <image-crop data-height="160"
+                                data-width="160"
+                                data-shape="square"
+                                data-step="imageCropStep"
+                                src="vm.imgSrc"
+                                data-result="result"
+                                data-result-blob="resultBlob"
+                                crop="vm.initCrop"
+                                padding="250"
+                                max-size="1024"></image-crop>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div ng-show="vm.step == 3">
+                    <div class="col-md-12">
+                        <img ng-src="{{result}}" />
+                        <div ng-show="false">{{ vm.basefoto = result }}</div>
+                    </div>
+                    <div class="col-md-12">
+                        <br />
+                        <button type="button" class="btn btn-default" ng-click="vm.clear()"><i class="fa fa-recycle"></i> Iniciar</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div ng-show="vm.step == 2">
+                    <br />
+                    <button type="button" class="btn btn-default" ng-click="vm.clear()"><i class="fa fa-recycle"></i> Iniciar</button>
+                    <button type="button" class="btn btn-default" ng-click="vm.initCrop = true"><i class="fa fa-crop"></i> Recortar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal-footer" block-ui="blockModalCpaciente">
+    <button class="btn btn-default" ng-click="vm.cancel()">Cancelar</button>
+    <button class="btn btn-success" type="button" ng-click="vm.alterarfoto()" ng-disabled="vm.step < 3"><spna class="fa fa-save"></spna> Salvar</button>
+</div>

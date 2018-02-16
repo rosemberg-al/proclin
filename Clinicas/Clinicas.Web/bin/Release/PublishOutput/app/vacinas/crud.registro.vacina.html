@@ -1,0 +1,62 @@
+﻿<div class="modal-header">
+    <h3 class="modal-title">{{ vm.State }} </h3>
+</div>
+<div class="modal-body">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-danger" ng-if="vm.FormMessage.length > 0">
+                <span><i class="fa fa-exclamation-triangle"></i> <strong>{{ vm.FormMessage }}</strong></span>
+            </div>
+            <form name="forms.vacinas" role="form" block-ui="blockmodalRegistro">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group" show-errors>
+                            <label for="Paciente" class="control-label">Paciente</label>
+                            <input class="form-control bg-light" name="Paciente" ng-model="vm.registro.Paciente" type="text" readonly>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group" show-errors>
+                            <label for="Vacina" class="control-label">Vacina</label>
+                            <select class="form-control m-b" ng-options="item.IdVacina as item.Descricao for item in vm.vacinas" name="Vacina" ng-model="vm.vacinaSelecionada" required></select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group" show-errors>
+                            <label for="Data" class="control-label">Data</label>
+                            <input class="form-control bg-light" name="Data" ng-model="vm.registro.Data" type="text" ui-date-mask required>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group" show-errors>
+                            <label for="Hora" class="control-label">Hora</label>
+                            <input class="form-control bg-light" name="Hora" ng-model="vm.registro.Hora" type="text" ui-time-mask="short">
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group" show-errors>
+                            <label for="Lote" class="control-label">Lote</label>
+                            <input class="form-control bg-light" name="Lote" ng-model="vm.registro.Lote" type="text">
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group" show-errors>
+                            <label for="Dose" class="control-label">Dose</label>
+                            <select class="form-control m-b" ng-options="item.Id as item.Descricao for item in vm.doses" name="Vacina" ng-model="vm.doseSelecionada" required></select>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+<div class="modal-footer">
+    <button class="btn btn-default" ng-click="vm.cancel()">Cancelar</button>
+    <button class="btn btn-primary" ng-click="vm.save()"><i class="fa fa-save"></i> Salvar</button>
+
+</div>
+

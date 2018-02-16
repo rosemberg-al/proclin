@@ -1,0 +1,44 @@
+﻿<div block-ui="blockModalListaVacinas">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="pull-right">
+                <div class="col-xs-12">
+                    <button type="button" ng-click="vm.addVacina(0)" tooltip="Incluir Vacina" class="btn btn-primary btn-cons"> + Vacina</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br />
+    <div class="row" ng-if="vm.vacinas.length > 0">
+        <div class="col-md-12">
+            <table class="table table-hover table-condensed table-striped" datatable="ng">
+                <thead>
+                    <tr class="bg-complete-lighter">
+                        <th style="width: 75%">Descrição </th>
+                        <th style="width: 15%">Situação </th>
+                        <th style="width: 10%">Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="x in vm.vacinas">
+                        <td ng-bind-html="x.Descricao"></td>
+                        <td>
+                            <span ng-class="{'badge badge-success': x.Situacao == 'Ativo', 'badge badge-danger': x.Situacao == 'Excluido',
+                                                                    'badge badge-important': x.Situacao == 'Inativo'}">{{ x.Situacao }}</span>
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-sm btn-primary" ng-click="vm.addVacina(x.IdVacina)" tooltip="Alterar Vacina"> <span class="glyphicon glyphicon-edit"></span>  </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row" ng-if="vm.vacinas.length == 0">
+        <div class="col-md-12">
+            <div class=" alert alert-info bordered" role="alert">
+                Não existem vacinas cadastrados.
+            </div>
+        </div>
+    </div>
+</div>

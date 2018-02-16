@@ -1,0 +1,81 @@
+﻿<div class="modal-header" style="margin-bottom:10px;">
+    <button type="button" class="close" ng-click="vm.cancel()" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">×</span>
+    </button>
+    <h5 class="modal-title" id="myModalLabel">Detalhar Financeiro</h5>
+</div>
+
+<div class="modal-body">
+    <div class="alert alert-danger" ng-if="vm.FormMessage.length > 0">
+        <div class="row">
+            <div class="col-md-12">
+                <i class="fa fa-exclamation-triangle pull-left" style="font-size: 20px;"></i>
+                {{vm.FormMessage}}
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-hover">
+                <tbody>
+                    <tr style="background:#f5f5f5">
+                        <th>Nome:</th>
+                        <td>{{ vm.financeiro.NomePessoa  }}</td>
+                    </tr>
+                    <tr>
+                        <th >Forma de Pagamento:</th>
+                        <td>{{ vm.financeiro.FormaPagamento  }}</td>
+                    </tr>
+                    <tr style="background:#f5f5f5">
+                        <th style="width:20%">Inserido Por:</th>
+                        <td>{{ vm.financeiro.UsuarioInsercao  }} - {{ vm.financeiro.DataInsercao | date: 'dd/MM/yyyy HH:mm'  }} </td>
+                    </tr>
+                </tbody>
+            </table>
+            <br />
+
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Nº</th>
+                        <th>Data de Vencimento</th>
+                        <th>Valor</th>
+                        <th>Data de Acerto</th>
+                        <th>Desconto(-)</th>
+                        <th>Acréscimo(+)</th>
+                        <th>Valor de Acerto</th>
+                        <th>Situação </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="item in vm.financeiro.Parcelas" >
+                        <td ng-style="vm.idparcela == item.IdParcela {'background-color':'green'}">{{ item.Numero }}</td>
+                        <td data-toggle="tooltip">{{ item.DataVencimento | date: 'dd/MM/yyyy' }}</td>
+                        <td>{{ item.Valor | currency:'' }}</td>
+                        <td>{{ item.DataAcerto | date: 'dd/MM/yyyy' }}</td>
+                        <td>{{ item.ValorDesconto | currency:'' }}</td>
+                        <td>{{ item.ValorAcrescimo | currency:'' }}</td>
+                        <td>{{ item.ValorAcerto | currency:'' }}</td>
+                        <td>
+                            <span ng-class="{'label label-rounded label-danger': item.Situacao == 'Excluido',
+                                                    'label label-rounded label-success': item.Situacao == 'Baixado',
+                                                     'label label-rounded label-primary': item.Situacao == 'Aberto' }">{{ item.Situacao }}</span>
+
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="row">
+                <div class="col-md-3"><span style="color:#39812e"><strong>Total:</strong>  </span> {{ vm.financeiro.Total | currency:'' }}  </div>
+                <div class="col-md-3"><span style="color:#ff0000"><strong>Total Desconto (-):</strong> </span>  {{ vm.financeiro.TotalDesconto | currency:'' }}  </div>
+                <div class="col-md-3"><span style="color:#000000"><strong>Total Acréscimo (+):</strong> </span>  {{ vm.financeiro.TotalAcrescimo | currency:'' }}  </div>
+                <div class="col-md-3"><span style="color:#123b5e"><strong> Total Acerto:</strong> </span> {{ vm.financeiro.TotalAcerto | currency:'' }}  </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-white" ng-click="vm.cancel()"><span class="glyphicon glyphicon-remove-circle"></span> Fechar</button>
+</div>

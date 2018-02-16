@@ -1,0 +1,54 @@
+﻿<div class="modal-header" style="margin-bottom:10px;">
+    <button type="button" class="close" ng-click="vm.cancel()" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">×</span>
+    </button>
+    <h5 class="modal-title" id="myModalLabel">{{ vm.State }}</h5>
+</div>
+<div class="modal-body">
+    <div class="row" block-ui="blockModalBloq">
+        <div class="col-md-12">
+            <div class="alert alert-danger" ng-if="vm.FormMessage.length > 0">
+                <span><i class="fa fa-exclamation-triangle"></i> <strong>{{ vm.FormMessage }}</strong></span>
+            </div>
+            <form name="forms.addbloqueio" role="form" id="form" autocomplete="off" novalidate>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group" show-errors>
+                            <label for="funcionario" class="control-label required">Médico</label>
+                            <select class="form-control m-b" ng-options="item.IdFuncionario as item.Nome for item in vm.funcionarios" name="funcionario" ng-disabled="vm.bloqueio.IdFuncionario > 0" ng-model="vm.bloqueio.IdFuncionario" required></select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group" show-errors>
+                            <label for="dtinicio" class="control-label required">Data Inicio</label>
+                            <input class="form-control bg-light" name="dtinicio" ng-model="vm.bloqueio.DataInicio" type="text" ui-date-mask required>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group" show-errors>
+                            <label for="dtfim" class="control-label required">Data Fim</label>
+                            <input class="form-control bg-light" name="dtfim" ng-model="vm.bloqueio.DataFim" type="text" ui-date-mask required>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group" show-errors>
+                            <label for="motivo" class="control-label">Motivo</label>
+                            <textarea name="motivo" ng-model="vm.bloqueio.Motivo" class="form-control bg-light" style="width:100%;" rows="5" required></textarea>
+                            <span>{{4000 - vm.bloqueio.Motivo.length}} Caracteres</span>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+<div class="modal-footer">
+    <button class="btn btn-default" ng-click="vm.cancel()">Cancelar</button>
+    <button class="btn btn-primary" ng-click="vm.save()"><i class="fa fa-save"></i> Salvar</button>
+</div>

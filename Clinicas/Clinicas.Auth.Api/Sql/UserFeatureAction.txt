@@ -1,0 +1,18 @@
+-- Create table mysql
+create table `UserFeatureAction`
+(
+  `FeatureActionId` INT(10) AUTO_INCREMENT PRIMARY KEY,
+  `UserId`         INT(10) not null,
+  `FeatureId`       INT(10) not null
+);
+
+ALTER TABLE `UserFeatureAction`
+  ADD CONSTRAINT `fk_user_feature_action` FOREIGN KEY (`UserId`) REFERENCES `Role` (`Id`);
+
+ALTER TABLE `UserFeatureAction`
+  ADD CONSTRAINT `fk_user_feature` FOREIGN KEY (`FeatureId`) REFERENCES `Feature` (`Id`);
+
+
+
+
+

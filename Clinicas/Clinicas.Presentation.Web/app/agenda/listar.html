@@ -1,0 +1,86 @@
+﻿<div class="row"  block-ui="block">
+    <div class="col-md-12">
+
+        <div class="panel panel-transparent">
+            <div class="panel-heading">
+                <div class="panel-title">Agenda </div>
+                
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="alert alert-danger" ng-if="vm.FormMessage.length > 0">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <i class="fa fa-exclamation-triangle pull-left" style="font-size: 20px;"></i>
+                                        {{vm.FormMessage}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <form class="form-horizontal" name="forms.buscapaciente" ng-enter="vm.pesquisar()" ng-submit="vm.pesquisar()" role="form" id="form" autocomplete="off" novalidate>
+                            <div class="col-lg-2">
+                                <div class="form-group">
+                                        <select class="form-control" ng-model="vm.busca.Tipo">
+                                            <option value="NmPaciente" selected>Paciente</option>
+                                            <option value="Codigo">Código</option>
+                                            <option value="Data">Data</option>
+                                            <option value="NmProfissional">Profissional de Saúde</option>
+                                        </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <div class="col-sm-12"><input type="text" class="form-control" placeholder="Pesquisar..." name="Descricao" ng-model="vm.busca.Descricao" maxlength="100"></div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <button type="button" class="btn btn-primary pull-left" ng-click="vm.pesquisar()"><span class="fa fa-search"> </span> Buscar</button>
+                                    <button type="button" style="margin-left:20px;" ng-click="vm.liberaragenda()" tooltip="Liberar Agenda" class="btn btn-primary btn-cons"><span class="glyphicon glyphicon-plus-sign"></span> Liberar Agenda</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="clearfix"></div>
+            </div>
+
+            <table class="table table-hover table-condensed table-striped" datatable="ng" dt-options="vm.dtOptions">
+                <thead>
+                    <tr class="bg-complete-lighter">
+                        <th style="width: 5%">Id </th>
+                        <th style="width: 20%">Data - Hora </th>
+                        <th style="width: 15%">Paciente </th>
+                        <th style="width: 15%">Profissional de Saúde </th>
+                        <th style="width: 5%">Tipo </th>
+                        <th style="width: 10%">Situação </th>
+                        <th style="width: 10%">Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="x in vm.agenda">
+
+                        <td>{{ x.IdAgenda }}</td>
+                        <td>{{ x.Data | date: 'dd/MM/yyyy'  }} - {{ x.Hora | date: 'HH:mm'  }}</td>
+                        <td title="{{ x.NmPaciente | uppercase }}">{{ x.NmPaciente | uppercase }}</td>
+                        <td title="{{ x.NmFuncionario | uppercase }}">{{ x.NmFuncionario  | uppercase }}</td>
+                        <td>{{ x.Tipo }}</td>
+                     
+                        <td>
+                            <span ng-class="{'label label-rounded label-danger': x.Situacao == 'CANCELADO',
+                                                    'label label-rounded label-success': x.Situacao == 'MARCADO',
+                                                     'label label-rounded label-info': x.Situacao == 'REALIZADO' }">{{ x.Situacao }}</span>
+
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-xs btn-primary" ng-click="vm.visualizar(x.IdAgenda)" tooltip="Visualizar Agenda"> <span class="glyphicon glyphicon-search"></span>  </button>
+                            <a href="http://www.genialsoft.com.br/saude/cip/relatorios/pdf_guia_marcado.php?CdAgenda={{ x.IdAgenda }}" target="_blank" class="btn btn-xs btn-primary"  tooltip="Guia de Encaminhamento"> <span class="glyphicon glyphicon-print"></span>  </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

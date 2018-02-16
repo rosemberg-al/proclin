@@ -1,0 +1,43 @@
+﻿<div block-ui="blockModalListaMedicos">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="pull-right">
+                <div class="col-xs-12">
+                    <button type="button" ng-click="vm.addMedico(0)" tooltip="Incluir Médico" class="btn btn-primary btn-cons"> + Medico</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br />
+    <div class="row" ng-if="vm.medicos.length > 0">
+        <div class="col-md-12">
+            <table class="table table-hover table-condensed table-striped" datatable="ng">
+                <thead>
+                    <tr class="bg-complete-lighter">
+                        <th style="width: 70%">Nome </th>
+                        <th style="width: 10%">CRM </th>
+                        <th style="width: 10%">Data </th>
+                        <th style="width: 10%">Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="x in vm.medicos">
+                        <td>{{x.NomeMedico}}</td>
+                        <td>{{x.Crm}}</td>
+                        <td>{{x.DataCadastro | date: 'dd/MM/yyyy'}}</td>
+                        <td>
+                            <button type="button" class="btn btn-sm btn-primary" ng-click="vm.addMedico(x.IdMedico)" tooltip="Alterar Médico"> <span class="glyphicon glyphicon-edit"></span>  </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row" ng-if="vm.medicos.length == 0">
+        <div class="col-md-12">
+            <div class="alert alert-info bordered" role="alert">
+                Não existem médicos cadastrados.
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,91 @@
+﻿<div class="modal-header" style="margin-bottom:5px;">
+    <button type="button" class="close" ng-click="vm.cancel()" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">×</span>
+    </button>
+    <h5 class="modal-title" id="myModalLabel">Odontograma</h5>
+</div>
+
+<div class="modal-body"  block-ui="blockModal">
+    <div class="row">
+        <div class="col-md-12">
+           
+            <div class="profile-header-title" style="background:#f5f5f5; padding:15px; border:#dfe4ed solid 1px; margin-bottom:20px;">
+                <h5>{{ vm.paciente.Nome }}</h5>
+                <div>
+                    <p> <i class="fa fa-calendar" aria-hidden="true"></i> Data de Nascimento: {{  vm.paciente.DataNascimento | date:'dd/MM/yyyy' }} - {{ vm.paciente.Idade  }} ano(s) </p>
+                    <p> <i class="fa fa-user" aria-hidden="true"></i> Mãe: {{ vm.paciente.Mae }} </p>
+               </div>
+            </div>
+
+            <div class="alert alert-danger" ng-if="vm.FormMessage.length > 0">
+                <span><i class="fa fa-exclamation-triangle"></i> <strong>{{ vm.FormMessage }}</strong></span>
+            </div>
+
+            <form name="forms.odontograma" role="form" block-ui="blockModal">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="form-group" show-errors>
+                            <label for="tipo" class="control-label required">Profissional de Saúde</label>
+                            <select class="form-control m-b" ng-options="item.IdFuncionario as item.Nome for item in vm.profissionais" name="profissionalSelecionado" ng-model="vm.profissionalSelecionado" required></select>
+                        </div>
+                    </div>
+                </div>
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group" show-errors>
+                                <label class="control-label required">Dente</label>
+                                <input class="form-control bg-light" name="Dente" ng-model="vm.odontograma.Dente" type="number" required>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group" show-errors>
+                                <label for="DataInicio" class="control-label required">Data de Início</label>
+                                <input class="form-control bg-light" name="DataInicio" ng-model="vm.odontograma.DataInicio" ui-date-mask type="text" required>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="form-group" show-errors>
+                                <label for="DataTermino" class="control-label required">Data de Término</label>
+                                <input class="form-control bg-light" name="DataTermino" ng-model="vm.odontograma.DataTermino" ui-date-mask type="text" required>
+                            </div>
+                        </div>
+
+                        <div class="col-md-8">
+                            <div class="form-group" show-errors>
+                                <label for="Descricao" class="control-label required">Descrição</label>
+                                <input class="form-control bg-light" name="DataTermino" ng-model="vm.odontograma.Descricao" type="text" required>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="form-group" show-errors>
+                                <label for="Descricao" class="control-label required">Valor</label>
+                                <input class="form-control bg-light" name="Valor" ng-model="vm.odontograma.Valor" ui-number-mask="2"  type="text" required>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="form-group" show-errors>
+                                <label for="tipo" class="control-label required">Face</label>
+                                <select class="form-control m-b" ng-options="item.Key as item.Value for item in vm.faces" name="situacaoSelecionado" ng-model="vm.faceSelecionado" required></select>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="form-group" show-errors>
+                                <label for="tipo" class="control-label required">Situação</label>
+                                <select class="form-control m-b" ng-options="item.Key as item.Value for item in vm.situacoes" name="situacaoSelecionado" ng-model="vm.situacaoSelecionado" required></select>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal-footer"  block-ui="blockModal" >
+    <button class="btn btn-default" ng-click="vm.cancel()">Cancelar</button>
+    <button class="btn btn-primary" ng-click="vm.save()" ><i class="fa fa-save"></i> Salvar</button>
+</div>

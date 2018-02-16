@@ -1,0 +1,162 @@
+﻿
+<div class="modal-header"  style="margin-bottom:40px;">
+    <h5 class="modal-title"  id="exampleModalLiveLabel"><strong> Liberar Agenda </strong> </h5>
+</div>
+
+<div class="modal-body" block-ui="blockModalLiberarAgenda">
+    <div class="row">
+
+        <form name="forms.liberaragenda" role="form" block-ui="blockModalLiberarAgenda">
+
+            <div class="col-md-12">
+
+                <div class="alert alert-danger" ng-if="vm.FormMessage.length > 0">
+                    <span><i class="fa fa-exclamation-triangle"></i> <strong>{{ vm.FormMessage }}</strong></span>
+                </div>
+
+                <div class="row">
+                    <div class="col-12">
+
+                        <div class="col-md-6">
+                            <div class="form-group" show-errors>
+                                <label for="profissional" class="control-label required">Profissional de Saúde</label>
+                                <select class="form-control m-b" ng-options="item.IdFuncionario as item.NmFuncionario for item in vm.profissionais" name="profissional" id="profissional" ng-model="vm.profissionalSelecionado" required></select>
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-3">
+                            <div class="form-group" show-errors>
+                                <label for="DataInicio" class="control-label required">Data Início</label>
+                                <input class="form-control bg-light" name="DataInicio" ng-model="vm.agenda.DataInicio" type="text" ui-date-mask required>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <div class="form-group" show-errors>
+                                <label for="DataTermino" class="control-label required">Data Término</label>
+                                <input class="form-control bg-light" name="DataTermino" ng-model="vm.agenda.DataTermino" type="text" ui-date-mask required>
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-12" style="margin-top:30px; margin-bottom:30px;"> 
+
+                            <div class="col-md-1">
+                                <div class="checkbox check-success" tooltip="Domingo">
+                                    <input type="checkbox" ng-model="vm.agenda.DiaSemana.Domingo" value="0" name="Domingo" id="Domingo">
+                                    <label for="Domingo">Domingo </label>
+                                </div>
+                            </div>
+                    
+                            <div class="col-md-1">
+                                <div class="checkbox check-success" tooltip="Segunda">
+                                    <input type="checkbox" name="Segunda" id="Segunda" ng-model="vm.agenda.DiaSemana.Segunda" value="1">
+                                    <label for="Segunda">Segunda </label>
+                                </div>
+                            </div>
+
+                            <div class="col-md-1">
+                                <div class="checkbox check-success" tooltip="Terça-Feira">
+                                    <input type="checkbox" name="Terca" id="Terca"  ng-model="vm.agenda.DiaSemana.Terca" value="2">
+                                    <label for="Terca">Terça </label>
+                                </div>
+                            </div>
+
+                            <div class="col-md-1">
+                                <div class="checkbox check-success" tooltip="Quarta-Feira">
+                                    <input type="checkbox" name="Quarta" id="Quarta"  ng-model="vm.agenda.DiaSemana.Quarta" value="3">
+                                    <label for="Quarta">Quarta </label>
+                                </div>
+                            </div>
+
+                            <div class="col-md-1">
+                                <div class="checkbox check-success" tooltip="Quinta-Feira">
+                                    <input type="checkbox" name="Quinta" id="Quinta" ng-model="vm.agenda.DiaSemana.Quinta" value="4">
+                                    <label for="Quinta">Quinta </label>
+                                </div>
+                            </div>
+
+                            <div class="col-md-1">
+                                <div class="checkbox check-success" tooltip="Sexta-Feira">
+                                    <input type="checkbox" name="Sexta" id="Sexta" ng-model="vm.agenda.DiaSemana.Sexta" value="5">
+                                    <label for="Sexta">Sexta </label>
+                                </div>
+                            </div>
+
+                            <div class="col-md-1">
+                                <div class="checkbox check-success" tooltip="Sabado">
+                                    <input type="checkbox" name="Sabado" id="Sabado" ng-model="vm.agenda.DiaSemana.Sabado" value="6">
+                                    <label for="Sabado">Sábado </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="form-group" show-errors>
+                                <label for="IntervaloMinutos" class="control-label required">Intervalo em Minutos</label>
+                                <input class="form-control bg-light" name="IntervaloMinutos" ng-model="vm.agenda.IntervaloMinutos" type="number" min="10" max="60"  required>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="form-group" show-errors>
+                                <label for="HoraInicio" class="control-label required">Hora Inicio</label>
+                                <input class="form-control bg-light" name="Data" ng-model="vm.agenda.HoraInicio" type="text" ui-time-mask="short" required>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="form-group" show-errors>
+                                <label for="HoraTermino" class="control-label required">Hora Termino</label>
+                                <input class="form-control bg-light" name="Data" ng-model="vm.agenda.HoraTermino"  type="text" ui-time-mask="short" required>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4" >
+                            <div class="col-md-1">
+                                <div class="checkbox check-success" tooltip="Possui Intervalo">
+                                    <input type="checkbox" id="PossuiIntervalo" name="PossuiIntervalo" ng-model="vm.PossuiIntervalo" />
+                                    <label for="PossuiIntervalo">Possui Intervalo: </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4" ng-if="vm.PossuiIntervalo">
+                            <div class="form-group" show-errors>
+                                <label for="IntervaloInicio" class="control-label required">Intervalo Inicio </label>
+                                <input class="form-control bg-light" name="IntervaloInicio" ng-model="vm.agenda.IntervaloInicio" ui-time-mask="short" type="text" required>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4" ng-if="vm.PossuiIntervalo">
+                            <div class="form-group" show-errors>
+                                <label for="Data" class="control-label required">Invervalo Termino </label>
+                                <input class="form-control bg-light" name="Data" ng-model="vm.agenda.IntervaloTermino" ui-time-mask="short" type="text" required>
+                            </div>
+                        </div>
+                        
+
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="observacoes" class="control-label">Observações</label>
+                                <textarea ng-model="vm.agenda.Observacoes" name="observacoes" class="form-control m-b" rows="3" cols="3"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+         
+        </form>
+     </div>
+</div>
+
+
+<div class="modal-footer">
+        <button type="button" class="btn btn-default" ng-click="vm.cancel()">Cancelar</button>
+        <button type="button" class="btn btn-primary" ng-click="vm.save()"><i class="fa fa-save"></i> Salvar</button>
+</div>
+

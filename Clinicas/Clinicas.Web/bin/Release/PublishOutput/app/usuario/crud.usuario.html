@@ -1,0 +1,63 @@
+﻿<div class="modal-header" style="margin-bottom:10px;">
+    <button type="button" class="close" ng-click="vm.cancel()" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">×</span>
+    </button>
+    <h5 class="modal-title" id="myModalLabel">{{ vm.State }}</h5>
+</div>
+<div class="modal-body" block-ui="blockModalUsuario">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-danger" ng-if="vm.FormMessage.length > 0">
+                <span><i class="fa fa-exclamation-triangle"></i> <strong>{{ vm.FormMessage }}</strong></span>
+            </div>
+           
+            <div class="row">
+                <div class="col-md-12">
+                    <form name="forms.dadosusuario" role="form">
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <div class="form-group" show-errors>
+                                            <label for="Nome" class="control-label required">Nome </label>
+                                            <input class="form-control bg-light" name="nome" ng-model="vm.usuario.Nome" type="text" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <div class="form-group" show-errors>
+                                            <label for="Nome" class="control-label required">Login</label>
+                                            <input class="form-control bg-light" name="login" ng-model="vm.usuario.Login" ng-disabled="vm.usuario.IdUsuario>0" type="text" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <div class="form-group" show-errors>
+                                            <label for="tipo" class="control-label required">Email</label>
+                                            <input class="form-control bg-light" name="login" ng-model="vm.usuario.Email" ng-disabled="vm.usuario.IdUsuario>0" type="text" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <div class="form-group" show-errors>
+                                            <label for="tipo" class="control-label required">Grupo de Usuário</label>
+                                            <select class="form-control m-b" ng-options="item.IdGrupoUsuario as item.Nome for item in vm.grupos" name="grupoUsuarioSelecionado" ng-model="vm.grupoUsuarioSelecionado" required></select>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <div class="form-group" show-errors>
+                                            <label for="unidade" class="control-label required">Unidade de Atendimento</label>
+                                            <select class="form-control m-b" ng-options="item.IdUnidadeAtendimento as item.Nome for item in vm.unidades" name="unidade" id="unidade" ng-model="vm.unidadeSelecionada" required></select>
+                                        </div>
+                                    </div>
+                                </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal-footer" block-ui="blockModalCfuncionario">
+    <button class="btn btn-default" ng-click="vm.cancel()">Cancelar</button>
+    <button class="btn btn-primary" ng-click="vm.save()"><i class="fa fa-save"></i> Salvar</button>
+</div>

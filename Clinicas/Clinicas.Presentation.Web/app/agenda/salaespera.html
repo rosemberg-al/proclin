@@ -1,0 +1,62 @@
+﻿<div class="row"  block-ui="block">
+    <div class="col-md-12">
+
+        <div class="panel panel-transparent">
+            <div class="panel-heading">
+                <div class="panel-title">
+                    Sala de Espera
+                </div>
+                <!--<div class="pull-right">
+                    <div class="col-xs-12">
+                        <button id="show-modal" class="btn btn-primary btn-cons"><i class="fa fa-plus"></i> Add row</button>
+                    </div>
+                </div>-->
+                <div class="clearfix"></div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-md-2">
+                    <label class="form-control-label" for="l0">Profissional de Saúde </label>
+                </div>
+                <div class="col-md-4">
+                    <select class="form-control m-b" ng-options="item.IdFuncionario as item.Nome for item in vm.profissionais" name="profissional" id="profissional" ng-model="vm.pSelecionado"></select>
+                </div>
+            </div>
+
+            <table class="table table-hover table-condensed table-striped" datatable="ng" dt-options="vm.dtOptions">
+                <thead>
+                    <tr class="bg-complete-lighter">
+                        <th style="width: 5%">Id </th>
+                        <th style="width: 15%">Paciente </th>
+                        <th style="width: 15%">Profissional de Saúde </th>
+                        <th style="width: 10%">Tipo </th>
+                        <th style="width: 10%">Data - Hora </th>
+                        <th style="width: 10%">Situação </th>
+                        <th style="width: 10%">Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="x in vm.dados">
+
+                        <td>{{ x.CdAgenda }}</td>
+                        <td>{{ x.NmPaciente | uppercase }}</td>
+                        <td>{{ x.NmFuncionario | uppercase }}</td>
+                        <td>{{ x.TipoAtendimento }}</td>
+                        <td>{{ x.Data | date: 'dd/MM/yyyy'  }} - {{ x.Hora | date: 'HH:mm'  }}</td>
+                        <td>
+
+                            <span ng-class="{'label label-rounded label-danger': x.Situacao == 'CANCELADO',
+                                                    'label label-rounded label-success': x.Situacao == 'MARCADO',
+                                                     'label label-rounded label-info': x.Situacao == 'REALIZADO' }">{{ x.Situacao }}</span>
+
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-xs btn-primary" ng-click="vm.visualizar(x.CdAgenda)" tooltip="Visualizar Agenda"> <span class="glyphicon glyphicon-search"></span>  </button>
+                            <a href="http://www.genialsoft.com.br/saude/cip/relatorios/pdf_guia_marcado.php?CdAgenda={{ x.CdAgenda }}" target="_blank" class="btn btn-xs btn-primary" tooltip="Guia de Encaminhamento"> <span class="glyphicon glyphicon-print"></span>  </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

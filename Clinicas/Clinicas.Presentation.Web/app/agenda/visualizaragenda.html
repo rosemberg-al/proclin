@@ -1,0 +1,74 @@
+﻿      
+        <div class="modal-body"  block-ui="block">
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="pull-left">
+                        <h5><strong><span class="glyphicon glyphicon-time"></span>  Agendamento - {{ vm.agenda.CdAgenda  }}</strong> </h5>
+                    </div>
+                    <div class="pull-right" style="padding:10px;">
+                        <button type="button" ng-click="vm.confirmaratendimento()" class="btn btn-default btn-sm light fw600 ml10 ng-scope" ng-if="vm.agenda.Situacao=='Marcado'">
+                            <span class="glyphicon glyphicon-ok-sign"></span> Confirmar Atendimento
+                        </button>
+                        <button type="button" ng-click="vm.cancelar()" class="btn btn-default btn-sm light fw600 ml10 ng-scope" ng-if="vm.agenda.Situacao=='Marcado' || vm.agenda.Situacao=='Realizado'  ">
+                            <span class="glyphicon glyphicon-remove-sign"></span> Cancelar
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="margin-top:10px;">
+                <div class="col-md-12">
+                    <div class="well well-sm" style="background:#f5f5f5">
+                        <div class="row">
+                            <div class="col-md-4" style="width:auto">
+                                <img src="http://placehold.it/200x200" style="" alt="" class="img-rounded img-responsive" />
+                            </div>
+                            <div class="col-md-8 no-margin">
+                                <h4>
+                                    <strong> {{ vm.agenda.NmPaciente | uppercase }}</strong> 
+                                </h4>
+                                <p> <i class="glyphicon glyphicon-map-marker"></i> {{ vm.agenda.Endereco }} </p>
+                                <p> <i class="fa fa-calendar"></i> Nascimento: {{ vm.agenda.DtNascimento  | date:'dd/MM/yyyy' }} </p>
+                                <p> <i class="fa fa-user"></i> Mãe: {{ vm.agenda.Mae }}  </p>
+                                <p> <i class="glyphicon glyphicon-envelope"></i> Email: {{ vm.agenda.Email }} </p>
+                                <p> <i class="fa fa-phone"></i> Celular: {{ vm.agenda.TelCelular }}  </p>
+                                <!-- Split button -->
+                                <!--<div class="btn-group">
+                                    <button type="button" class="btn btn-primary">
+                                        Social
+                                    </button>
+                                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                                        <span class="caret"></span><span class="sr-only">Social</span>
+                                    </button>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li><a href="#">Twitter</a></li>
+                                        <li><a href="https://plus.google.com/+Jquery2dotnet/posts">Google +</a></li>
+                                        <li><a href="https://www.facebook.com/jquery2dotnet">Facebook</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="#">Github</a></li>
+                                    </ul>
+                                </div>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <p><span class="glyphicon glyphicon-share-alt"></span> <strong> Código:</strong>  {{ vm.agenda.CdAgenda }} </p>
+                     <p><span class="glyphicon glyphicon-calendar"></span> <strong> Data:</strong>  {{ vm.agenda.Data | date: 'dd/MM/yyyy'  }} - {{ vm.agenda.Hora | date: 'HH:mm'  }} </p>
+                    <p><span class="fa fa-medkit"></span> <strong>Procedimento:</strong>  {{ vm.agenda.NmProcedimento }} </p>
+                    <p><span class="fa fa-user-md"></span> <strong>Profissional de Saúde:</strong>  {{ vm.agenda.NmFuncionario }} </p>
+                    <p><span class="glyphicon glyphicon-briefcase"></span> <strong>Tipo:</strong>  {{ vm.agenda.TipoAtendimento }} </p>
+                    <p><span ng-class="{'label label-rounded label-danger': vm.agenda.Situacao == 'CANCELADO',
+                                                    'label label-rounded label-success': vm.agenda.Situacao == 'MARCADO',
+                                                     'label label-rounded label-info': vm.agenda.Situacao == 'REALIZADO' }">{{ vm.agenda.Situacao }}</span> </p>
+                </div>
+            </div>
+
+         
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" ng-click="vm.cancel()" data-dismiss="modal"><span class="glyphicon glyphicon-remove-sign"></span> Fechar</button>
+        </div>

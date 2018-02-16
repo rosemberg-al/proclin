@@ -1,0 +1,78 @@
+﻿<div class="modal-header">
+    <h3 class="modal-title">{{ vm.State }} </h3>
+</div>
+<div class="modal-body">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-danger" ng-show="vm.FormMessage.length > 0">
+                <span><i class="fa fa-exclamation-triangle"></i> <strong>{{ vm.FormMessage }}</strong></span>
+            </div>
+            <form name="forms.editForm" role="form" block-ui="blockModal">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group" show-errors>
+                            <label for="Nome" class="control-label">Nome</label>
+                            <input class="form-control bg-light" name="Nome" ng-model="vm.User.Name" ng-readonly="vm.State == 'Editar Usuário'" type="text" required>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group" show-errors>
+                            <label for="Nome" class="control-label">Login</label>
+                            <input class="form-control bg-light" name="Nome" ng-model="vm.User.UserName" ng-readonly="vm.State == 'Editar Usuário'" type="text" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group" show-errors>
+                            <label for="Nome" class="control-label">E-mail</label>
+                            <input class="form-control bg-light" name="Email" ng-model="vm.User.Email" ng-blur="vm.verificaEmail()" type="email" required>
+
+                            <span class="label label-warning" ng-if="vm.emailExistente != null"><strong>{{ vm.emailExistente }}</strong></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group" show-errors>
+                            <label for="Nome" class="control-label">Telefone Celular</label>
+                            <input class="form-control bg-light" name="Celular" ng-model="vm.User.Mobile" type="text" required ui-br-phone-number>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group" show-errors>
+                            <label for="senha" class="control-label">Senha</label>
+                            <input class="form-control bg-light" name="senha" ng-model="vm.User.Password" type="password" required>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group" show-errors>
+                            <label for="senha2" class="control-label">Confirmar Senha</label>
+                            <input class="form-control bg-light" name="senha2" ng-model="vm.User.PasswordConfirm" type="password" required >
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group" show-errors>
+                            <label for="Role" class="control-label">Nível</label>
+                            <ui-select name="Role" ng-model="vm.LevelSelecionado" theme="bootstrap" required>
+                                <ui-select-match placeholder="Selecione o Nível...">{{$select.selected.value}}</ui-select-match>
+                                <ui-select-choices repeat="item in vm.Levels | filter: $select.search">
+                                    <span ng-bind-html="item.value | highlight: $select.search"></span>
+                                </ui-select-choices>
+                            </ui-select>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+<div class="modal-footer">
+    <button class="btn btn-primary" ng-click="vm.save()"><i class="fa fa-save"></i> Salvar</button>
+    <button class="btn btn-default" ng-click="vm.cancel()">Cancelar</button>
+</div>
+

@@ -1,0 +1,12 @@
+-- Create table mysql
+create table `UserRole`
+(
+  `User_Id` INT(10) not null,
+  `Role_Id` INT(10) not null
+);
+
+ALTER TABLE `UserRole`
+  ADD CONSTRAINT `fk_user_role` FOREIGN KEY (`User_Id`) REFERENCES `User` (`Id`);
+
+ALTER TABLE `UserRole`
+  ADD CONSTRAINT `fk_role_user` FOREIGN KEY (`Role_Id`) REFERENCES `Role` (`Id`);

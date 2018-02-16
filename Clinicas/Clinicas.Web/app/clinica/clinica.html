@@ -1,0 +1,281 @@
+﻿<section class="panel" block-ui="">
+    <div class="panel-heading">
+        <div class="margin-bottom-10">
+            <ul class="list-unstyled breadcrumb breadcrumb-custom" ng-cloak>
+                <li>
+                    <a href="#" class="active"><i class="icmn-home"></i> Página Inicial</a>
+                </li>
+                <li ng-repeat="item in $root.currentCrumbs" ng-cloak>
+                    <a href="#" class="active">{{ item.name }}</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="panel-body" block-ui="blockCrudClinica">
+
+        <div class="row">
+            <div class="col-md-12">
+                <h4> Dados da Clínica </h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="nav-tabs-horizontal">
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" data-toggle="tab" id="lidados" data-target="#tabdados" role="tab" aria-expanded="false">
+                                <i class="fa fa-home"></i>
+                                Dados da Clínica
+                            </a>
+                        </li>
+
+                        <!--<li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" id="liEndereco" data-target="#tabendereco" role="tab" aria-expanded="false">
+                                <i class="fa fa-map-marker"></i>
+                                Endereço
+                            </a>
+                        </li>-->
+                        <!--<li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" id="liContato" data-target="#tabcontato" role="tab" aria-expanded="false">
+                                <i class="fa fa-phone-square"></i>
+                                Contatos
+                            </a>
+                        </li>-->
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" id="lilogo" data-target="#tablogo" role="tab" aria-expanded="false">
+                                <i class="fa fa-file-archive-o"></i>
+                                Logo 
+                            </a>
+                        </li>
+                        <!--<li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" id="liUnidades" data-target="#tabUnidades" role="tab" aria-expanded="false">
+                                <i class="fa fa-map-marker"></i>
+                                Unidades de Atendimento
+                            </a>
+                        </li>-->
+                    </ul>
+                    <div class="tab-content padding-vertical-20">
+
+                        <div class="tab-pane active" id="tabdados" role="tabpanel" aria-expanded="false">
+                            <div class="alert alert-danger" ng-if="vm.FormMessage.length > 0">
+                                <span><i class="fa fa-exclamation-triangle"></i> <strong>{{ vm.FormMessage }}</strong></span>
+                            </div>
+                            <br />
+                            <form name="forms.dadosclinica" role="form">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group" show-errors>
+                                            <label for="Nome" class="control-label required">Nome/Fantasia</label>
+                                            <input class="form-control bg-light" name="Nome" ng-model="vm.clinica.Nome" type="text" required>
+                                        </div>
+                                    </div>
+                                    <!--<div class="col-md-4">
+                                        <div class="form-group" show-errors>
+                                            <label for="CpfCnpj" class="control-label required">CPF/CNPJ</label>
+                                            <input class="form-control bg-light" name="CpfCnpj" ng-model="vm.clinica.CpfCnpj"  type="text" required>
+                                        </div>
+                                    </div>-->
+                                </div>
+                                
+                            </form>
+                        </div>
+                        
+                       <!-- <div class="tab-pane" id="tabendereco" role="tabpanel" aria-expanded="false">
+                            <div class="alert alert-danger" ng-if="vm.FormMessage.length > 0">
+                                <span><i class="fa fa-exclamation-triangle"></i> <strong>{{ vm.FormMessage }}</strong></span>
+                            </div>
+                            <br />
+                            <form name="forms.dadosenderecoclinica" role="form">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="form-group" show-errors>
+                                            <label for="Nome" class="control-label required">Cep</label>
+                                            <input class="form-control bg-light" name="Nome" ng-model="vm.clinica.Cep" type="text" ui-br-cep-mask required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group" show-errors>
+                                            <label for="Logradouro" class="control-label required">Logradouro</label>
+                                            <input class="form-control bg-light" name="Logradouro" ng-model="vm.clinica.Logradouro" maxlength="100" type="text" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group" show-errors>
+                                            <label for="Nr" class="control-label required">Número</label>
+                                            <input class="form-control bg-light" name="Numero" ng-model="vm.clinica.Numero" maxlength="10" type="text" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group" show-errors>
+                                            <label for="Bairro" class="control-label required">Bairro</label>
+                                            <input class="form-control bg-light" name="Bairro" ng-model="vm.clinica.Bairro" maxlength="100" type="text" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group" show-errors>
+                                            <label for="estado" class="control-label required">Estado</label>
+                                            <select class="form-control m-b" ng-options="item.Id as item.Nome for item in vm.estados" name="estado" ng-model="vm.estadoSelecionado" required></select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group" show-errors>
+                                            <label for="Cidade" class="control-label required">Cidade</label>
+                                            <select class="form-control m-b" ng-options="item.Id as item.Nome for item in vm.cidades" name="Cidade" ng-model="vm.cidadeSelecionada" required></select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group" show-errors>
+                                            <label for="Complemento" class="control-label">Complemento</label>
+                                            <input class="form-control bg-light" name="Complemento" ng-model="vm.clinica.Complemento" maxlength="400" type="text">
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                           --> 
+                        
+                        <!--<div class="tab-pane" id="tabcontato" role="tabpanel" aria-expanded="false">
+                            <div class="alert alert-danger" ng-if="vm.FormMessage.length > 0">
+                                <span><i class="fa fa-exclamation-triangle"></i> <strong>{{ vm.FormMessage }}</strong></span>
+                            </div>
+                            <br />
+                            <form name="forms.dadoscontatoclinica" role="form">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group" show-errors>
+                                            <label for="TelCelular" class="control-label required">Telefone 1</label>
+                                            <input class="form-control bg-light" name="Telefone1" ng-model="vm.clinica.Telefone1" ui-br-phone-number type="text" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group" show-errors>
+                                            <label for="TelResidencial" class="control-label">Telefone 2</label>
+                                            <input class="form-control bg-light" name="Telefone2" ng-model="vm.clinica.Telefone2" ui-br-phone-number type="text">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group" show-errors>
+                                            <label for="fax" class="control-label">Fax</label>
+                                            <input class="form-control bg-light" name="fax" ng-model="vm.clinica.Fax" ui-br-phone-number type="text">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="form-group" show-errors>
+                                            <label for="Email" class="control-label required">Email</label>
+                                            <input class="form-control bg-light" name="Email" ng-model="vm.clinica.Email" type="email" required>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>-->
+                        
+                        <div class="tab-pane" id="tablogo" role="tabpanel" aria-expanded="false">
+                            <form name="forms.logo" role="form">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <span class="btn btn-primary fileinput-button">
+                                            <i class="glyphicon glyphicon-plus"></i>
+                                            <span>Selecionar Arquivos...</span>
+                                            <input type="file" name="file" nv-file-select="" uploader="vm.uploader" multiple />
+                                        </span>
+                                        <table class="table" ng-show="vm.uploader.queue.length > 0">
+                                            <thead>
+                                                <tr>
+                                                    <th width="50%">Arquivo</th>
+                                                    <th ng-show="vm.uploader.isHTML5">Tamanho</th>
+                                                    <th ng-show="vm.uploader.isHTML5">Progresso</th>
+                                                    <th width="15%">Status</th>
+                                                    <th>Ações</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr ng-repeat="item in vm.uploader.queue">
+                                                    <td><strong>{{ item.file.name }}</strong></td>
+                                                    <td ng-show="vm.uploader.isHTML5" nowrap>{{ item.file.size/1024/1024|number:2 }} MB</td>
+                                                    <td ng-show="vm.uploader.isHTML5">
+                                                        <progress class="progress progress-primary" value="{{item.progress}}" max="100">{{item.progress}}%</progress>
+                                                        <!--<div class="progress" style="margin-bottom: 0;">
+                                                            <div class="progress progress-success progress-striped" role="progressbar" ng-style="{ 'width': item.progress + '%' }"></div>
+                                                        </div>-->
+                                                    </td>
+                                                    <td class="text-center">
+                                                        <span ng-show="item.isReady"><i class="fa fa-arrow-up"></i> Pendente</span>
+                                                        <span ng-show="item.isSuccess"><i class="fa fa-check-circle"></i> Enviado</span>
+                                                        <span ng-show="item.isCancel"><i class="fa fa-question-circle-o"></i> Cancelado</span>
+                                                        <span ng-show="item.isError"><i class="fa fa-remove"></i> Erro</span>
+                                                    </td>
+                                                    <td nowrap>
+                                                        <button type="button" class="btn btn-success btn-xs" ng-click="item.upload()" ng-disabled="item.isReady || item.isUploading || item.isSuccess">
+                                                            <span class="glyphicon glyphicon-upload"></span> Enviar
+                                                        </button>
+                                                        <button type="button" class="btn btn-warning btn-xs" ng-click="item.cancel()" ng-disabled="!item.isUploading">
+                                                            <span class="glyphicon glyphicon-ban-circle"></span> Cancelar
+                                                        </button>
+                                                        <button type="button" class="btn btn-danger btn-xs" ng-click="item.remove()">
+                                                            <span class="glyphicon glyphicon-trash"></span> Remover
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="row" ng-if="vm.clinica.Logo.length > 0">
+                                    <div class="col-lg-12">
+                                        <br />
+                                        <img ng-src="data:image/png;base64,{{vm.clinica.Logo}}" id="photo-id" style="width:240px;height:151px;" />
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        
+                        
+                        <!--<div class="tab-pane" id="tabUnidades" role="tabpanel" aria-expanded="false">
+                            <form name="forms.unidade" role="form">
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <div class="form-group" show-errors>
+                                            <label for="unidade" class="control-label required">Nome da Unidade</label>
+                                            <input class="form-control bg-light" name="unidade" ng-model="vm.unidade" ng-change="vm.unidade = (vm.unidade | uppercase)" type="text">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <button type="button" style="margin-left:20px; margin-top: 25px;" ng-click="vm.add()" tooltip="Adicionar Unidade" class="btn btn-primary btn-cons"><span class="fa fa-plus"></span> Adicionar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row" ng-if="vm.clinica.Unidades.length > 0">
+                                    <div class="col-md-12">
+                                        <table class="table table-hover table-condensed table-striped" datatable="ng" dt-options="vm.dtOptions">
+                                            <thead>
+                                                <tr class="bg-complete-lighter">
+                                                    <th style="width:100%">Unidade </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr ng-repeat="x in vm.clinica.Unidades">
+                                                    <td>{{x.Nome | uppercase}}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>-->
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-12">
+                <button class="btn btn-primary pull-lg-right" ng-click="vm.save()"><i class="fa fa-save"></i> Salvar</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+

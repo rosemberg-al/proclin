@@ -1,0 +1,106 @@
+﻿<div class="modal-header clearfix text-left">
+    <h4><span class="semi-bold">Atualização Cadastral</span></h4>
+    <p class="p-b-10">
+        Complete o formulário abaixo para atualizar o seu cadastro e obter acesso.<br />
+        Os campos marcados com um <strong> (*)</strong>, são de preenchimento obrigatório.
+    </p>
+</div>
+<div class="modal-body" block-ui="blockModal">
+    <div class="row">
+        
+        <div class="col-md-12">
+            
+            <div class="alert alert-danger" ng-if="vm.message.length > 0">
+                <i class="fa fa-warning"></i>&nbsp;<strong>{{ vm.message }}</strong>
+            </div>
+            
+            <div ng-class="vm.AlertClassDiv" ng-show="vm.AlertMessage.length > 0">
+                <span><i ng-class="vm.AlertClassI"></i> <strong> {{ vm.AlertMessage  }}</strong></span>
+            </div>
+            <form role="form" name="forms.editForm" novalidate>
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <label>Nome </label>
+                                    <input name="Nome" type="text" class="form-control" ng-model="vm.beneficiario.Nome" readonly/>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>CPF </label>
+                                    <input name="CPF" type="text" class="form-control" ng-model="vm.beneficiario.CPF" ui-br-cpfcnpj-mask readonly />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <label>Nome da Mãe </label>
+                                    <input name="NomeMae" type="text" class="form-control" ng-model="vm.beneficiario.NomeMae" readonly />
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Nº da Carteira </label>
+                                    <input name="Carteira" type="text" class="form-control" ng-model="vm.beneficiario.Carteira" readonly />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="form-group" show-errors>
+                                    <label class="required" for="Email">E-mail </label>
+                                    <input name="Email" type="email" class="form-control" maxlength="80" ng-model="vm.beneficiario.Email" required />
+                                    <span ng-show="forms.editForm.Email.$touched && forms.editForm.Email.$invalid && forms.editForm.Email.$viewValue.length > 0" class="label label-important"><strong>O e-mail digitado não é válido</strong></span>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group" show-errors>
+                                    <label class="required" for="Telefone1">Telefone Celular: </label>
+                                    <input name="Telefone1" type="text" class="form-control" ng-model="vm.beneficiario.Telefone1" ui-br-phone-number required />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-master-light padding-30 b-rad-lg">
+                            <div class="row">
+                                <p>Defina uma senha de acesso. Sua senha deve conter no mínimo 6 e no máximo 18 caracteres.</p>
+                                <p>Para sua maior segurança, informe letras e números em sua senha.</p>
+                                <div class="col-md-4">
+                                    <div class="form-group" show-errors>
+                                        <label class="required" for="Senha">Senha: </label>
+                                        <input name="Senha" id="Senha" type="password" maxlength="18" class="form-control" ng-model="vm.beneficiario.Senha" required/>
+                                    </div>
+                                    
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group" show-errors>
+                                        <label class="required" for="ConfirmarSenha">Confirmar Senha:</label>
+                                        <input name="ConfirmarSenha" type="password" class="form-control" maxlength="18" ng-model="vm.beneficiario.ConfirmarSenha" required />
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="p-t-20">
+                                        <label>Força da Senha:</label>
+                                        <password-strength ng-model="vm.beneficiario.Senha"></password-strength>
+                                    </div>
+                                </div>
+                               
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </form>
+        </div>
+        </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-default" ng-click="vm.cancel()">Cancelar</button>
+    <button class="btn btn-primary btn-animated from-top fa fa-check" ng-click="vm.saveUsuario()"> <span>Confirmar </span></button>
+</div>

@@ -1,0 +1,19 @@
+-- Create table Mysql
+create table `Role`
+(
+  `Id`              INT(10) AUTO_INCREMENT PRIMARY KEY,
+  `Name`             VARCHAR(100) not null,
+  `IdDepartment`     INT(10) not null,
+  `Identifier`       VARCHAR(100),
+  `IdFeatureInicial` INT(10) NULL
+);
+
+ALTER TABLE `Role`
+  ADD CONSTRAINT `fk_role_department` FOREIGN KEY (`IdDepartment`) REFERENCES `Department` (`Id`);
+
+
+
+
+
+
+

@@ -1,0 +1,71 @@
+﻿<div class="modal-header">
+    <h3 class="modal-title">{{ vm.State }} </h3>
+</div>
+<div class="modal-body">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-danger" ng-if="vm.FormMessage.length > 0">
+                <span><i class="fa fa-exclamation-triangle"></i> <strong>{{ vm.FormMessage }}</strong></span>
+            </div>
+            <form name="forms.proc" role="form" block-ui="blockModalCProc">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="form-group" show-errors>
+                            <label for="nome" class="control-label required">Nome do Procedimento</label>
+                            <input class="form-control bg-light" name="nome" ng-model="vm.procedimento.NomeProcedimento" maxlength="60" type="text" required>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group" show-errors>
+                            <label for="sexo" class="control-label required">Sexo</label>
+                            <select class="form-control m-b" ng-options="item.Key as item.Value for item in vm.sexos" name="sexo" ng-model="vm.sexoSelecionado" required></select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group" show-errors>
+                            <label for="valor" class="control-label required">Valor</label>
+                            <input class="form-control bg-light" name="valor" ng-model="vm.procedimento.Valor" ui-number-mask="2" value="{{vm.procedimento.Valor | number: 2 }}" type="text" required>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group" show-errors>
+                            <label for="valorProfissional" class="control-label required">Valor Profissional</label>
+                            <input class="form-control bg-light" name="valorProfissional" ng-model="vm.procedimento.ValorProfissional" ui-number-mask="2" value="{{vm.procedimento.ValorProfissional | number: 2 }}" type="text" required>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="sus" class="control-label">Código Sus</label>
+                            <input class="form-control bg-light" name="sus" ng-model="vm.procedimento.CodigoSus" maxlength="11" type="text">
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group" show-errors>
+                            <label for="odonto" class="control-label required">Odontológico</label>
+                            <select class="form-control m-b" ng-options="item.Key as item.Value for item in vm.odonto" name="odonto" ng-model="vm.odontoSelecionado" required></select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group" show-errors>
+                            <label for="preparo" class="control-label">Preparo</label>
+                            <textarea name="preparo" ng-model="vm.procedimento.Preparo" class="form-control bg-light" style="width:100%;" rows="5"></textarea>
+                            <span>{{4000 - vm.procedimento.Preparo.length}} Caracteres</span>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+<div class="modal-footer">
+    <button class="btn btn-default" ng-click="vm.cancel()">Cancelar</button>
+    <button class="btn btn-primary" ng-click="vm.save()"><i class="fa fa-save"></i> Salvar</button>
+
+</div>
+

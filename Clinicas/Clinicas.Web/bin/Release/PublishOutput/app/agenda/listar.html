@@ -1,0 +1,110 @@
+﻿<div class="page-content-inner ng-scope">
+    <section class="panel">
+        <div class="panel-heading">
+            <div class="margin-bottom-5">
+                <ul class="list-unstyled breadcrumb breadcrumb-custom" ng-cloak>
+                    <li>
+                        <a href="#" class="active"><i class="icmn-home"></i> Página Inicial</a>
+                    </li>
+                    <li ng-repeat="item in $root.currentCrumbs" ng-cloak>
+                        <a href="#" class="active">{{ item.name }}</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="panel-body" block-ui="block">
+
+            <div class="row">
+                <div class="col-md-12">
+                    <h4>Agenda </h4>
+                </div>
+            </div>
+
+            <!--<div class="row">
+                <div class="col-md-9">
+                    <div class="input-group" id="adv-search">
+                        <input class="form-control" id="nome" name="nome" ng-model="vm.pesq.Nome" type="text" placeholder="Nome..">
+                        <div class="input-group-btn">
+                            <div class="btn-group" role="group">
+                                <div class="dropdown dropdown-lg">
+                                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="caret"></span></button>
+                                    <div class="dropdown-menu dropdown-menu-right" role="menu">
+                                        <form class="form-horizontal" name="forms.buscacaconvenio" ng-enter="vm.buscar()" ng-submit="vm.buscar()" role="form" id="form" autocomplete="off" novalidate>
+
+                                            <div class="form-group" style="margin-bottom:5px;">
+                                                <input class="form-control" id="nome" name="nome" ng-model="vm.pesq.Codigo" type="text" placeholder="Código.." style="margin-bottom:5px;" />
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                <button type="button" class="btn btn-primary" ng-click="vm.buscar()"><span class="fa fa-search" aria-hidden="true" tooltip="Pesquisar"></span> Pesquisar </button>
+                                <button type="button" class="btn btn-default" ng-click="vm.init()"><span class="fa fa-list" aria-hidden="true" tooltip="Ver todos"></span> Ver todos  </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 control-label text-left">
+                    <div class="form-group pull-right">
+                        <a ng-click="vm.crud()" class="btn btn-primary">
+                            <i class="fa fa-plus-square-o"></i>
+                            <span class="bold">  Novo</span>
+                        </a>
+                    </div>
+                </div>
+            </div>-->
+
+                <div class="row">
+                    <div class="col-md-2">
+                        <div class="btn-group-vertical btn-group-justified">
+                            <a ng-click="vm.novoagendamento()" class="btn" style="text-align:left"> <span class="fa fa-plus-circle" aria-hidden="true" tooltip="Novo"></span> Novo </a>
+                            <a ui-sref="agenda" class="btn" style="text-align:left"> <span class="fa fa-calendar" aria-hidden="true" tooltip="Calendário"></span> Calendário </a>
+                            <a ui-sref="consultaagenda" class="btn" style="text-align:left"> <span class="fa fa-search" aria-hidden="true" tooltip="Pesquisar"></span> Pesquisar </a>
+                            <a ui-sref="listaragenda({tipo:'Hoje' })" class="btn" style="text-align:left"> <span class="fa fa-list" aria-hidden="true" tooltip="Hoje"></span> Hoje </a>
+                            <a ui-sref="listaragenda({tipo:'Todos' })" class="btn" style="text-align:left"> <span class="fa fa-list" aria-hidden="true" tooltip="Todos"></span> Todos  </a>
+                            <a ui-sref="listaragenda({tipo:'Marcado' })" class="btn" style="text-align:left"> <span class="donut donut-success" aria-hidden="true" tooltip="Marcado"></span> Marcado </a>
+                            <a ui-sref="listaragenda({tipo:'Realizado' })" class="btn" style="text-align:left"> <span class="donut donut-primary" aria-hidden="true" tooltip="Realizado"></span> Realizado </a>
+                            <a ui-sref="listaragenda({tipo:'Cancelado' })" class="btn" style="text-align:left"> <span class="donut donut-danger" aria-hidden="true" tooltip="Cancelado"></span> Cancelado</a>
+                        </div>
+                    </div>
+
+                    <div class="col-md-8">
+                        <div class="example-calendar-block fc fc-unthemed fc-ltr" id="calendario"></div>
+                    </div>
+
+                    <div class="col-md-2">
+                        <div class="row margin-20">
+                            <h6> Profissionais de Saúde </h6>
+                            <div class="btn-group-vertical btn-group-justified">
+                                <div ng-repeat="item in vm.p" class="btn" style="text-align:left"> <span class="fa fa-user"></span> <input type="radio" name="example6" ng-checked="item.IdFuncionario == vm.idprofissionalselecionado" ng-click="vm.selecionar(item)"> {{ item.Nome }}  </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="md-12">
+                                <h6>Situação </h6>
+                                <ul class="list-unstyled app-calendar-list">
+                                    <li>
+                                        <span class="donut donut-primary"></span>
+                                        Realizado
+                                    </li>
+                                    <li>
+                                        <span class="donut donut-success"></span>
+                                        Marcado
+                                    </li>
+                                    <li>
+                                        <span class="donut donut-danger"></span>
+                                        Cancelado
+                                    </li>
+                                    <li>
+                                        <span class="donut donut-warning"></span>
+                                        Aguardando
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+    </section>
+</div>

@@ -1,0 +1,47 @@
+﻿<section class="panel">
+    <div class="panel-heading">
+        <div class="margin-bottom-10">
+            <ul class="list-unstyled breadcrumb breadcrumb-custom" ng-cloak>
+                <li>
+                    <a href="#" class="active"><i class="icmn-home"></i> Página Inicial</a>
+                </li>
+                <li ng-repeat="item in $root.currentCrumbs" ng-cloak>
+                    <a href="#" class="active">{{ item.name }}</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-12">
+                <h4> Ocupações  </h4>
+            </div>
+        </div>
+
+        <div class="row" block-ui="blockReport">
+            <div class="col-md-12">
+                <form name="forms.dados" role="form" novalidate>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="alert alert-danger" ng-if="vm.FormMessage.length > 0">
+                                <span><i class="fa fa-exclamation-triangle"></i> <strong>{{ vm.FormMessage }}</strong></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <div class="col-md-6">
+                            <div class="form-group row pull-lg-right">
+                                <div class="col-md-10">
+                                    <button type="button" class="btn btn-primary" ng-click="vm.printRelatorio()"><span class="fa fa-print"></span> Gerar Relatório</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

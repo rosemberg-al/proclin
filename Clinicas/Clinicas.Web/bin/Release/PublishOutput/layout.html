@@ -1,0 +1,1360 @@
+﻿<div ng-controller="Main as vm">
+
+    <nav class="left-menu" >
+        <div class="logo-container" >
+            <a href="index.html" class="logo"><!-- class="logo" -->
+                <img src="assets/common/img/logo.png" alt="Proclin" />
+              
+            </a>
+        </div>
+        <div class="left-menu-inner scroll-pane">
+            <ul class="left-menu-list left-menu-list-root list-unstyled" id="menu">
+                <!--<li class="left-menu-list-submenu">
+                    <a class="left-menu-link" href="javascript: void(0);">
+                        <i class="left-menu-link-icon icmn-cog util-spin-delayed-pseudo"></i>
+                        <span class="menu-top-hidden"></span> Configurações
+                    </a> 
+                    <ul class="left-menu-list list-unstyled">
+                        <li>
+                            <div class="left-menu-item">
+                                <div class="left-menu-block">
+                                    <div class="left-menu-block-item">
+                                        <small>This menu gives possibility to construct custom blocks with any widgets, components and elements inside, like this theme settings</small>
+                                    </div>
+                                    <div class="left-menu-block-item">
+                                        <span class="font-weight-600">Theme Style:</span>
+                                    </div>
+                                    <div class="left-menu-block-item" id="options-theme">
+                                        <div class="btn-group btn-group-justified" data-toggle="buttons">
+                                            <div class="btn-group">
+                                                <label class="btn btn-default active">
+                                                    <input type="radio" name="options-theme" value="theme-default" autocomplete="off" checked=""> Light
+                                                </label>
+                                            </div>
+                                            <div class="btn-group">
+                                                <label class="btn btn-default">
+                                                    <input type="radio" name="options-theme" value="theme-dark" autocomplete="off"> Dark
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="btn-group btn-group-justified" data-toggle="buttons">
+                                            <div class="btn-group">
+                                                <label class="btn btn-default">
+                                                    <input type="radio" name="options-theme" value="theme-green" autocomplete="off"> Green
+                                                </label>
+                                            </div>
+                                            <div class="btn-group">
+                                                <label class="btn btn-default">
+                                                    <input type="radio" name="options-theme" value="theme-blue" autocomplete="off"> Blue
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="btn-group btn-group-justified" data-toggle="buttons">
+                                            <div class="btn-group">
+                                                <label class="btn btn-default">
+                                                    <input type="radio" name="options-theme" value="theme-red" autocomplete="off"> Red
+                                                </label>
+                                            </div>
+                                            <div class="btn-group">
+                                                <label class="btn btn-default">
+                                                    <input type="radio" name="options-theme" value="theme-orange" autocomplete="off"> Orange
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="left-menu-block-item">
+                                        <span class="font-weight-600">Fixed Top Menu</sup>:</span>
+                                    </div>
+                                    <div class="left-menu-block-item" id="options-menu">
+                                        <div class="btn-group btn-group-justified" data-toggle="buttons">
+                                            <div class="btn-group">
+                                                <label class="btn btn-default active">
+                                                    <input type="radio" name="options-menu" value="menu-fixed" checked=""> On
+                                                </label>
+                                            </div>
+                                            <div class="btn-group">
+                                                <label class="btn btn-default">
+                                                    <input type="radio" name="options-menu" value="menu-static"> Off
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="left-menu-block-item">
+                                        <span class="font-weight-600">Super Clean Mode:</span>
+                                    </div>
+                                    <div class="left-menu-block-item" id="options-mode">
+                                        <div class="btn-group btn-group-justified" data-toggle="buttons">
+                                            <div class="btn-group">
+                                                <label class="btn btn-default active">
+                                                    <input type="radio" name="options-mode" value="mode-superclean" checked=""> On
+                                                </label>
+                                            </div>
+                                            <div class="btn-group">
+                                                <label class="btn btn-default">
+                                                    <input type="radio" name="options-mode" value="mode-default"> Off
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="left-menu-block-item">
+                                        <span class="font-weight-600">Colorful Menu:</span>
+                                    </div>
+                                    <div class="left-menu-block-item" id="options-colorful">
+                                        <div class="btn-group btn-group-justified" data-toggle="buttons">
+                                            <div class="btn-group">
+                                                <label class="btn btn-default active">
+                                                    <input type="radio" name="options-colorful" value="colorful-enabled" checked=""> On
+                                                </label>
+                                            </div>
+                                            <div class="btn-group">
+                                                <label class="btn btn-default">
+                                                    <input type="radio" name="options-colorful" value="colorful-disabled"> Off
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="left-menu-block-item">
+                                        <span class="font-weight-600">Menu Shadow:</span>
+                                    </div>
+                                    <div class="left-menu-block-item" id="mode-box-shadow">
+                                        <div class="btn-group btn-group-justified" data-toggle="buttons">
+                                            <div class="btn-group">
+                                                <label class="btn btn-default">
+                                                    <input type="radio" name="mode-box-shadow" value="mode-box-shadow"> On
+                                                </label>
+                                            </div>
+                                            <div class="btn-group">
+                                                <label class="btn btn-default active">
+                                                    <input type="radio" name="mode-box-shadow" value="mode-box-shadow-disabled" checked=""> Off
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="left-menu-block-item">
+                                        <span class="font-weight-600">Squared Corners:</span>
+                                    </div>
+                                    <div class="left-menu-block-item" id="mode-squared">
+                                        <div class="btn-group btn-group-justified" data-toggle="buttons">
+                                            <div class="btn-group">
+                                                <label class="btn btn-default">
+                                                    <input type="radio" name="mode-squared" value="mode-squared"> On
+                                                </label>
+                                            </div>
+                                            <div class="btn-group">
+                                                <label class="btn btn-default active">
+                                                    <input type="radio" name="mode-squared" value="mode-squared-disabled" checked=""> Off
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </li>-->
+
+                <!--<li class="left-menu-list-submenu" ng-repeat="x in vm.menu">
+                    <a class="left-menu-link" href="javascript: void(0);" onclick="abre(this)">
+                        <i class="left-menu-link-icon {{ x.Icon }}"></i>
+                        {{ x.NmModulo }}
+                    </a>
+                    <ul class="left-menu-list list-unstyled">
+                        <li ng-repeat="y in x.Funcionalidades">
+                            <a class="left-menu-link"  ui-sref='{{ y.Rota }}'>
+                                {{ y.Nome }}
+                            </a>
+                        </li>
+
+                    </ul>
+                </li>-->
+
+                <li>
+                    <a class="left-menu-link" ui-sref="dashboard">
+                        <i class="left-menu-link-icon icmn-pie-chart2"><!-- --></i>
+                        Dashboard
+                    </a>
+                </li>
+
+                <li>
+                    <a class="left-menu-link" ui-sref="paciente">
+                        <i class="left-menu-link-icon fa fa-user"><!-- --></i>
+                        Paciente
+                    </a>
+                </li>
+
+                <li>
+                    <a class="left-menu-link" ui-sref="prontuariopaciente">
+                        <i class="left-menu-link-icon fa fa fa-heartbeat"><!-- --></i>
+                        Prontuário
+                    </a>
+                </li>
+
+                <!-- CLINICA -->
+                <li class="left-menu-list-submenu">
+                    <a class="left-menu-link" href="javascript: void(0);">
+                        <i class="left-menu-link-icon fa fa-cog"></i>
+                        Sistema
+                    </a>
+                    <ul class="left-menu-list list-unstyled">
+                        <li>
+                            <a class="left-menu-link" ui-sref="clinica">
+                                Clinica
+                            </a>
+                        </li>
+                        <li>
+                            <a class="left-menu-link" ui-sref="consultorio">
+                                Consultório
+                            </a>
+                        </li>
+                        <li>
+                            <a class="left-menu-link" ui-sref="unidades">
+                                Unidades de Atendimento
+                            </a>
+                        </li>
+
+                        <li>
+                            <a class="left-menu-link" ui-sref="tabelapreco">
+                                Tabela de Preço
+                            </a>
+                        </li>
+                        <li>
+                            <a class="left-menu-link" ui-sref="usuario">
+                                Usuário
+                            </a>
+                        </li>
+                        <li>
+                            <a class="left-menu-link" ui-sref="alterarsenha">
+                                Alterar Senha
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <!-- ATENDIMENTO -->
+                <li class="left-menu-list-submenu">
+                    <a class="left-menu-link" href="javascript: void(0);">
+                        <i class="left-menu-link-icon fa fa-calendar"></i>
+                        Atendimento
+                    </a>
+                    <ul class="left-menu-list list-unstyled">
+                        <li>
+                            <a class="left-menu-link" ui-sref="agenda">
+                                Agenda
+                            </a>
+                        </li>
+                        <!--<li>
+                            <a class="left-menu-link" ui-sref="planoagenda">
+                                Plano de Agenda
+                            </a>
+                        </li>-->
+                        <li>
+                            <a class="left-menu-link" ui-sref="wizard">
+                                Plano de Agenda
+                            </a>
+                        </li>
+                        <li>
+                            <a class="left-menu-link" ui-sref="paciente">
+                                Prontuário
+                            </a>
+                        </li>
+                        <li>
+                            <a class="left-menu-link" ui-sref="salaespera">
+                                Sala de Espera
+                            </a>
+                        </li>
+                        <li>
+                            <a class="left-menu-link" ui-sref="tvespera">
+                                TV Espera
+                            </a>
+                        </li>
+                        <li>
+                            <a class="left-menu-link" ui-sref="bloqueio">
+                                Bloqueio de Agenda
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <!-- CADASTRO -->
+                <li class="left-menu-list-submenu">
+                    <a class="left-menu-link" href="javascript: void(0);">
+                        <i class="left-menu-link-icon icmn-files-empty2"></i>
+                        Cadastro
+                    </a>
+                    <ul class="left-menu-list list-unstyled">
+                        <li>
+                            <a class="left-menu-link" ui-sref="paciente">
+                                Paciente
+                            </a>
+                        </li>
+                        <li>
+                            <a class="left-menu-link" ui-sref="fornecedores">
+                                Fornecedor
+                            </a>
+                        </li>
+                        <li>
+                            <a class="left-menu-link" ui-sref="funcionario">
+                                Funcionário
+                            </a>
+                        </li>
+                        <li>
+                            <a class="left-menu-link" ui-sref="convenio">
+                                Convênio
+                            </a>
+                        </li>
+                        <li>
+                            <a class="left-menu-link" ui-sref="modeloprontuario">
+                                Modelo Prontuário
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <!-- ESTOQUE -->
+                <li class="left-menu-list-submenu">
+                    <a class="left-menu-link" href="javascript: void(0);">
+                        <i class="left-menu-link-icon icmn-box"></i>
+                        Estoque
+                    </a>
+                    <ul class="left-menu-list list-unstyled">
+                        <li>
+                            <a class="left-menu-link" ui-sref="material">
+                                Material
+                            </a>
+                        </li>
+                        <li>
+                            <a class="left-menu-link" ui-sref="movimentoestoque">
+                                Movimento de Estoque
+                            </a>
+                        </li>
+                        <li>
+                            <a class="left-menu-link" ui-sref="tipomaterial">
+                                Tipo de Material
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                
+                <!-- PESQUISA -->
+                <li class="left-menu-list-submenu">
+                    <a class="left-menu-link" href="javascript: void(0);">
+                        <i class="left-menu-link-icon icmn-search2"></i>
+                        Pesquisa
+                    </a>
+                    <ul class="left-menu-list list-unstyled">
+
+                        <li>
+                            <a class="left-menu-link" ui-sref="bancos">
+                                Banco
+                            </a>
+                        </li>
+                        <li>
+                            <a class="left-menu-link" ui-sref="cid">
+                                CID
+                            </a>
+                        </li>
+                        <li>
+                            <a class="left-menu-link" ui-sref="procedimentos">
+                                Procedimento
+                            </a>
+                        </li>
+                        <li>
+                            <a class="left-menu-link" ui-sref="especialidades">
+                                Especialidade
+                            </a>
+                        </li>
+                        <li>
+                            <a class="left-menu-link" ui-sref="ocupacoes">
+                                Ocupação
+                            </a>
+                        </li>
+                        <li>
+                            <a class="left-menu-link" ui-sref="vacinas">
+                                Vacinas
+                            </a>
+                        </li>
+                        <li>
+                            <a class="left-menu-link" ui-sref="hospital">
+                                Hospitais
+                            </a>
+                        </li>
+                        <li>
+                            <a class="left-menu-link" ui-sref="medicamento">
+                                Medicamentos
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <!-- GUIA -->
+                <li class="left-menu-list-submenu">
+                    <a class="left-menu-link" href="javascript: void(0);">
+                        <i class="left-menu-link-icon icmn-stack3"><!-- --></i>
+                        GUIA
+                    </a>
+                    <ul class="left-menu-list list-unstyled">
+                        <li>
+                            <a class="left-menu-link" ui-sref="guiasconsulta">
+                                Consulta
+                            </a>
+                        </li>
+                        <!--<li>
+                            <a class="left-menu-link" ui-sref="guiassadt">
+                                SP/SADT
+                            </a>
+                        </li>-->
+                        <li>
+                            <a class="left-menu-link" ui-sref="lotes">
+                               Lote
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <!--   <li class="left-menu-list-separator ">/li> -->
+                
+                <!-- FINANCEIRO -->
+                <li class="left-menu-list-submenu">
+                    <a class="left-menu-link" href="javascript: void(0);">
+                        <i class="left-menu-link-icon fa fa-dollar"><!-- --></i>
+                        Financeiro
+                    </a>
+                    <ul class="left-menu-list list-unstyled">
+                        <li>
+                            <a class="left-menu-link" ui-sref="dashboardfinanceiro">
+                                Dashboard
+                            </a>
+                        </li>
+                        <li>
+                            <a class="left-menu-link" ui-sref="pagar({tipo:'P'})">
+                                Contas a Pagar
+                            </a>
+                        </li>
+                        <li>
+                            <a class="left-menu-link" ui-sref="receber({tipo:'R'})">
+                                Contas a Receber
+                            </a>
+                        </li>
+                        <li>
+                            <a class="left-menu-link" ui-sref="cheques">
+                                Cheque
+                            </a>
+                        </li>
+                        <li>
+                            <a class="left-menu-link" ui-sref="planocontas">
+                                Plano de Conta
+                            </a>
+                        </li>
+                        <!--<li>
+                            <a class="left-menu-link" href="pages-lockscreen.html">
+                                Caixa Diário
+                            </a>
+                        </li>-->
+                        <li>
+                            <a class="left-menu-link" ui-sref="conta">
+                                Conta
+                            </a>
+                        </li>
+                        <li>
+                            <a class="left-menu-link" ui-sref="bancos">
+                                Banco
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <!-- FATURAMENTO  -->
+                <li class="left-menu-list-submenu">
+                    <a class="left-menu-link" href="javascript: void(0);">
+                        <i class="left-menu-link-icon fa fa-mixcloud"></i>
+                        Faturamento
+                    </a>
+                    <ul class="left-menu-list list-unstyled">
+                        <li>
+                            <a class="left-menu-link"  ui-sref="lotes">
+                                Lote
+                            </a>
+                        </li>
+
+                        <li>
+                            <a class="left-menu-link" ui-sref="relfaturamento({tipo:'C'})">
+                                Convênio
+                            </a>
+                        </li>
+                        <li>
+                            <a class="left-menu-link" ui-sref="relfaturamento({tipo:'P'})">
+                                Particular
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <!-- RELATÓRIO -->
+                <li class="left-menu-list-submenu">
+                    <a class="left-menu-link" href="javascript: void(0);">
+                        <i class="left-menu-link-icon fa fa-print"><!-- --></i>
+                        Relatório
+                    </a>
+                    <ul class="left-menu-list list-unstyled">
+                        <li>
+                            <a class="left-menu-link" ui-sref="relagendamedica">
+                                Agenda
+                            </a>
+                        </li>
+                        <li>
+                            <a class="left-menu-link" ui-sref="relaniversariantes">
+                                Aniversariantes
+                            </a>
+                        </li>
+
+                        <li>
+                            <a class="left-menu-link" ui-sref="relocupacoes">
+                                Ocupações
+                            </a>
+                        </li>
+                        <li>
+                            <a class="left-menu-link" ui-sref="relespecialidades">
+                                Especialidade
+                            </a>
+                        </li>
+                        <li>
+                            <a class="left-menu-link" ui-sref="relprocedimentos">
+                                Procedimentos
+                            </a>
+                        </li>
+
+                        <li>
+                            <a class="left-menu-link" ui-sref="relcheques">
+                                Cheque
+                            </a>
+                        </li>
+                       
+                        <li>
+                            <a class="left-menu-link" ui-sref="relconvenios">
+                                Convênio
+                            </a>
+                        </li>
+                       
+                        <li>
+                            <a class="left-menu-link" ui-sref="relfinanceiro">
+                                Financeiro
+                            </a>
+                        </li>
+                        <li>
+                            <a class="left-menu-link" ui-sref="relfornecedores">
+                                Fornecedor
+                            </a>
+                        </li>
+                        <li>
+                            <a class="left-menu-link" ui-sref="relpaciente">
+                                Paciente
+                            </a>
+                        </li>
+                        <li>
+                            <a class="left-menu-link" ui-sref="relqtdeprocedimentosrealizados">
+                                Atendimentos Realizados
+                            </a>
+                        </li>
+                        <li>
+                            <a class="left-menu-link" ui-sref="relPlanoagenda">
+                                Plano de agenda
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+            </ul>
+        </div>
+    </nav>
+    
+    
+    <nav class="top-menu" >
+        <div class="menu-icon-container hidden-md-up">
+            <div class="animate-menu-button left-menu-toggle">
+                <div></div>
+            </div>
+        </div>
+       
+        <div class="menu">
+            <div class="menu-user-block">
+                <div class="dropdown dropdown-avatar">
+                   
+                    <a href="javascript: void(0);" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                        <span class="avatar" href="javascript:void(0);">
+                           <img src="assets/common/img/temp/avatars/1.jpg" alt="Alternative text to the image">
+                             <!--  <img src="https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/user_male2-512.png" alt="Alterar Imagem">-->
+                        </span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="" role="menu">
+                        <a class="dropdown-item" href="javascript:void(0)"><i class="dropdown-icon icmn-user"></i> Meus Dados</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" ng-click="vm.sair()" style="cursor:pointer"><i class="dropdown-icon icmn-exit"></i> Sair </a>
+                    </ul>
+                </div>
+            </div>
+            <div class="menu-info-block">
+                <div class="right hidden-md-down margin-left-20">
+                    <i class="fa fa-user"></i> {{ vm.user.Nome }} - {{ vm.user.Clinica }}
+                    <br />
+                    <i class="fa fa-hospital-o"></i> {{ vm.user.NmUnidadeAtendimento }} 
+                </div>
+                <div class="right hidden-md-down margin-left-20">
+                    <div class="search-block">
+                        <div class="form-input-icon form-input-icon-right">
+                            <i class="icmn-search"></i>
+                          
+                            <input type="text" class="form-control form-control-sm form-control-rounded" placeholder="Buscar..." ng-model="vm.busca" ng-enter="vm.buscar()"  style="border:#ffffff solid 1px; background:#ffffff; ">
+                            <button type="submit" ng-click="vm.buscar()" ng-enter="vm.buscar()" class="search-block-submit "></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <section class="page-content">
+        <div class="page-content-inner" ui-view></div>
+    </section>
+</div>
+
+<script>
+
+    var element = $('.scroll-pane').jScrollPane({/* ...settings... */ });
+    var api = element.data('jsp');
+
+    var cleanUI = {
+        hasTouch: (function () { return ('ontouchstart' in document.documentElement) })()
+    };
+
+    /**
+     * CLEAN UI TEMPLATE SCRIPTS
+     */
+
+    //function abre(a) {
+
+
+    //    /////////////////////////////////////////////////////////////////////////////
+    //    // Slide toggle menu items on click
+
+
+    //        var accessDenied = $('body').hasClass('menu-top') && $(window).width() > 768;
+
+    //        if (!accessDenied) {
+
+    //            var that = $(a).parent(),
+    //                opened = $('.left-menu .left-menu-list-opened');
+
+    //            if (!that.hasClass('left-menu-list-opened') && !that.parent().closest('.left-menu-list-submenu').length)
+    //                opened.removeClass('left-menu-list-opened').find('> ul').slideUp(200);
+
+    //             that.toggleClass('left-menu-list-opened').find('> ul').slideToggle(200);
+    //        }
+
+
+    //    /////////////////////////////////////////////////////////////////////////////
+    //    // Main menu scripts
+
+    //    if (!$('body').hasClass('menu-top')) {
+    //        if (!cleanUI.hasTouch) {
+    //            if (!cleanUI.hasTouch) {
+    //                $('nav.left-menu .scroll-pane').each(function () {
+    //                    $(this).jScrollPane({
+    //                        autoReinitialise: true,
+    //                        autoReinitialiseDelay: 100
+    //                    });
+    //                    var api = $(this).data('jsp'),
+    //                        throttleTimeout;
+    //                    $(window).bind('resize', function () {
+    //                        if (!throttleTimeout) {
+    //                            throttleTimeout = setTimeout(function () {
+    //                                api.reinitialise();
+    //                                throttleTimeout = null;
+    //                            }, 50);
+    //                        }
+    //                    });
+    //                });
+    //            }
+    //        }
+    //    }
+
+    //    if ($('body').hasClass('menu-top')) {
+
+    //        var translateSelector = $('nav.left-menu .left-menu-inner'),
+    //            startTranslateX = 0;
+
+    //        translateSelector.addClass('scrolled-to-left');
+
+    //        $(window).on('resize', function () {
+    //            startTranslateX = 0;
+    //            translateSelector.css('transform', 'translate3d(' + 0 + 'px, 0px, 0px)');
+    //        });
+
+    //        $('nav.left-menu').on('mousemove', function (e) {
+
+    //            if ($(window).width() > 751) {
+
+    //                console.log(e)
+
+    //                var menuWidth = $('nav.left-menu').width(),
+    //                    windowWidth = $(window).width(),
+    //                    boxedOffset = (windowWidth - menuWidth) / 2,
+    //                    innerWidth = (function () {
+    //                        var width = 0;
+    //                        $('nav.left-menu .left-menu-list-root > *').each(function () {
+    //                            width += $(this).width();
+    //                        });
+    //                        return width;
+    //                    })(),
+    //                    logoWidth = $('nav.left-menu .logo-container').outerWidth(),
+    //                    deltaWidth = menuWidth - logoWidth - innerWidth,
+    //                    hoverOffset = 100;
+
+    //                if (deltaWidth < 0) {
+
+    //                    if (e.clientX < windowWidth - menuWidth - boxedOffset + logoWidth + hoverOffset) {
+
+    //                        if (startTranslateX < 0 || startTranslateX < deltaWidth) {
+
+    //                            startTranslateX = startTranslateX - deltaWidth;
+    //                            translateSelector
+    //                                .removeClass('scrolled-to-right')
+    //                                .addClass('scrolled-to-left')
+    //                                .css('transform', 'translate3d(' + startTranslateX + 'px, 0px, 0px)')
+
+    //                        }
+
+    //                    }
+
+    //                    if (e.clientX > menuWidth + boxedOffset - hoverOffset) {
+
+    //                        if (startTranslateX >= 0 || startTranslateX > deltaWidth) {
+
+    //                            startTranslateX = deltaWidth;
+    //                            translateSelector
+    //                                .removeClass('scrolled-to-left')
+    //                                .addClass('scrolled-to-right')
+    //                                .css('transform', 'translate3d(' + startTranslateX + 'px, 0px, 0px)')
+
+    //                        }
+
+    //                    }
+    //                }
+
+    //            }
+
+    //        });
+
+    //    }
+
+
+
+    $(function () {
+
+        /////////////////////////////////////////////////////////////////////////////
+        // Slide toggle menu items on click
+
+        $('.left-menu .left-menu-list-submenu > a').on('click', function () {
+            var accessDenied = $('body').hasClass('menu-top') && $(window).width() > 768;
+
+            if (!accessDenied) {
+                var that = $(this).parent(),
+                    opened = $('.left-menu .left-menu-list-opened');
+
+                if (!that.hasClass('left-menu-list-opened') && !that.parent().closest('.left-menu-list-submenu').length)
+                    opened.removeClass('left-menu-list-opened').find('> ul').slideUp(200);
+
+                that.toggleClass('left-menu-list-opened').find('> ul').slideToggle(200);
+            }
+        });
+
+
+        /////////////////////////////////////////////////////////////////////////////
+        // Main menu scripts
+
+        if (!$('body').hasClass('menu-top')) {
+            if (!cleanUI.hasTouch) {
+                if (!cleanUI.hasTouch) {
+                    $('nav.left-menu .scroll-pane').each(function () {
+                        $(this).jScrollPane({
+                            autoReinitialise: true,
+                            autoReinitialiseDelay: 100
+                        });
+                        var api = $(this).data('jsp'),
+                            throttleTimeout;
+                        $(window).bind('resize', function () {
+                            if (!throttleTimeout) {
+                                throttleTimeout = setTimeout(function () {
+                                    api.reinitialise();
+                                    throttleTimeout = null;
+                                }, 50);
+                            }
+                        });
+                    });
+                }
+            }
+        }
+
+        if ($('body').hasClass('menu-top')) {
+
+            var translateSelector = $('nav.left-menu .left-menu-inner'),
+                startTranslateX = 0;
+
+            translateSelector.addClass('scrolled-to-left');
+
+            $(window).on('resize', function () {
+                startTranslateX = 0;
+                translateSelector.css('transform', 'translate3d(' + 0 + 'px, 0px, 0px)');
+            });
+
+            $('nav.left-menu').on('mousemove', function (e) {
+
+                if ($(window).width() > 751) {
+
+                    console.log(e)
+
+                    var menuWidth = $('nav.left-menu').width(),
+                        windowWidth = $(window).width(),
+                        boxedOffset = (windowWidth - menuWidth) / 2,
+                        innerWidth = (function () {
+                            var width = 0;
+                            $('nav.left-menu .left-menu-list-root > *').each(function () {
+                                width += $(this).width();
+                            });
+                            return width;
+                        })(),
+                        logoWidth = $('nav.left-menu .logo-container').outerWidth(),
+                        deltaWidth = menuWidth - logoWidth - innerWidth,
+                        hoverOffset = 100;
+
+                    if (deltaWidth < 0) {
+
+                        if (e.clientX < windowWidth - menuWidth - boxedOffset + logoWidth + hoverOffset) {
+
+                            if (startTranslateX < 0 || startTranslateX < deltaWidth) {
+
+                                startTranslateX = startTranslateX - deltaWidth;
+                                translateSelector
+                                    .removeClass('scrolled-to-right')
+                                    .addClass('scrolled-to-left')
+                                    .css('transform', 'translate3d(' + startTranslateX + 'px, 0px, 0px)')
+
+                            }
+
+                        }
+
+                        if (e.clientX > menuWidth + boxedOffset - hoverOffset) {
+
+                            if (startTranslateX >= 0 || startTranslateX > deltaWidth) {
+
+                                startTranslateX = deltaWidth;
+                                translateSelector
+                                    .removeClass('scrolled-to-left')
+                                    .addClass('scrolled-to-right')
+                                    .css('transform', 'translate3d(' + startTranslateX + 'px, 0px, 0px)')
+
+                            }
+
+                        }
+                    }
+
+                }
+
+            });
+
+        }
+
+
+        /////////////////////////////////////////////////////////////////////////////
+        // Toggle menu on viewport < 768px
+
+        $('.left-menu-toggle').on('click', function () {
+            $(this).toggleClass('active');
+            $('nav.left-menu').toggleClass('left-menu-showed');
+            $('.main-backdrop').toggleClass('main-backdrop-showed')
+        });
+
+
+        /////////////////////////////////////////////////////////////////////////////
+        // Hide menu and backdrop on backdrop click
+
+        $('.main-backdrop').on('click', function () {
+            $('.left-menu-toggle').removeClass('active');
+            $('nav.left-menu').removeClass('left-menu-showed');
+            $('.main-backdrop').removeClass('main-backdrop-showed')
+        });
+
+        $('nav.left-menu a.left-menu-link').on('click', function () {
+            if (!$(this).parent().hasClass('left-menu-list-submenu')) {
+                $('.left-menu-toggle').removeClass('active');
+                $('nav.left-menu').removeClass('left-menu-showed');
+                $('.main-backdrop').removeClass('main-backdrop-showed')
+            }
+        });
+
+        //////////////////////////////////////////////////////////////////////////////
+        // Material Effects
+
+        if ($('body').hasClass('mode-material')) {
+            (function ($) {
+                $("body").on('click', '.btn, .left-menu-link', function (e) {
+
+                    var rippler = $(this)
+
+                    // Create .ink element if it doesn't exist
+                    if (rippler.find("> .ink").length == 0) {
+                        $('.ink').remove();
+                        rippler.append("<span class='ink'></span>");
+                    }
+
+                    var ink = rippler.find("> .ink");
+
+                    // Prevent quick double clicks
+                    ink.removeClass("animate");
+
+                    // Set .ink diameter
+                    if (!ink.height() && !ink.width()) {
+                        var d = Math.max(rippler.outerWidth(), rippler.outerHeight());
+                        ink.css({ height: d, width: d });
+                    }
+
+                    // Get click coordinates
+                    var x = e.pageX - rippler.offset().left - ink.width() / 2;
+                    var y = e.pageY - rippler.offset().top - ink.height() / 2;
+
+                    // Set .ink position and add class .animate
+                    ink.css({
+                        top: y + 'px',
+                        left: x + 'px'
+                    }).addClass("animate");
+
+                })
+            })(jQuery);
+        }
+
+    });
+
+    /**
+ * TEMPLATE OPTIONS
+ * Theme demo temporary scripts, remove it in your app
+ */
+
+    $(function () {
+
+        /////////////////////////////////////////////////////////////////////////////
+        // TODO-NICK REFACTOR THIS CODE
+
+
+        var body = $('body'),
+            themeColorClasses = 'theme-dark theme-default theme-blue theme-orange theme-red theme-green',
+            settingClasses = themeColorClasses + ' mode-superclean mode-default menu-fixed menu-static colorful-disabled colorful-enabled mode-box-shadow mode-box-shadow-disabled mode-squared mode-squared-disabled',
+            colorfulClasses = 'left-menu-list-color-primary left-menu-list-color-success left-menu-list-color-warning left-menu-list-color-danger left-menu-list-color-yellow';
+
+
+        // THEME COLOR
+        $('#options-theme .btn').on('click', function () {
+            $('#options-theme .active').removeClass('active');
+            var themeSelector = $(this).find('input').val();
+            body.removeClass(themeColorClasses).addClass(themeSelector);
+        });
+
+
+        // MODE SUPERCLEAN
+        $('#options-mode .btn').on('click', function () {
+            var themeSelector = $(this).find('input').val();
+            body.removeClass('mode-superclean mode-default').addClass(themeSelector);
+        });
+
+
+        // FIXED MENU
+        $('#options-menu .btn').on('click', function () {
+            var themeSelector = $(this).find('input').val();
+            body.removeClass('menu-fixed menu-static').addClass(themeSelector);
+        });
+
+
+        // BOX SHADOW
+        $('#mode-box-shadow .btn').on('click', function () {
+            var themeSelector = $(this).find('input').val();
+            body.removeClass('mode-box-shadow mode-box-shadow-disabled').addClass(themeSelector);
+        });
+
+
+        // SQUARED CORNERS
+        $('#mode-squared .btn').on('click', function () {
+            var themeSelector = $(this).find('input').val();
+            body.removeClass('mode-squared mode-squared-disabled').addClass(themeSelector);
+        });
+
+
+        // COLORFUL MENU
+        $('#options-colorful .btn').on('click', function () {
+            var themeSelector = $(this).find('input').val();
+            localStorage.setItem('options-colorful', themeSelector);
+            body.removeClass('colorful-disabled colorful-enabled').addClass(themeSelector);
+            $('nav.left-menu .left-menu-list-root > li').removeClass(colorfulClasses);
+            if (themeSelector == 'colorful-enabled') {
+                setTimeout(function () {
+                    $('nav.left-menu .left-menu-list-root > li').each(function () {
+                        var classArray = colorfulClasses.split(' '),
+                            randomClass = classArray[Math.floor(Math.random() * classArray.length)];
+
+                        $(this).addClass(randomClass)
+                    })
+                }, 200)
+            }
+        });
+
+
+        // SET SETTINGS DEPENDING ON BODY CLASSES
+        function setThemeSettings(arguments) {
+            var classes = arguments.split(" ");
+            for (var j = 0; j < classes.length; j++) {
+                if (body.hasClass(classes[j])) {
+                    $('.left-menu-block .btn input[value=' + classes[j] + ']').trigger('click');
+                }
+            }
+            return false;
+        }
+
+        setThemeSettings(settingClasses);
+
+    });
+</script>
+
+<!--<script>
+    var cleanUI = {
+        hasTouch: (function () { return ('ontouchstart' in document.documentElement) })()
+    };
+
+    var element = $('.scroll-pane').jScrollPane({/* ...settings... */ });
+    var api = element.data('jsp');
+
+
+    $(function () {
+
+        /////////////////////////////////////////////////////////////////////////////
+        // TODO-NICK REFACTOR THIS CODE
+
+
+        var body = $('body'),
+            themeColorClasses = 'theme-dark theme-default theme-blue theme-orange theme-red theme-green',
+            settingClasses = themeColorClasses + ' mode-superclean mode-default menu-fixed menu-static colorful-disabled colorful-enabled mode-box-shadow mode-box-shadow-disabled mode-squared mode-squared-disabled',
+            colorfulClasses = 'left-menu-list-color-primary left-menu-list-color-success left-menu-list-color-warning left-menu-list-color-danger left-menu-list-color-yellow';
+
+
+        // THEME COLOR
+        $('#options-theme .btn').on('click', function () {
+            $('#options-theme .active').removeClass('active');
+            var themeSelector = $(this).find('input').val();
+            body.removeClass(themeColorClasses).addClass(themeSelector);
+        });
+
+
+        // MODE SUPERCLEAN
+        $('#options-mode .btn').on('click', function () {
+            var themeSelector = $(this).find('input').val();
+            body.removeClass('mode-superclean mode-default').addClass(themeSelector);
+        });
+
+
+        // FIXED MENU
+        $('#options-menu .btn').on('click', function () {
+            var themeSelector = $(this).find('input').val();
+            body.removeClass('menu-fixed menu-static').addClass(themeSelector);
+        });
+
+
+        // BOX SHADOW
+        $('#mode-box-shadow .btn').on('click', function () {
+            var themeSelector = $(this).find('input').val();
+            body.removeClass('mode-box-shadow mode-box-shadow-disabled').addClass(themeSelector);
+        });
+
+
+        // SQUARED CORNERS
+        $('#mode-squared .btn').on('click', function () {
+            var themeSelector = $(this).find('input').val();
+            body.removeClass('mode-squared mode-squared-disabled').addClass(themeSelector);
+        });
+
+
+        // COLORFUL MENU
+        $('#options-colorful .btn').on('click', function () {
+            var themeSelector = $(this).find('input').val();
+            localStorage.setItem('options-colorful', themeSelector);
+            body.removeClass('colorful-disabled colorful-enabled').addClass(themeSelector);
+            $('nav.left-menu .left-menu-list-root > li').removeClass(colorfulClasses);
+            if (themeSelector == 'colorful-enabled') {
+                setTimeout(function () {
+                    $('nav.left-menu .left-menu-list-root > li').each(function () {
+                        var classArray = colorfulClasses.split(' '),
+                            randomClass = classArray[Math.floor(Math.random() * classArray.length)];
+
+                        $(this).addClass(randomClass)
+                    })
+                }, 200)
+            }
+        });
+
+
+        // SET SETTINGS DEPENDING ON BODY CLASSES
+        function setThemeSettings(arguments) {
+            var classes = arguments.split(" ");
+            for (var j = 0; j < classes.length; j++) {
+                if (body.hasClass(classes[j])) {
+                    $('.left-menu-block .btn input[value=' + classes[j] + ']').trigger('click');
+                }
+            }
+            return false;
+        }
+
+        setThemeSettings(settingClasses);
+    });
+
+        //$.ajax({
+        //    url: 'http://localhost:5100/seguranca/obterFuncionalidadesPorGrupoUsuario/?idgrupoUsuario=1',
+        //    type: 'GET',
+        //    success: function (data) {
+
+
+        //        $.each(data, function (i, item) {
+        //            var html = "";
+        //            html += "<li class='left-menu-list-submenu'><a class='left-menu-link'href='javascript: void(0);'><i class='" + item.Icon + "'></i>";
+        //            html +=" "+item.NmModulo;
+
+        //            // monta submenu
+        //            html += " <ul class='left-menu-list list-unstyled'>";
+        //            $.each(item.Funcionalidades, function (x, y) {
+
+        //                html += "<li><a class='left-menu-link' ui-sref="+y.Rota+">" + y.Nome + "</a></li>";
+        //            });
+        //            html += " </ul>";
+        //            html += "</a></li>";
+
+        //            $("#menu").append(html);
+
+
+        //        });
+
+
+        //        /**
+        //         * CLEAN UI TEMPLATE SCRIPTS
+        //         */
+
+        //        $(function () {
+
+        //            /////////////////////////////////////////////////////////////////////////////
+        //            // Slide toggle menu items on click
+
+        //            $('.left-menu .left-menu-list-submenu > a').on('click', function () {
+        //                var accessDenied = $('body').hasClass('menu-top') && $(window).width() > 768;
+
+        //                if (!accessDenied) {
+        //                    var that = $(this).parent(),
+        //                        opened = $('.left-menu .left-menu-list-opened');
+
+        //                    if (!that.hasClass('left-menu-list-opened') && !that.parent().closest('.left-menu-list-submenu').length)
+        //                        opened.removeClass('left-menu-list-opened').find('> ul').slideUp(200);
+
+        //                    that.toggleClass('left-menu-list-opened').find('> ul').slideToggle(200);
+        //                }
+        //            });
+        //            /////////////////////////////////////////////////////////////////////////////
+        //            // Main menu scripts
+
+        //            if (!$('body').hasClass('menu-top')) {
+
+        //                if (!cleanUI.hasTouch) {
+        //                    if (!cleanUI.hasTouch) {
+        //                        $('nav.left-menu .scroll-pane').each(function () {
+        //                            $(this).jScrollPane({
+        //                                autoReinitialise: true,
+        //                                autoReinitialiseDelay: 100
+        //                            });
+        //                            var api = $(this).data('jsp'),
+        //                                throttleTimeout;
+        //                            $(window).bind('resize', function () {
+        //                                if (!throttleTimeout) {
+        //                                    throttleTimeout = setTimeout(function () {
+        //                                        api.reinitialise();
+        //                                        throttleTimeout = null;
+        //                                    }, 50);
+        //                                }
+        //                            });
+        //                        });
+        //                    }
+        //                }
+        //            }
+
+        //            if ($('body').hasClass('menu-top')) {
+
+        //                var translateSelector = $('nav.left-menu .left-menu-inner'),
+        //                    startTranslateX = 0;
+
+        //                translateSelector.addClass('scrolled-to-left');
+
+        //                $(window).on('resize', function () {
+        //                    startTranslateX = 0;
+        //                    translateSelector.css('transform', 'translate3d(' + 0 + 'px, 0px, 0px)');
+        //                });
+
+        //                $('nav.left-menu').on('mousemove', function (e) {
+
+        //                    if ($(window).width() > 751) {
+
+        //                        console.log(e)
+
+        //                        var menuWidth = $('nav.left-menu').width(),
+        //                            windowWidth = $(window).width(),
+        //                            boxedOffset = (windowWidth - menuWidth) / 2,
+        //                            innerWidth = (function () {
+        //                                var width = 0;
+        //                                $('nav.left-menu .left-menu-list-root > *').each(function () {
+        //                                    width += $(this).width();
+        //                                });
+        //                                return width;
+        //                            })(),
+        //                            logoWidth = $('nav.left-menu .logo-container').outerWidth(),
+        //                            deltaWidth = menuWidth - logoWidth - innerWidth,
+        //                            hoverOffset = 100;
+
+        //                        if (deltaWidth < 0) {
+
+        //                            if (e.clientX < windowWidth - menuWidth - boxedOffset + logoWidth + hoverOffset) {
+
+        //                                if (startTranslateX < 0 || startTranslateX < deltaWidth) {
+
+        //                                    startTranslateX = startTranslateX - deltaWidth;
+        //                                    translateSelector
+        //                                        .removeClass('scrolled-to-right')
+        //                                        .addClass('scrolled-to-left')
+        //                                        .css('transform', 'translate3d(' + startTranslateX + 'px, 0px, 0px)')
+
+        //                                }
+
+        //                            }
+
+        //                            if (e.clientX > menuWidth + boxedOffset - hoverOffset) {
+
+        //                                if (startTranslateX >= 0 || startTranslateX > deltaWidth) {
+
+        //                                    startTranslateX = deltaWidth;
+        //                                    translateSelector
+        //                                        .removeClass('scrolled-to-left')
+        //                                        .addClass('scrolled-to-right')
+        //                                        .css('transform', 'translate3d(' + startTranslateX + 'px, 0px, 0px)')
+
+        //                                }
+
+        //                            }
+        //                        }
+
+        //                    }
+
+        //                });
+
+        //            }
+        //            /////////////////////////////////////////////////////////////////////////////
+        //            // Toggle menu on viewport < 768px
+
+        //            $('.left-menu-toggle').on('click', function () {
+        //                $(this).toggleClass('active');
+        //                $('nav.left-menu').toggleClass('left-menu-showed');
+        //                $('.main-backdrop').toggleClass('main-backdrop-showed')
+        //            });
+
+        //            /////////////////////////////////////////////////////////////////////////////
+        //            // Hide menu and backdrop on backdrop click
+
+        //            $('.main-backdrop').on('click', function () {
+        //                $('.left-menu-toggle').removeClass('active');
+        //                $('nav.left-menu').removeClass('left-menu-showed');
+        //                $('.main-backdrop').removeClass('main-backdrop-showed')
+        //            });
+
+        //            $('nav.left-menu a.left-menu-link').on('click', function () {
+        //                if (!$(this).parent().hasClass('left-menu-list-submenu')) {
+        //                    $('.left-menu-toggle').removeClass('active');
+        //                    $('nav.left-menu').removeClass('left-menu-showed');
+        //                    $('.main-backdrop').removeClass('main-backdrop-showed')
+        //                }
+        //            });
+
+        //            //////////////////////////////////////////////////////////////////////////////
+        //            // Material Effects
+
+        //            if ($('body').hasClass('mode-material')) {
+        //                (function ($) {
+        //                    $("body").on('click', '.btn, .left-menu-link', function (e) {
+
+        //                        var rippler = $(this)
+
+        //                        // Create .ink element if it doesn't exist
+        //                        if (rippler.find("> .ink").length == 0) {
+        //                            $('.ink').remove();
+        //                            rippler.append("<span class='ink'></span>");
+        //                        }
+
+        //                        var ink = rippler.find("> .ink");
+
+        //                        // Prevent quick double clicks
+        //                        ink.removeClass("animate");
+
+        //                        // Set .ink diameter
+        //                        if (!ink.height() && !ink.width()) {
+        //                            var d = Math.max(rippler.outerWidth(), rippler.outerHeight());
+        //                            ink.css({ height: d, width: d });
+        //                        }
+
+        //                        // Get click coordinates
+        //                        var x = e.pageX - rippler.offset().left - ink.width() / 2;
+        //                        var y = e.pageY - rippler.offset().top - ink.height() / 2;
+
+        //                        // Set .ink position and add class .animate
+        //                        ink.css({
+        //                            top: y + 'px',
+        //                            left: x + 'px'
+        //                        }).addClass("animate");
+
+        //                    })
+        //                })(jQuery);
+        //            }
+
+        //        });
+
+        //        /**
+        //     * TEMPLATE OPTIONS
+        //     * Theme demo temporary scripts, remove it in your app
+        //     */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        //    }
+        //});
+
+
+
+
+
+
+
+</script>-->

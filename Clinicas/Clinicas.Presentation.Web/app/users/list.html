@@ -1,0 +1,49 @@
+﻿<div class="row">
+    <div class="col-md-12">
+        <h1 class="title">Usuários</h1>        
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        
+        <div class="panel" block-ui="blockGrid">
+            <div class="panel-heading">
+                <span class="panel-icon"><i class="glyphicon glyphicon-list"></i></span>
+                <span class="panel-title"> Usuários cadastrados</span>
+                <div class="pull-right">
+                    <button type="button" class="btn btn-success dark btn-gradient" ng-click="vm.create()"><i class="fa fa-plus"></i> Novo usuário</button>
+                </div>
+            </div>
+            <div class="panel-body">
+               
+                <table datatable="ng" class="table table-striped datatable">
+                    <thead>
+                        <tr class="primary">
+                            <th style="width: 5%;">Id</th>
+                            <th style="width: 15%;">Login</th>
+                            <th style="width: 30%;">Nome</th>
+                            <th style="width: 20%;">E-mail</th>
+                            <th style="width: 10%;">Nível</th>
+                            <th style="text-align: center; width: 15%;">Status</th>
+                            <th style="text-align: center; width: 5%;">Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="item in vm.Users">
+                            <td>{{ item.id }}</td>
+                            <td>{{ item.userName }}</td>
+                            <td>{{ item.name }}</td>
+                            <td>{{ item.email }}</td>
+                            <td>{{ item.level }}</td>
+                            <td style="text-align: center;"><span ng-class="{'label label-success': item.statusValue == 1, 'label label-danger': item.statusValue == 0, 'label label-warning': item.statusValue == 2}">{{ item.status }}</span></td>
+                            <td style="text-align: center;">
+                                <button class="btn btn-xs btn-warning" ng-click="vm.edit(item.id)" tooltip="Editar"><i class="fa fa-edit"></i></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

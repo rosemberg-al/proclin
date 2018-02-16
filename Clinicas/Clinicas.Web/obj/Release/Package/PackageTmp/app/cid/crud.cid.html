@@ -1,0 +1,62 @@
+﻿<div class="modal-header">
+    <h3 class="modal-title">{{ vm.State }} </h3>
+</div>
+<div class="modal-body">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-danger" ng-if="vm.FormMessage.length > 0">
+                <span><i class="fa fa-exclamation-triangle"></i> <strong>{{ vm.FormMessage }}</strong></span>
+            </div>
+            <form name="forms.crudcid" role="form" block-ui="blockModalCidCrud">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group" show-errors>
+                            <label for="codigo" class="control-label">Código</label>
+                            <input class="form-control bg-light" name="codigo" ng-model="vm.cid.Codigo" maxlength="4" type="text" required>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="form-group" show-errors>
+                            <label for="descricao" class="control-label">Descrição</label>
+                            <input class="form-control bg-light" name="descricao" ng-model="vm.cid.Descricao" maxlength="100" type="text" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group" show-errors>
+                            <label for="agravo" class="control-label">Tipo Agravo</label>
+                            <select class="form-control m-b" ng-options="item.Key as item.Value for item in vm.tpagravo" name="agravo" ng-model="vm.agravoSelecionado" required></select>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group" show-errors>
+                            <label for="sexo" class="control-label">Sexo</label>
+                            <select class="form-control m-b" ng-options="item.Key as item.Value for item in vm.sexos" name="sexo" ng-model="vm.sexoSelecionado" required></select>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group" show-errors>
+                            <label for="estadio" class="control-label">Tipo Estadio</label>
+                            <select class="form-control m-b" ng-options="item.Key as item.Value for item in vm.tpestadio" name="agravo" ng-model="vm.estadioSelecionado" required></select>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group" show-errors>
+                            <label for="irradiado" class="control-label">Campos Irradiados</label>
+                            <input class="form-control bg-light" name="irradiado" ng-model="vm.cid.CamposIrradiados" maxlength="4" type="text" required>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+<div class="modal-footer">
+    <button class="btn btn-default" ng-click="vm.cancel()">Cancelar</button>
+    <button class="btn btn-primary" ng-click="vm.save()"><i class="fa fa-save"></i> Salvar</button>
+
+</div>
+

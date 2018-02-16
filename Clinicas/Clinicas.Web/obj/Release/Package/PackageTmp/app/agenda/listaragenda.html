@@ -1,0 +1,156 @@
+﻿<div class="page-content-inner ng-scope">
+    <section class="panel">
+        <div class="panel-heading">
+            <div class="margin-bottom-5">
+                <ul class="list-unstyled breadcrumb breadcrumb-custom" ng-cloak>
+                    <li>
+                        <a href="#" class="active"><i class="icmn-home"></i> Página Inicial</a>
+                    </li>
+                    <li ng-repeat="item in $root.currentCrumbs" ng-cloak>
+                        <a href="#" class="active">{{ item.name }}</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="panel-body" block-ui="block">
+
+            <div class="row">
+                <div class="col-md-12">
+                    <h4>Agenda </h4>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-2">
+                    <div class="btn-group-vertical btn-group-justified">
+                        <a ng-click="vm.novoagendamento()" class="btn" style="text-align:left"> <span class="fa fa-plus-circle" aria-hidden="true" tooltip="Novo"></span> Novo  </a>
+                        <a ui-sref="agenda" class="btn" style="text-align:left"> <span class="fa fa-calendar" aria-hidden="true" tooltip="Calendário"></span> Calendário </a>
+                        <a ui-sref="consultaagenda" class="btn" style="text-align:left"> <span class="fa fa-search" aria-hidden="true" tooltip="Pesquisar"></span> Pesquisar </a>
+                        <a ui-sref="listaragenda({tipo:'Hoje' })" class="btn" style="text-align:left"> <span class="fa fa-list" aria-hidden="true" tooltip="Hoje"></span> Hoje </a>
+                        <a ui-sref="listaragenda({tipo:'Todos' })" class="btn" style="text-align:left"> <span class="fa fa-list" aria-hidden="true" tooltip="Todos"></span> Todos  </a>
+                        <a ui-sref="listaragenda({tipo:'Marcado' })" class="btn" style="text-align:left"> <span class="donut donut-success" aria-hidden="true" tooltip="Marcado"></span> Marcado </a>
+                        <a ui-sref="listaragenda({tipo:'Realizado' })" class="btn" style="text-align:left"> <span class="donut donut-primary" aria-hidden="true" tooltip="Realizado"></span> Realizado </a>
+                        <a ui-sref="listaragenda({tipo:'Cancelado' })" class="btn" style="text-align:left"> <span class="donut donut-danger" aria-hidden="true" tooltip="Cancelado"></span> Cancelado</a>
+                    </div>
+                </div>
+
+                <div class="col-md-10">
+                    <h4>{{ vm.Situacao  }}</h4>
+
+                    <div class="row" ng-if="vm.msgalert.length>0">
+                        <div class="col-md-10">
+                            <div class="alert alert-danger" role="alert">
+                                <span class="fa fa-exclamation-triangle"></span> <strong>Atenção: </strong> {{ vm.msgalert }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+
+                            <form name="forms.dados" role="form" ng-enter="vm.buscar()" ng-submit="vm.buscar()" id="form" autocomplete="off" novalidate>
+
+                                <div class="form-group row">
+                                    <div class="col-md-2">
+                                        <label class="form-control-label" for="l0">Paciente</label>
+                                    </div>
+                                    <div class="col-md-8">
+
+                                        <div class="form-input-icon">
+                                            <i class="icmn-search"></i>
+                                            <input type="text" class="form-control" name="paciente" id="paciente" ng-model="vm.pesq.paciente" placeholder="Paciente">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <div class="col-md-2">
+                                        <label class="form-control-label" for="l0">Profissional de Saúde </label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <select class="form-control m-b" ng-options="item.IdFuncionario as item.Nome for item in vm.profissionais" name="profissional" id="profissional" ng-model="vm.pSelecionado" required></select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row" show-errors>
+                                    <div class="col-md-2">
+                                        <label class="form-control-label required" for="l0">Período </label>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group form-group-default input-group" show-errors>
+                                            <input type="text" class="form-control inputcalendar" required placeholder="Inicio" name="dataInicio" id="dataInicio" ng-model="vm.pesq.dataInicio" bsdatepicker ui-date-mask>
+                                            <span class="input-group-addon">
+                                                <i class="fa fa-calendar"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group form-group-default input-group" show-errors>
+                                            <input type="text" class="form-control inputcalendar" required placeholder="Término" name="dataTermino" id="dataTermino" ng-model="vm.pesq.dataTermino" bsdatepicker ui-date-mask>
+                                            <span class="input-group-addon">
+                                                <i class="fa fa-calendar"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <div class="col-md-2">
+                                        <label class="form-control-label" for="l0">Situação </label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <select class="form-control m-b" ng-options="item.text as item.text for item in vm.situacoes" name="situacao" id="situacao" ng-model="vm.situacaoSelecionada" required></select>
+                                    </div>
+                                </div>
+
+                                <div class="form-actions">
+                                    <div class="col-md-10">
+                                        <div class="form-group row pull-lg-right">
+                                            <div class="col-md-10">
+                                                <button type="button" class="btn btn-primary" ng-click="vm.buscar()"><span class="fa fa-search"> </span> Pesquisar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row" ng-if="vm.agenda.length>0">
+                        <table class="table table-hover table-condensed table-striped" datatable="ng" dt-options="vm.dtOptions">
+                            <thead>
+                                <tr class="bg-complete-lighter">
+                                    <th style="width: 5%">Código </th>
+                                    <th style="width: 30%">Paciente </th>
+                                    <th style="width: 30%">Profissional de Saúde </th>
+                                    <th style="width: 10%">Data </th>
+                                    <th style="width: 10%">Hora </th>
+                                    <th style="width: 10%">Situação </th>
+                                    <th style="width: 10%">Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="x in vm.agenda">
+
+                                    <td>{{ x.IdAgenda }}</td>
+                                    <td>{{ x.NmPaciente  | uppercase }}</td>
+                                    <td>{{ x.NmProfissionalSaude  | uppercase }}</td>
+                                    <td>{{ x.Data | date: 'dd/MM/yyyy'  }} </td>
+                                    <td>{{ x.Hora | date: 'HH:mm'  }}</td>
+                                    <td>
+                                        <span ng-class="{'label label-rounded label-danger': x.Situacao == 'Cancelado',
+                                                    'label label-rounded label-success': x.Situacao == 'Marcado',
+                                                     'label label-rounded label-info': x.Situacao == 'Realizado' }">{{ x.Situacao }}</span>
+
+                                    </td>
+                                    <td>
+                                        <button type="button" class="btn btn-sm btn-icon btn-navbar" ng-click="vm.visualizar(x.IdAgenda)" tooltip="Visualizar"><i class="fa fa-search" aria-hidden="true"></i> Visualizar </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

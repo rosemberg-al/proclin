@@ -1,0 +1,437 @@
+﻿<div class="modal-header">
+    <h3 class="modal-title">{{ vm.State }} </h3>
+</div>
+<div class="modal-body">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-danger" ng-if="vm.FormMessage.length > 0">
+                <span><i class="fa fa-exclamation-triangle"></i> <strong>{{ vm.FormMessage }}</strong></span>
+            </div>
+            <div class="row">
+
+                <div class="col-md-12">
+                    <div class="panel">
+                        <ul class="nav nav-tabs nav-tabs-simple" role="tablist">
+                            <li class="active" id="liPaciente">
+                                <a data-toggle="tab" data-target="#tabdados" style="cursor:pointer">Dados do Paciente</a>
+                            </li>
+                            <li class="" id="liEndereco">
+                                <a data-toggle="tab" data-target="#tabendereco" style="cursor:pointer">Dados de Endereço</a>
+                            </li>
+                            <li class="" id="liNascimento">
+                                <a data-toggle="tab" data-target="#tabnascimento" style="cursor:pointer">Dados Nascimento</a>
+                            </li>
+                            <li class="" id="liCarteiras">
+                                <a data-toggle="tab" data-target="#tabconvenios"  style="cursor:pointer">Dados de Convênios</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="tabdados">
+                                <div class="row column-seperation">
+                                    <div class="col-md-12">
+                                        <div class="panel-body m-t-20">
+                                            <form name="forms.dadospaciente" role="form">
+                                                <div class="row">
+                                                    <div class="col-md-8">
+                                                        <div class="form-group" show-errors>
+                                                            <label for="Nome" class="control-label required">Nome</label>
+                                                            <input class="form-control bg-light" name="Nome" ng-model="vm.paciente.NmPaciente" type="text" required>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="form-group" show-errors>
+                                                            <label for="Sexo" class="control-label required">Sexo</label>
+                                                            <select class="form-control m-b" ng-options="item.Key as item.Value for item in vm.sexo" name="Sexo" ng-model="vm.sexoSelecionado" required></select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <div class="form-group" show-errors>
+                                                            <label for="DtNascimento" class="control-label required">Data Nascimento</label>
+                                                            <input class="form-control bg-light" name="DtNascimento" ng-model="vm.paciente.DtNascimento" type="text" ui-date-mask required>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="form-group" show-errors>
+                                                            <label for="CPF">CPF</label>
+                                                            <input class="form-control bg-light" name="CPF" ng-model="vm.paciente.CPF" ui-br-cpf-mask type="text">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <label for="RG">RG</label>
+                                                            <input class="form-control bg-light" name="RG" ng-model="vm.paciente.RG" type="text">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="Mae">Mãe</label>
+                                                            <input class="form-control bg-light" name="Mae" ng-model="vm.paciente.Mae" type="text">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="Pai">Pai</label>
+                                                            <input class="form-control bg-light" name="Pai" ng-model="vm.paciente.Pai" type="text">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <label for="CartaoSus">Cartão SUS</label>
+                                                            <input class="form-control bg-light" name="CartaoSus" ng-model="vm.paciente.CartaoSus" type="text" >
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="form-group" show-errors>
+                                                            <label for="Situacao" class="control-label">Situação</label>
+                                                            <div class="radio radio-success">
+                                                                <input type="radio" value="A" ng-model="vm.paciente.Situacao" name="Situacao" id="Ativo">
+                                                                <label for="Ativo">Ativo</label>
+                                                                <input type="radio" ng-model="vm.paciente.Situacao" value="I" name="Situacao" id="Inativo">
+                                                                <label for="Inativo">Inativo</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group" show-errors>
+                                                            <label for="obs" class="control-label">Observação</label>
+                                                            <textarea name="obs" ng-model="vm.paciente.Observacao" class="form-control bg-light" style="width:100%;" rows="5"></textarea>
+                                                            <span>{{4000 - vm.paciente.Observacao.length}} Caracteres</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane " id="tabendereco">
+                                <div class="row column-seperation">
+                                    <div class="col-md-12">
+                                        <div class="panel-body m-t-20">
+                                            <form name="forms.dadosendereco" role="form">
+                                                <div class="row">
+                                                    <div class="col-md-3">
+                                                        <div class="form-group" show-errors>
+                                                            <label for="Nome" class="control-label required">Cep</label>
+                                                            <input class="form-control bg-light" name="Nome" ng-model="vm.paciente.Cep" type="text" ui-br-cep-mask required>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group" show-errors>
+                                                            <label for="Logradouro" class="control-label required">Logradouro</label>
+                                                            <input class="form-control bg-light" name="Logradouro" ng-model="vm.paciente.Logradouro" type="text" required>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="form-group" show-errors>
+                                                            <label for="Nr" class="control-label required">Número</label>
+                                                            <input class="form-control bg-light" name="Nr" ng-model="vm.paciente.Nr" type="text" required>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <div class="form-group" show-errors>
+                                                            <label for="Bairro" class="control-label required">Bairro</label>
+                                                            <input class="form-control bg-light" name="Bairro" ng-model="vm.paciente.Bairro" type="text" required>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="form-group" show-errors>
+                                                            <label for="estado" class="control-label required">Estado</label>
+                                                            <select class="form-control m-b" ng-options="item.Id as item.Nome for item in vm.estados" name="estado" ng-model="vm.estadoSelecionado" required></select>
+                                                            <!--<input class="form-control bg-light" name="Estado" ng-model="vm.paciente.Estado" type="text" required>-->
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="form-group" show-errors>
+                                                            <label for="Cidade" class="control-label required">Cidade</label>
+                                                            <select class="form-control m-b" ng-options="item.Id as item.Nome for item in vm.cidades" name="Cidade" ng-model="vm.cidadeSelecionada" required></select>
+                                                            <!--<input class="form-control bg-light" name="Cidade" ng-model="vm.paciente.Cidade" type="text" required>-->
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group" show-errors>
+                                                            <label for="Complemento" class="control-label">Complemento</label>
+                                                            <input class="form-control bg-light" name="Complemento" ng-model="vm.paciente.Complemento" type="text">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group" show-errors>
+                                                            <label for="Referencia" class="control-label">Referência</label>
+                                                            <input class="form-control bg-light" name="Referencia" ng-model="vm.paciente.Referencia" type="text">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <div class="form-group" show-errors>
+                                                            <label for="TelCelular" class="control-label">Telefone Celular</label>
+                                                            <input class="form-control bg-light" name="TelCelular" ng-model="vm.paciente.TelCelular" ui-br-phone-number type="text">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="form-group" show-errors>
+                                                            <label for="TelResidencial" class="control-label">Telefone Residencial</label>
+                                                            <input class="form-control bg-light" name="TelResidencial" ng-model="vm.paciente.TelResidencial" ui-br-phone-number type="text">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="form-group" show-errors>
+                                                            <label for="Email" class="control-label">Email</label>
+                                                            <input class="form-control bg-light" name="Email" ng-model="vm.paciente.Email" type="email" required>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="tabnascimento">
+                                <div class="row column-seperation">
+                                    <div class="col-md-12">
+                                        <div class="panel-body m-t-20">
+                                            <form name="forms.dadosnascimento" role="form">
+                                                <div class="row">
+                                                    <div class="col-md-3">
+                                                        <div class="form-group">
+                                                            <label for="PesoNascimento" class="control-label">Peso Nascimento</label>
+                                                            <input class="form-control bg-light" name="PesoNascimento" ng-model="vm.dadosnascimento.PesoNascimento" type="text" ui-number-mask="2">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="form-group">
+                                                            <label for="AlturaNascimento" class="control-label">Altura Nascimento</label>
+                                                            <input class="form-control bg-light" name="AlturaNascimento" ng-model="vm.dadosnascimento.AlturaNascimento" type="text" ui-number-mask="2">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="form-group">
+                                                            <label for="PerimetroCraniano" class="control-label">Perimetro Craniano</label>
+                                                            <input class="form-control bg-light" name="PerimetroCraniano" ng-model="vm.dadosnascimento.PerimetroCraniano" type="text" ui-number-mask="2">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="form-group">
+                                                            <label for="PerimetroAbdominal" class="control-label">Perimetro Abdominal</label>
+                                                            <input class="form-control bg-light" name="PerimetroAbdominal" ng-model="vm.dadosnascimento.PerimetroAbdominal" type="text" ui-number-mask="2">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group" show-errors>
+                                                            <label for="HostpitalNascimento" class="control-label">Hostpital Nascimento</label>
+                                                            <select class="form-control m-b" ng-options="item.IdHospital as item.Nome for item in vm.hospitais" name="HostpitalNascimento" ng-model="vm.hospitalSelecionado"></select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <div class="form-group">
+                                                            <label for="IdadeGestacional" class="control-label">Idade Gestacional</label>
+                                                            <input class="form-control bg-light" name="IdadeGestacional" ng-model="vm.dadosnascimento.IdadeGestacional" type="text">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <div class="form-group">
+                                                            <label for="DataAlta" class="control-label">Data da Alta</label>
+                                                            <input class="form-control bg-light" name="DataAlta" ng-model="vm.dadosnascimento.DataAlta" type="text" ui-date-mask>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <div class="form-group">
+                                                            <label for="PesoAlta" class="control-label">Peso da Alta</label>
+                                                            <input class="form-control bg-light" name="PesoAlta" ng-model="vm.dadosnascimento.PesoAlta" type="text" ui-number-mask="2">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-3">
+                                                        <div class="form-group">
+                                                            <label for="tipos" class="control-label">Tipo de Parto</label>
+                                                            <select class="form-control m-b" ng-options="item.Key as item.Value for item in vm.tipoparto" name="tipos" ng-model="vm.tipoPartoSelecionado"></select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="form-group">
+                                                            <label for="sangue" class="control-label">Tipo Sanguineo</label>
+                                                            <select class="form-control m-b" ng-options="item.Key as item.Value for item in vm.tiposanguineo" name="sangue" ng-model="vm.tipoSanguineoSelecionado"></select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="form-group">
+                                                            <label for="DataNascimento" class="control-label">Data Nascimento</label>
+                                                            <input class="form-control bg-light" name="DataNascimento" ng-model="vm.dadosnascimento.DataNascimento" type="text" ui-date-mask>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="form-group">
+                                                            <label for="HoraNascimento" class="control-label">Hora Nascimento</label>
+                                                            <input class="form-control bg-light" name="HoraNascimento" ng-model="vm.dadosnascimento.HoraNascimento" type="text" ui-time-mask="short">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-3">
+                                                        <div class="form-group">
+                                                            <label for="Assistiu" class="control-label">Assistiu RN</label>
+                                                            <select class="form-control m-b" ng-options="item.Key as item.Value for item in vm.assistiu" name="Assistiu" ng-model="vm.AssistiuSelecionado"></select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="form-group">
+                                                            <label for="Aleitamento" class="control-label">Aleitamento</label>
+                                                            <select class="form-control m-b" ng-options="item.Key as item.Value for item in vm.aleitamento" name="Aleitamento" ng-model="vm.aleitamentoSelecionado"></select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="form-group">
+                                                            <label for="tiposanguineomae" class="control-label">Tipo Sanguineo Mãe</label>
+                                                            <select class="form-control m-b" ng-options="item.Key as item.Value for item in vm.tiposanguineo" name="tiposanguineomae" ng-model="vm.tipoSanguineoMaeSelecionado"></select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="form-group">
+                                                            <label for="testepezinho" class="control-label">Teste Pezinho</label>
+                                                            <select class="form-control m-b" ng-options="item.Key as item.Value for item in vm.testepezinho" name="testepezinho" ng-model="vm.testepeSelecionado"></select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-3">
+                                                        <div class="form-group">
+                                                            <label for="DataTestePezinho" class="control-label">Data Teste Pezinho</label>
+                                                            <input class="form-control bg-light" name="DataTestePezinho" ng-model="vm.dadosnascimento.DataTestePezinho" type="text" ui-date-mask>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="form-group">
+                                                            <label for="testereflexo" class="control-label">Teste Reflexo</label>
+                                                            <select class="form-control m-b" ng-options="item.Key as item.Value for item in vm.testereflexo" name="testereflexo" ng-model="vm.testereflexoSelecionado"></select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label for="Condutas" class="control-label">Condutas</label>
+                                                            <textarea name="Condutas" ng-model="vm.dadosnascimento.Condutas" class="form-control bg-light" style="width:100%;" rows="5"></textarea>
+                                                            <span>{{4000 - vm.dadosnascimento.Condutas.length}} Caracteres</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="tabconvenios">
+                                <div class="row column-seperation">
+                                    <div class="col-md-12">
+                                        <div class="panel-body m-t-20">
+                                            <form name="forms.dadosconvenio" role="form">
+                                                <br />
+                                                <div class="alert alert-danger" scroll-if="vm.FormMessages.length > 0" style="width:100%; display: table; padding-top:16px; padding-bottom:15px; font-size:15px;" ng-show="vm.FormCarteiras.length > 0">
+                                                    <i class="fa fa-exclamation-triangle pull-left" style="font-size: 20px;"></i>
+                                                    <ul class="pull-left">
+                                                        <li ng-repeat="message in vm.FormCarteiras"> {{ message }}</li>
+                                                    </ul>
+                                                </div>
+                                                <br />
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <div class="form-group" show-errors>
+                                                            <label for="convenios" class="control-label required">Convênios</label>
+                                                            <select class="form-control m-b" ng-options="item.IdConvenio as item.NomeConvenio for item in vm.convenios" name="convenios" ng-model="vm.convenioSelecionado"></select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="form-group" show-errors>
+                                                            <label for="ncarteira" class="control-label required">Número da Carteira</label>
+                                                            <input class="form-control bg-light" name="ncarteira" ng-model="vm.conveniopaciente.NumeroCarteira" type="text">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="form-group" show-errors>
+                                                            <label for="vcarteira" class="control-label required">Validade da Carteira</label>
+                                                            <input class="form-control bg-light" name="vcarteira" ng-model="vm.conveniopaciente.ValidadeCarteira" ui-date-mask type="text">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-8">
+                                                        <div class="form-group" show-errors>
+                                                            <label for="plano" class="control-label required">Plano</label>
+                                                            <input class="form-control bg-light" name="plano" ng-model="vm.conveniopaciente.Plano" type="text">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <button type="button" style="margin-left:20px; margin-top: 25px;" ng-click="vm.addCarteira()" tooltip="Adicionar carteira" class="btn btn-primary btn-cons"> + Carteira</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                            <br />
+                                            <div class="row" ng-if="vm.carteirasAdicionadas.length > 0">
+                                                <div class="col-md-12">
+                                                    <table class="table table-hover table-condensed table-striped" datatable="ng" dt-options="vm.dtOptions">
+                                                        <thead>
+                                                            <tr class="bg-complete-lighter">
+                                                                <th style="width: 25%">Convênio </th>
+                                                                <th style="width: 20%">Número </th>
+                                                                <th style="width: 15%">Validade </th>
+                                                                <th style="width: 25%">Plano</th>
+                                                                <th style="width: 15%">Excluir</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr ng-repeat="x in vm.carteirasAdicionadas">
+                                                                <td>{{x.Convenio | uppercase}}</td>
+                                                                <td>{{x.NumeroCarteira }}</td>
+                                                                <td>{{x.ValidadeCarteira | date:'dd/MM/yyyy'}}</td>
+                                                                <td>{{x.Plano | uppercase}}</td>
+                                                                <td>
+                                                                    <button type="button" class="btn btn-sm btn-danger" ng-click="vm.excluircarteira(x)" tooltip="Excluir Carteira"> <span class="glyphicon glyphicon-trash"></span>  </button>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                            <div class="row" ng-if="vm.carteirasAdicionadas.length == 0">
+                                                <div class="col-md-12">
+                                                    <div class="alert alert-info bordered" role="alert">
+                                                        Não existem carteiras cadastradas para este paciente.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="modal-footer">
+    <button class="btn btn-default" ng-click="vm.cancel()">Cancelar</button>
+    <button class="btn btn-primary" ng-click="vm.save()"><i class="fa fa-save"></i> Salvar</button>
+
+</div>
+

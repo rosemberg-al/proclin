@@ -1,0 +1,12 @@
+-- Create table mysql
+create table `FeatureAction`
+(
+  `Id`           INT(10) AUTO_INCREMENT PRIMARY KEY,
+  `IdFeature` INT(10) not null,
+  `Action`    VARCHAR(50) not null
+);
+
+ALTER TABLE `FeatureAction`
+  ADD CONSTRAINT `fk_feature_action` FOREIGN KEY (`IdFeature`) REFERENCES `Feature` (`Id`);
+
+

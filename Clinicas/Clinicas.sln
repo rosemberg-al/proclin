@@ -1,0 +1,85 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clinicas.Presentation.Web", "Clinicas.Presentation.Web\Clinicas.Presentation.Web.csproj", "{D3C75733-E960-4088-BC25-CABFCCE6640F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clinicas.Domain", "Clinicas.Domain\Clinicas.Domain.csproj", "{46D115F5-29C5-4393-91B3-121B3D4BCA5F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clinicas.Infrastructure", "Clinicas.Infrastructure\Clinicas.Infrastructure.csproj", "{BE5484DC-1FF3-4B6B-90D3-3A5EAA7FB224}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clinicas.Application", "Clinicas.Application\Clinicas.Application.csproj", "{5579D0CD-2582-44B6-A930-C680CE8F4C68}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clinicas.Api", "Clinicas.Api\Clinicas.Api.csproj", "{582A7804-881B-4AA9-8DDC-D2E3AE8944F0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clinicas.Test", "Clinicas.Test\Clinicas.Test.csproj", "{FA8BEB46-A0BB-4685-BC0E-CF6FD345E757}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clinicas.Web", "Clinicas.Web\Clinicas.Web.csproj", "{F933561E-6F2B-4681-B8BF-CEDEE889D377}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D3C75733-E960-4088-BC25-CABFCCE6640F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3C75733-E960-4088-BC25-CABFCCE6640F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3C75733-E960-4088-BC25-CABFCCE6640F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3C75733-E960-4088-BC25-CABFCCE6640F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{46D115F5-29C5-4393-91B3-121B3D4BCA5F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46D115F5-29C5-4393-91B3-121B3D4BCA5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46D115F5-29C5-4393-91B3-121B3D4BCA5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46D115F5-29C5-4393-91B3-121B3D4BCA5F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE5484DC-1FF3-4B6B-90D3-3A5EAA7FB224}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE5484DC-1FF3-4B6B-90D3-3A5EAA7FB224}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE5484DC-1FF3-4B6B-90D3-3A5EAA7FB224}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE5484DC-1FF3-4B6B-90D3-3A5EAA7FB224}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5579D0CD-2582-44B6-A930-C680CE8F4C68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5579D0CD-2582-44B6-A930-C680CE8F4C68}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5579D0CD-2582-44B6-A930-C680CE8F4C68}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5579D0CD-2582-44B6-A930-C680CE8F4C68}.Release|Any CPU.Build.0 = Release|Any CPU
+		{582A7804-881B-4AA9-8DDC-D2E3AE8944F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{582A7804-881B-4AA9-8DDC-D2E3AE8944F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{582A7804-881B-4AA9-8DDC-D2E3AE8944F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{582A7804-881B-4AA9-8DDC-D2E3AE8944F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA8BEB46-A0BB-4685-BC0E-CF6FD345E757}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA8BEB46-A0BB-4685-BC0E-CF6FD345E757}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA8BEB46-A0BB-4685-BC0E-CF6FD345E757}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA8BEB46-A0BB-4685-BC0E-CF6FD345E757}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F933561E-6F2B-4681-B8BF-CEDEE889D377}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F933561E-6F2B-4681-B8BF-CEDEE889D377}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F933561E-6F2B-4681-B8BF-CEDEE889D377}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F933561E-6F2B-4681-B8BF-CEDEE889D377}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 8
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://sistemasgenialsoft.visualstudio.com/
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = Clinicas.Presentation.Web\\Clinicas.Presentation.Web.csproj
+		SccProjectName1 = Clinicas.Presentation.Web
+		SccLocalPath1 = Clinicas.Presentation.Web
+		SccProjectUniqueName2 = Clinicas.Domain\\Clinicas.Domain.csproj
+		SccProjectName2 = Clinicas.Domain
+		SccLocalPath2 = Clinicas.Domain
+		SccProjectUniqueName3 = Clinicas.Infrastructure\\Clinicas.Infrastructure.csproj
+		SccProjectName3 = Clinicas.Infrastructure
+		SccLocalPath3 = Clinicas.Infrastructure
+		SccProjectUniqueName4 = Clinicas.Application\\Clinicas.Application.csproj
+		SccProjectName4 = Clinicas.Application
+		SccLocalPath4 = Clinicas.Application
+		SccProjectUniqueName5 = Clinicas.Api\\Clinicas.Api.csproj
+		SccProjectName5 = Clinicas.Api
+		SccLocalPath5 = Clinicas.Api
+		SccProjectUniqueName6 = Clinicas.Test\\Clinicas.Test.csproj
+		SccProjectName6 = Clinicas.Test
+		SccLocalPath6 = Clinicas.Test
+		SccProjectUniqueName7 = Clinicas.Web\\Clinicas.Web.csproj
+		SccProjectName7 = Clinicas.Web
+		SccLocalPath7 = Clinicas.Web
+	EndGlobalSection
+EndGlobal

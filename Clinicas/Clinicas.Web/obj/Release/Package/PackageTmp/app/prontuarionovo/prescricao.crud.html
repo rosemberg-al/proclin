@@ -1,0 +1,64 @@
+﻿<div class="modal-header" style="margin-bottom:5px;">
+    <button type="button" class="close" ng-click="vm.cancel()" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">×</span>
+    </button>
+    <h5 class="modal-title" id="myModalLabel">Prescrição - {{vm.data}}</h5>
+</div>
+
+<div class="modal-body" block-ui="blockModalPrescricao">
+    <div class="row">
+        <div class="alert alert-danger" ng-if="vm.FormMessage.length > 0">
+            <span><i class="fa fa-exclamation-triangle"></i> <strong>{{ vm.FormMessage }}</strong></span>
+        </div>
+        <form name="forms.medicamentos" role="form" block-ui="blockModalProcTab">
+            <div class="col-md-7">
+                <div class="form-group" show-errors>
+                    <label for="procedimentos" class="control-label required">Prescrição</label>
+                    <ui-select ng-model="vm.prescricaoSelecionada"
+                               theme="bootstrap"
+                               reset-search-input="false"
+                               style="border:none; margin-top:-7px; padding:0px; margin-top:2px;"
+                               title="Selecione um medicamento"
+                               name="prescricaoSelecionada"
+
+                               class="form-control"
+                               required>
+                        <ui-select-match style="background-color:#FFF;" placeholder="Digite o nome do medicamento...">{{$select.selected.Nome}}</ui-select-match>
+                        <ui-select-choices repeat="item in vm.medicamentos track by $index"
+                                           refresh="vm.getprescricao($select.search)">
+                            <div ng-bind-html="item.Nome | highlight: $select.search"></div>
+                        </ui-select-choices>
+                    </ui-select>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group" show-errors>
+                    <label for="unidades" class="control-label required">Unid.</label>
+                    <input class="form-control bg-light" name="unidades" ng-model="vm.unidades" min="1" max="500" type="number" required>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <button type="button" style="margin-left:20px; margin-top: 25px;" ng-click="vm.add()" tooltip="Adicionar" class="btn btn-primary btn-cons"><span class="fa fa-plus"></span> Adicionar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group" ng-repeat="item in vm.adicionados">
+                <label for="nome" class="control-label">{{item.Medicamento.Nome}}</label><span class="pull-lg-right">{{item.Quantidade}} Unidade(s)</span>
+                <div class="form-input-icon form-input-icon-right">
+                    <i class="fa fa-trash-o" ng-click="vm.deletar(item)"></i>
+                    <input class="form-control bg-light" name="posologia" ng-model="item.Medicamento.Posologia" type="text">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal-footer" block-ui="blockModalHP">
+    <button class="btn btn-default" ng-click="vm.cancel()">Cancelar</button>
+    <button class="btn btn-primary" ng-click="vm.save()"><i class="fa fa-save"></i> Salvar</button>
+</div>

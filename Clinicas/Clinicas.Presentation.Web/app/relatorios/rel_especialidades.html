@@ -1,0 +1,39 @@
+﻿<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row" block-ui="blockRelEspecialidades">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                </div>
+                <div class="ibox-content">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="alert alert-info" role="alert">
+                                <h5><strong> Relatório - Especialidades</strong></h5>
+                                <strong>Informações: </strong>Para gerar o relatório de especialidades, clique no botão "Gerar Relatório".<br />
+                                <p>Este relatório apresenta as informações de especialidades cadastradas no sistema.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="alert alert-danger" ng-if="vm.FormMessage.length > 0">
+                                <span><i class="fa fa-exclamation-triangle"></i> <strong>{{ vm.FormMessage }}</strong></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4">
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <button id="bntGerar" ng-click="vm.printRelatorio()" class="btn btn-primary"><span class="fa fa-print"></span> Gerar Relatório</button>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

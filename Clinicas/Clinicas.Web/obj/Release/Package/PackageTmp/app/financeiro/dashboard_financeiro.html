@@ -1,0 +1,198 @@
+﻿<div class="row" block-ui="blockModaldadosfinanceiros">
+
+    <div class="col-xl-3 col-lg-6 col-sm-6 col-xs-12">
+        <div class="widget widget-seven background-danger">
+            <div class="widget-body" style="background:#cc0000">
+                <div href="javascript: void(0);" class="widget-body-inner">
+                    <h5 class="text-uppercase">Contas a Pagar </h5>
+                    <i class="counter-icon icmn-cash"></i>
+                    <span class="counter-count">
+
+                        <span class="counter-init" data-from="25" data-to="942">{{vm.apagar  | number: 2 }}</span>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-lg-6 col-sm-6 col-xs-12">
+        <div class="widget widget-seven background-success">
+            <div class="widget-body"  style="background:#3CB371">
+                <div href="javascript: void(0);" class="widget-body-inner">
+                    <h5 class="text-uppercase">Contas a Receber </h5>
+                    <i class="counter-icon icmn-cash"></i>
+                    <span class="counter-count">
+
+                        <span class="counter-init" data-from="25" data-to="942">{{vm.areceber | number: 2 }}</span>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-xl-3 col-lg-6 col-sm-6 col-xs-12">
+        <div class="widget widget-seven background-danger">
+            <div class="widget-body"  style="background:#cc0000">
+                <div href="javascript: void(0);" class="widget-body-inner">
+                    <h5 class="text-uppercase">Contas Pagas </h5>
+                    <i class="counter-icon icmn-cash"></i>
+                    <span class="counter-count">
+
+                        <span class="counter-init" data-from="25" data-to="942"> {{vm.pagas | number: 2 }}</span>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-lg-6 col-sm-6 col-xs-12">
+        <div class="widget widget-seven background-success">
+            <div class="widget-body"  style="background:#3CB371">
+                <div href="javascript: void(0);" class="widget-body-inner">
+                    <h5 class="text-uppercase">Contas Recebidas </h5>
+                    <i class="counter-icon icmn-cash"></i>
+                    <span class="counter-count">
+
+                        <span class="counter-init" data-from="25" data-to="942">{{vm.recebidas | number: 2 }}</span>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+
+
+
+<div class="row">
+    <div class="col-lg-6">
+        <div id="container" style=" height: 400px; margin: 0 auto"></div>
+
+    </div>
+    <div class="col-lg-6">
+        <!-- <div class="form-inline">
+           <input type="text" size="12" class="form-control"  name="datainicial" id="datainicial" placeholder="dia/mes/ano" value="" /> à <input type="text" size="12" class="form-control" name="datafinal" id="datafinal"  placeholder="dia/mes/ano" value="" />
+           <button type="button" class="btn btn-search" id="btnFiltrarRamo" name="btnFiltrarRamo">Filtrar</button>
+        </div> -->
+        <div id="container2" style="height: 400px; margin: 0 auto"></div>
+    </div>
+</div>
+
+<script>
+//$(function () {
+  //  $('#container').highcharts({
+  //      chart: {
+  //          type: 'column'
+  //      },
+  //      title: {
+  //          text: 'Receita x Despesa'
+  //      },
+  //      subtitle: {
+  //          text: 'ano atual'
+  //      },
+  //      xAxis: {
+  //          categories: [
+  //              'Jan',
+  //              'Fev',
+  //              'Mar',
+  //              'Abr',
+  //              'Mai',
+  //              'Jun',
+  //              'Jul',
+  //              'Aug',
+  //              'Set',
+  //              'Out',
+  //              'Nov',
+  //              'Dez'
+  //          ],
+  //          crosshair: true
+  //      },
+  //      yAxis: {
+  //          min: 0,
+  //          title: {
+  //              text: 'R$'
+  //          }
+  //      },
+  //      colors: ["#3CB371", "#cc0000"],
+  //      tooltip: {
+  //          headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+  //          pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+  //              '<td style="padding:0"><b>{point.y:.,1f} </b></td></tr>',
+  //          footerFormat: '</table>',
+  //          shared: true,
+  //          useHTML: true
+  //      },
+  //      plotOptions: {
+  //          column: {
+  //              pointPadding: 0.2,
+  //              borderWidth: 0
+  //          }
+  //      },
+  //      series: [{
+  //          name: 'Receita',
+  //          data: [30,40,50,60,70,80,90,100,110,120,130,140]
+
+  //      },{
+  //          name: 'Despesa',
+  //          data: [10, 20, 30, 60, 70, 80, 90, 100, 110, 80, 40, 140]
+
+  //      }
+		//]
+  //  });
+//});
+//$(function () {
+//    $('#container88').highcharts({
+//        chart: {
+//            plotBackgroundColor: null,
+//            plotBorderWidth: null,
+//            plotShadow: false,
+//            type: 'pie'
+//        },
+//        title: {
+//            text: 'Despesas por Categoria'
+//        },
+//        tooltip: {
+//            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+//        },
+//        plotOptions: {
+//            pie: {
+//                allowPointSelect: true,
+//                cursor: 'pointer',
+//                dataLabels: {
+//                    enabled: true,
+//                    format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+//                    style: {
+//                        color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+//                    }
+//                }
+//            }
+//        },
+//        series: [{
+//            name: 'Percent',
+//            colorByPoint: true,
+//            data: [ { name: 'Agua', y:400.00 } , { name: 'Luz', y:424322.74 } , { name: 'Telefone', y:3439.33 } , { name: 'Contabilidade', y:10316.23 }  ]  /*$dataincial,$datafinal*/
+//        }]
+//    });
+//});
+//    $(function(){
+//      // bind change event to select
+//      $('#IdVendedor').on('change', function () {
+//          var url = $(this).val(); // get selected value
+//          if (url) { // require a URL
+//              	window.location = "principal.php?IdVendedor="+url+"&datainicial="+$("#datainicial").val()+"&datafinal="+$("#datafinal").val(); // redirect
+//          }else{
+//			  window.location = "principal.php?IdVendedor=0&datainicial="+$("#datainicial").val()+"&datafinal="+$("#datafinal").val(); // redirect
+
+//		  }
+//          return false;
+//      });
+
+//      $('#btnFiltrarRamo').on('click', function () {
+//          window.location = "principal.php?IdVendedor="+$("#IdVendedor").val()+"&datainicial="+$("#datainicial").val()+"&datafinal="+$("#datafinal").val(); // redirect
+//      });
+//    });
+</script>
+

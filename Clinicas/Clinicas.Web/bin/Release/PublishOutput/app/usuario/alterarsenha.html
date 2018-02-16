@@ -1,0 +1,58 @@
+﻿<section class="panel" block-ui="">
+    <div class="panel-heading">
+        <div class="margin-bottom-10">
+            <ul class="list-unstyled breadcrumb breadcrumb-custom" ng-cloak>
+                <li>
+                    <a href="#" class="active"><i class="icmn-home"></i> Página Inicial</a>
+                </li>
+                <li ng-repeat="item in $root.currentCrumbs" ng-cloak>
+                    <a href="#" class="active">{{ item.name }}</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div block-ui="blockAlterarSenha">
+
+        <div class="row" style="margin-bottom:30px;">
+            <form name="forms.dadosusuario" role="form" novalidate>
+                <div class="col-md-12">
+
+                        <div class="col-md-12">
+                            <h4> Alterar Senha </h4>
+                        </div>
+                    
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="col-md-8">
+                                <div class="alert alert-danger" ng-if="vm.FormMessage.length > 0">
+                                    <span><i class="fa fa-exclamation-triangle"></i> <strong>{{ vm.FormMessage }}</strong></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                       
+
+                        <div class="col-md-4">
+                            <div class="form-group" show-errors>
+                                <label for="NovaSenha" class="control-label required">Nova Senha</label>
+                                <input class="form-control bg-light" name="NovaSenha" ng-model="vm.usuario.NovaSenha" type="password" required>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="form-group" show-errors>
+                                <label for="ConfirmarNovaSenha" class="control-label required">Confirmar Nova Senha</label>
+                                <input class="form-control bg-light" name="NovaSenha" ng-model="vm.usuario.Confirmar" type="password" required>
+                            </div>
+                        </div>
+
+                        <div class="col-md-8">
+                            <button class="btn btn-primary pull-lg-right" ng-click="vm.save()"><i class="fa fa-save"></i> Salvar</button>
+                        </div>
+                    </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+

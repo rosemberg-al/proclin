@@ -1,0 +1,266 @@
+﻿<style>
+
+    .timeline {
+        list-style: none;
+        padding: 20px 0 20px;
+        position: relative;
+    }
+
+        .timeline:before {
+            top: 0;
+            bottom: 0;
+            position: absolute;
+            content: " ";
+            width: 3px;
+            background-color: #eeeeee;
+            right: 25px;
+            margin-left: -1.5px;
+        }
+
+        .timeline > li {
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+            .timeline > li:before,
+            .timeline > li:after {
+                content: " ";
+                display: table;
+            }
+
+            .timeline > li:after {
+                clear: both;
+            }
+
+            .timeline > li:before,
+            .timeline > li:after {
+                content: " ";
+                display: table;
+            }
+
+            .timeline > li:after {
+                clear: both;
+            }
+
+            .timeline > li > .timeline-panel {
+                width: calc( 100% - 75px );
+                float: left;
+                border: 1px solid #d4d4d4;
+                border-radius: 2px;
+                padding: 20px;
+                position: relative;
+                -webkit-box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
+                box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
+            }
+
+                .timeline > li > .timeline-panel:before {
+                    position: absolute;
+                    top: 26px;
+                    right: -15px;
+                    display: inline-block;
+                    border-top: 15px solid transparent;
+                    border-left: 15px solid #ccc;
+                    border-right: 0 solid #ccc;
+                    border-bottom: 15px solid transparent;
+                    content: " ";
+                }
+
+                .timeline > li > .timeline-panel:after {
+                    position: absolute;
+                    top: 27px;
+                    right: -14px;
+                    display: inline-block;
+                    border-top: 14px solid transparent;
+                    border-left: 14px solid #fff;
+                    border-right: 0 solid #fff;
+                    border-bottom: 14px solid transparent;
+                    content: " ";
+                }
+
+            .timeline > li > .timeline-badge {
+                color: #fff;
+                width: 50px;
+                height: 50px;
+                line-height: 50px;
+                font-size: 1.4em;
+                text-align: center;
+                position: absolute;
+                top: 16px;
+                right: 0px;
+                margin-left: -25px;
+                background-color: #999999;
+                z-index: 100;
+                border-top-right-radius: 50%;
+                border-top-left-radius: 50%;
+                border-bottom-right-radius: 50%;
+                border-bottom-left-radius: 50%;
+            }
+
+            .timeline > li.timeline-inverted > .timeline-panel {
+                float: right;
+            }
+
+                .timeline > li.timeline-inverted > .timeline-panel:before {
+                    border-left-width: 0;
+                    border-right-width: 15px;
+                    left: -15px;
+                    right: auto;
+                }
+
+                .timeline > li.timeline-inverted > .timeline-panel:after {
+                    border-left-width: 0;
+                    border-right-width: 14px;
+                    left: -14px;
+                    right: auto;
+                }
+
+    .timeline-badge.primary {
+        background-color: #2e6da4 !important;
+    }
+
+    .timeline-badge.success {
+        background-color: #3f903f !important;
+    }
+
+    .timeline-badge.warning {
+        background-color: #f0ad4e !important;
+    }
+
+    .timeline-badge.danger {
+        background-color: #d9534f !important;
+    }
+
+    .timeline-badge.info {
+        background-color: #5bc0de !important;
+    }
+
+    .timeline-title {
+        margin-top: 0;
+        color: inherit;
+    }
+
+    .timeline-body > p,
+    .timeline-body > ul {
+        margin-bottom: 0;
+    }
+
+        .timeline-body > p + p {
+            margin-top: 5px;
+        }
+</style>
+
+<div class="page-content-inner" block-ui="blockProntuario">
+    
+    <!-- Profile Header -->
+    <nav class="top-submenu top-submenu-with-background">
+        <div class="profile-header">
+            <div class="profile-header-info" style="padding:10px; padding-left:0px;">
+                <div class="row">
+                    <div class="col-xl-8 col-xl-offset-4">
+                        <div class="width-100 text-center pull-right hidden-md-down">
+                            <!--<h2>{{ vm.paciente.QtdeAtendimentos }}</h2>-->
+                            <!--<p>Atendimentos</p>-->
+                        </div>
+                        <div class="profile-header-title" style="padding-left:0px;" " >
+                            <h2>{{ vm.paciente.Nome }}</h2>
+                            <p><i class="fa fa-calendar" aria-hidden="true"></i> Data de Nascimento: {{  vm.paciente.DataNascimento | date:'dd/MM/yyyy' }} - {{ vm.paciente.Idade  }} ano(s)</p>
+                            <p><i class="fa fa-user" aria-hidden="true"></i> Mãe: {{  vm.paciente.Mae }}</p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- End Profile Header -->
+
+    <div class="row">
+        <div class="col-xl-3">
+           
+
+            <section class="panel profile-user" style="background-image: url(../assets/common/img/temp/photos/4.jpeg)">
+                <div class="panel-body">
+                    <div style="text-align:center;">
+                        <img src="../../assets/common/img/temp/avatars/sem-imagem-avatar.jpg" ng-if="vm.paciente.Foto == null" style="width:200px; height:200px;" alt="" class="img-rounded img-responsive" ng-click="vm.alterarfoto()" />
+                        <img ng-src="data:image/png;base64,{{vm.paciente.Foto}}" ng-if="vm.paciente.Foto != null" style="width:200px; height:200px;" alt="" class="img-rounded img-responsive" ng-click="vm.alterarfoto()" />
+                    </div>
+                    <br>
+                    <br>
+                    <p style="text-align:center;">{{ vm.paciente.Nome }}</p>
+                    <p style="text-align:center;">
+                        <span class="donut donut-success"></span>
+                        Online
+                    </p>
+                </div>
+            </section>
+
+            <section class="panel">
+                <div class="panel-body">
+                    <h6>Prontuário Eletrônico</h6>
+                    <div class="btn-group-vertical btn-group-justified">
+                        <a ui-sref="ultimosatendimentos({id:vm.IdPaciente})" class="btn" style="text-align:left"> Últimos Atendimentos</a>
+                        <a ui-sref="anamnese({id:vm.IdPaciente})" class="btn" style="text-align:left"> Anamnese</a>
+                        <a ui-sref="historiapregressa({id:vm.IdPaciente})" class="btn" style="text-align:left"> História Pregressa</a>
+                        <a ui-sref="mantropometricas({id:vm.IdPaciente})" class="btn" style="text-align:left"> M. Antropométricas</a>
+                        <a ui-sref="atestado({id:vm.IdPaciente})" class="btn" style="text-align:left"> Atestado</a>
+                        <a ui-sref="receituario({id:vm.IdPaciente})" class="btn" style="text-align:left"> Receituário</a>
+                        <a ui-sref="odontograma({id:vm.IdPaciente})" class="btn" style="text-align:left"> Odontograma</a>
+                        <!--<a ui-sref="prescricoes({id:vm.IdPaciente})" class="btn" style="text-align:left"> Prescrições</a>-->
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div class="col-xl-9">
+            <section class="panel profile-user-content">
+                <div class="panel-body">
+                    <h6 style="padding:5px; color:#827ca1; border-radius:3px; border-bottom:none">Prontuário &raquo; História Pregressa</h6>
+
+                    <div class="row">
+                        <div class="col-md-8">
+                            <h4> História Pregressa </h4>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group pull-right">
+                                <a ng-click="vm.crudHistoriaPregressa(vm.IdPaciente)" class="btn btn-primary">
+                                    <i class="fa fa-plus-square-o"></i>
+                                    <span class="bold">  Novo</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                       <div class="row" ng-if="vm.dados.length>0">
+                        <div class="col-md-12">
+                            <div class="container">
+                                <ul class="timeline">
+                                    <li ng-repeat="x in vm.dados">
+                                        <div class="timeline-panel">
+                                            <div class="timeline-heading">
+                                                <h5 class="timeline-title"><strong><span class="fa fa-user-md"></span>  {{ x.ProfissionalSaude }} </strong></h5>
+                                                <p><small class="text-muted"><i class="fa fa-clock-o"></i> {{ x.Data | date: 'dd/MM/yyyy HH:mm'  }}</small></p>
+                                         
+                                            </div>
+                                            <div class="timeline-body">
+                                                <p style="white-space: pre-line; overflow:auto; max-height: 500px;">{{ x.Descricao }}</p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+
+                           </div>
+                        </div>
+
+                        <div class="row" ng-if="vm.dados.length==0">
+                            <div class="col-md-12">
+                                <div class="alert alert-info"><span class="fa fa-exclamation-triangle"></span> Nenhum registro encontrado  </div>
+                            </div>
+                        </div>
+                        
+                        
+                    </div>
+            </section>
+        </div>
+    </div>
+</div>

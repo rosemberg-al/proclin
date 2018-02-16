@@ -1,0 +1,50 @@
+﻿<div block-ui="blockModalListaModelo">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="pull-right">
+                <div class="col-xs-12">
+                    <button type="button" ng-click="vm.addModelo(0)" value="Modelo" class="btn btn-primary btn-cons"> + Modelo</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br />
+    <div class="row" ng-if="vm.modelos.length > 0">
+        <div class="col-md-12">
+            <table class="table table-hover table-condensed table-striped" datatable="ng">
+                <thead>
+                    <tr class="bg-complete-lighter">
+                        <th style="width: 60%">Descrição </th>
+                        <th style="width: 20%">Tipo </th>
+                        <th style="width: 10%">Situacao</th>
+                        <th style="width: 10%">Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="x in vm.modelos">
+                        <td ng-bind-html="x.NomeModelo"></td>
+                        <td>
+                            <span ng-class="{'label label-warning': x.Tipo == 'Atestado',
+                                                'label label-inverse': x.Tipo == 'Declaracao',
+                                                'label label-info': x.Tipo == 'Receituario'}">{{ x.Tipo }}</span>
+                        </td>
+                        <td>
+                            <span ng-class="{'badge badge-success': x.Situacao == 'Ativo',
+                                                'badge badge-important': x.Situacao == 'Inativo'}">{{ x.Situacao }}</span>
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-sm btn-primary" ng-click="vm.addModelo(x.IdModeloProntuario)" tooltip="Modelo"> <span class="glyphicon glyphicon-edit"></span>  </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row" ng-if="vm.modelos.length == 0">
+        <div class="col-md-12">
+            <div class=" alert alert-info bordered" role="alert">
+                Não existem Modelos de Prontuários cadastrados.
+            </div>
+        </div>
+    </div>
+</div>

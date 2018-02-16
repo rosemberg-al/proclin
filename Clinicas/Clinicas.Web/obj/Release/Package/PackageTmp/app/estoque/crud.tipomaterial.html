@@ -1,0 +1,47 @@
+﻿<div class="modal-header" style="margin-bottom:10px;">
+    <button type="button" class="close" ng-click="vm.cancel()" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">×</span>
+    </button>
+    <h5 class="modal-title" id="myModalLabel">{{ vm.State }}</h5>
+</div>
+<div class="modal-body">
+    <div class="row" block-ui="blockModalMaterial">
+        <div class="col-md-12">
+            <div class="alert alert-danger" ng-if="vm.FormMessage.length > 0">
+                <span><i class="fa fa-exclamation-triangle"></i> <strong>{{ vm.FormMessage }}</strong></span>
+            </div>
+            <form name="forms.material" role="form" id="form" autocomplete="off" novalidate>
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="form-group" show-errors>
+                            <label for="Nome" class="control-label required">Descrição</label>
+                            <input class="form-control bg-light" name="nome" ng-model="vm.tipomaterial.Nome"  type="text" required>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- <div class="row" ng-if="vm.tipomaterial.IdTipoMaterial > 0" style="margin-top:20px">
+                    <div class="checkbox">
+                        <label class="control-label required"> Situação </label>
+                        <label for="Situacao" class="control-label">
+                            <input type="radio" ng-model="vm.SituacaoA" i-check name="Situacao" value="Ativo">
+                            Ativo
+                        </label>
+
+                        <label for="Situacao" class="control-label">
+                            <input type="radio" ng-model="vm.SituacaoI" i-check name="Situacao" value="Inativo">
+                            Inativo
+                        </label>
+                    </div>
+                </div> -->
+
+            </form>
+        </div>
+    </div>
+
+</div>
+
+<div class="modal-footer"  block-ui="blockModalMaterial">
+    <button class="btn btn-default" ng-click="vm.cancel()">Cancelar</button>
+    <button class="btn btn-primary" ng-click="vm.save()"><i class="fa fa-save"></i> Salvar</button>
+</div>

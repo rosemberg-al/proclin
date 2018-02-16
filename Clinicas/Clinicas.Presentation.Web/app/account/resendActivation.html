@@ -1,0 +1,58 @@
+﻿<div class="login-wrapper">
+    <!-- START Login Background Pic Wrapper-->
+    <div class="bg-pic">
+        <!-- START Background Pic-->
+        <img src="assets/img/bg-login.jpg" alt="" class="lazy">
+        <!-- END Background Pic-->
+        <!-- START Background Caption-->
+        <div class="bg-caption pull-bottom sm-pull-bottom text-white p-l-20 m-b-20">
+            <h2 class="semi-bold text-white">
+                Portal do Corretor <strong>Promed</strong>.<br /> Um canal exclusivo para você, nosso corretor.
+            </h2>
+            <p class="small">
+                Para acessar o Portal Corretor é necessário ser um corretor credenciado Promed. Utilize as opções ao lado para acessar o Portal ou solicitar o seu cadastro.
+            </p>
+        </div>
+        <!-- END Background Caption-->
+    </div>
+    <!-- END Login Background Pic Wrapper-->
+    <!-- START Login Right Container-->
+    <div class="login-container bg-white">
+        <div class="p-l-50 m-l-20 p-r-50 m-r-20 p-t-50 m-t-30 sm-p-l-15 sm-p-r-15 sm-p-t-40">
+            <img src="assets/img/portal_corretor_2x.png" alt="logo" width="350" height="26">
+            <h4 class="p-t-20">Reenviar chave de ativação</h4>
+            <p class="p-t-10">Entre com o CNPJ da sua corretora. A chave de ativação será reenviada para seu e-mail de cadastro.</p>
+            <div class="alert alert-danger" ng-show="vm.message.length > 0"><i class="fa fa-warning"></i>&nbsp;<strong>{{ vm.message }}</strong> </div>
+            <div class="alert alert-success" ng-show="vm.success.length > 0"><i class="fa fa-check"></i>&nbsp;<strong>{{ vm.success }}</strong> </div>
+
+            <form id="form-login" name="resendActivationForm" class="p-t-15" role="form" ng-submit="vm.resendActivation()" novalidate>
+                <div class="form-group form-group-default" show-errors>
+                    <label>CNPJ</label>
+                    <input type="text" name="Cnpj" ng-model="vm.User.Cnpj" placeholder="CNPJ da corretora" class="form-control" ui-br-cnpj-mask required>
+                </div>
+                <button class="btn btn-complete m-t-10 btn-cons btn-animated from-top fa fa-arrow-right" type="submit"><span>Reenviar</span></button>
+                <a class="btn btn-default m-t-10 btn-cons" ui-sref="createAccount"><span>Voltar</span></a>
+            </form>
+
+            <div class="row m-t-30">
+                <div class="col-md-12">
+                    <a href="javascript:;" class="text-info small m-t-20" tooltip="Para maiores informações a respeito do seu e-mail de cadastro, favor entrar em contato com a Promed">» Esqueci meu e-mail de cadastro</a>
+                </div>
+            </div>
+
+            <div class="pull-bottom sm-pull-bottom">
+                <div class="m-b-30 p-r-80 sm-m-t-20 sm-p-r-15 sm-p-b-20 clearfix">
+                    <div class="col-md-12 no-padding m-t-10">
+                        <p>
+                            <small>
+                                &copy; Promed Assistência Médica Ltda.<br />Todos os direitos reservados.
+                            </small>
+                        </p>
+                        <img src="assets/img/ans.png" alt="" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END Login Right Container-->
+</div>

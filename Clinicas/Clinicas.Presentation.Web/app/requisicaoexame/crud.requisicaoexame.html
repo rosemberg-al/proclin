@@ -1,0 +1,79 @@
+﻿<div class="modal-header">
+    <h3 class="modal-title">{{ vm.State }} </h3>
+</div>
+<div class="modal-body">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-danger" ng-if="vm.FormMessage.length > 0">
+                <span><i class="fa fa-exclamation-triangle"></i> <strong>{{ vm.FormMessage }}</strong></span>
+            </div>
+            <form name="forms.requisicao" role="form" block-ui="blockModalRequisicao">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group" show-errors>
+                            <label for="Paciente" class="control-label required">Paciente</label>
+                            <input class="form-control bg-light" name="Paciente" ng-model="vm.requisicao.Paciente" type="text" readonly>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group" show-errors>
+                            <label for="medico" class="control-label required">Médico Solicitante</label>
+                            <select class="form-control m-b" ng-options="item.IdMedico as item.NomeMedico for item in vm.medicos" name="medico" ng-model="vm.medicoSelecionado" required></select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group" show-errors>
+                            <label for="DiagnosticoClinico" class="control-label required">Diagnóstico Clínico</label>
+                            <textarea name="DiagnosticoClinico" ng-model="vm.requisicao.DiagnosticoClinico" class="form-control bg-light" maxlength="480" style="width:100%;" rows="5" required></textarea>
+                            <span>{{480 - vm.requisicao.DiagnosticoClinico.length}} Caracteres</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group" show-errors>
+                            <label for="Data" class="control-label required">Data</label>
+                            <input class="form-control bg-light" name="Data" ng-model="vm.requisicao.Data" type="text" ui-date-mask required>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group" show-errors>
+                            <label for="Material" class="control-label required">Material</label>
+                            <input class="form-control bg-light" name="Material" ng-model="vm.requisicao.Material" type="text" required>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group" show-errors>
+                            <label for="NaturezaExame" class="control-label required">Natureza Exame</label>
+                            <input class="form-control bg-light" name="NaturezaExame" ng-model="vm.requisicao.NaturezaExame" type="text" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group" show-errors>
+                            <label for="Classe" class="control-label required">Classe</label>
+                            <input class="form-control bg-light" name="Classe" ng-model="vm.requisicao.Classe" type="text" required>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group" show-errors>
+                            <label for="tipo" class="control-label required">Tipo</label>
+                            <select class="form-control m-b" ng-options="item.Key as item.Value for item in vm.tipos" name="tipo" ng-model="vm.tipoSelecionado" required></select>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+<div class="modal-footer">
+    <button class="btn btn-default" ng-click="vm.cancel()">Cancelar</button>
+    <button class="btn btn-primary" ng-click="vm.save()"><i class="fa fa-save"></i> Salvar</button>
+
+</div>
+

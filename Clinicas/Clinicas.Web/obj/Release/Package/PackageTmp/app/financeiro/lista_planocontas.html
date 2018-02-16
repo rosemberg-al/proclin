@@ -1,0 +1,102 @@
+﻿<section class="panel">
+    <div class="panel-heading">
+        <div class="margin-bottom-10">
+            <ul class="list-unstyled breadcrumb breadcrumb-custom" ng-cloak>
+                <li>
+                    <a href="#" class="active"><i class="icmn-home"></i> Página Inicial</a>
+                </li>
+                <li ng-repeat="item in $root.currentCrumbs" ng-cloak>
+                    <a href="#" class="active">{{ item.name }}</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="panel-body" block-ui="blockModalListaFor">
+        <div class="row">
+            <div class="col-md-12">
+                <h4> Plano de Conta </h4>
+            </div>
+            <div class="col-md-9">
+                <div class="input-group" id="adv-search">
+                    <input class="form-control" id="nome" name="nome" ng-model="vm.pesq.Nome" type="text" placeholder="Nome..">
+                    <div class="input-group-btn">
+                        <div class="btn-group" role="group">
+                            <div class="dropdown dropdown-lg">
+                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="caret"></span></button>
+                                <div class="dropdown-menu dropdown-menu-right" role="menu">
+                                    <form class="form-horizontal" name="forms.buscacafuncionario" ng-enter="vm.buscar()" ng-submit="vm.buscar()" role="form" id="form" autocomplete="off" novalidate>
+                                        <div class="form-group" style="margin-bottom:5px;">
+                                            <input class="form-control" id="nome" name="nome" ng-model="vm.pesq.Codigo" type="text" placeholder="Código.." style="margin-bottom:5px;" />
+                                        </div>
+                                        <div class="form-group" style="margin-bottom:5px;">
+                                            <select class="form-control" ng-model="vm.pesq.Tipo" name="Tipo" id="Tipo">
+                                                <option value="">Tipo..</option>
+                                                <option value="Despesa">Despesa</option>
+                                                <option value="Receita">Receita</option>
+                                                <option value="Ativo">Ativo</option>
+                                                <option value="Passivo">Passivo</option>
+                                                <option value="Patrimonio Liquido">Patrimonio Liquido</option>
+                                            </select> 
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <button type="button" class="btn btn-primary" ng-click="vm.buscar()"><span class="fa fa-search" aria-hidden="true"></span> Pesquisar</button>
+                            <button type="button" class="btn btn-default" ng-click="vm.init()"><span class="fa fa-list" aria-hidden="true"></span> Ver todos </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 control-label text-left">
+                <div class="form-group pull-right">
+                    <a ng-click="vm.addPlanoConta(0)" class="btn btn-primary">
+                        <i class="fa fa-plus-square-o"></i>
+                        <span class="bold">  Novo</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!--<div class="row" ng-if="vm.pesq" style="margin-bottom:10px;">
+            <div style="display:inline" ng-repeat="(key, value) in  vm.pesq" ng-if="value">
+                <span class="tag label label-info"> {{key}}: {{ value }} </span>
+            </div>
+        </div>-->
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="row">
+                    <div class="col-md-12">
+                        <table class="table table-hover table-condensed table-striped" datatable="ng" dt-options="vm.dtOptions">
+                            <thead>
+                                <tr class="bg-complete-lighter">
+                                    <th style="width: 5%">Código </th>
+                                    <th style="width: 50%">Nome</th>
+                                    <th style="width: 10%">Tipo</th>
+                                    <th style="width: 10%">Situação</th>
+                                    <th style="width: 30%">Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="item in vm.planoscontas">
+                                    <td>{{item.IdPlanoConta}}</td>
+                                    <td>{{item.NmPlanoConta }}</td>
+                                    <td>{{item.Tipo }}</td>
+                                    <td>
+                                        <span ng-class="{'label label-success': item.Situacao == 'Ativo',
+                                                                        'label label-default': item.Situacao == 'Inativo',
+                                                                        'label label-danger': item.Situacao == 'Excluido' }">{{ item.Situacao }}</span>
+                                    </td>
+                                    <td>
+                                        <button type="button" class="btn btn-sm btn-icon btn-primary" ng-click="vm.addPlanoConta(item.IdPlanoConta)"><i class="fa fa-edit" aria-hidden="true"></i> Editar</button>
+                                        <button type="button" class="btn btn-sm btn-icon btn-danger" ng-click="vm.excluirPlanoConta(item.IdPlanoConta)"><i class="fa fa-remove" aria-hidden="true"></i> Excluir</button>
+                                   </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,52 @@
+﻿
+<section class="panel">
+    <div class="panel-heading">
+        <div class="margin-bottom-10">
+            <ul class="list-unstyled breadcrumb breadcrumb-custom" ng-cloak>
+                <li>
+                    <a href="#" class="active"><i class="icmn-home"></i> Página Inicial</a>
+                </li>
+                <li ng-repeat="item in $root.currentCrumbs" ng-cloak>
+                    <a href="#" class="active">{{ item.name }}</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="panel-body" block-ui="blockModalListaFor">
+
+        <div class="row">
+            <div class="col-md-12">
+                <h4> Medicamentos </h4>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="row">
+                    <div class="col-md-12">
+                        <table class="table table-hover table-condensed table-striped" datatable="ng" dt-options="vm.dtOptions">
+                            <thead>
+                                <tr class="bg-complete-lighter">
+                                    <th style="width: 25%">Nome </th>
+                                    <th style="width: 25%">Fabricante </th>
+                                    <th style="width: 25%">Principio Ativo </th>
+                                    <th style="width: 25%">Registro M.S </th>
+                                    <th style="width: 25%">Ações </th>
+                               </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="x in vm.medicamentos">
+                                    <td>{{x.Nome | uppercase}}</td>
+                                    <td>{{x.Fabricante | uppercase}}</td>
+                                    <td>{{x.PrincipioAtivo | uppercase}}</td>
+                                    <td>{{x.RegistroMS }}</td>
+                                    <td> <button type="button" class="btn btn-sm btn-icon btn-primary" ng-click="vm.detalhar(x)"><i class="fa fa-search" aria-hidden="true"></i> Visualizar</button> </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

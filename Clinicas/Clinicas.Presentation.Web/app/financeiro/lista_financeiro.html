@@ -1,0 +1,98 @@
+﻿<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row" block-ui="blockListaFinanceiro">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>{{vm.titulo}} </h5>
+                </div>
+                <div class="ibox-content">
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <form id="frmconsulta" name="frmconsulta">
+                                    <div class="col-md-12">
+                                        <div class="col-md-2 control-label text-left">
+                                            <select class="form-control" id="Tipo" name="Tipo" ng-model="vm.busca.TipoBusca">
+                                                <option value="Codigo">Código</option>
+                                                <option value="Nome" selected="selected">Nome</option>
+                                                <option value="CpfCnpj">CPF/CNPJ</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-4 control-label text-left">
+                                            <input class="form-control" id="Descricao" name="Descricao" ng-model="vm.busca.Descricao" type="text" placeholder="Pesquisar...">
+                                        </div>
+
+                                        <div class="col-md-4 control-label text-left">
+                                            <button ng-click="vm.pesquisar()" class="btn btn-primary" id="btnPesquisar"><i class="fa fa-search"></i> Pesquisar</button>
+                                        </div>
+
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group pull-right" ng-if="vm.redirecionamento=='R'">
+                            <a ui-sref="addparcelas({id:0, tipo: vm.redirecionamento})" class="btn btn-primary">
+                                <i class="fa fa-file-o"></i>
+                                <span class="bold">  Novo</span>
+                            </a>
+                        </div>
+                        <div class="form-group pull-right" ng-if="vm.redirecionamento=='P'">
+                            <a ui-sref="addparcelas({id:0, tipo: vm.redirecionamento})" class="btn btn-primary">
+                                <i class="fa fa-file-o"></i>
+                                <span class="bold">  Novo</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="row" ng-if="vm.financeiros.length > 0">
+                        <div class="col-md-12">
+                            <table class="table table-hover table-condensed table-striped" datatable="ng" dt-options="vm.dtOptions">
+                                <thead>
+                                    <tr class="bg-complete-lighter">
+                                        <th style="width: 10%">Código </th>
+                                        <th style="width: 15%">Nome</th>
+                                        <th style="width: 15%">Plano de Conta</th>
+                                        <th style="width: 10%">Valor</th>
+                                        <th style="width: 10%">Vencimento</th>
+                                        <th style="width: 10%">Data Acerto</th>
+                                        <th style="width: 10%">Valor Acerto</th>
+                                        <th style="width: 10%">Situação</th>
+                                        <th style="width: 10%">Ações</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="item in vm.financeiros">
+                                        <td>{{item.IdParcela}}</td>
+                                        <td>{{item.NomeCliente }}</td>
+                                        <td>{{item.PlanoConta }}</td>
+                                        <td>{{item.Valor | currency:'' }}</td>
+                                        <td>{{item.DataVencimento | date: 'dd/MM/yyyy' }}</td>
+                                        <td>{{item.DataAcerto | date: 'dd/MM/yyyy' }}</td>
+                                        <td>{{item.TotalAcerto | currency:'' }}</td>
+                                        <td><span ng-class="{'label label-rounded label-danger': item.Situacao == 'Excluido',
+                                                    'label label-rounded label-primary': item.Situacao == 'Aberto',
+                                                    'label label-rounded label-info': item.Situacao == 'Baixado'}">{{ item.Situacao }}</span></td>
+                                        <td>
+                                            <a ui-sref="editarparcela({id:item.IdParcela, tipo:vm.redirecionamento})" class="btn btn-xs btn-white" data-toggle="tooltip" title="Editar"> <i class="fa fa-edit"></i> Editar </a>
+                                            <a ng-click="vm.excluir(item.IdFinanceiro, item.IdParcela)" class="btn btn-xs btn-white" data-toggle="tooltip" title="Excluir"> <i class="fa fa-trash"></i> Excluir </a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="row" ng-if="vm.financeiros.length == 0">
+                        <div class="col-md-12">
+                            <div class="alert alert-info bordered" role="alert">
+                                Não existem dados de financeiro cadastrados.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

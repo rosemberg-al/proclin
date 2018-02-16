@@ -1,0 +1,67 @@
+﻿<div block-ui="blockModalListaPacientes">
+    <div class="row">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="alert alert-danger" ng-if="vm.FormMessage.length > 0">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <i class="fa fa-exclamation-triangle pull-left" style="font-size: 20px;"></i>
+                            {{vm.FormMessage}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <form class="form-horizontal" name="forms.buscapaciente" ng-enter="vm.buscar()" ng-submit="vm.buscar()" role="form" id="form" autocomplete="off" novalidate>
+                <div class="col-lg-8">
+                    <div class="form-group">
+                        <div class="col-sm-12"><input type="text" class="form-control" placeholder="Pesquisar Nome ou Código..." name="nome" ng-model="vm.nome" maxlength="100"></div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <button type="button" class="btn btn-primary pull-left" ng-click="vm.buscar()"><span class="fa fa-search"> </span> Buscar</button>
+                        <button type="button" style="margin-left:20px;" ng-click="vm.addPaciente(0)" tooltip="Novo Paciente" class="btn btn-primary btn-cons"> + Paciente</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br />
+    <div class="row" ng-if="vm.pacientes.length > 0">
+        <div class="col-md-12">
+            <table class="table table-hover table-condensed table-striped" datatable="ng" dt-options="vm.dtOptions">
+                <thead>
+                    <tr class="bg-complete-lighter">
+                        <th style="width: 10%">Código </th>
+                        <th style="width: 45%">Nome </th>
+                        <th style="width: 15%">Telefone Celular </th>
+                        <th style="width: 15%">Telefone Residencial </th>
+                        <th style="width: 15%">E-mail </th>
+                        <th style="width: 10%">Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="x in vm.pacientes">
+                        <td>{{x.IdPaciente }}</td>
+                        <td>{{x.NmPaciente | uppercase}}</td>
+                        <td>{{x.TelCelular}}</td>
+                        <td>{{x.TelResidencial}}</td>
+                        <td>{{x.Email}}</td>
+                        <td>
+                            <button type="button" class="btn btn-xs btn-primary" ng-click="vm.addPaciente(x.IdPaciente)" tooltip="Editar Paciente"> <span class="glyphicon glyphicon-edit"></span>  </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row" ng-if="vm.pacientes.length == 0">
+        <div class="col-md-12">
+            <div class="alert alert-info bordered" role="alert">
+                Não existem pacientes cadastrados.
+            </div>
+        </div>
+    </div>
+</div>

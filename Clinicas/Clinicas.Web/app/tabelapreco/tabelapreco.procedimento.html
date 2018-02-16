@@ -1,0 +1,93 @@
+﻿<div class="modal-header" style="margin-bottom:10px;">
+    <button type="button" class="close" ng-click="vm.cancel()" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">×</span>
+    </button>
+    <h5 class="modal-title" id="myModalLabel">{{ vm.State }}</h5>
+</div>
+<div class="modal-body">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-danger" ng-if="vm.FormMessage.length > 0">
+                <span><i class="fa fa-exclamation-triangle"></i> <strong>{{ vm.FormMessage }}</strong></span>
+            </div>
+
+            <div class="row">
+
+
+                <form name="forms.procs" role="form" block-ui="blockModalProcTab">
+                    <div class="col-md-6">
+                        <div class="form-group" show-errors>
+                            <label for="procedimentos" class="control-label required">Procedimentos</label>
+                            <ui-select ng-model="vm.procSelecionado"
+                                       theme="bootstrap"
+                                       reset-search-input="false"
+                                       style="border:none; margin-top:-7px; padding:0px; margin-top:2px;"
+                                       title="Selecione um procedimento"
+                                       name="proecedimentoadd"
+                                       class="form-control"
+                                       required
+                                       >
+                                <ui-select-match style="background-color:#FFF;" placeholder="Digite o nome do procedimento...">{{$select.selected.NomeProcedimento}}</ui-select-match>
+                                <ui-select-choices repeat="item in vm.procedimentos track by $index"
+                                                   refresh="vm.getProcedimentos($select.search)">
+                                    <div ng-bind-html="item.NomeProcedimento | highlight: $select.search"></div>
+                                </ui-select-choices>
+                            </ui-select>
+                            <!--<select class="form-control m-b" ng-options="item.IdProcedimento as item.NomeProcedimento for item in vm.procedimentos" name="procedimentos" ng-model="vm.procSelecionado" required></select>-->
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-group" show-errors>
+                            <label for="valor" class="control-label required">Valor</label>
+                            <input class="form-control bg-light" name="valor" ng-model="vm.valor" ui-number-mask="2" type="text" required>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-group" show-errors>
+                            <label for="valor" class="control-label required">Valor Prof.</label>
+                            <input class="form-control bg-light" name="valor" ng-model="vm.valorProfissional" ui-number-mask="2" type="text" required>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <button type="button" style="margin-left:20px; margin-top: 25px;" ng-click="vm.add()" tooltip="Adicionar Procedimento" class="btn btn-primary btn-cons"><span class="fa fa-plus"></span> Adicionar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="row" ng-if="vm.procedimentostabela.length > 0" style="margin-top:30px;">
+                <div class="col-md-12">
+                    <table class="table table-hover table-condensed table-striped" datatable="ng" dt-options="vm.dtOptions">
+                        <thead>
+                            <tr class="bg-complete-lighter">
+                                <th style="width:55%">Procedimento </th>
+                                <th style="width:15%">Valor </th>
+                                <th style="width:20%">Valor Profissional </th>
+                                <th style="width:10%">Ação </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="x in vm.procedimentostabela">
+                                <td>{{x.Procedimento.NomeProcedimento | uppercase}}</td>
+                                <td>{{x.Valor | number: 2}}</td>
+                                <td>{{x.ValorProfissional | number: 2}}</td>
+                                <td>
+                                    <button type="button" class="btn btn-sm btn-danger" ng-click="vm.excluirproc(x)" tooltip="Excluir Procedimento"> <span class="fa fa-remove"></span> Excluir  </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<div class="modal-footer">
+    <button class="btn btn-default" ng-click="vm.cancel()">Cancelar</button>
+    <button class="btn btn-primary" ng-click="vm.save()"><i class="fa fa-save"></i> Salvar</button>
+
+</div>
+

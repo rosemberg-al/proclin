@@ -1,0 +1,8 @@
+C:\Project\Proclin\Clinicas\Clinicas.Presentation.Web\bin\ApplicationInsights.config
+C:\Project\Proclin\Clinicas\Clinicas.Presentation.Web\bin\Clinicas.Presentation.Web.dll.config
+C:\Project\Proclin\Clinicas\Clinicas.Presentation.Web\bin\Clinicas.Presentation.Web.dll
+C:\Project\Proclin\Clinicas\Clinicas.Presentation.Web\bin\Clinicas.Presentation.Web.pdb
+C:\Project\Proclin\Clinicas\Clinicas.Presentation.Web\obj\Debug\Clinicas.Presentation.Web.csprojResolveAssemblyReference.cache
+C:\Project\Proclin\Clinicas\Clinicas.Presentation.Web\obj\Debug\Clinicas.Presentation.Web.csproj.CoreCompileInputs.cache
+C:\Project\Proclin\Clinicas\Clinicas.Presentation.Web\obj\Debug\Clinicas.Presentation.Web.dll
+C:\Project\Proclin\Clinicas\Clinicas.Presentation.Web\obj\Debug\Clinicas.Presentation.Web.pdb

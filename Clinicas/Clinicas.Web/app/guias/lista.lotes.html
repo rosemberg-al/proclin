@@ -1,0 +1,106 @@
+﻿<section class="panel">
+    <div class="panel-heading">
+        <div class="margin-bottom-10">
+            <ul class="list-unstyled breadcrumb breadcrumb-custom" ng-cloak>
+                <li>
+                    <a href="#" class="active"><i class="icmn-home"></i> Página Inicial</a>
+                </li>
+                <li ng-repeat="item in $root.currentCrumbs" ng-cloak>
+                    <a href="#" class="active">{{ item.name }}</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="panel-body" block-ui="blockListalotes">
+
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="alert alert-danger" ng-if="vm.FormMessage.length > 0">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <i class="fa fa-exclamation-triangle pull-left" style="font-size: 20px;"></i>
+                            {{vm.FormMessage}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4> Lote de Guias </h4>
+                    </div>
+
+                    <div class="col-md-9">
+                        <div class="input-group" id="adv-search">
+                            <input class="form-control" id="nome" name="nome" ng-model="vm.pesq.Nome" type="text" placeholder="Nome..">
+                            <div class="input-group-btn">
+                                <div class="btn-group" role="group">
+                                    <div class="dropdown dropdown-lg">
+                                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="caret"></span></button>
+                                        <div class="dropdown-menu dropdown-menu-right" role="menu">
+                                            <form class="form-horizontal" name="forms.buscacafuncionario" ng-enter="vm.buscar()" ng-submit="vm.buscar()" role="form" id="form" autocomplete="off" novalidate>
+                                                <div class="form-group" style="margin-bottom:5px;">
+                                                    <input class="form-control" id="nome" name="nome" ng-model="vm.pesq.Codigo" type="text" placeholder="Código.." style="margin-bottom:5px;" />
+                                                </div>
+
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <button type="button" class="btn btn-primary" ng-click="vm.buscar()"><span class="fa fa-search" aria-hidden="true"></span> Pesquisar</button>
+                                    <button type="button" class="btn btn-default" ng-click="vm.init()"><span class="fa fa-list" aria-hidden="true"></span> Ver todos </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 control-label text-left">
+                        <div class="form-group pull-right">
+                            <a ng-click="vm.addLote(0)" class="btn btn-primary">
+                                <i class="fa fa-plus-square-o"></i>
+                                <span class="bold">  Novo</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-md-12">
+                        <table class="table table-hover table-condensed table-striped" datatable="ng" dt-options="vm.dtOptions">
+                            <thead>
+                                <tr class="bg-complete-lighter">
+                                    <th style="width: 10%">Sequêncial </th>
+                                    <th style="width: 30%">Convênio </th>
+                                    <th style="width: 20%">Data Faturamento </th>
+                                    <th style="width: 15%">Situação </th>
+                                    <th style="width: 25%">Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="x in vm.lotes">
+                                    <td>{{x.IdLote}}</td>
+                                    <td>{{x.NomeConvenio}}</td>
+                                    <td>{{x.Data | date:'dd/MM/y'}}</td>
+                                    <td>
+                                        <span ng-class="{'label label-warning': x.Situacao == 'Emitida',
+                                                'label label-success': x.Situacao == 'Faturado',
+                                               'label label-danger': x.Situacao == 'Cancelada',
+                                                'label label-primary': x.Situacao == 'Enviado'}">{{x.Situacao }}</span>
+                                    </td>
+                                    <td>
+                                        <button type="button" tooltip="Editar" ng-if="x.Situacao != 'Faturado'" class="btn btn-sm btn-icon btn-primary" ng-click="vm.addGuias(x.IdLote, x.IdConvenio)"><i class="fa fa-edit" aria-hidden="true"> </i> Editar</button>
+                                        <button type="button" tooltip="Cancelar" ng-if="x.Situacao != 'Faturado'" class="btn btn-sm btn-icon btn-danger" ng-click="vm.excluirLote(x.IdLote)"><i class="fa fa-remove" aria-hidden="true"> </i> Excluir</button>
+                                        <button type="button" tooltip="XML" class="btn btn-sm btn-icon btn-primary" ng-if="x.Situacao == 'Faturado'" ng-click="vm.gerarXml(x.IdLote)"><i class="fa fa-file-zip-o" aria-hidden="true"> </i> XML</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

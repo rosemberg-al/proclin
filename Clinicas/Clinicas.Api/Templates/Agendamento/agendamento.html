@@ -1,0 +1,187 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Proclin</title>
+
+    <link href="../assets/common/img/favicon.144x144.png" rel="apple-touch-icon" type="image/png" sizes="144x144">
+    <link href="../assets/common/img/favicon.114x114.png" rel="apple-touch-icon" type="image/png" sizes="114x114">
+    <link href="../assets/common/img/favicon.72x72.png" rel="apple-touch-icon" type="image/png" sizes="72x72">
+    <link href="../assets/common/img/favicon.57x57.png" rel="apple-touch-icon" type="image/png">
+    <link href="../assets/common/img/favicon.png" rel="icon" type="image/png">
+    <link href="favicon.ico" rel="shortcut icon">
+
+    <!-- HTML5 shim and Respond.js for < IE9 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Vendors Styles -->
+    <!-- v1.0.0 -->
+    <link rel="stylesheet" type="text/css" href="../assets/vendors/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../assets/vendors/jscrollpane/style/jquery.jscrollpane.css">
+    <link rel="stylesheet" type="text/css" href="../assets/vendors/ladda/dist/ladda-themeless.min.css">
+    <link rel="stylesheet" type="text/css" href="../assets/vendors/select2/dist/css/select2.min.css">
+    <link rel="stylesheet" type="text/css" href="../assets/vendors/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css">
+    <link rel="stylesheet" type="text/css" href="../assets/vendors/fullcalendar/dist/fullcalendar.min.css">
+    <link rel="stylesheet" type="text/css" href="../assets/vendors/cleanhtmlaudioplayer/src/player.css">
+    <link rel="stylesheet" type="text/css" href="../assets/vendors/cleanhtmlvideoplayer/src/player.css">
+    <link rel="stylesheet" type="text/css" href="../assets/vendors/bootstrap-sweetalert/dist/sweetalert.css">
+    <link rel="stylesheet" type="text/css" href="../assets/vendors/summernote/dist/summernote.css">
+    <link rel="stylesheet" type="text/css" href="../assets/vendors/owl.carousel/dist/assets/owl.carousel.min.css">
+    <link rel="stylesheet" type="text/css" href="../assets/vendors/ionrangeslider/css/ion.rangeSlider.css">
+    <link rel="stylesheet" type="text/css" href="../assets/vendors/datatables/media/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="../assets/vendors/c3/c3.min.css">
+    <link rel="stylesheet" type="text/css" href="../assets/vendors/chartist/dist/chartist.min.css">
+    <!-- v1.4.0 -->
+    <link rel="stylesheet" type="text/css" href="../assets/vendors/nprogress/nprogress.css">
+    <link rel="stylesheet" type="text/css" href="../assets/vendors/jquery-steps/demo/css/jquery.steps.css">
+    <!-- v1.4.2 -->
+    <link rel="stylesheet" type="text/css" href="../assets/vendors/bootstrap-select/dist/css/bootstrap-select.min.css">
+    <!-- v1.7.0 -->
+    <link rel="stylesheet" type="text/css" href="../assets/vendors/dropify/dist/css/dropify.min.css">
+
+    <!-- Clean UI Styles -->
+    <link rel="stylesheet" type="text/css" href="../assets/common/css/source/main.css">
+
+    <!-- Vendors Scripts -->
+    <!-- v1.0.0 -->
+    <script src="../assets/vendors/jquery/jquery.min.js"></script>
+    <script src="../assets/vendors/tether/dist/js/tether.min.js"></script>
+    <script src="../assets/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../assets/vendors/jquery-mousewheel/jquery.mousewheel.min.js"></script>
+    <script src="../assets/vendors/jscrollpane/script/jquery.jscrollpane.min.js"></script>
+    <script src="../assets/vendors/spin.js/spin.js"></script>
+    <script src="../assets/vendors/ladda/dist/ladda.min.js"></script>
+    <script src="../assets/vendors/select2/dist/js/select2.full.min.js"></script>
+    <script src="../assets/vendors/html5-form-validation/dist/jquery.validation.min.js"></script>
+    <script src="../assets/vendors/jquery-typeahead/dist/jquery.typeahead.min.js"></script>
+    <script src="../assets/vendors/jquery-mask-plugin/dist/jquery.mask.min.js"></script>
+    <script src="../assets/vendors/autosize/dist/autosize.min.js"></script>
+    <script src="../assets/vendors/bootstrap-show-password/bootstrap-show-password.min.js"></script>
+    <script src="../assets/vendors/moment/min/moment.min.js"></script>
+    <script src="../assets/vendors/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+    <script src="../assets/vendors/fullcalendar/dist/fullcalendar.min.js"></script>
+    <script src="../assets/vendors/cleanhtmlaudioplayer/src/jquery.cleanaudioplayer.js"></script>
+    <script src="../assets/vendors/cleanhtmlvideoplayer/src/jquery.cleanvideoplayer.js"></script>
+    <script src="../assets/vendors/bootstrap-sweetalert/dist/sweetalert.min.js"></script>
+    <script src="../assets/vendors/remarkable-bootstrap-notify/dist/bootstrap-notify.min.js"></script>
+    <script src="../assets/vendors/summernote/dist/summernote.min.js"></script>
+    <script src="../assets/vendors/owl.carousel/dist/owl.carousel.min.js"></script>
+    <script src="../assets/vendors/ionrangeslider/js/ion.rangeSlider.min.js"></script>
+    <script src="../assets/vendors/nestable/jquery.nestable.js"></script>
+    <script src="../assets/vendors/datatables/media/js/jquery.dataTables.min.js"></script>
+    <script src="../assets/vendors/datatables/media/js/dataTables.bootstrap4.min.js"></script>
+    <script src="../assets/vendors/datatables-fixedcolumns/js/dataTables.fixedColumns.js"></script>
+    <script src="../assets/vendors/datatables-responsive/js/dataTables.responsive.js"></script>
+    <script src="../assets/vendors/editable-table/mindmup-editabletable.js"></script>
+    <script src="../assets/vendors/d3/d3.min.js"></script>
+    <script src="../assets/vendors/c3/c3.min.js"></script>
+    <script src="../assets/vendors/chartist/dist/chartist.min.js"></script>
+    <script src="../assets/vendors/peity/jquery.peity.min.js"></script>
+    <!-- v1.0.1 -->
+    <script src="../assets/vendors/chartist-plugin-tooltip/dist/chartist-plugin-tooltip.min.js"></script>
+    <!-- v1.1.1 -->
+    <script src="../assets/vendors/gsap/src/minified/TweenMax.min.js"></script>
+    <script src="../assets/vendors/hackertyper/hackertyper.js"></script>
+    <script src="../assets/vendors/jquery-countTo/jquery.countTo.js"></script>
+    <!-- v1.4.0 -->
+    <script src="../assets/vendors/nprogress/nprogress.js"></script>
+    <script src="../assets/vendors/jquery-steps/build/jquery.steps.min.js"></script>
+    <!-- v1.4.2 -->
+    <script src="../assets/vendors/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
+    <script src="../assets/vendors/chart.js/src/Chart.bundle.min.js"></script>
+    <!-- v1.7.0 -->
+    <script src="../assets/vendors/dropify/dist/js/dropify.min.js"></script>
+
+    <!-- Clean UI Scripts -->
+    <script src="../assets/common/js/common.js"></script>
+    <script src="../assets/common/js/demo.temp.js"></script>
+</head>
+<body class="theme-default">
+
+
+
+<section class="page-content">
+<div class="page-content-inner">
+
+    <!-- Mail Templates -->
+    <section class="panel">
+       
+        <div class="panel-body">
+            <div class="row">
+                <div style="margin:0 auto 0px; width:700px;">
+                  
+                    <div class="example-emails margin-bottom-50" style="box-shadow: 1px 1px 1px #888888;  border-radius:3px"">
+                        <!-- Start Letter -->
+                        <div width="100%" style="background: #eceff4; padding: 50px 20px; color: #514d6a;  border-radius:5px">
+                            <div style="max-width: 700px; margin: 0px auto; font-size: 14px">
+							
+                                <table border="0" cellpadding="0" cellspacing="0" style="width: 100%; margin-bottom: 20px">
+                                    <tbody><tr>
+                                        <td style="vertical-align: top;">
+                                             <h4>Proclin - Confirmação de Agendamento </h4>
+                                        </td>
+                                        <td style="text-align: right; vertical-align: middle;">
+                                         
+											<span class="label label-pill label-success">Marcado</span>
+                                        </td>
+                                    </tr>
+                                </tbody></table>
+                                <div style="padding: 30px; background: #fff; border-radius:3px">
+									<img src="../assets/common/img/logo_login.png" alt="Proclin" style="width:292px; height:90px;" />
+									<br/>
+									<br/>
+									<br/>
+                                    <table border="0" cellpadding="0" cellspacing="0" style="width: 100%;">
+                                        <tbody><tr>
+                                            <td>
+                                                <p>Olá Sr(a) <strong> {PACIENTE}</strong></p>
+                                                <p>Seu agendamento com a <strong>{CLINICA} </strong> para <strong>{DATA_HORA} </strong> foi marcado com sucesso.</p>
+                                                <!--<a href="javascript: void(0);" style="display: inline-block; padding: 11px 30px; margin: 20px 0px 30px; font-size: 15px; color: #fff; background: #01a8fe; border-radius: 5px">
+                                                   <span class="fa fa-hand-o-right"> </span> Confirmar Agendamento                                                
+												</a>-->
+                                                <p>Uma das atendentes da clínica poderá entrar em contato com você.</p>
+                                                <p>Caso queira remarcar. Ligue para <strong> {TELEFONE}</strong></p>
+												<p>Informe o código do agendamento: <strong> {PROTOCOLO} </strong> </p>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div style="text-align: center; font-size: 12px; color: #a09bb9; margin-top: 20px">
+                                    <p>
+                                        Proclin - Gestão em Clínicas Médicas
+                                        <br>
+                                        <!-- Don't like these emails? <a href="javascript: void(0);" style="color: #a09bb9; text-decoration: underline;">Unsubscribe</a> -->
+                                        <br>
+                                        © Copyright Proclin
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Start Letter -->
+                    </div>
+                </div>
+				
+				
+				
+				
+            </div>
+           
+              
+		</div>
+	</div>
+    </section>
+    <!-- End Mail Templates -->
+
+</div>
+</section>
+
+
+
+</body>
+</html>

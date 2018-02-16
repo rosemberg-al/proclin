@@ -1,0 +1,255 @@
+﻿<div class="modal-header" style="margin-bottom:10px;">
+    <button type="button" class="close" ng-click="vm.cancel()" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">×</span>
+    </button>
+    <h5 class="modal-title" id="myModalLabel">{{ vm.State }}</h5>
+</div>
+<div class="modal-body" block-ui="blockModalCFornecedor">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-danger" ng-if="vm.FormMessage.length > 0">
+                <span><i class="fa fa-exclamation-triangle"></i> <strong>{{ vm.FormMessage }}</strong></span>
+            </div>
+            <!--
+        Ideally these elements aren't created until it's confirmed that the
+        client supports video/camera, but for the sake of illustrating the
+        elements involved, they are created with markup (not JavaScript)
+    -->
+            
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="nav-tabs-horizontal">
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="lidados" data-toggle="tab" data-target="#tabdados" role="tab" aria-expanded="true">
+                                    <i class="fa fa-home"></i>
+                                    Dados do Fornecedor
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" id="liEndereco" data-target="#tabendereco" role="tab" aria-expanded="false">
+                                    <i class="fa fa-map-marker"></i>
+                                    Dados do Endereço
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" id="liContato" data-target="#tabcontato" role="tab" aria-expanded="false">
+                                    <i class="fa fa-phone-square"></i>
+                                    Contatos
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="tab-content padding-vertical-20">
+                            <div class="tab-pane active" id="tabdados" role="tabpanel" aria-expanded="true">
+                                <form name="forms.dadosfornecedores" role="form">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <div class="form-group" show-errors>
+                                                <label for="tipo" class="control-label required">Tipo</label>
+                                                <select class="form-control m-b" ng-change="vm.alterartipo()" ng-options="item.Key as item.Value for item in vm.tipos" name="tipo" ng-model="vm.tipoSelecionado" required></select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row" ng-if="vm.tipoSelecionado == 'PF'">
+                                        <div class="col-md-8">
+                                            <div class="form-group" show-errors>
+                                                <label for="Nome" class="control-label required">Nome</label>
+                                                <input class="form-control bg-light" name="Nome" ng-model="vm.fornecedor.Nome" type="text" required>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <div class="form-group" show-errors>
+                                                <label for="tipo" class="control-label required">Sexo</label>
+                                                <select class="form-control m-b" ng-options="item.Key as item.Value for item in vm.sexos" name="tipo" ng-model="vm.sexoSelecionado" required></select>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="col-md-4">
+                                            <div class="form-group" show-errors>
+                                                <label for="DtNascimento" class="control-label required">Data Nascimento</label>
+                                                <input class="form-control bg-light" name="DtNascimento" ng-model="vm.fornecedor.DataNascimento" type="text" ui-date-mask required>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <div class="form-group" show-errors>
+                                                <label for="CPF" class="control-label required">CPF</label>
+                                                <input class="form-control bg-light" name="CPF" ng-model="vm.fornecedor.CPF" ui-br-cpf-mask type="text" required>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="form-group" show-errors>
+                                                <label for="Mae" class="control-label">Mãe</label>
+                                                <input class="form-control bg-light" name="Mae" ng-model="vm.fornecedor.Mae" type="text">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="form-group" show-errors>
+                                                <label for="Pai" class="control-label">Pai</label>
+                                                <input class="form-control bg-light" name="Pai" ng-model="vm.fornecedor.Pai" type="text">
+                                            </div>
+                                        </div>
+                                    </div>
+                                                                        
+                                    <div class="row" ng-if="vm.tipoSelecionado == 'PJ'">
+                                        <div class="col-md-4">
+                                            <div class="form-group" show-errors>
+                                                <label for="CNPJ" class="control-label required">CNPJ</label>
+                                                <input class="form-control bg-light" name="CNPJ" ng-model="vm.fornecedor.CNPJ" ui-br-cnpj-mask type="text" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="form-group" show-errors>
+                                                <label for="RazaoSocial" class="control-label required">Razão Social</label>
+                                                <input class="form-control bg-light" name="RazaoSocial" ng-model="vm.fornecedor.RazaoSocial" type="text" required>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row" ng-if="vm.tipoSelecionado == 'PJ'">
+                                        <div class="col-md-4">
+                                            <div class="form-group" show-errors>
+                                                <label for="IE" class="control-label">Inscrição Estadual</label>
+                                                <input class="form-control bg-light" name="IE" ng-model="vm.fornecedor.InscricaoEstadual" type="text">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="form-group" show-errors>
+                                                <label for="Fantasia" class="control-label required">Nome Fantasia</label>
+                                                <input class="form-control bg-light" name="NomeFantasia" ng-model="vm.fornecedor.NomeFantasia" type="text" required>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group" show-errors>
+                                                <label for="obs" class="control-label">Observação</label>
+                                                <textarea name="obs" ng-model="vm.fornecedor.Observacao" class="form-control bg-light" style="width:100%;" rows="5"></textarea>
+                                                <span>{{4000 - vm.fornecedor.Observacao.length}} Caracteres</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row" ng-if="vm.fornecedor.IdFornecedor > 0">
+                                        <div class="checkbox">
+                                                <label class="control-label required"> Situação </label>
+                                                <label for="Situacao" class="control-label">
+                                                    <input type="radio" ng-model="vm.SituacaoA" i-check name="Situacao" value="Ativo">
+                                                    Ativo
+                                                </label>
+
+                                                <label for="Situacao" class="control-label">
+                                                    <input type="radio" ng-model="vm.SituacaoI" i-check name="Situacao" value="Inativo">
+                                                    Inativo
+                                                </label>
+                                          </div>
+                                    </div>
+
+
+                                </form>
+                            </div>
+                            
+                            <div class="tab-pane" id="tabendereco" role="tabpanel" aria-expanded="false">
+                                <form name="forms.dadosendereco" role="form">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <div class="form-group" show-errors>
+                                                <label for="Nome" class="control-label required">Cep</label>
+                                                <input class="form-control bg-light" name="Nome" ng-model="vm.fornecedor.Cep" type="text" ui-br-cep-mask required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group" show-errors>
+                                                <label for="Logradouro" class="control-label required">Logradouro</label>
+                                                <input class="form-control bg-light" name="Logradouro" ng-model="vm.fornecedor.Logradouro" type="text" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group" show-errors>
+                                                <label for="Nr" class="control-label required">Número</label>
+                                                <input class="form-control bg-light" name="Numero" ng-model="vm.fornecedor.Numero" type="text" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group" show-errors>
+                                                <label for="Bairro" class="control-label required">Bairro</label>
+                                                <input class="form-control bg-light" name="Bairro" ng-model="vm.fornecedor.Bairro" type="text" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group" show-errors>
+                                                <label for="estado" class="control-label required">Estado</label>
+                                                <select class="form-control m-b" ng-options="item.Id as item.Nome for item in vm.estados" name="estado" ng-model="vm.estadoSelecionado" required></select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group" show-errors>
+                                                <label for="Cidade" class="control-label required">Cidade</label>
+                                                <select class="form-control m-b" ng-options="item.Id as item.Nome for item in vm.cidades" name="Cidade" ng-model="vm.cidadeSelecionada" required></select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group" show-errors>
+                                                <label for="Complemento" class="control-label">Complemento</label>
+                                                <input class="form-control bg-light" name="Complemento" ng-model="vm.fornecedor.Complemento" type="text">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group" show-errors>
+                                                <label for="Referencia" class="control-label">Referência</label>
+                                                <input class="form-control bg-light" name="Referencia" ng-model="vm.fornecedor.Referencia" type="text">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                       
+                            <div class="tab-pane" id="tabcontato" role="tabpanel" aria-expanded="false">
+                                <form name="forms.dadoscontato" role="form">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group" show-errors>
+                                                <label for="TelCelular" class="control-label required">Telefone 1</label>
+                                                <input class="form-control bg-light" name="Telefone1" ng-model="vm.fornecedor.Telefone1" ui-br-phone-number type="text" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group" show-errors>
+                                                <label for="TelResidencial" class="control-label">Telefone 2</label>
+                                                <input class="form-control bg-light" name="Telefone2" ng-model="vm.fornecedor.Telefone2" ui-br-phone-number type="text">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group" show-errors>
+                                                <label for="Email" class="control-label required">Email</label>
+                                                <input class="form-control bg-light" name="Email" ng-model="vm.fornecedor.Email" type="email" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                         </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal-footer"  block-ui="blockModalCFornecedor">
+    <button class="btn btn-default" ng-click="vm.cancel()">Cancelar</button>
+    <button class="btn btn-primary" ng-click="vm.save()"><i class="fa fa-save"></i> Salvar</button>
+</div>

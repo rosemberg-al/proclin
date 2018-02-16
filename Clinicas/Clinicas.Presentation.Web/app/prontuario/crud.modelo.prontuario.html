@@ -1,0 +1,57 @@
+﻿<div class="modal-header">
+    <h3 class="modal-title">{{ vm.State }} </h3>
+</div>
+<div class="modal-body">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-danger" ng-if="vm.FormMessage.length > 0">
+                <span><i class="fa fa-exclamation-triangle"></i> <strong>{{ vm.FormMessage }}</strong></span>
+            </div>
+            <form name="forms.modelos" role="form" block-ui="blockModalModelo">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group" show-errors>
+                            <label for="Data" class="control-label required">Tipo Modelo</label>
+                            <select class="form-control m-b" ng-options="item.Key as item.Value for item in vm.tiposmodelos" name="profissional" ng-model="vm.modeloSelecionado" required></select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group" show-errors>
+                            <label for="Situacao" class="required">Situação</label>
+                            <div class="radio radio-success mb5">
+                                <input type="radio" id="rSituacaoAtivo" name="rSituacaoAtivo" ng-model="vm.modelo.Situacao" value="A">
+                                <label for="rSituacaoAtivo">Ativo</label>
+                                <input type="radio" id="rSituacaiInativo" name="rSituacaiInativo" ng-model="vm.modelo.Situacao" value="I">
+                                <label for="rSituacaiInativo">Inativo</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group" show-errors>
+                            <label for="nome" class="control-label required">Nome</label>
+                            <input class="form-control bg-light" name="nome" ng-model="vm.modelo.NomeModelo" type="text" maxlength="100" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group" show-errors>
+                            <label for="htmlcontent" class="control-label required">Descrição</label>
+                            <text-angular style="min-height:200px;" ta-text-editor-class="form-control myform1-height" ta-html-editor-class="form-control myform1-height" name="htmlcontent" required ng-model="vm.modelo.Descricao"> </text-angular>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+<div class="modal-footer">
+    <button class="btn btn-default" ng-click="vm.cancel()">Cancelar</button>
+    <button class="btn btn-primary" ng-click="vm.save()"><i class="fa fa-save"></i> Salvar</button>
+
+</div>
+

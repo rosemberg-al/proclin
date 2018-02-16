@@ -1,0 +1,265 @@
+
+.panel2 {
+    margin-bottom: 20px;
+    background-color: #fff;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
+    box-shadow: 0 1px 1px rgba(0,0,0,.05);
+}
+
+.panel2-body {
+    padding: 15px;
+}
+
+.panel2 > .panel2-body + .table,
+.panel2 > .panel2-body + .table-responsive,
+.panel2 > .table + .panel2-body,
+.panel2 > .table-responsive + .panel2-body {
+  border-top: 1px solid #ddd;
+}
+
+.panel2-body:before,
+.panel2-body:after
+{
+  display: table;
+  content: " ";
+}
+
+.panel2-body:after{
+  clear: both;
+}
+
+.panel2-group .panel2-heading + .panel2-collapse > .panel2-body,
+.panel2-group .panel2-heading + .panel2-collapse > .list-group {
+  border-top: 1px solid #ddd;
+}
+.panel2-warning > .panel2-heading + .panel2-collapse > .panel2-body {
+  border-top-color: #faebcc;
+}
+
+.panel2-danger > .panel2-heading + .panel2-collapse > .panel2-body {
+  border-top-color: #ebccd1;
+}
+
+.panel2-danger > .panel2-footer + .panel2-collapse > .panel2-body {
+  border-bottom-color: #ebccd1;
+}
+
+.panel2-warning > .panel2-footer + .panel2-collapse > .panel2-body {
+  border-bottom-color: #faebcc;
+}
+
+.panel2-info > .panel2-footer + .panel2-collapse > .panel2-body {
+  border-bottom-color: #bce8f1;
+}
+
+.panel2-info > .panel2-heading + .panel2-collapse > .panel2-body {
+  border-top-color: #bce8f1;
+}
+.panel2-success > .panel2-heading + .panel2-collapse > .panel2-body {
+  border-top-color: #d6e9c6;
+}
+
+.panel2-success > .panel2-footer + .panel2-collapse > .panel2-body {
+  border-bottom-color: #d6e9c6;
+}
+
+.panel2-primary > .panel2-footer + .panel2-collapse > .panel2-body {
+  border-bottom-color: #337ab7;
+}
+
+.panel2-primary > .panel2-heading + .panel2-collapse > .panel2-body {
+  border-top-color: #337ab7;
+}
+
+.panel2-group .panel2-footer + .panel2-collapse .panel2-body {
+  border-bottom: 1px solid #ddd;
+}
+.panel2-default > .panel2-footer + .panel2-collapse > .panel2-body {
+  border-bottom-color: #ddd;
+}
+
+.panel2-default > .panel2-heading + .panel2-collapse > .panel2-body {
+  border-top-color: #ddd;
+}
+
+.panel2-heading {
+    padding: 10px 15px;
+    border-bottom: 1px solid transparent;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+}
+
+
+.panel2-primary {
+    border-color: #1ab394;
+}
+
+    .panel2-primary > .panel2-heading {
+        background-color: #1ab394;
+        border-color: #1ab394;
+    }
+
+.panel2-success {
+    border-color: #1c84c6;
+}
+
+    .panel2-success > .panel2-heading {
+        background-color: #1c84c6;
+        border-color: #1c84c6;
+        color: #ffffff;
+    }
+
+.panel2-info {
+    border-color: #23c6c8;
+}
+
+    .panel2-info > .panel2-heading {
+        background-color: #23c6c8;
+        border-color: #23c6c8;
+        color: #ffffff;
+    }
+
+.panel2-warning {
+    border-color: #f8ac59;
+}
+
+    .panel2-warning > .panel2-heading {
+        background-color: #f8ac59;
+        border-color: #f8ac59;
+        color: #ffffff;
+    }
+
+.panel2-danger {
+    border-color: #ed5565;
+}
+
+    .panel2-danger > .panel2-heading {
+        background-color: #ed5565;
+        border-color: #ed5565;
+        color: #ffffff;
+    }
+
+
+/* iCheck plugin Square skin, green
+----------------------------------- */
+
+
+label.required:after {
+    content: "*";
+    font-weight: bold;
+    color: red;
+    margin-left: 3px;
+}
+
+.produto-header {
+    float: left;
+    margin-top: 10px;
+    width: 100%;
+    padding: 5px 10px;
+    padding-left: 120px;
+    padding-right: 0;
+    background: #0026ff;
+}
+
+.produto-item {
+    float: left;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.produto-resumo {
+    float: left;
+    width: 285px;
+    padding: 5px 10px;
+    background: #fff;
+    border: 1px solid #eee;
+    margin-top: 10px;
+}
+
+.produto-item > .idade {
+    float: left;
+    width: 120px;
+}
+
+/*.produto-item > .vidas {
+    float: left;
+    width: 80px;
+}*/
+
+.vidas {
+    background: #f3f3f4;
+    border-left: 6px solid #e7eaec;
+    border-right: 6px solid #e7eaec;
+    border-radius: 4px;
+    color: inherit;
+    margin-bottom: 2px;
+    padding: 10px;
+}
+
+.icheckbox_square-green,
+.iradio_square-green {
+    display: inline-block;
+    *display: inline;
+    vertical-align: middle;
+    margin: 0;
+    padding: 0;
+    width: 22px;
+    height: 22px;
+    background: url(green.png) no-repeat;
+    border: none;
+    cursor: pointer;
+}
+
+.icheckbox_square-green {
+    background-position: 0 0;
+}
+
+    .icheckbox_square-green.hover {
+        background-position: -24px 0;
+    }
+
+    .icheckbox_square-green.checked {
+        background-position: -48px 0;
+    }
+
+    .icheckbox_square-green.disabled {
+        background-position: -72px 0;
+        cursor: default;
+    }
+
+    .icheckbox_square-green.checked.disabled {
+        background-position: -96px 0;
+    }
+
+.iradio_square-green {
+    background-position: -120px 0;
+}
+
+    .iradio_square-green.hover {
+        background-position: -144px 0;
+    }
+
+    .iradio_square-green.checked {
+        background-position: -168px 0;
+    }
+
+    .iradio_square-green.disabled {
+        background-position: -192px 0;
+        cursor: default;
+    }
+
+    .iradio_square-green.checked.disabled {
+        background-position: -216px 0;
+    }
+
+/* HiDPI support */
+@media (-o-min-device-pixel-ratio: 5/4), (-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 120dpi) {
+    .icheckbox_square-green,
+    .iradio_square-green {
+        background-image: url(green@2x.png);
+        -webkit-background-size: 240px 24px;
+        background-size: 240px 24px;
+    }
+}

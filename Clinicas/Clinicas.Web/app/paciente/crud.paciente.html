@@ -1,0 +1,418 @@
+﻿<div class="modal-header" style="margin-bottom:10px;">
+    <button type="button" class="close" ng-click="vm.cancel()" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">×</span>
+    </button>
+    <h5 class="modal-title" id="myModalLabel">{{ vm.State }}</h5>
+</div>
+<div class="modal-body" block-ui="blockModalCpaciente">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-danger" ng-if="vm.FormMessage.length > 0">
+                <span><i class="fa fa-exclamation-triangle"></i> <strong>{{ vm.FormMessage }}</strong></span>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="nav-tabs-horizontal">
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="lidados" data-toggle="tab" data-target="#tabdados" role="tab" aria-expanded="true">
+                                    <i class="fa fa-home"></i>
+                                    Dados do paciente
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" id="liEndereco" data-target="#tabendereco" role="tab" aria-expanded="false">
+                                    <i class="fa fa-map-marker"></i>
+                                    Dados do Endereço
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" id="liContato" data-target="#tabcontato" role="tab" aria-expanded="false">
+                                    <i class="fa fa-phone-square"></i>
+                                    Contatos
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" id="liConvenio" data-target="#tabconvenio" role="tab" aria-expanded="false">
+                                    <i class="fa fa-credit-card"></i>
+                                    Convênios
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" id="liFoto" data-target="#tabFoto" role="tab" aria-expanded="false">
+                                    <i class="fa fa-file-picture-o"></i>
+                                    Foto
+                                </a>
+                            </li>
+                        </ul>
+
+                        <div class="tab-content padding-vertical-20">
+                            <div class="tab-pane active" id="tabdados" role="tabpanel" aria-expanded="true">
+                                <form name="forms.dadospacientees" role="form">
+                                    <!--<div class="row">
+                                        <div class="col-md-3">
+                                            <div class="form-group" show-errors>
+                                                <label for="tipo" class="control-label required">Tipo</label>
+                                                <select class="form-control m-b" ng-change="vm.alterartipo()" ng-options="item.Key as item.Value for item in vm.tipos" name="tipo" ng-model="vm.tipoSelecionado" required></select>
+                                            </div>
+                                        </div>
+                                    </div>-->
+                                    <!-- FOTO PACIENTE -->
+                                    <!--<div class="row" ng-if="vm.tipoSelecionado == 'PF'" >
+                                         <div class="col-md-5" style=" padding:10px; border:#f5f5f5 solid 1px;">
+                                             <webcam channel="channel"
+                                                     on-streaming="onSuccess()"
+                                                     on-error="onError(err)"
+                                                     on-stream="onStream(stream)"></webcam>
+                                             <button class="btn btn-primary" style="text-align:center" type="button" ng-click="makeSnapshot()"><spna class="fa fa-camera"></spna> Capturar Foto</button>
+
+                                         </div>
+
+                                         <div class="col-md-6">
+                                             <canvas id="snapshot" width="300" height="300"></canvas>
+                                         </div>
+                                     </div>-->
+                                    <!-- ***** -->
+
+                                    <div class="row" ng-if="vm.tipoSelecionado == 'PF'">
+                                        <div class="col-md-8">
+                                            <div class="form-group" show-errors>
+                                                <label for="Nome" class="control-label required">Nome</label>
+                                                <input class="form-control bg-light" name="Nome" ng-model="vm.paciente.Nome" type="text" required>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <div class="form-group" show-errors>
+                                                <label for="tipo" class="control-label required">Sexo</label>
+                                                <select class="form-control m-b" ng-options="item.Key as item.Value for item in vm.sexos" name="tipo" ng-model="vm.sexoSelecionado" required></select>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="col-md-4">
+                                            <div class="form-group" show-errors>
+                                                <label for="DtNascimento" class="control-label required">Data Nascimento</label>
+                                                <input class="form-control bg-light" name="DtNascimento" ng-model="vm.paciente.DataNascimento" type="text" ui-date-mask required>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <div class="form-group" show-errors>
+                                                <label for="CPF" class="control-label required">CPF</label>
+                                                <input class="form-control bg-light" name="CPF" ng-model="vm.paciente.CPF" ui-br-cpf-mask type="text" required>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="CPF" class="control-label">Número do Cartão Nacional de Saúde</label>
+                                                <input class="form-control bg-light" name="CartaoSUS" ng-model="vm.paciente.CartaoSus" type="text">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="form-group" show-errors>
+                                                <label for="Mae" class="control-label">Mãe</label>
+                                                <input class="form-control bg-light" name="Mae" ng-model="vm.paciente.Mae" type="text">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="form-group" show-errors>
+                                                <label for="Pai" class="control-label">Pai</label>
+                                                <input class="form-control bg-light" name="Pai" ng-model="vm.paciente.Pai" type="text">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row" ng-if="vm.tipoSelecionado == 'PJ'">
+                                        <div class="col-md-4">
+                                            <div class="form-group" show-errors>
+                                                <label for="CNPJ" class="control-label required">CNPJ</label>
+                                                <input class="form-control bg-light" name="CNPJ" ng-model="vm.paciente.CNPJ" ui-br-cnpj-mask type="text" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="form-group" show-errors>
+                                                <label for="RazaoSocial" class="control-label required">Razão Social</label>
+                                                <input class="form-control bg-light" name="RazaoSocial" ng-model="vm.paciente.RazaoSocial" type="text" required>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row" ng-if="vm.tipoSelecionado == 'PJ'">
+                                        <div class="col-md-4">
+                                            <div class="form-group" show-errors>
+                                                <label for="IE" class="control-label">Inscrição Estadual</label>
+                                                <input class="form-control bg-light" name="IE" ng-model="vm.paciente.InscricaoEstadual" type="text">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="form-group" show-errors>
+                                                <label for="Fantasia" class="control-label required">Nome Fantasia</label>
+                                                <input class="form-control bg-light" name="NomeFantasia" ng-model="vm.paciente.NomeFantasia" type="text" required>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group" show-errors>
+                                                <label for="obs" class="control-label">Observação</label>
+                                                <textarea name="obs" ng-model="vm.paciente.Observacao" class="form-control bg-light" style="width:100%;" rows="5"></textarea>
+                                                <span>{{4000 - vm.paciente.Observacao.length}} Caracteres</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" ng-if="vm.paciente.IdPaciente > 0">
+                                        <div class="checkbox">
+                                            <label class="control-label required"> Situação </label>
+                                            <label for="Situacao" class="control-label">
+                                                <input type="radio" ng-model="vm.SituacaoA" i-check name="Situacao" value="Ativo">
+                                                Ativo
+                                            </label>
+
+                                            <label for="Situacao" class="control-label">
+                                                <input type="radio" ng-model="vm.SituacaoI" i-check name="Situacao" value="Inativo">
+                                                Inativo
+                                            </label>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <div class="tab-pane" id="tabendereco" role="tabpanel" aria-expanded="false">
+                                <form name="forms.dadosendereco" role="form">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <div class="form-group" show-errors>
+                                                <label for="Nome" class="control-label required">Cep</label>
+                                                <input class="form-control bg-light" name="Nome" ng-model="vm.paciente.Cep" type="text" ui-br-cep-mask required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group" show-errors>
+                                                <label for="Logradouro" class="control-label required">Logradouro</label>
+                                                <input class="form-control bg-light" name="Logradouro" ng-model="vm.paciente.Logradouro" type="text" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group" show-errors>
+                                                <label for="Nr" class="control-label required">Número</label>
+                                                <input class="form-control bg-light" name="Numero" ng-model="vm.paciente.Numero" type="text" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group" show-errors>
+                                                <label for="Bairro" class="control-label required">Bairro</label>
+                                                <input class="form-control bg-light" name="Bairro" ng-model="vm.paciente.Bairro" type="text" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group" show-errors>
+                                                <label for="estado" class="control-label required">Estado</label>
+                                                <select class="form-control m-b" ng-options="item.Id as item.Nome for item in vm.estados" name="estado" ng-model="vm.estadoSelecionado" required></select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group" show-errors>
+                                                <label for="Cidade" class="control-label required">Cidade</label>
+                                                <select class="form-control m-b" ng-options="item.Id as item.Nome for item in vm.cidades" name="Cidade" ng-model="vm.cidadeSelecionada" required></select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group" show-errors>
+                                                <label for="Complemento" class="control-label">Complemento</label>
+                                                <input class="form-control bg-light" name="Complemento" ng-model="vm.paciente.Complemento" type="text">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group" show-errors>
+                                                <label for="Referencia" class="control-label">Referência</label>
+                                                <input class="form-control bg-light" name="Referencia" ng-model="vm.paciente.Referencia" type="text">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <div class="tab-pane" id="tabcontato" role="tabpanel" aria-expanded="false">
+                                <form name="forms.dadoscontato" role="form">
+                                    <div class="row">
+
+                                        <div class="col-md-4">
+                                            <div class="form-group" show-errors>
+                                                <label for="TelCelular" class="control-label required">Telefone 1</label>
+                                                <input class="form-control bg-light" name="Telefone1" ng-model="vm.paciente.Telefone1" ui-br-phone-number type="text" required>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <div class="form-group" show-errors>
+                                                <label for="TelResidencial" class="control-label">Telefone 2</label>
+                                                <input class="form-control bg-light" name="Telefone2" ng-model="vm.paciente.Telefone2" ui-br-phone-number type="text">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <div class="form-group" show-errors>
+                                                <label for="Email" class="control-label required">Email</label>
+                                                <input class="form-control bg-light" name="Email" ng-model="vm.paciente.Email" type="email" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <div class="tab-pane" id="tabconvenio" role="tabpanel" aria-expanded="false">
+                                <form name="forms.dadosconvenio" role="form">
+                                    <!--<div class="alert alert-danger" scroll-if="vm.FormMessages.length > 0" style="width:100%; display: table; padding-top:16px; padding-bottom:15px; font-size:15px;" ng-show="vm.FormCarteiras.length > 0">
+                                        <!--<i class="fa fa-exclamation-triangle pull-left" style="font-size: 20px;"></i>-->
+                                    <!--<ul class="pull-left">
+                                            <li ng-repeat="message in vm.FormCarteiras"> {{ message }}</li>
+                                        </ul>
+                                    </div>-->
+                                    <br />
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group" show-errors>
+                                                <label for="convenios" class="control-label required">Convênio</label>
+                                                <select class="form-control m-b" ng-options="item.IdConvenio as item.Nome for item in vm.convenios" name="convenios" ng-model="vm.convenioSelecionado"></select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group" show-errors>
+                                                <label for="ncarteira" class="control-label required">Número da Carteira</label>
+                                                <input class="form-control bg-light" name="ncarteira" ng-model="vm.conveniopaciente.NumeroCarteira" type="text">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group" show-errors>
+                                                <label for="vcarteira" class="control-label required">Validade da Carteira</label>
+                                                <input class="form-control bg-light" name="vcarteira" ng-model="vm.conveniopaciente.ValidadeCarteira" ui-date-mask type="text">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-8">
+                                            <div class="form-group" show-errors>
+                                                <label for="plano" class="control-label required">Plano</label>
+                                                <input class="form-control bg-light" name="plano" ng-model="vm.conveniopaciente.Plano" type="text">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <button type="button" style="margin-left:20px; margin-top: 25px;" ng-click="vm.addCarteira()" tooltip="Adicionar Carteira" class="btn btn-primary btn-cons"><span class="fa fa-plus"></span> Adicionar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                                <br />
+
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <table class="table table-hover table-condensed table-striped" datatable="ng" dt-options="vm.dtOptions">
+                                            <thead>
+                                                <tr class="bg-complete-lighter">
+                                                    <th style="width: 25%">Convênio </th>
+                                                    <th style="width: 20%">Número </th>
+                                                    <th style="width: 15%">Validade </th>
+                                                    <th style="width: 25%">Plano</th>
+                                                    <th style="width: 15%">Ações</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr ng-repeat="x in vm.carteirasAdicionadas">
+                                                    <td>{{x.Convenio | uppercase}}</td>
+                                                    <td>{{x.NumeroCarteira }}</td>
+                                                    <td>{{x.ValidadeCarteira | date:'dd/MM/yyyy'}}</td>
+                                                    <td>{{x.Plano | uppercase}}</td>
+                                                    <td>
+                                                        <button type="button" class="btn btn-sm btn-danger" ng-click="vm.excluircarteira(x)" tooltip="Excluir Carteira"> <span class="fa fa-remove"></span> Excluir  </button>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                            <div class="tab-pane" id="tabFoto" role="tabpanel" aria-expanded="false">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="alert alert-error ng-scope ng-hide" ng-show="vm.webcamError" style="">
+                                            <span>Webcam could not be started. Did you give access to it?</span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6" style="padding:10px; background:#D8D8D8; text-align:center">
+                                            <webcam channel="vm.channel"
+                                                    on-streaming="vm.onSuccess()"
+                                                    on-error="vm.onError(err)"
+                                                    on-stream="vm.onStream(stream)"></webcam>
+                                            <button type="button" class="btn btn-primary" ng-click="vm.makeSnapshot()" ng-disabled="vm.step > 1"><i class="fa fa-camera-retro"></i> Capturar Imagem</button>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <canvas id="snapshot" width="320" height="240" ng-show="false"></canvas>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="col-md-12">
+                                                <div ng-show="vm.step == 2">
+                                                    <image-crop data-height="128"
+                                                                data-width="128"
+                                                                data-shape="square"
+                                                                data-step="imageCropStep"
+                                                                src="vm.imgSrc"
+                                                                data-result="result"
+                                                                data-result-blob="resultBlob"
+                                                                crop="vm.initCrop"
+                                                                padding="250"
+                                                                max-size="1024"></image-crop>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div ng-show="vm.step == 3">
+                                                    <div class="col-md-12">
+                                                        <div ng-show="false" ng-if="vm.basefoto == undefined">{{ vm.basefoto = result }}</div>
+                                                        <img ng-src="{{vm.basefoto}}" />
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <br />
+                                                        <button type="button" class="btn btn-default" ng-click="vm.clear()"><i class="fa fa-recycle"></i> Iniciar</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div ng-show="vm.step == 2">
+                                                    <br />
+                                                    <button type="button" class="btn btn-default" ng-click="vm.clear()"><i class="fa fa-recycle"></i> Iniciar</button>
+                                                    <button type="button" class="btn btn-default" ng-click="vm.initCrop = true"><i class="fa fa-crop"></i> Recortar</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal-footer" block-ui="blockModalCpaciente">
+    <button class="btn btn-default" ng-click="vm.cancel()">Cancelar</button>
+    <button class="btn btn-primary" ng-click="vm.save()"><i class="fa fa-save"></i> Salvar</button>
+</div>

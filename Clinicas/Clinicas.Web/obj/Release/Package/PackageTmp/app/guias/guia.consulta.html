@@ -1,0 +1,312 @@
+﻿<div class="modal-header" style="margin-bottom:10px;">
+    <button type="button" class="close" ng-click="vm.cancel()" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">×</span>
+    </button>
+    <h5 class="modal-title" id="myModalLabel">{{ vm.State }}  </h5>
+</div>
+<div class="modal-body">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-danger" ng-if="vm.FormMessage.length > 0">
+                <span><i class="fa fa-exclamation-triangle"></i> <strong>{{ vm.FormMessage }}</strong></span>
+            </div>
+            <form name="forms.crudguia" role="form" block-ui="blockModalGuiaConsulta" autocomplete="off" novalidate>
+                <div class="row" ng-if="vm.guia.IdGuia==0">
+                    <div class="col-md-8" style="margin-bottom:10px;">
+                            <label> Paciente </label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" disabled name="pessoa" ng-model="vm.pacienteSelecionadoNome">
+                                <span class="input-group-addon">
+                                    <a ng-click="vm.getpaciente()"><i class="fa fa-search" style="cursor:pointer"></i></a>
+                                </span>
+                            </div>
+                    </div>
+
+                    <div class="col-md-8" ng-if="vm.convenios.length > 0">
+                        <div class="form-group form-group-default" show-errors>
+                            <label>Convênios </label>
+                            <select class="form-control m-b" ng-options="item.IdCarteira as (item.Convenio + ' - ' + item.NumeroCarteira) for item in vm.convenios" name="Convenio" id="Convenio" ng-model="vm.convenioSelecionado" ng-change="vm.selecionarConvenio()" required></select>
+                        </div>
+                    </div>
+
+                </div>
+                <hr  ng-if="vm.guia.IdGuia==0" />
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group form-group-default required" show-errors>
+                            <label class="required">1 - Registro ANS </label>
+                            <input type="text" class="form-control" ng-model="vm.guia.RegistroANS" required name="registro">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group form-group-default input-group col-sm-10" show-errors>
+                            <label class="required">3 - Data emissão da guia</label>
+                            <input type="text" class="form-control inputcalendar" name="DataEmissaoGuia" required ng-model="vm.guia.DataEmissaoGuia" ui-date-mask bsdatepicker>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="alert alert-block" style="background:#f2f4f8; color:#514d6a; border:#dfe4ed solid 1px;" role="alert">
+                            <strong>Dados do Beneficiário </strong>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group form-group-default required" show-errors>
+                            <label class="required">4 - Número da Carteira</label>
+                            <input type="text" class="form-control" ng-model="vm.guia.NumeroCarteira" name="carteira" required>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group form-group-default required" show-errors>
+                            <label class="required">5 - Plano</label>
+                            <input type="text" class="form-control" ng-model="vm.guia.Plano" required name="plano">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group form-group-default required" show-errors>
+                            <label>6 - Validade da carteira</label>
+                            <input type="text" class="form-control inputcalendar" name="ValidadeCarteira" ng-model="vm.guia.ValidadeCarteira" ui-date-mask bsdatepicker>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="form-group form-group-default required" show-errors>
+                            <label class="required">7 - Nome</label>
+                            <input type="text" class="form-control" required ng-model="vm.guia.Nome" name="nome">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>8 - Número do Cartão Nacional de Saúde</label>
+                            <input type="text" class="form-control" ng-model="vm.guia.NumeroCartaoSus" name="sus">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="alert alert-block" style="background:#f2f4f8; color:#514d6a; border:#dfe4ed solid 1px;" role="alert">
+                            <strong>Dados do Contratado </strong>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group form-group-default required" show-errors>
+                            <label class="required">9 - Código Prestador/CPF/CNPJ</label>
+                            <input type="text" class="form-control" ng-model="vm.guia.CodigoNaOperadora" required name="codigoprestador">
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="form-group form-group-default required" show-errors>
+                            <label class="required">10 - Nome do prestador</label>
+                            <input type="text" class="form-control" required name="nomeprestador" ng-model="vm.guia.NomeContratado">
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-group form-group-default" show-errors>
+                            <label>11 - Código CNES</label>
+                            <input type="text" class="form-control" name="cnes" ng-model="vm.guia.CodigoCnes">
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-group form-group-default" show-errors>
+                            <label>12 - T.L.</label>
+                            <input type="text" class="form-control" name="tp" ng-model="vm.guia.TipoLogradouro">
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="form-group form-group-default" show-errors>
+                            <label>13-14-15 - Logradouro - Número - Complemento</label>
+                            <input type="text" class="form-control" name="logradouro" ng-model="vm.guia.Logradouro">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group form-group-default" show-errors>
+                            <label>16 - Município</label>
+                            <input type="text" class="form-control" name="municipio" ng-model="vm.guia.Municipio">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group form-group-default" show-errors>
+                            <label>17 - UF</label>
+                            <select class="form-control m-b" ng-options="item.Uf as item.Uf for item in vm.estados" name="estadocon" ng-model="vm.guia.UFContratado"></select>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group form-group-default">
+                            <label>18 - Código IBGE</label>
+                            <input type="text" class="form-control" name="CodigoIbge" ng-model="vm.guia.CodigoIBGEMunicipio">
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label>19 - CEP</label>
+                            <input type="text" class="form-control" name="cep" ng-model="vm.guia.CEP">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group form-group-default required" show-errors>
+                            <label>20 - Nome do executor</label>
+                            <input type="text" class="form-control" name="executor" ng-model="vm.guia.NomeProfissionalExecutante">
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-group form-group-default required" show-errors>
+                            <label class="required">21 - Conselho</label>
+                            <select class="form-control m-b" ng-options="item.Key as item.Value for item in vm.conselhos" name="conselhos" id="conselhos" ng-model="vm.guia.ConselhoProfissional" required></select>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group form-group-default required" show-errors>
+                            <label class="required">22 - Número</label>
+                            <input type="text" class="form-control" name="numeroconselho" required ng-model="vm.guia.NumeroConselho">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group" show-errors>
+                            <label class="required">23 - UF Conselho</label>
+                            <select class="form-control m-b" ng-options="item.Uf as item.Uf for item in vm.estados" name="estado" id="estado" ng-model="vm.guia.UFConselho" required></select>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group form-group-default">
+                            <label>24 - CBO-S</label>
+                            <input type="text" class="form-control" name="cbos" ng-model="vm.guia.CodigoCBOs">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="alert alert-block" style="background:#f2f4f8; color:#514d6a; border:#dfe4ed solid 1px;" role="alert">
+                            <strong>Hipóteses Diagnósticas </strong>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group" show-errors>
+                            <label>25 - Tipo de doença</label>
+                            <select class="form-control m-b" ng-options="item.Key as item.Value for item in vm.tipodoencas" name="indicacoesacidente" id="indicacoesacidente" ng-model="vm.guia.TipoDoenca"></select>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>26 - Tempo</label>
+                            <input type="text" class="form-control" name="valor" ng-model="vm.guia.ValorTempo">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group form-group-default" show-errors>
+                            <label>26 - Tempo de doença</label>
+                            <select class="form-control m-b" ng-options="item.Key as item.Value for item in vm.tempodoencas" name="indicacoesacidente" id="indicacoesacidente" ng-model="vm.guia.TempoDoenca"></select>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group form-group-default required" show-errors>
+                            <label>27 - Indicação de acidente</label>
+                            <select class="form-control m-b" ng-options="item.Key as item.Value for item in vm.indicacoesacidente" name="indicacoesacidente" id="indicacoesacidente" ng-model="vm.guia.IndicacaoAcidente"></select>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>28 - CID Principal</label>
+                            <input type="text" class="form-control" name="cid1" ng-model="vm.guia.CID10">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>29 - CID (2)</label>
+                            <input type="text" class="form-control" name="cid2" ng-model="vm.guia.CID102">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>30 - CID (3)</label>
+                            <input type="text" class="form-control" name="cid3" ng-model="vm.guia.CID103">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>31 - CID (4)</label>
+                            <input type="text" class="form-control" name="cid4" ng-model="vm.guia.CID104">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="alert alert-block" style="background:#f2f4f8; color:#514d6a; border:#dfe4ed solid 1px;" role="alert">
+                            <strong>Dados do Atendimento / Procedimnto Realizado </strong>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group form-group-default required" show-errors>
+                            <label class="required">32 - Data do Atendimento </label>
+                            <input type="text" class="form-control inputcalendar" name="dataatendimento" required ng-model="vm.guia.DataAtendimento" bsdatepicker ui-date-mask>
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-4">
+                        <div class="form-group form-group-default required" show-errors>
+                            <label class="required">33 - Código Tabela</label>
+                            <input type="text" class="form-control" name="tabela" required ng-model="vm.guia.CodigoTabela">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group form-group-default required" show-errors>
+                            <label class="required">34 - Código do procedimento</label>
+                            <input type="text" class="form-control" name="codigoproc" required ng-model="vm.guia.CodigoProcedimento">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group form-group-default required" show-errors>
+                            <label class="required">35 - Tipo da consulta</label>
+                            <select class="form-control" ng-options="item.Key as item.Value for item in vm.tiposconsulta" name="tiposconsulta" id="tiposconsulta" ng-model="vm.guia.TipoConsulta" required></select>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group form-group-default required" show-errors>
+                            <label class="required">36 - Tipo de Saída</label>
+                            <select class="form-control" ng-options="item.Key as item.Value for item in vm.tiposaidas" name="saida" id="saida" ng-model="vm.guia.TipoSaida" required></select>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>37 - Observações</label>
+                            <textarea class="form-control" cols="3" rows="3" style="width:100%; height:100px;" ng-model="vm.guia.Observacao"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function () {
+            $(".inputcalendar").datepicker({
+                language: "pt-BR",
+                format: 'dd/mm/yyyy',
+                dayNames: ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'],
+                dayNamesMin: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S', 'D'],
+                dayNamesShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'],
+                monthNames: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+                monthNamesShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+                nextText: 'Próximo',
+                prevText: 'Anterior'
+            });
+
+        });
+    </script>
+
+</div>
+
+<div class="modal-footer">
+    <button class="btn btn-default" ng-click="vm.cancel()">Fechar</button>
+    <button class="btn btn-success" ng-click="vm.save('N')"><i class="fa fa-save"></i> Salvar e Adicionar outra</button>
+    <button class="btn btn-primary" ng-click="vm.save('S')"><i class="fa fa-save"></i> Salvar</button>
+</div>

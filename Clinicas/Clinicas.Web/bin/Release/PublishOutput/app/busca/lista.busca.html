@@ -1,0 +1,48 @@
+﻿<section class="panel">
+    <div class="panel-heading">
+        <div class="margin-bottom-10">
+            <ul class="list-unstyled breadcrumb breadcrumb-custom" ng-cloak>
+                <li>
+                    <a href="#" class="active"><i class="icmn-home"></i> Página Inicial</a>
+                </li>
+                <li ng-repeat="item in $root.currentCrumbs" ng-cloak>
+                    <a href="#" class="active">{{ item.name }}</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="panel-body" block-ui="blockModalListaFor">
+
+        <div class="row">
+            <div class="col-md-12">
+                <h4> Busca - {{ vm.busca  }}  </h4>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="row">
+                    <div class="col-md-12">
+                        <table class="table table-hover table-condensed table-striped" datatable="ng" dt-options="vm.dtOptions">
+                            <thead>
+                                <tr class="bg-complete-lighter">
+                                    <th style="width: 25%">Resultado de Busca </th>
+                               </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="x in vm.dados">
+                                    <td>
+                                        <h4><a  ui-sref="{{ x.Link }}">   {{x.Titulo | uppercase}} </a></h4>
+                                        <p>  {{x.Descricao | uppercase}} </p>
+                                    
+                                    </td>
+                                    
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

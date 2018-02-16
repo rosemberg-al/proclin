@@ -1,0 +1,89 @@
+﻿<section class="panel" block-ui="block">
+    <div class="panel-heading">
+        <div class="margin-bottom-10">
+            <ul class="list-unstyled breadcrumb breadcrumb-custom" ng-cloak>
+                <li>
+                    <a href="#" class="active"><i class="icmn-home"></i> Página Inicial</a>
+                </li>
+                <li ng-repeat="item in $root.currentCrumbs" ng-cloak>
+                    <a href="#" class="active">{{ item.name }}</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="panel-body" block-ui="block">
+       
+       <div class="row">
+            <div class="col-lg-12">
+                <div class="alert alert-danger" ng-if="vm.FormMessage.length > 0">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <i class="fa fa-exclamation-triangle pull-left" style="font-size: 20px;"></i>
+                            {{vm.FormMessage}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+       </div>
+
+        <div class="row">
+            <div class="col-md-9">
+                <h4> Movimento de Estoque </h4>
+            </div>
+
+            <div class="col-md-3 control-label text-left">
+                <div class="form-group pull-right">
+                    <a ng-click="vm.addMovimentoEstoque(0)" class="btn btn-primary">
+                        <i class="fa fa-plus-square-o"></i>
+                        <span class="bold">  Novo</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <br />
+                <div class="row">
+                    <div class="col-md-12">
+                        <table class="table table-hover table-condensed table-striped" datatable="ng">
+                            <thead>
+                                <tr class="bg-complete-lighter">
+                                    <th style="width:5%">Código </th>
+                                    <th>Nome </th>
+                                    <th>Data </th>
+                                    <th>Tipo </th>
+                                    <th>Quantidade </th>
+                                    <th>Situação </th>
+                                    <!--<th >Ações</th>-->
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="item in vm.movimentos">
+                                    <td>{{item.IdMovimentoEstoque }}</td>
+                                    <td>{{item.Nome }}</td>
+
+                                    <td>{{item.Data | date: 'dd/MM/yyyy' }}</td>
+                                    <td>
+                                        <span ng-class="{'label label-success': item.Tipo == 'Entrada',
+                                                                        'label label-danger': item.Tipo == 'Saida' }">{{ item.Tipo }}</span>
+                                    </td>
+                                    <td>{{item.Quantidade | currency:'' }}</td>
+                                    <td>
+                                        <span ng-class="{'label label-success':item.Situacao == 'Ativo',
+                                                                        'label label-default': item.Situacao == 'Inativo',
+                                                                        'label label-danger': item.Situacao == 'Excluido' }">{{ item.Situacao }}</span>
+                                    </td>
+                                  
+                                    <!--<td>
+                                        <button type="button" class="btn btn-sm btn-danger" ng-click="vm.excluirMovimentoEstoque(item.IdMovimentoEstoque)"><i class="fa fa-remove" aria-hidden="true"></i> Excluir</button>
+                                    </td>-->
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

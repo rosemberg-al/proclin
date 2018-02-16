@@ -1,0 +1,82 @@
+﻿<div class="modal-body">
+    <div class="modal-header">
+        <h4 class="modal-title">Tabela de Preços do convênio {{vm.nomeConvenio}}</h4>
+        <small class="font-bold"></small>
+    </div>
+    <br />
+    <hr />
+    <div class="modal-body" block-ui="blockModalListaTabProc">
+        <div class="row white-bg dashboard-header">
+            <div class="row">
+                <form name="forms.formAddProc" ng-enter="vm.addProcedimento()" ng-submit="vm.addProcedimento()" role="form" id="form" autocomplete="off" novalidate>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group" show-errors>
+                                <label for="procedimento" class="control-label required">Procedimento</label>
+                                <select class="form-control m-b" ng-options="item.IdProcedimento as item.NomeProcedimento for item in vm.procedimentos" name="procedimento" ng-model="vm.procedimentoSelecionado" required></select>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group" show-errors>
+                                <label for="valor" class="control-label required">Valor</label>
+                                <input class="form-control bg-light" name="valor" ng-model="vm.tabela.Valor" ui-number-mask="2" value="{{vm.tabela.Valor | number: 2 }}" type="text" required>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group" show-errors>
+                                <label for="valorProfissional" class="control-label required">Valor Profissional</label>
+                                <input class="form-control bg-light" name="valorProfissional" ng-model="vm.tabela.ValorProfissional" ui-number-mask="2" value="{{vm.tabela.ValorProfissional | number: 2 }}" type="text" required>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <button type="button" style="margin-top: 25px;" class="btn btn-primary pull-left" ng-click="vm.addProcedimento()">Incluir</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <br />
+        <div class="bordered" ng-class="vm.AlertClassDiv" ng-if="vm.hideLoader">
+            <p class="pull-left">
+                <i ng-class="vm.AlertClassI"></i>
+                <strong> {{ vm.FormMessage }}</strong> 
+            </p>
+            <div class="clearfix"></div>
+        </div>
+        <hr />
+        <div class="row white-bg dashboard-header" ng-if="vm.tabelas.length > 0">
+            <div class="row">
+                <div class="col-lg-12">
+                    <table class="table table-hover demo-table-dynamic" datatable="ng" dt-options="vm.dtOptions">
+                        <thead>
+                            <tr>
+                                <th style="width:45%;">Procedimento</th>
+                                <th style="width:15%;">Valor</th>
+                                <th style="width:15%;">Valor Profissional</th>
+                                <th style="width:15%;">Diferença</th>
+                                <th style="width:10%;">Excluir</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="item in vm.tabelas">
+                                <td>{{ item.NomeProcedimento | uppercase }}</td>
+                                <td>{{item.Valor | number: 2 }}</td>
+                                <td>{{item.ValorProfissional | number: 2 }}</td>
+                                <td>{{(item.Valor - item.ValorProfissional) | number: 2 }}</td>
+                                <td>
+                                    <a class="btn btn-danger btn-bitbucket" ng-click="vm.excluirItem(item)">
+                                        <i class="fa fa-trash-o"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-white" ng-click="vm.cancel()">Fechar</button>
+        </div>
+    </div>

@@ -1,0 +1,122 @@
+﻿<div class="modal-header" style="margin-bottom:10px;">
+    <button type="button" class="close" ng-click="vm.cancelar()" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">×</span>
+    </button>
+    <h5 class="modal-title" id="myModalLabel">{{ vm.titulo }}</h5>
+</div>
+<div class="modal-body" block-ui="blockModalEditParcela">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-danger" ng-if="vm.msgalert.length > 0">
+                <span><i class="fa fa-exclamation-triangle"></i> <strong>{{ vm.msgalert }}</strong></span>
+            </div>
+            
+            <form id="frm" name="forms.editparcela" novalidate>
+                <input type="hidden" name="codigo" ng-model="vm.parcela.IdParcela" class="form-control" readonly>
+                <div class="col-md-12">
+                    <div class="col-sm-8">
+                        <div class="form-group" show-errors>
+                            <label class="required">{{vm.tituloPessoa}}</label>
+                            <input type="text" name="pessoa" ng-model="vm.parcela.NomeCliente" class="form-control" readonly>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="col-sm-4">
+                        <div class="form-group" show-errors>
+                            <label  class="required">Valor</label>
+                            <input type="text" name="valor" placeholder="Valor" class="form-control" ng-model="vm.parcela.Valor" ui-number-mask="2" value="{{vm.parcela.Valor | number: 2 }}" readonly>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group" show-errors>
+                            <label  class="required">Data de Vencimento </label>
+                            <input type="text" name="datavenc" ng-model="vm.parcela.DataVencimento" class="form-control inputcalendar" value="{{vm.parcela.DataVencimento | date:'dd/MM/yyyy' }}" ui-date-mask required readonly>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group" show-errors>
+                            <label class="required">Plano de Conta </label>
+                            <select class="form-control m-b" ng-options="item.IdPlanoConta as item.NmPlanoConta for item in vm.planos" name="plano" ng-model="vm.planoSelecionado" required></select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="col-sm-4">
+                        <div class="form-group" show-errors>
+                            <label class="required">Conta</label>
+                            <select class="form-control m-b" ng-options="item.IdConta as item.Nome for item in vm.contas" name="contas" ng-model="vm.contaSelecionada" required></select>
+                        </div>
+                    </div>
+                    <!--<div class="col-sm-4">
+                        <div class="form-group" show-errors>
+                            <label class="required">Situação </label>
+                            <select class="form-control m-b" ng-options="item.Key as item.Value for item in vm.situacoes" name="tipos" ng-model="vm.situacaoSelecionada" required></select>
+                        </div>
+                    </div>-->
+                    <div class="col-sm-4">
+                        <div class="form-group" show-errors>
+                            <label class="required">Meio de Pagamento </label>
+                            <select class="form-control m-b" ng-options="item.IdMeioPagamento as item.NmMeioPagamento for item in vm.meiospagamentos" name="meiospagamentos" ng-model="vm.tipopagamentoSelecionado" required></select>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group" show-errors>
+                            <label  class="required">Data de Acerto </label>
+                            <input type="text" name="datavencAcerto" required ng-model="vm.parcela.DataAcerto" class="form-control inputcalendar" value="{{vm.parcela.DataAcerto | date:'dd/MM/yyyy' }}" ui-date-mask>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label>Desconto (-)</label>
+                            <input type="text" name="desconto" placeholder="Desconto" class="form-control" ng-model="vm.parcela.ValorDesconto" ui-number-mask="2" ng-blur="vm.calcularDesconto()" value="{{vm.parcela.ValorDesconto | number: 2 }}">
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label>Acréscimo (+)</label>
+                            <input type="text" name="valorAcertoAcrescimo" placeholder="Acréscimo" class="form-control" ng-model="vm.parcela.ValorAcrescimo" ui-number-mask="2" ng-blur="vm.calcularAcrescimo()" value="{{vm.parcela.ValorAcrescimo | number: 2 }}">
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label>Total</label>
+                            <input type="text" name="totalPago" placeholder="Total Pago" class="form-control" ng-model="vm.parcela.TotalAcerto" ui-number-mask="2" value="{{vm.parcela.TotalAcerto | number: 2 }}" readonly>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Observação</label>
+                            <textarea ng-model="vm.parcela.Observacao" class="form-control">{{vm.parcela.Observacao}}</textarea>
+                        </div>
+                    </div>
+                </div>
+                
+            </form>
+
+
+        </div>
+    </div>
+</div>
+<div class="modal-footer"  block-ui="blockModalEditParcela"> 
+    <button class="btn btn-default" ng-click="vm.cancelar()">Cancelar</button>
+    <button class="btn btn-primary" ng-click="vm.salvar()"><i class="fa fa-save"></i> Salvar</button>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $(".inputcalendar").datepicker({
+            language: "pt-BR",
+            format: 'dd/mm/yyyy',
+            dayNames: ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'],
+            dayNamesMin: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S', 'D'],
+            dayNamesShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'],
+            monthNames: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+            monthNamesShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+            nextText: 'Próximo',
+            prevText: 'Anterior'
+        });
+
+    });
+</script>

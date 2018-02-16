@@ -1,0 +1,610 @@
+﻿
+<div class="row" block-ui="blockPaciente">
+    <div class="col-md-12">
+        <div id="portlet-linear" class="panel panel-default">
+            <div class="panel-heading ">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="row">
+                            <div class="col-md-4" style="width:auto">
+                                <img src="http://placehold.it/200x200" style="" alt="" class="img-rounded img-responsive" />
+                            </div>
+                            <div class="col-md-6 no-margin">
+                                <h4>
+                                    <strong> {{ vm.pacienteAtendimento.NmPaciente | uppercase }}</strong>
+                                </h4>
+                                <p title="{{ vm.pacienteAtendimento.Complemento }}"> <i class="glyphicon glyphicon-map-marker"></i> {{ vm.pacienteAtendimento.Logradouro }}, {{ vm.pacienteAtendimento.Nr }} - {{ vm.pacienteAtendimento.Bairro }}  - {{ vm.pacienteAtendimento.Cidade }} - {{ vm.pacienteAtendimento.Estado }} - {{ vm.pacienteAtendimento.Cep }} </p>
+                                <p> <i class="fa fa-calendar"></i> Nascimento: {{ vm.pacienteAtendimento.DtNascimento  | date:'dd/MM/yyyy' }} </p>
+                                <p> <i class="fa fa-user"></i> Mãe: {{ vm.pacienteAtendimento.Mae }}  </p>
+                                <p> <i class="glyphicon glyphicon-envelope"></i> Email: {{ vm.pacienteAtendimento.Email }} </p>
+                                <p> <i class="fa fa-phone"></i> Celular: {{ vm.pacienteAtendimento.TelCelular }}  </p>
+                            </div>
+                            <div class="col-md-2">
+                                <button type="button" ng-click="vm.cadastro(vm.pacienteAtendimento)" class="btn btn-primary pull-right">Visualizar Cadastro</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="nav-tabs-horizontal">
+                <ul class="nav nav-tabs" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" data-toggle="tab" data-target="#tabAnamnese" role="tab" aria-expanded="true">
+                            <i class="icmn-aid-kit"></i>
+                            Anamnese
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" data-target="#tabHistoria" role="tab" aria-expanded="true">
+                            <i class="icmn-aid-kit"></i>
+                            Hist. Pregressa
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" data-target="#tabReceituario" role="tab" aria-expanded="true">
+                            <i class="icmn-aid-kit"></i>
+                            tabReceituario
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" data-target="#tabVacinas" role="tab" aria-expanded="true">
+                            <i class="icmn-aid-kit"></i>
+                            Vacinas
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" data-target="#tabAtestados" role="tab" aria-expanded="true">
+                            <i class="fa fa-heartbeat"></i>
+                            Atestados
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" data-target="#tabModidas" role="tab" aria-expanded="true">
+                            <i class="fa fa-stethoscope"></i>
+                            M. Antropométricas
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" data-target="#tabRequisicao" role="tab" aria-expanded="true">
+                            <i class="fa fa-medkit"></i>
+                            R. de Exames
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" data-target="#tabAtendimentos" role="tab" aria-expanded="true">
+                            <i class="fa fa-user-md"></i>
+                            Últimos Atendimentos
+                        </a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane active" id="tabAnamnese">
+                        <div class="row column-seperation">
+                            <div class="col-md-12">
+                                <div class="panel-body m-t-20">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="pull-right">
+                                                <div class="col-xs-12">
+                                                    <button type="button" ng-click="vm.anamneseModal(vm.pacienteAtendimento, 0)" value="Anamnese" class="btn btn-primary btn-cons"><span class="glyphicon glyphicon-plus-sign"></span> Anamnese</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <table class="table table-hover table-condensed table-striped" datatable="ng">
+                                                <thead>
+                                                    <tr class="bg-complete-lighter">
+                                                        <th style="width: 10%">Data </th>
+                                                        <th style="width: 10%">HMA </th>
+                                                        <th style="width: 20%">Diagnostico</th>
+                                                        <th style="width: 15%">Conduta</th>
+                                                        <th style="width: 15%">Situação</th>
+                                                        <th style="width: 10%">Ações</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr ng-repeat="x in vm.anamneses">
+                                                        <td>{{ x.Data | date: 'dd/MM/yyyy'  }}</td>
+                                                        <td>{{ x.Hma }}</td>
+                                                        <td>{{ x.Diagnostico }}</td>
+                                                        <td>{{ x.CondutaMedica }}</td>
+                                                        <td>
+                                                            <span ng-class="{'badge badge-success': x.Situacao == 'Ativo',
+                                                                        'badge badge-important': x.Situacao == 'Inativo' }">{{ x.Situacao }}</span>
+                                                        </td>
+                                                        <td>
+                                                            <button type="button" class="btn btn-xs btn-primary" ng-click="vm.anamneseModal(vm.pacienteAtendimento, x.IdAnamnese)" tooltip="Editar"> <span class="glyphicon glyphicon-edit"></span></button>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane " id="tabHistoria">
+                        <div class="row column-seperation">
+                            <div class="col-md-12">
+                                <div class="panel-body m-t-20">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="pull-right">
+                                                <div class="col-xs-12">
+                                                    <button type="button" ng-click="vm.historiaModal(vm.pacienteAtendimento, 0)" value="História" class="btn btn-primary btn-cons"><span class="glyphicon glyphicon-plus-sign"></span> História Pregressa</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <table class="table table-hover table-condensed table-striped" datatable="ng">
+                                                <thead>
+                                                    <tr class="bg-complete-lighter">
+                                                        <th style="width: 10%">Data</th>
+                                                        <th style="width: 75%">Descrição </th>
+                                                        <th style="width: 10%">Situação</th>
+                                                        <th style="width: 5%">Ações</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr ng-repeat="x in vm.historias">
+                                                        <td>{{ x.Data | date: 'dd/MM/yyyy'  }}</td>
+                                                        <td title="{{ x.Descricao }}">{{ x.Descricao }}</td>
+                                                        <td>
+                                                            <span ng-class="{'badge badge-success': x.Situacao == 'Ativo',
+                                                                        'badge badge-important': x.Situacao == 'Inativo'}">{{ x.Situacao }}</span>
+                                                        </td>
+                                                        <td>
+                                                            <button type="button" class="btn btn-xs btn-primary" ng-click="vm.historiaModal(vm.pacienteAtendimento, x.IdHistoriaPregressa)" tooltip="História Pregressa"> <span class="glyphicon glyphicon-edit"></span>  </button>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="tabReceituario">
+                        <div class="row column-seperation">
+                            <div class="col-md-12">
+                                <div class="panel-body m-t-20">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="pull-right">
+                                                <div class="col-xs-12">
+                                                    <button type="button" ng-click="vm.receituarioModal(vm.pacienteAtendimento, 0)" value="Receituário" class="btn btn-primary btn-cons"><span class="glyphicon glyphicon-plus-sign"></span> Receituário</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <table class="table table-hover table-condensed table-striped" datatable="ng">
+                                                <thead>
+                                                    <tr class="bg-complete-lighter">
+                                                        <th style="width: 20%">Profissional </th>
+                                                        <th style="width: 15%">Data </th>
+                                                        <th style="width: 10%">Situacao</th>
+                                                        <th style="width: 10%">Ações</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr ng-repeat="x in vm.receituarios">
+                                                        <td>{{ x.NomeFuncionario }}</td>
+                                                        <td>{{ x.Data | date: 'dd/MM/yyyy'}}</td>
+                                                        <td>
+                                                            <span ng-class="{'badge badge-success': x.Situacao == 'Ativo',
+                                                                    'badge badge-important': x.Situacao == 'Excluido'}">{{ x.Situacao }}</span>
+                                                        </td>
+                                                        <td>
+                                                            <button type="button" class="btn btn-xs btn-primary" ng-click="vm.receituarioModal(vm.pacienteAtendimento, x.IdReceituario)" tooltip="Editar"> <span class="glyphicon glyphicon-edit"></span>  </button>
+                                                            <button type="button" class="btn btn-xs btn-success" ng-click="vm.printReceituario(x.IdReceituario)" tooltip="Imprimir Receita"> <span class="glyphicon glyphicon-print"></span>  </button>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="tabVacinas">
+                        <div class="row column-seperation">
+                            <div class="col-md-12">
+                                <div class="panel-body m-t-20">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="pull-right">
+                                                <div class="col-xs-12">
+                                                    <button type="button" ng-click="vm.vacinasModal(vm.pacienteAtendimento,0)" value="Vacinas" class="btn btn-primary btn-cons"><span class="glyphicon glyphicon-plus-sign"></span> Vacinas</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <table class="table table-hover table-condensed table-striped" datatable="ng">
+                                                <thead>
+                                                    <tr class="bg-complete-lighter">
+                                                        <th style="width: 40%">Vacina </th>
+                                                        <th style="width: 15%">Data </th>
+                                                        <th style="width: 15%">Hora</th>
+                                                        <th style="width: 10%">Lote</th>
+                                                        <th style="width: 10%">Dose</th>
+                                                        <th style="width: 10%">Ações</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr ng-repeat="x in vm.vacinaspaciente">
+                                                        <td>{{ x.Vacina.Descricao}}</td>
+                                                        <td>{{ x.Data | date: 'dd/MM/yyyy'}}</td>
+                                                        <td>{{ x.Hora | date: 'HH:mm'}}</td>
+                                                        <td>{{ x.Lote }}</td>
+                                                        <td>{{ x.Dose }}</td>
+                                                        <td>
+                                                            <button type="button" class="btn btn-xs btn-primary" ng-click="vm.vacinasModal(vm.pacienteAtendimento, x.IdRegistroVacina)" tooltip="Editar"> <span class="glyphicon glyphicon-edit"></span>  </button>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="tabAtestados">
+                        <div class="row column-seperation">
+                            <div class="col-md-12">
+                                <div class="panel-body m-t-20">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="pull-right">
+                                                <div class="col-xs-12">
+                                                    <button type="button" ng-click="vm.atestadosModal(vm.pacienteAtendimento,0)" value="Vacinas" class="btn btn-primary btn-cons"><span class="glyphicon glyphicon-plus-sign"></span> Atestados</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <table class="table table-hover table-condensed table-striped" datatable="ng">
+                                                <thead>
+                                                    <tr class="bg-complete-lighter">
+                                                        <!--<th style="width: 45%">Descricao </th>-->
+                                                        <th style="width: 50%">Profissional </th>
+                                                        <th style="width: 20%">Data </th>
+                                                        <th style="width: 20%">Situacao</th>
+                                                        <th style="width: 10%">Ações</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr ng-repeat="x in vm.atestadosPaciente">
+                                                        <!--<td ng-bind-html="x.Descricao"></td>-->
+                                                        <td>{{ x.NomeFuncionario }}</td>
+                                                        <td>{{ x.Data | date: 'dd/MM/yyyy'}}</td>
+                                                        <td>
+                                                            <span ng-class="{'badge badge-success': x.Situacao == 'Ativo',
+                                                                    'badge badge-important': x.Situacao == 'Excluido'}">{{ x.Situacao }}</span>
+                                                        </td>
+                                                        <td>
+                                                            <button type="button" class="btn btn-xs btn-primary" ng-click="vm.atestadosModal(vm.pacienteAtendimento, x.IdAtestado)" tooltip="Editar Atestado"> <span class="glyphicon glyphicon-edit"></span>  </button>
+                                                            <button type="button" class="btn btn-xs btn-success" ng-click="vm.printAtestado(x.IdAtestado)" tooltip="Imprimir Atestado"> <span class="glyphicon glyphicon-print"></span>  </button>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="tabModidas">
+
+
+                        <div class="row column-seperation">
+                            <div class="col-md-12">
+                                <div class="panel-body m-t-20">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="pull-right">
+                                                <div class="col-xs-12">
+                                                    <button type="button" ng-click="vm.medidasModal(vm.pacienteAtendimento,0)" tooltip="Medidas Antropométricas" class="btn btn-primary btn-cons"><span class="glyphicon glyphicon-plus-sign"></span> Medidas Antropométricas</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <table class="table table-hover table-condensed table-striped" datatable="ng">
+                                                <thead>
+                                                    <tr class="bg-complete-lighter">
+                                                        <th style="width: 20%">Data </th>
+                                                        <th style="width: 20%">Peso </th>
+                                                        <th style="width: 20%">Altura </th>
+                                                        <th style="width: 20%">Perimetro Cefalico</th>
+                                                        <th style="width: 10%">IMC</th>
+                                                        <th style="width: 10%">Ações</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr ng-repeat="x in vm.medidas">
+                                                        <td>{{ x.Data | date: 'dd/MM/yyyy'}}</td>
+                                                        <td>{{ x.Peso }}</td>
+                                                        <td>{{ x.Altura }}</td>
+                                                        <td>{{ x.PerimetroCefalico }}</td>
+                                                        <td><status-imc imc="{{x.Imc}}" sexo="{{vm.pacienteAtendimento.Sexo}}"></status-imc></td>
+                                                        <td>
+                                                            <button type="button" class="btn btn-xs btn-primary" ng-click="vm.medidasModal(vm.pacienteAtendimento, x.IdMedida)" tooltip="Editar"> <span class="glyphicon glyphicon-edit"></span> </button>
+                                                            <button type="button" class="btn btn-xs btn-danger" ng-click="vm.excluirmedidas(x.IdMedida)" tooltip="Excluir"> <span class="glyphicon glyphicon-remove"></span> </button>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div id="cont_altura"></div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div id="cont_peso"></div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div id="cont_cabeca"></div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="tabRequisicao">
+                        <div class="row column-seperation">
+                            <div class="col-md-12">
+                                <div class="panel-body m-t-20">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="pull-right">
+                                                <div class="col-xs-12">
+                                                    <button type="button" ng-click="vm.ExamesModal(vm.pacienteAtendimento,0)" tooltip="Requisição de Exames" class="btn btn-primary btn-cons"><span class="glyphicon glyphicon-plus-sign"></span> Requisição de Exames</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <table class="table table-hover table-condensed table-striped" datatable="ng">
+                                                <thead>
+                                                    <tr class="bg-complete-lighter">
+                                                        <th style="width: 10%">Data </th>
+                                                        <th style="width: 40%">Médico </th>
+                                                        <th style="width: 10%">Natureza </th>
+                                                        <th style="width: 20%">Classe</th>
+                                                        <th style="width: 10%">Tipo</th>
+                                                        <th style="width: 10%">Ações</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr ng-repeat="x in vm.requisicoes">
+                                                        <td>{{ x.Data | date: 'dd/MM/yyyy'}}</td>
+                                                        <td>{{ x.MedicoSolicitante }}</td>
+                                                        <td>{{ x.NaturezaExame }}</td>
+                                                        <td>{{ x.Classe }}</td>
+                                                        <td>
+                                                            <span ng-class="{'label label-important': x.Tipo == 'Urgente',
+                                                                    'label label-info': x.Tipo == 'Rotina',
+                                                                    'label label-success': x.Tipo == 'Controle'}">{{ x.Tipo }}</span>
+                                                        </td>
+                                                        <td>
+                                                            <button type="button" class="btn btn-xs btn-primary" ng-click="vm.ExamesModal(vm.pacienteAtendimento, x.IdRequisicao)" tooltip="Requisição de Exames"> <span class="glyphicon glyphicon-edit"></span>  </button>
+                                                            <button type="button" class="btn btn-xs btn-success" ng-click="vm.printRequisicao(x.IdRequisicao)" tooltip="Imprimir Requisição"> <span class="glyphicon glyphicon-print"></span>  </button>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="tabAtendimentos">
+                        <div class="row column-seperation">
+                            <div class="col-md-12">
+                                <div class="panel-body m-t-20">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <table class="table table-hover table-condensed table-striped" datatable="ng" dt-options="vm.dtOptions">
+                                                <thead>
+                                                    <tr class="bg-complete-lighter">
+                                                        <th style="width: 15%">Data </th>
+                                                        <th style="width: 15%">Hora </th>
+                                                        <th style="width: 40%">Médico </th>
+                                                        <th style="width: 20%">Situação</th>
+                                                        <th style="width: 10%">Ações</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr ng-repeat="x in vm.ultimosatendimentos">
+                                                        <td>{{ x.Data | date: 'dd/MM/yyyy'}}</td>
+                                                        <td>{{ x.Hora }}</td>
+                                                        <td>{{ x.NmFuncionario }}</td>
+                                                        <td>
+                                                            <span ng-class="{'label label-important': x.Situacao == 'CANCELADO',
+                                                                    'label label-info': x.Situacao == 'MARCADO',
+                                                                    'label label-success': x.Situacao == 'REALIZADO'}">{{ x.Situacao }}</span>
+                                                        </td>
+                                                        <td>
+                                                            <button type="button" class="btn btn-xs btn-primary" ng-click="vm.visualizarAtendimento(x.CdAgenda)" tooltip="Visualizar Atendimento"> <span class="glyphicon glyphicon-search"></span>  </button>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div id="cont_altura"></div>
+    </div>
+    <div class="col-md-6">
+        <div id="cont_peso"></div>
+    </div>
+    <div class="col-md-6">
+        <div id="cont_cabeca"></div>
+    </div>
+</div>
+
+
+<script>
+
+
+    Highcharts.chart('cont_altura', {
+
+        title: {
+            text: 'Altura em cm'
+        },
+        colors: ['#562F1E'],
+
+        /* subtitle: {
+            text: 'Altura x Peso x '
+        }, */
+
+        /* yAxis: {
+             title: {
+                 text: 'Altura'
+             }
+         }, */
+        legend: {
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'middle'
+        },
+
+        plotOptions: {
+            series: {
+                pointStart: 0
+            }
+        },
+
+        series: [{
+            name: 'Altura em cm',
+            data: [0.3, 0.5, 0.6, 0.7, 0.8, 1]
+        }]
+
+    });
+
+
+    Highcharts.chart('cont_peso', {
+
+        title: {
+            text: 'Peso em kg'
+        },
+        colors: ['#B22222'],
+        /* subtitle: {
+            text: 'Altura x Peso x '
+        }, */
+
+        /* yAxis: {
+             title: {
+                 text: 'Altura'
+             }
+         }, */
+        legend: {
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'middle'
+        },
+
+        plotOptions: {
+            series: {
+                pointStart: 0
+            }
+        },
+
+        series: [{
+            name: 'Peso em kg',
+            data: [0.3, 0.5, 0.6, 0.7, 0.8, 1]
+        }]
+
+    });
+
+    Highcharts.chart('cont_cabeca', {
+
+        title: {
+            text: 'Cabeça em cm'
+        },
+        colors: ['#3CB371'],
+        /* subtitle: {
+            text: 'Altura x Peso x '
+        }, */
+
+        /* yAxis: {
+             title: {
+                 text: 'Altura'
+             }
+         }, */
+        legend: {
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'middle'
+        },
+
+        plotOptions: {
+            series: {
+                pointStart: 0
+            }
+        },
+
+        series: [{
+            name: 'Cabeça em cm',
+            data: [0.3, 0.5, 0.6, 0.7, 0.8, 1]
+        }]
+
+    });
+
+
+    /* , {
+            name: 'Manufacturing',
+            data: [24916, 24064, 29742, 29851, 32490, 30282, 38121, 40434]
+        }, {
+            name: 'Sales & Distribution',
+            data: [11744, 17722, 16005, 19771, 20185, 24377, 32147, 39387]
+        }, {
+            name: 'Project Development',
+            data: [null, null, 7988, 12169, 15112, 22452, 34400, 34227]
+        }, {
+            name: 'Other',
+            data: [12908, 5948, 8105, 11248, 8989, 11816, 18274, 18111]
+        } */
+</script>

@@ -1,0 +1,12 @@
+-- Create table mysql
+create table `UserToken`
+(
+  `Id`           INT(10) AUTO_INCREMENT PRIMARY KEY,
+  `AccessToken` VARCHAR(2000) not null,
+  `UserName`    VARCHAR(25) not null,
+  `Expiration`  DATETIME not null,
+  `Revoke`      INT(10) not null
+)
+
+
+

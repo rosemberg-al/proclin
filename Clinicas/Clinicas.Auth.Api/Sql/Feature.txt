@@ -1,0 +1,19 @@
+-- Create table mysql
+create table `Feature`
+(
+  `Id`           INT(10) AUTO_INCREMENT PRIMARY KEY,
+  `IdModule`     INT(10) not null,
+  `Name`         VARCHAR(150) not null,
+  `Controller`   VARCHAR(50) default '' not null,
+  `Link`         VARCHAR(150),
+  `Icone`        VARCHAR(30),
+  `IdFeaturePai` INT(10),
+  `Situacao`     VARCHAR(1),
+  `Ordenacao`    INT(10)
+);
+
+ALTER TABLE `Feature`
+  ADD CONSTRAINT `fk_feature_module` FOREIGN KEY (`IdModule`) REFERENCES `Module` (`Id`);
+
+
+

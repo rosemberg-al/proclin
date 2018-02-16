@@ -1,0 +1,108 @@
+﻿<div class="modal-header" style="margin-bottom:10px;">
+    <button type="button" class="close" ng-click="vm.cancel()" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">×</span>
+    </button>
+    <h5 class="modal-title" id="myModalLabel">{{ vm.State }}</h5>
+</div>
+<div class="modal-body">
+    <div class="row" block-ui="blockModalBloq" ng-show="vm.aceito">
+        <div class="col-md-12">
+            <div class="alert alert-danger" ng-if="vm.FormMessage.length > 0">
+                <span><i class="fa fa-exclamation-triangle"></i> <strong>{{ vm.FormMessage }}</strong></span>
+            </div>
+            <form name="forms.addbloqueio" role="form" id="form" autocomplete="off" novalidate>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group" show-errors>
+                            <label for="funcionario" class="control-label required">Profissional de Saúde</label>
+                            <select class="form-control m-b" ng-options="item.IdFuncionario as item.Nome for item in vm.funcionarios" name="funcionario" ng-disabled="vm.edit" ng-model="vm.bloqueio.IdFuncionario" required></select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group" show-errors>
+                            <label for="dtinicio" class="control-label required">Data Inicio</label>
+                            <input class="form-control bg-light inputcalendar" name="dtinicio" ng-model="vm.bloqueio.DataInicio" type="text" ng-disabled="vm.edit" ui-date-mask required>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group" show-errors>
+                            <label for="dtfim" class="control-label required">Data Fim</label>
+                            <input class="form-control bg-light inputcalendar" name="dtfim" ng-model="vm.bloqueio.DataFim" type="text" ng-disabled="vm.edit" ui-date-mask required>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group" show-errors>
+                            <label for="motivo" class="control-label required">Motivo</label>
+                            <select class="form-control m-b" ng-options="item.Key as item.Value for item in vm.motivos" name="motivo" ng-disabled="vm.edit" ng-model="vm.bloqueio.Motivo" required></select>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row" ng-if="!vm.aceito">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="alert alert-danger">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <i class="fa fa-exclamation-triangle pull-left" style="font-size: 20px;"></i>
+                            Existem pacientes marcados para o periódo selecionado.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br />
+        <div class="col-md-12">
+            <table class="table table-hover table-condensed table-striped">
+                <thead>
+                    <tr class="bg-complete-lighter">
+                        <th style="width: 35%">Paciente </th>
+                        <th style="width: 20%">Data</th>
+                        <th style="width: 25%">E-mail</th>
+                        <th style="width: 20%">Telefone</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="x in vm.retorno">
+                        <td>{{x.Nome | uppercase}}</td>
+                        <td>{{x.Data | date }}</td>
+                        <td>{{x.Email }}</td>
+                        <td>{{x.Telefone }}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function () {
+            var date = new Date();
+            var today = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+
+            $(".inputcalendar").datepicker({
+                language: "pt-BR",
+                format: 'dd/mm/yyyy',
+                startDate: today,
+                dayNames: ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'],
+                dayNamesMin: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S', 'D'],
+                dayNamesShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'],
+                monthNames: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+                monthNamesShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+                nextText: 'Próximo',
+                prevText: 'Anterior'
+            });
+
+        });
+    </script>
+</div>
+
+<div class="modal-footer">
+    <button class="btn btn-default" ng-click="vm.cancel()">Cancelar</button>
+    <button class="btn btn-primary" ng-click="vm.save()" ng-if="!vm.edit && vm.aceito"><i class="fa fa-save"></i> Salvar</button>
+</div>

@@ -1,0 +1,354 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <title>ProClin - Portal de Clinicas</title>
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <link rel="icon" type="image/png" href="/assets/img/favicon.png" sizes="32x32">
+
+    <!-- BEGIN Vendor CSS-->
+    <link href="assets/plugins/boostrapv3/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/plugins/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css" />
+    <link href="assets/plugins/simple-line-icons/simple-line-icons.css" rel="stylesheet" type="text/css" />
+    <link href="assets/plugins/jquery-scrollbar/jquery.scrollbar.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="assets/plugins/bootstrap-select2/select2.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="assets/plugins/switchery/css/switchery.min.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="assets/plugins/jquery-datatable/media/css/jquery.dataTables.css" rel="stylesheet" type="text/css" />
+    <!-- <link href="assets/plugins/jquery-datatable/extensions/FixedColumns/css/dataTables.fixedColumns.min.css" rel="stylesheet" type="text/css" /> -->
+    <link href="assets/plugins/datatables-responsive/css/datatables.responsive.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="assets/plugins/angular-block-ui/angular-block-ui.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="assets/css/dataTables.bootstrap.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="assets/css/animate.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="assets/css/ui-select/select.min.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="assets/css/jquery.bootstrap-touchspin.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="assets/css/ng-animation.css" rel="stylesheet" type="text/css" media="screen" />
+
+    <link href="assets/plugins/jQuery-File-Upload-9.11.2/css/jquery.fileupload.css" rel="stylesheet" />
+    <link href="assets/plugins/jQuery-File-Upload-9.11.2/css/jquery.fileupload-ui.css" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="assets/plugins/fullcalendar/fullcalendar.min.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="assets/plugins/magnific/magnific-popup.css">
+    
+
+
+
+
+    <!-- BEGIN Pages CSS-->
+    <link href="theme/css/pages-icons.css" rel="stylesheet" type="text/css">
+    <link href="theme/css/pages.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/loading-bar.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/slidejs.css" rel="stylesheet" />
+    <link href="assets/css/anim-in-out.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/custom.css" rel="stylesheet" type="text/css" />
+    <!--[if lte IE 9]>
+        <link href="theme/css/ie9.css" rel="stylesheet" type="text/css" />
+    <![endif]-->
+    <script type="text/javascript">
+        //window.onload = function () {
+        //    // fix for windows 8
+        //    if (navigator.appVersion.indexOf("Windows NT 6.2") != -1)
+        //        document.head.innerHTML += '<link rel="stylesheet" type="text/css" href="theme/css/windows.chrome.fix.css" />';
+        //}
+    </script>
+</head>
+<body class="fixed-header menu-behind" ng-app="app" style="overflow-x:hidden">
+
+    <div class="main-view anim-in-out anim-fade" ui-view ui-tour></div>
+
+    <script src="scripts/DatePrototype.js"></script>
+    <script src="assets/plugins/jquery/jquery-1.11.1.min.js" type="text/javascript"></script>
+    <script src="scripts/angular.js"></script>
+    <script src="scripts/angular-sanitize.min.js"></script>
+    <script src="scripts/angular-locale_pt-br.js"></script>
+    <script src="scripts/angular-animate.min.js"></script>
+    <script src="scripts/angular-ui-router.min.js"></script>
+    <script src="scripts/lodash.min.js"></script>
+    <script src="scripts/loading-bar.js"></script>
+    <!--<script src="scripts/angular-ui/ui-bootstrap.min.js"></script>-->
+    <script src="scripts/angular-ui/ui-bootstrap-tpls.min.js"></script>
+    <script src="scripts/angular-local-storage.min.js"></script>
+    <script src="scripts/angular-ui-confirm.js"></script>
+    <script src="assets/plugins/modernizr.custom.js" type="text/javascript"></script>
+    <script src="assets/plugins/jquery-ui/jquery-ui.min.js" type="text/javascript"></script>
+    <script src="assets/plugins/boostrapv3/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="assets/plugins/jquery/jquery-easy.js" type="text/javascript"></script>
+    <script src="assets/plugins/jquery-unveil/jquery.unveil.min.js" type="text/javascript"></script>
+    <script src="assets/plugins/jquery-bez/jquery.bez.min.js"></script>
+    <script src="assets/plugins/jquery-ios-list/jquery.ioslist.min.js" type="text/javascript"></script>
+    <script src="assets/plugins/imagesloaded/imagesloaded.pkgd.min.js"></script>
+    <script src="assets/plugins/jquery-actual/jquery.actual.min.js"></script>
+    <script src="assets/plugins/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+    <script src="assets/plugins/classie/classie.js"></script>
+    <script src="assets/plugins/switchery/js/switchery.min.js" type="text/javascript"></script>
+    <script src="assets/plugins/boostrap-form-wizard/js/jquery.bootstrap.wizard.min.js" type="text/javascript"></script>
+    <script src="assets/plugins/angular-block-ui/angular-block-ui.min.js" type="text/javascript"></script>
+    <script src="scripts/showErrors.js"></script>
+    <script src="assets/plugins/jquery-datatable/media/js/jquery.dataTables.min.js"></script>
+    <script src="assets/plugins/datatables-responsive/js/datatables.responsive.js"></script>
+    <script src="scripts/angular-datatables.min.js"></script>
+    <script src="scripts/jquery.noty.packaged.min.js"></script>
+    <script src="scripts/noty.relax.js"></script>
+    <script src="assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js" type="text/javascript"></script>
+    <script src="assets/plugins/bootstrap-datepicker/js/locales/bootstrap-datepicker.pt-BR.js" type="text/javascript"></script>
+
+    <script src="scripts/jquery.bootstrap-touchspin.js"></script>
+    <!--<script src="assets/plugins/jquery-datatable/extensions/Bootstrap/jquery-datatable-bootstrap.js"></script>-->
+    <script src="assets/js/dataTables.bootstrap.js"></script>
+    <script src="scripts/angular-ui/select.min.js"></script>
+    <script src="scripts/moment.min.js"></script>
+    <script src="scripts/moment.pt-br.js"></script>
+    <script src="scripts/masks.js"></script>
+    <script src="scripts/angular-br-filters.js"></script>
+    <script src="scripts/jquery.slides.js"></script>
+    <script src="scripts/anim-in-out.js"></script>
+    <script src="scripts/ngMask.min.js"></script>
+    <script src="scripts/angular-environment.js"></script>
+
+    <!-- Text Angular -->
+    <script src="scripts/dist/textAngular.js"></script>
+    <script src="scripts/dist/textAngularSetup.js"></script>
+    <script src='scripts/dist/textAngular-sanitize.min.js'></script>
+    <script src="scripts/dist/textAngular-rangy.min.js"></script>
+
+    <!--<script src="//rawgit.com/angular-ui/ui-calendar/master/src/calendar.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.6/fullcalendar.min.js"></script>-->
+    <!-- FullCalendar Plugin + Moment Dependency -->
+    <script src='assets/plugins/fullcalendar/lib/moment.min.js'></script>
+    <script src='assets/plugins/fullcalendar/fullcalendar.min.js'></script>
+    <!--<script src='assets/plugins/fullcalendar/lang/pt-br.js'></script>-->
+    <!-- AdminForms Date/Month Pickers -->
+    <script src="assets/admin-tools/admin-forms/js/jquery-ui-monthpicker.min.js"></script>
+    <!--<script src="assets/admin-tools/admin-forms/js/jquery-ui-datepicker.min.js"></script>
+    <script src="assets/admin-tools/admin-forms/js/i18n/datepicker-pt-BR.js"></script>-->
+    <!--<script src="assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js" type="text/javascript"></script>
+    <script src="assets/plugins/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <script src="assets/plugins/bootstrap-timepicker/bootstrap-timepicker.min.js"></script>-->
+    <!-- Magnific Popup Plugin -->
+    <script src="assets/plugins/magnific/jquery.magnific-popup.js"></script>
+
+
+    <!--
+        IE8 support, see AngularJS Internet Explorer Compatibility http://docs.angularjs.org/guide/ie
+        For Firefox 3.6, you will also need to include jQuery and ECMAScript 5 shim
+        -->
+    <!--[if lt IE 9]>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.js"></script>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/es5-shim/2.2.0/es5-shim.js"></script>
+        <script>
+            document.createElement('ui-select');
+            document.createElement('ui-select-match');
+            document.createElement('ui-select-choices');
+        </script>
+    <![endif]-->
+    <!-- END VENDOR JS -->
+    <!-- BEGIN CORE TEMPLATE JS -->
+    <script src="theme/js/pages.js" type="text/javascript"></script>
+    <!-- END CORE TEMPLATE JS -->
+    <!-- BEGIN PAGE LEVEL JS -->
+    <!--<script src="/assets/js/scripts.js" type="text/javascript"></script>-->
+    <!-- END PAGE LEVEL JS -->
+    <!-- APP/Core -->
+    <script src="app/app.module.js"></script>
+    <script src="app/config/config.module.js"></script>
+    <script src="app/config/config.js"></script>
+    <script src="app/services/core/core.module.js"></script>
+    <script src="app/services/core/common.js"></script>
+    <script src="app/services/core/logger.js"></script>
+    <script src="app/services/core/exception.js"></script>
+    <script src="app/services/core/notification.js"></script>
+    <script src="app/services/core/notification.ask.js"></script>
+    <script src="app/services/core/notification.alert.js"></script>
+    <script src="app/services/auth/authService.js"></script>
+    <script src="app/services/auth/authInterceptor.js"></script>
+    <script src="app/services/core/server.js"></script>
+    <script src="app/app.controller.js"></script>
+    <script src="app/app.directive.js"></script>
+
+    <!-- Data Services-->
+    <script src="app/services/dataServices/dataServices.module.js"></script>
+    <script src="app/services/dataServices/ds.dashboard.js"></script>
+    <script src="app/services/dataServices/ds.session.js"></script>
+    <script src="app/services/dataServices/ds.financeiro.js"></script>
+    <script src="app/services/dataServices/ds.anamnese.js"></script>
+    <script src="app/services/dataServices/ds.receituario.js"></script>
+    <script src="app/services/dataServices/ds.paciente.js"></script>
+    <script src="app/services/dataServices/ds.vacinas.js"></script>
+    <script src="app/services/dataServices/ds.agenda.js"></script>
+    <script src="app/services/dataServices/ds.funcionario.js"></script>
+    <script src="app/services/dataServices/ds.atestado.js"></script>
+    <script src="app/services/dataServices/ds.prontuario.js"></script>
+    <script src="app/services/dataServices/ds.estados.cidades.js"></script>
+    <script src="app/services/core/file.download.js"></script>
+    <script src="app/services/dataServices/ds.cadastros.js"></script>
+    <script src="app/services/dataServices/ds.guia.js"></script>
+    <script src="app/services/dataServices/ds.relatorios.js"></script>
+
+    <!-- Shared Modules-->
+    <script src="app/account/login.js"></script>
+    <script src="app/account/activate.js?v=102"></script>
+    <script src="app/account/signup.js"></script>
+    <script src="app/account/lostPassword.js?v=101"></script>
+    <script src="app/account/resendActivation.js?v=101"></script>
+    <script src="app/services/core/PDEVMask.js"></script>
+    <script src="app/shared/diretivas/statusImc.js"></script>
+
+    <!-- Upload / Download -->
+    <!--<script src="app/services/core/file.download.js"></script>
+    <script src="scripts/angular-file-upload.min.js"></script>-->
+    <!-- Dashboard -->
+    <!--<script src="app/dashboard/dashboard.module.js"></script>
+    <script src="app/dashboard/dashboard.js"></script>-->
+    <script src="app/home/home.module.js"></script>
+    <script src="app/home/home.js"></script>
+
+    <!-- Calendaário -->
+    <link href="scripts/zabuto/zabuto_calendar.css" rel="stylesheet" />
+    <script src="scripts/zabuto/zabuto_calendar.js"></script>
+    <script src="scripts/zabuto/moment-with-locales.js"></script>
+
+    <!--Usuarios-->
+    <script src="app/users/users.module.js"></script>
+    <script src="app/users/users.js"></script>
+    <script src="app/users/users.edit.js"></script>
+
+    <!-- Financeiro -->
+    <script src="app/financeiro/finaceiro.module.js"></script>
+    <script src="app/financeiro/lista_financeiro.js"></script>
+    <script src="app/financeiro/crud_financeiro.js"></script>
+    <!--<script src="app/shared/pessoa.js"></script>-->
+    <script src="app/financeiro/lista_planocontas.js"></script>
+    <script src="app/financeiro/crud_planocontas.js"></script>
+    <script src="app/financeiro/crud_transferencias.js"></script>
+    <script src="app/financeiro/lista_transferencias.js"></script>
+    <script src="app/financeiro/edit_parcela.js"></script>
+
+    <!--anamnese-->
+    <script src="app/anamnese/anamnese.module.js"></script>
+    <script src="app/anamnese/crud.anamnese.js"></script>
+
+    <!--funcionário-->
+    <script src="app/funcionario/funcionario.module.js"></script>
+    <script src="app/funcionario/crud.funcionario.js"></script>
+    <script src="app/funcionario/lista.funcionario.js"></script>
+
+    <!--fornecedores-->
+    <script src="app/fornecedor/fornecedor.module.js"></script>
+    <script src="app/fornecedor/crud.fornecedor.js"></script>
+    <script src="app/fornecedor/lista.fornecedor.js"></script>
+
+    <!-- ocupações -->
+    <script src="app/ocupacao/ocupacao.module.js"></script>
+    <script src="app/ocupacao/lista.ocupacao.js"></script>
+    <script src="app/ocupacao/crud.ocupacao.js"></script>
+
+    <!--cid-->
+    <script src="app/cid/cid.module.js"></script>
+    <script src="app/cid/crud.cid.js"></script>
+    <script src="app/cid/lista.cid.js"></script>
+
+    <!--convenios-->
+    <script src="app/convenios/convenio.module.js"></script>
+    <script src="app/convenios/crud.convenio.js"></script>
+    <script src="app/convenios/lista.convenio.js"></script>
+    <script src="app/convenios/tabela.preco.convenio.js"></script>
+
+    <!--procedimentos-->
+    <script src="app/procedimento/procedimento.module.js"></script>
+    <script src="app/procedimento/crud.procedimento.js"></script>
+    <script src="app/procedimento/lista.procedimento.js"></script>
+
+    <!--especialidades-->
+    <script src="app/especialidade/especialidade.module.js"></script>
+    <script src="app/especialidade/crud.especialidade.js"></script>
+    <script src="app/especialidade/lista.especialidade.js"></script>
+
+    <!--atendimento-->
+    <script src="app/atendimento/atendimento.module.js"></script>
+    <script src="app/atendimento/atendimento.js"></script>
+
+    <!--prontuario-->
+    <script src="app/prontuario/prontuario.module.js"></script>
+    <script src="app/prontuario/crud.modelo.prontuario.js"></script>
+    <script src="app/prontuario/lista.modelo.prontuario.js"></script>
+    <script src="app/prontuario/prontuario.js"></script>
+    <script src="app/prontuario/atestado.js"></script>
+    <script src="app/requisicaoexame/crud.requisicaoexame.js"></script>
+
+    <!--receituario-->
+    <script src="app/receituario/receituario.module.js"></script>
+    <script src="app/receituario/crud.receituario.js"></script>
+
+    <!--paciente-->
+    <script src="app/paciente/paciente.module.js"></script>
+    <script src="app/paciente/crud.paciente.js"></script>
+    <script src="app/paciente/busca.paciente.js"></script>
+    <script src="app/paciente/lista.paciente.js"></script>
+
+    <!--Atestado-->
+    <script src="app/atestado/atestado.module.js"></script>
+    <script src="app/atestado/crud.atestado.js"></script>
+
+    <!--vacinas-->
+    <script src="app/vacinas/vacinas.module.js"></script>
+    <script src="app/vacinas/crud.registro.vacina.js"></script>
+    <script src="app/vacinas/lista.vacinas.js"></script>
+    <script src="app/vacinas/crud.vacinas.js"></script>
+
+    <!--vacinas-->
+    <script src="app/calendario/calendario.module.js"></script>
+    <script src="app/calendario/calendario.js"></script>
+
+    <!--agenda-->
+    <script src="app/agenda/agenda.module.js"></script>
+    <script src="app/agenda/agenda.js"></script>
+    <script src="app/agenda/salaespera.js"></script>
+    <script src="app/agenda/visualizaragenda.js"></script>
+    <script src="app/agenda/agendapaciente.js"></script>
+    <script src="app/agenda/agendarprocedimento.js"></script>
+    <script src="app/agenda/liberaragenda.js"></script>
+
+    <!--história pregressa-->
+    <script src="app/historiapregressa/historiapregressa.module.js"></script>
+    <script src="app/historiapregressa/historiapregressa.crud.js"></script>
+
+    <!--hospital e Médicos-->
+    <script src="app/hospital/hospital.module.js"></script>
+    <script src="app/hospital/crud.hospital.js"></script>
+    <script src="app/hospital/lista.hospital.js"></script>
+    <script src="app/hospital/crud.medico.js"></script>
+    <script src="app/hospital/lista.medico.js"></script>
+
+    <!--medidas antropometricas-->
+    <script src="app/medidasantropometricas/medidasantropometricas.module.js"></script>
+    <script src="app/medidasantropometricas/crud.medidasantropometricas.js"></script>
+    
+    <!--guias-->
+    <script src="app/guias/guias.module.js"></script>
+    <script src="app/guias/lista.guia.consulta.js"></script>
+    <script src="app/guias/guia.consulta.js"></script>
+
+    <!--Relatórios -->
+    <script src="app/relatorios/relatorio.module.js"></script>
+    <script src="app/relatorios/rel_pacientes.js"></script>
+    <script src="app/relatorios/rel_especialidades.js"></script>
+    <script src="app/relatorios/rel_fornecedores.js"></script>
+    <script src="app/relatorios/rel_ocupacoes.js"></script>
+    <script src="app/relatorios/rel_aniversariantes.js"></script>
+    <script src="app/relatorios/rel_convenios.js"></script>
+    <script src="app/relatorios/rel_procedimentos_realizados.js"></script>
+
+    <script src="app/relatorios/rel_agendamedica.js"></script>
+
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+
+
+</body>
+</html>

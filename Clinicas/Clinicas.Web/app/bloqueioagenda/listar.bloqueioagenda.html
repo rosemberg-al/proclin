@@ -1,0 +1,79 @@
+﻿<section class="panel">
+    <div class="panel-heading">
+        <div class="margin-bottom-10">
+            <ul class="list-unstyled breadcrumb breadcrumb-custom" ng-cloak>
+                <li>
+                    <a href="#" class="active"><i class="icmn-home"></i> Página Inicial</a>
+                </li>
+                <li ng-repeat="item in $root.currentCrumbs" ng-cloak>
+                    <a href="#" class="active">{{ item.name }}</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="panel-body" block-ui="blockListAusencia">
+
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="alert alert-danger" ng-if="vm.FormMessage.length > 0">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <i class="fa fa-exclamation-triangle pull-left" style="font-size: 20px;"></i>
+                            {{vm.FormMessage}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="row">
+                    <div class="col-md-9">
+                        <h4> Bloqueio de agenda </h4>
+                    </div>
+
+                    <div class="col-md-3 control-label text-left">
+                        <div class="form-group pull-right">
+                            <a ng-click="vm.abrir(0)" class="btn btn-primary">
+                                <i class="fa fa-plus-square-o"></i>
+                                <span class="bold">  Novo</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-md-12">
+                        <table class="table table-hover table-condensed table-striped" datatable="ng" dt-options="vm.dtOptions">
+                            <thead>
+                                <tr class="bg-complete-lighter">
+                                    <th style="width: 30%">Nome </th>
+                                    <th style="width: 10%">Data Inicio</th>
+                                    <th style="width: 10%">Data Fim</th>
+                                    <th style="width: 35%">Motivo</th>
+                                    <th style="width: 15%">Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="x in vm.bloqueios">
+                                    <td>{{x.Funcionario | uppercase}}</td>
+                                    <td>{{x.DataInicio | date }}</td>
+                                    <td>{{x.DataFim | date }}</td>
+                                    <td>{{x.Motivo | uppercase}}</td>
+                                    <td>
+                                        <!--<button type="button" class="btn btn-sm btn-primary" ng-click="vm.abrir(x.IdBloqueio)"><i class="fa fa-edit" aria-hidden="true"></i> Editar</button>-->
+                                        <button type="button" class="btn btn-sm btn-danger" ng-click="vm.excluir(x.IdBloqueio)"><i class="fa fa-remove" aria-hidden="true"></i> Excluir</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

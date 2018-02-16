@@ -1,0 +1,16 @@
+-- Create table mysql
+create table `User`
+(
+  `Id`              INT(10) AUTO_INCREMENT PRIMARY KEY,
+  `UserName`        VARCHAR(25) not null,
+  `Password`        VARCHAR(128) not null,
+  `Name`            VARCHAR(120) not null,
+  `Mobile`          VARCHAR(11),
+  `Email`           VARCHAR(40) not null,
+  `Status`          INT(10) not null,
+  `Level`           INT(10) default 0 not null,
+  `Token`           VARCHAR(200),
+  `TokenExpiration` DATETIME
+)
+
+

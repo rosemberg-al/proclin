@@ -1,0 +1,106 @@
+﻿<div class="modal-header">
+    <h3 class="modal-title">Agendar Consulta {{vm.texto}} </h3>
+</div>
+<hr />
+<br />
+<div class="modal-body">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-danger" ng-if="vm.FormMessage.length > 0">
+                <span><i class="fa fa-exclamation-triangle"></i> <strong>{{ vm.FormMessage }}</strong></span>
+            </div>
+            <form name="forms.agendamentopaciente" role="form" block-ui="blockAgendamentoPaciente">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group" show-errors>
+                            <label for="profissional" class="control-label required">Profissional de Saúde</label>
+                            <select class="form-control m-b" ng-options="item.IdFuncionario as item.NmFuncionario for item in vm.profissionais" name="profissional" id="profissional" ng-model="vm.profissionalSelecionado" required></select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="input-group" show-errors>
+                            <label for="paciente" class="control-label required">Paciente</label>
+                            <input type="text" name="paciente" placeholder="Selecione o paciente" ng-model="vm.pacienteSelecionadoNome" class="form-control" required> <span class="input-group-btn">
+                                <button type="button" class="btn btn-primary" style="margin-top: 25px;" ng-click="vm.buscarPaciente()">
+                                    <i class="fa fa-user"></i>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group" show-errors>
+                            <label for="especialidades" class="control-label required">Especialidade</label>
+                            <select class="form-control m-b" ng-options="item.CdEspecialidade as item.NmEspecialidade for item in vm.especialidades" name="especialidades" id="especialidades" ng-model="vm.especialidadeSelecionada" required></select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group" show-errors>
+                            <label for="procedimento" class="control-label required">Procedimento</label>
+                            <select class="form-control m-b" ng-options="item.CdProcedimento as item.NmProcedimento for item in vm.procedimentos" name="procedimento" id="procedimento" ng-model="vm.procedimentoSelecionado" required></select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group" show-errors>
+                            <label for="tipoagendamento" class="control-label required">Tipo Agendamento</label>
+                            <select class="form-control m-b" ng-options="item.Key as item.Value for item in vm.TipoAgendamento" name="tipoagendamento" id="tipoagendamento" ng-disabled="vm.procedimentoSelecionado == undefined" ng-model="vm.tipoAgendamentoSelecionado" required></select>
+                        </div>
+                    </div>
+                    <div class="col-md-4" ng-if="vm.tipoAgendamentoSelecionado == 'C'">
+                        <div class="form-group" show-errors>
+                            <label for="convenios" class="control-label required">Convênio</label>
+                            <select class="form-control m-b" ng-options="item.CdConvenio as item.NmConvenio for item in vm.convenios" name="convenios" id="convenios" ng-model="vm.convenioSelecionado" required></select>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group" show-errors>
+                            <label for="tpatendimento" class="control-label required">Tipo Atendimento</label>
+                            <select class="form-control m-b" ng-options="item.CdTipoAtendimento as item.NmTipoAtendimento for item in vm.tpatendimentos" name="tpatendimento" id="tpatendimento" ng-model="vm.tipoAtendimentoSelecionado" required></select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="observacoes" class="control-label">Observações</label>
+                            <textarea ng-model="vm.Observacoes" name="observacoes" class="form-control m-b" rows="3" cols="3"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="solicitante" class="control-label">Solicitante</label>
+                            <input type="text" class="form-control m-b" name="solicitante" ng-model="vm.Solicitante" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="panel panel-info">
+                            <div class="panel-heading">
+                                <span class="panel-title">Financeiro</span>
+                            </div>
+                            <div class="panel-body">
+                                <div class="form-group">
+                                    <label for="valor" class="control-label">Valor</label>
+                                    <input type="text" name="valor" placeholder="0,00" style="width:30%; background:#FF3; color:#000" class="form-control" value="{{vm.valor | number: 2 }}" readonly>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal-footer">
+    <button type="button" class="btn btn-default" ng-click="vm.cancel()">Cancelar</button>
+    <button type="button" class="btn btn-primary" ng-click="vm.agendar()"><i class="fa fa-save"></i> Agendar</button>
+
+</div>
+

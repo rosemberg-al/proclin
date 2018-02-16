@@ -1,0 +1,123 @@
+﻿<section class="panel" >
+
+    <div class="panel-heading">
+        <div class="margin-bottom-10">
+            <ul class="list-unstyled breadcrumb breadcrumb-custom" ng-cloak>
+                <li>
+                    <a href="#" class="active"><i class="icmn-home"></i> Página Inicial</a>
+                </li>
+                <li ng-repeat="item in $root.currentCrumbs" ng-cloak>
+                    <a href="#" class="active">{{ item.name }}</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-12">
+                <h4> Agenda  </h4>
+            </div>
+        </div>
+
+        <div class="row" block-ui="blockReport">
+            <div class="col-md-12">
+                <form name="forms.dados" role="form"  novalidate>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="alert alert-danger" ng-if="vm.FormMessage.length > 0">
+                                    <span><i class="fa fa-exclamation-triangle"></i> <strong>{{ vm.FormMessage }}</strong></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-md-2">
+                                <label class="form-control-label" for="l0">Paciente    </label>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Buscar Paciente.." disabled name="pessoa" ng-model="vm.pessoaselecionada">
+                                    <span class="input-group-addon" style="cursor:pointer" tooltip="Buscar">
+                                        <a ng-click="vm.buscarPaciente()" style="cursor:pointer"><i class="fa fa-search"></i></a>
+                                    </span>
+                                    <span class="input-group-addon" style="cursor:pointer" tooltip="Limpar">
+                                        <a ng-click="vm.limparPaciente()" style="cursor:pointer"><i class="fa fa-filter"></i></a>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row" show-errors>
+                            <div class="col-md-2">
+                                <label class="form-control-label required" for="l0">Profissional de Saúde </label>
+                            </div>
+                            <div class="col-md-4">
+                                <select class="form-control m-b" ng-options="item.IdFuncionario as item.Nome for item in vm.profissionais" name="profissional" id="profissional" ng-model="vm.pSelecionado" required></select>
+                            </div>
+                        </div>
+
+                        <div class="form-group row" show-errors>
+                            <div class="col-md-2">
+                                <label class="form-control-label required" for="l0">Período </label>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group form-group-default input-group" show-errors>
+                                    <input type="text" class="form-control inputcalendar" required placeholder="Inicio" name="dataInicio" id="dataInicio" ng-model="vm.dataInicio" bsdatepicker ui-date-mask>
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-calendar"></i>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group form-group-default input-group" show-errors>
+                                    <input type="text" class="form-control inputcalendar" required placeholder="Término" name="dataTermino" id="dataTermino" ng-model="vm.dataTermino" bsdatepicker ui-date-mask>
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-calendar"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row" show-errors>
+                            <div class="col-md-2">
+                                <label class="form-control-label required" for="l0">Situação </label>
+                            </div>
+                            <div class="col-md-4">
+                                <select class="form-control m-b" ng-options="item.text as item.text for item in vm.situacoes" name="situacao" id="situacao" ng-model="vm.situacaoSelecionada" required></select>
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <div class="col-md-6">
+                                <div class="form-group row pull-lg-right">
+                                    <div class="col-md-10">
+                                        <button type="button" class="btn btn-primary" ng-click="vm.printRelatorio()"><span class="fa fa-print"></span> Gerar Relatório</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $(".inputcalendar").datepicker({
+                language: "pt-BR",
+                format: 'dd/mm/yyyy',
+                dayNames: ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'],
+                dayNamesMin: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S', 'D'],
+                dayNamesShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'],
+                monthNames: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+                monthNamesShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+                nextText: 'Próximo',
+                prevText: 'Anterior'
+            });
+
+        });
+    </script>
+
+</section>

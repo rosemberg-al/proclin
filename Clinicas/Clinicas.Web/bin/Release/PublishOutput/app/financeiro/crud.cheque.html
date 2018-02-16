@@ -1,0 +1,117 @@
+﻿<div class="modal-header" style="margin-bottom:10px;">
+    <button type="button" class="close" ng-click="vm.cancel()" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">×</span>
+    </button>
+    <h5 class="modal-title" id="myModalLabel">{{ vm.State }}</h5>
+</div>
+<div class="modal-body">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-danger" ng-if="vm.FormMessage.length > 0">
+                <span><i class="fa fa-exclamation-triangle"></i> <strong>{{ vm.FormMessage }}</strong></span>
+            </div>
+            <form name="forms.cheques" role="form" block-ui="blockModalCrudCheque">
+                <div class="row" style="margin-bottom:30px">
+                    <div class="col-md-8">
+                        <label for="Paciente" class="control-label required">Paciente </label>
+                        <div class="input-group" show-errors>
+                           
+                            <input type="text" class="form-control" placeholder="Buscar Paciente.." disabled name="pessoa" ng-model="vm.pessoaselecionada">
+                            <span class="input-group-addon" style="cursor:pointer" tooltip="Buscar">
+                                <a ng-click="vm.pessoa()" style="cursor:pointer"><i class="fa fa-search"></i></a>
+                            </span>
+                        </div>
+                    </div>
+                    <!--<div class="col-md-6">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Financeiro" name="financeiro" ng-model="vm.financeiroselecionado">
+                            <span class="input-group-addon">
+                                <a ng-click="vm.financeiro()"><i class="icmn-coin-dollar"></i></a>
+                            </span>
+                        </div>
+                    </div>-->
+                </div>
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="form-group" show-errors>
+                            <label for="Emitente" class="control-label required">Emitente </label>
+                            <input class="form-control bg-light" name="Emitente"  ng-model="vm.cheque.Emitente" maxlength="60" type="text" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group" show-errors>
+                            <label for="Banco" class="control-label required">Banco </label>
+                            <select class="form-control m-b" ng-options="item.NomeBanco as item.NomeBanco for item in vm.bancos" name="banco" ng-model="vm.cheque.Banco" required></select>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group" show-errors>
+                            <label for="Agencia" class="control-label required">Agência </label>
+                            <input class="form-control bg-light" name="Agencia" ng-model="vm.cheque.Agencia" maxlength="10" type="text" required>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group" show-errors>
+                            <label for="Conta" class="control-label required">Conta </label>
+                            <input class="form-control bg-light" name="Conta" ng-model="vm.cheque.Conta" maxlength="10" type="text" required>
+                        </div>
+                    </div>
+                    <div class="col-sm-3" show-errors>
+                        <div class="form-group">
+                            <label  class="control-label required">Valor</label>
+                            <input type="text" name="valor" class="form-control" ng-model="vm.cheque.Valor" ui-number-mask="2" required value="{{vm.cheque.Valor | number: 2 }}">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group" show-errors>
+                            <label for="bompara" class="control-label">Bom Para </label>
+                            <input class="form-control bg-light inputcalendar" name="bompara" ng-model="vm.cheque.BomPara" ui-date-mask type="text">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group" show-errors>
+                            <label for="Situacao" class="control-label required">Situação</label><br />
+                            <select class="form-control m-b" ng-options="item.Key as item.Value for item in vm.situacoes" name="banco" ng-model="vm.cheque.Situacao" required></select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group" show-errors>
+                            <label for="historico" class="control-label">Histórico </label>
+                            <textarea name="historico" ng-model="vm.cheque.Historico" maxlength="4000" class="form-control bg-light" style="width:100%;" rows="5"></textarea>
+                            <span>{{4000 - vm.cheque.Historico.length}} Caracteres</span>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+<div class="modal-footer">
+    <button class="btn btn-default" ng-click="vm.cancel()">Cancelar</button>
+    <button class="btn btn-primary" ng-click="vm.save()"><i class="fa fa-save"></i> Salvar</button>
+</div>
+
+<script>
+        $(document).ready(function () {
+            $(".inputcalendar").datepicker({
+                language: "pt-BR",
+                format: 'dd/mm/yyyy',
+                dayNames: ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'],
+                dayNamesMin: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S', 'D'],
+                dayNamesShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'],
+                monthNames: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+                monthNamesShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+                nextText: 'Próximo',
+                prevText: 'Anterior'
+            });
+
+        });
+</script>

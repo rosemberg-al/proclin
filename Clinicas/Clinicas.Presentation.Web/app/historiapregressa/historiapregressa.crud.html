@@ -1,0 +1,50 @@
+﻿<div class="modal-header">
+    <h3 class="modal-title">{{ vm.State }} </h3>
+</div>
+<div class="modal-body">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-danger" ng-if="vm.FormMessage.length > 0">
+                <span><i class="fa fa-exclamation-triangle"></i> <strong>{{ vm.FormMessage }}</strong></span>
+            </div>
+            <form name="forms.historia" role="form" block-ui="blockModalHistoria">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group" show-errors>
+                            <label for="Paciente" class="control-label">Paciente</label>
+                            <input class="form-control bg-light" name="Paciente" ng-model="vm.historia.Paciente" type="text" readonly>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group" show-errors>
+                            <label for="Situacao" class="required">Situação</label>
+                            <div class="radio radio-success mb5">
+                                <input type="radio" id="rSituacaoAtivo" name="rSituacaoAtivo" ng-model="vm.historia.Situacao" value="A">
+                                <label for="rSituacaoAtivo">Ativo</label>
+                                <input type="radio" id="rSituacaiInativo" name="rSituacaiInativo" ng-model="vm.historia.Situacao" value="I">
+                                <label for="rSituacaiInativo">Inativo</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group" show-errors>
+                            <label for="Descricao" class="control-label required">Descrição</label>
+                            <textarea name="Descricao" ng-model="vm.historia.Descricao" class="form-control bg-light" style="width:100%;" rows="5" ></textarea>
+                            <span>{{4000 - vm.historia.Descricao.length}} Caracteres</span>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+<div class="modal-footer">
+    <button class="btn btn-default" ng-click="vm.cancel()">Cancelar</button>
+    <button class="btn btn-primary" ng-click="vm.save()"><i class="fa fa-save"></i> Salvar</button>
+
+</div>
+

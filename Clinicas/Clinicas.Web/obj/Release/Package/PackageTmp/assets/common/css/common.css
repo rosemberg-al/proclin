@@ -1,0 +1,22 @@
+﻿
+
+/* THEME FIXES / CUSTOMIZATIONS
+------------------------------------*/
+
+/*input { color: #555 !important; }*/
+
+
+        /* ====== ====== */
+.ta-editor.form-control.myform1-height, .ta-scroll-window.form-control.myform1-height  {
+    min-height: 300px;
+    height: auto;
+    overflow: auto;
+    font-family: inherit;
+    font-size: 100%;
+}
+
+.form-control.myform1-height > .ta-bind {
+    height: auto;
+    min-height: 300px;
+    padding: 6px 12px;
+}

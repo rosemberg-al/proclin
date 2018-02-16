@@ -1,0 +1,47 @@
+﻿<div class="modal-header" style="margin-bottom:10px;">
+    <button type="button" class="close" ng-click="vm.cancelar()" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">×</span>
+    </button>
+    <h5 class="modal-title" id="myModalLabel">Adicionar Guias</h5>
+</div>
+<div class="modal-body" block-ui="blockModalAddGuias">
+    <div class="row">
+        <div class="col-lg-12">
+            <table class="table table-hover table-condensed table-striped" datatable="ng" dt-options="vm.dtOptions">
+                <thead>
+                    <tr class="bg-complete-lighter">
+                        <th style="width: 5%">
+                            <input type="checkbox" ng-model="vm.checkAll" name="todos" id="todos" ng-change="vm.checkAllItems()" tooltip="Marcar/Desmarcar Todas">
+                        </th>
+                        <th style="width: 10%">Guia </th>
+                        <th style="width: 30%">Paciente </th>
+                        <th style="width: 25%">Convênio </th>
+                        <th style="width: 15%">Data</th>
+                        <th style="width: 15%">Situação </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="x in vm.guias">
+                        <td>
+                            <input type="checkbox" name="chk_{{x.IdGuia}}" id="chk_{{x.IdGuia}}" ng-click="vm.selecionar(x)" ng-model="x.Selected">
+                            <label for="chk_{{x.IdGuia}}">&nbsp;</label>
+                        </td>
+                        <td>{{x.IdGuia}}</td>
+                        <td>{{x.Paciente}}</td>
+                        <td>{{x.Convenio}}</td>
+                        <td>{{x.Data | date:'dd/MM/y'}}</td>
+                        <td>
+                            <span ng-class="{'label label-warning': x.Situacao == 'Emitida',
+                                                'label label-success': x.Situacao == 'Faturada',
+                                               'label label-danger': x.Situacao == 'Cancelada',
+                                                'label label-primary': x.Situacao == 'Enviada'}">{{x.Situacao }}</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="modal-footer" block-ui="blockModalLiberarAgenda">
+    <button type="button" class="btn btn-primary pull-right" ng-click="vm.save()"><i class="fa fa-save"></i> Salvar</button>
+</div>

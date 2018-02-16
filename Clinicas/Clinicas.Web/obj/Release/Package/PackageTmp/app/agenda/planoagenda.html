@@ -1,0 +1,261 @@
+﻿
+<style>
+    .table-filter .star {
+        color: #ccc;
+        text-align: center;
+        display: block;
+    }
+
+        .table-filter .star.star-checked {
+            color: #F0AD4E;
+        }
+
+        .table-filter .star:hover {
+            color: #ccc;
+        }
+
+        .table-filter .star.star-checked:hover {
+            color: #F0AD4E;
+        }
+
+    .table-filter .media-photo {
+        width: 35px;
+    }
+
+    .table-filter .media-body {
+        display: block;
+        /* Had to use this style to force the div to expand (wasn't necessary with my bootstrap version 3.3.6) */
+    }
+
+    .table-filter .media-meta {
+        font-size: 11px;
+        color: #999;
+    }
+
+    .table-filter .media .title {
+        color: #2BBCDE;
+        font-size: 14px;
+        font-weight: bold;
+        line-height: normal;
+        margin: 0;
+    }
+
+        .table-filter .media .title span {
+            font-size: .8em;
+            margin-right: 20px;
+        }
+
+            .table-filter .media .title span.pagado {
+                color: #5cb85c;
+            }
+
+            .table-filter .media .title span.pendiente {
+                color: #f0ad4e;
+            }
+
+            .table-filter .media .title span.cancelado {
+                color: #d9534f;
+            }
+
+    .table-filter .media .summary {
+        font-size: 14px;
+    }
+
+    .table-filter tr:hover {
+        background: #FFC;
+    }
+</style>
+
+
+<!-- Page Scripts -->
+<script>
+    $(function(){
+
+        $('#owl1').owlCarousel({
+            loop:true,
+            margin:10,
+            responsive:{
+                0: {
+                    items:1
+                },
+                600: {
+                    items:2
+                },
+                1000: {
+                    items:4
+                }
+            }
+        });
+
+    });
+</script>
+
+<div class="page-content-inner ng-scope">
+    <section class="panel">
+        <div class="panel-heading">
+            <div class="margin-bottom-5">
+                <ul class="list-unstyled breadcrumb breadcrumb-custom" ng-cloak>
+                    <li>
+                        <a href="#" class="active"><i class="icmn-home"></i> Página Inicial</a>
+                    </li>
+                    <li ng-repeat="item in $root.currentCrumbs" ng-cloak>
+                        <a href="#" class="active">{{ item.name }}</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="panel-body" block-ui="blockListaCid">
+
+            <!--<div class="row">
+                <div class="col-md-12">
+                    <h4>Basic</h4>
+                    <p>Modifier: see documentation</p>
+                    <br />
+                    <div class="margin-bottom-50">
+                        <div class="owl-carousel owl-theme owl-demo" id="owl1">
+                            <div class="item">
+                                <div class="media">
+                                    <div class="media-left">
+                                        <img class="media-object" ng-if="item.Sexo=='M'" src="http://www.amehc.com.br/structures/imagens/estrutura_website/avatar_doc_masc.jpg" style="width:60px; height:60px;">
+                                        <img class="media-object" ng-if="item.Sexo=='F'" src="http://www.amehc.com.br/structures/imagens/estrutura_website/avatar_doc_fem.jpg" style="width:60px; height:60px;">
+                                    </div>
+                                    <div class="media-body">
+                                        <h5 class="media-heading">{{ item.Nome }} {{ item.Sexo }}</h5>
+                                        <p> Agendas Disponíveis: 200 </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="media">
+                                    <div class="media-left">
+                                        <img class="media-object" ng-if="item.Sexo=='M'" src="http://www.amehc.com.br/structures/imagens/estrutura_website/avatar_doc_masc.jpg" style="width:60px; height:60px;">
+                                        <img class="media-object" ng-if="item.Sexo=='F'" src="http://www.amehc.com.br/structures/imagens/estrutura_website/avatar_doc_fem.jpg" style="width:60px; height:60px;">
+                                    </div>
+                                    <div class="media-body">
+                                        <h5 class="media-heading">{{ item.Nome }} {{ item.Sexo }}</h5>
+                                        <p> Agendas Disponíveis: 200 </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="media">
+                                    <div class="media-left">
+                                        <img class="media-object" ng-if="item.Sexo=='M'" src="http://www.amehc.com.br/structures/imagens/estrutura_website/avatar_doc_masc.jpg" style="width:60px; height:60px;">
+                                        <img class="media-object" ng-if="item.Sexo=='F'" src="http://www.amehc.com.br/structures/imagens/estrutura_website/avatar_doc_fem.jpg" style="width:60px; height:60px;">
+                                    </div>
+                                    <div class="media-body">
+                                        <h5 class="media-heading">{{ item.Nome }} {{ item.Sexo }}</h5>
+                                        <p> Agendas Disponíveis: 200 </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>-->
+
+
+            <div class="row">
+
+                <div class="col-md-12" style="margin-bottom:30px;">
+                    <h4> Plano de Agenda </h4>
+                </div>
+                <div class="col-md-12">
+                    <div class="col-md-4" ng-repeat="item in vm.dados">
+                        <div class="media">
+                            <div class="media-left">
+                                <img class="media-object" ng-if="item.Sexo=='M'" src="assets/img/avatar_doc_masc.jpg" style="width:60px; height:60px;">
+                                <img class="media-object" ng-if="item.Sexo=='F'" src="assets/img/avatar_doc_fem.jpg" style="width:60px; height:60px;">
+                            </div>
+                            <div class="media-body">
+                                <h5 class="media-heading">{{ item.Nome }} {{ item.Sexo }}</h5>
+                                <!--<p>Agendas Aguardando: {{ item.QtdeAgendaDisponiveis }} </p>-->                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-md-9">
+                    <div class="input-group" id="adv-search">
+                        <input class="form-control" id="nome" name="nome" ng-model="vm.pesq.Nome" type="text" placeholder="Nome..">
+                        <div class="input-group-btn">
+                            <div class="btn-group" role="group">
+                                <div class="dropdown dropdown-lg">
+                                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="caret"></span></button>
+                                    <div class="dropdown-menu dropdown-menu-right" role="menu">
+                                        <form class="form-horizontal" name="forms.buscacaconvenio" ng-enter="vm.buscar()" ng-submit="vm.buscar()" role="form" id="form" autocomplete="off" novalidate>
+
+                                            <div class="form-group" style="margin-bottom:5px;">
+                                                <input class="form-control" id="nome" name="nome" ng-model="vm.pesq.Codigo" type="text" placeholder="Código.." style="margin-bottom:5px;" />
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                <button type="button" class="btn btn-primary" ng-click="vm.buscar()"><span class="fa fa-search" aria-hidden="true" tooltip="Pesquisar"></span> Pesquisar </button>
+                                <button type="button" class="btn btn-default" ng-click="vm.init()"><span class="fa fa-list" aria-hidden="true" tooltip="Ver todos"></span> Ver todos  </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 control-label text-left">
+                    <div class="form-group pull-right">
+                        <a ng-click="vm.crud()" class="btn btn-primary">
+                            <i class="fa fa-plus-square-o"></i>
+                            <span class="bold">  Novo</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <style>
+                .media {
+                    border-bottom: #f5f5f5 solid 1px;
+                    margin-bottom: 20px;
+                }
+            </style>
+
+            <div class="row" style="clear:both">
+
+
+
+                <div class="col-md-12">
+                    <div class="row">
+                        <table class="table table-hover table-condensed table-striped" datatable="ng" dt-options="vm.dtOptions">
+                            <thead>
+                                <tr class="bg-complete-lighter">
+                                    <th style="width: 5%">Código </th>
+                                    <th style="width: 20%">Profissional de Saúde </th>
+                                    <th style="width: 10%">Data </th>
+                                    <th style="width: 10%">Hora </th>
+                                    <th style="width: 10%">Situação </th>
+                                    <!--<th style="width: 20%">Ações</th>-->
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="x in vm.agenda">
+
+                                    <td>{{ x.IdAgenda }}</td>
+                                    <td>{{ x.NmProfissionalSaude  | uppercase }}</td>
+                                    <td>{{ x.Data | date: 'dd/MM/yyyy'  }} </td>
+                                    <td>{{ x.Hora | date: 'HH:mm'  }}</td>
+                                    <td>
+                                        <span ng-class="{'label label-warning': x.Situacao == 'Aguardando' }">{{ x.Situacao }}</span>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+
+
+
+
+            </div>
+        </div>
+    </section>
+</div>
+

@@ -1,0 +1,148 @@
+﻿<div class="page-content-inner" block-ui="blockProntuario">
+
+    <!-- Profile Header -->
+    <nav class="top-submenu top-submenu-with-background">
+        <div class="profile-header">
+            <div class="profile-header-info" style="padding:10px; padding-left:0px;">
+                <div class="row">
+                    <div class="col-xl-8 col-xl-offset-4">
+                        <div class="width-100 text-center pull-right hidden-md-down">
+                            <!--<h2>{{ vm.paciente.QtdeAtendimentos }}</h2>-->
+                            <!--<p>Atendimentos</p>-->
+                        </div>
+                        <div class="profile-header-title" style="padding-left:0px;">
+                            <h2>{{ vm.paciente.Nome }}</h2>
+                            <p><i class="fa fa-calendar" aria-hidden="true"></i> Data de Nascimento: {{  vm.paciente.DataNascimento | date:'dd/MM/yyyy' }} - {{ vm.paciente.Idade  }} ano(s)</p>
+                            <p><i class="fa fa-user" aria-hidden="true"></i> Mãe: {{  vm.paciente.Mae }}</p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- End Profile Header -->
+
+    <div class="row">
+        <div class="col-xl-3">
+
+
+            <section class="panel profile-user" style="background-image: url(../assets/common/img/temp/photos/4.jpeg)">
+                <div class="panel-body">
+                    <div style="text-align:center;">
+                        <img src="../../assets/common/img/temp/avatars/sem-imagem-avatar.jpg" ng-if="vm.paciente.Foto == null" style="width:200px; height:200px;" alt="" class="img-rounded img-responsive" ng-click="vm.alterarfoto()" />
+                        <img ng-src="data:image/png;base64,{{vm.paciente.Foto}}" ng-if="vm.paciente.Foto != null" style="width:200px; height:200px;" alt="" class="img-rounded img-responsive" ng-click="vm.alterarfoto()" />
+                    </div>
+                    <br>
+                    <br>
+                    <p style="text-align:center;">{{ vm.paciente.Nome }}</p>
+                    <p style="text-align:center; ">
+                        <span class="donut donut-success"></span>
+                        Online
+                    </p>
+                </div>
+            </section>
+
+
+            <section class="panel">
+                <div class="panel-body">
+                    <h6>Prontuário Eletrônico</h6>
+                    <div class="btn-group-vertical btn-group-justified">
+                        <a ui-sref="ultimosatendimentos({id:vm.IdPaciente})" class="btn" style="text-align:left"> Últimos Atendimentos</a>
+                        <a ui-sref="anamnese({id:vm.IdPaciente})" class="btn" style="text-align:left"> Anamnese</a>
+                        <a ui-sref="historiapregressa({id:vm.IdPaciente})" class="btn" style="text-align:left"> História Pregressa</a>
+                        <a ui-sref="mantropometricas({id:vm.IdPaciente})" class="btn" style="text-align:left"> M. Antropométricas</a>
+                        <a ui-sref="atestado({id:vm.IdPaciente})" class="btn" style="text-align:left"> Atestado</a>
+                        <a ui-sref="receituario({id:vm.IdPaciente})" class="btn" style="text-align:left"> Receituário</a>
+                        <a ui-sref="odontograma({id:vm.IdPaciente})" class="btn" style="text-align:left"> Odontograma</a>
+                        <!--<a ui-sref="prescricoes({id:vm.IdPaciente})" class="btn" style="text-align:left"> Prescrições</a>-->
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div class="col-xl-9">
+            <section class="panel profile-user-content">
+                <div class="panel-body">
+                    <h6 style="padding:5px; color:#827ca1; border-radius:3px; border-bottom:none">Prontuário &raquo; Odontograma</h6>
+
+                    <div class="row">
+                        <div class="col-md-8">
+                            <h4> Odontograma </h4>
+                        </div>
+                       
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="form-group pull-right">
+                            <a ng-click="vm.crudOdontograma(0,vm.IdPaciente)" class="btn btn-primary">
+                                <i class="fa fa-plus-square-o"></i>
+                                <span class="bold">  Novo</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="row" style="margin-bottom:30px;">
+                        <div class="col-md-12">
+                            <img src="../../assets/img/odontograma.png" />
+                        </div>
+                    </div>
+
+                   
+
+                    <div class="col-md-12">
+                        <div class="form-group pull-right">
+                            <a ng-click="vm.print(vm.IdPaciente)" class="btn btn-primary">
+                                <i class="fa fa-print"></i>
+                                <span class="bold">  Imprimir Orçamento </span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <table class="table table-hover table-condensed table-striped" datatable="ng">
+                                <thead>
+                                    <tr class="bg-complete-lighter">
+                                        <th style="width: 5%">Dente </th>
+                                        <th style="width: 5%">Face </th>
+                                        <th style="width: 10%">Inicio </th>
+                                        <th style="width: 10%">Término </th>
+                                        <th style="width: 15%">Descrição </th>
+                                        <th style="width: 15%">Profissional de Saúde</th>
+                                        <th style="width: 10%">Valor </th>
+                                        <th style="width: 10%">Situação</th>
+                                        <th style="width: 20%">Ações</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="x in vm.dados ">
+
+                                        <td>{{ x.Dente }}</td>
+                                        <td>{{ x.Face }}</td>
+                                        
+                                        <td>{{ x.DataInicio | date: 'dd/MM/yyyy'}}</td>
+                                        <td>{{ x.DataTermino | date: 'dd/MM/yyyy'}}</td>
+                                        <td>{{ x.Descricao }}</td>
+                                        <td>{{ x.NmFuncionario }}</td>
+                                        <td>{{ x.Valor | number:2 }}</td>
+                                        <td>
+                                            <span ng-class="{'label label-pill label-warning': x.Situacao == 'Em Tratamento',
+                                                    'label label-pill label-primary': x.Situacao == 'A Realizar',
+                                                    'label label-pill label-success': x.Situacao == 'Realizado'}">{{ x.Situacao }}</span>
+                                        
+                                        </td>
+                                        <td>
+                                            <button type="button" class="btn btn-sm btn-primary" ng-click="vm.crudOdontograma(x.IdOdontograma,x.IdPaciente)" tooltip="Editar"> <span class="fa fa-edit"></span> Editar</button>
+                                            <button type="button" class="btn btn-sm btn-danger" ng-click="vm.excluirOdontograma(x.IdOdontograma)" tooltip="Excluir"> <span class="fa fa-remove"></span> Excluir</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>

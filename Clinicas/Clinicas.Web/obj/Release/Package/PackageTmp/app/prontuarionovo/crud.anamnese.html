@@ -1,0 +1,68 @@
+﻿<div class="modal-header" style="margin-bottom:5px;">
+    <button type="button" class="close" ng-click="vm.cancel()" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">×</span>
+    </button>
+    <h5 class="modal-title" id="myModalLabel">Anamnese</h5>
+</div>
+
+<div class="modal-body"  block-ui="blockModalAnamnese">
+    <div class="row">
+        <div class="col-md-12">
+           
+            <div class="profile-header-title" style="background:#f5f5f5; padding:15px; border:#dfe4ed solid 1px; margin-bottom:20px;">
+                <h5>{{ vm.paciente.Nome }}</h5>
+                <div>
+                    <p> <i class="fa fa-calendar" aria-hidden="true"></i> Data de Nascimento: {{  vm.paciente.DataNascimento | date:'dd/MM/yyyy' }} - {{ vm.paciente.Idade  }} ano(s) </p>
+                    <p> <i class="fa fa-user" aria-hidden="true"></i> Mãe: {{ vm.paciente.Mae }} </p>
+               </div>
+            </div>
+
+            <div class="alert alert-danger" ng-if="vm.FormMessage.length > 0">
+                <span><i class="fa fa-exclamation-triangle"></i> <strong>{{ vm.FormMessage }}</strong></span>
+            </div>
+
+            <form name="forms.anamnese" role="form" block-ui="blockModalAnamnese">
+              
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="form-group" show-errors>
+                            <label for="tipo" class="control-label required">Profissional de Saúde</label>
+                            <select class="form-control m-b" ng-options="item.IdFuncionario as item.Nome for item in vm.profissionais" name="profissionalSelecionado" ng-model="vm.profissionalSelecionado" required></select>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="form-group" show-errors>
+                            <label for="HMA" class="control-label required">HMA - História da Moléstia Atual</label>
+                            <textarea name="hma" ng-model="vm.anamnese.Hma" class="form-control bg-light" style="width:100%;" rows="5" required></textarea>
+                            <span>{{4000 - vm.anamnese.Hma.length}} Caracteres</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group" show-errors>
+                            <label for="Diagnostico" class="control-label required">Diagnóstico</label>
+                            <textarea name="Diagnostico" ng-model="vm.anamnese.Diagnostico" class="form-control bg-light" style="width:100%;" rows="5" required></textarea>
+                            <span>{{4000 - vm.anamnese.Diagnostico.length}} Caracteres</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group" show-errors>
+                            <label for="conduta" class="control-label required">Conduta Médica</label>
+                            <textarea name="CondutaMedica" ng-model="vm.anamnese.CondutaMedica" class="form-control bg-light" style="width:100%;" rows="5" required></textarea>
+                            <span>{{4000 - vm.anamnese.CondutaMedica.length}} Caracteres</span>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal-footer"  >
+    <button class="btn btn-default" ng-click="vm.cancel()">Cancelar</button>
+    <button class="btn btn-primary" ng-click="vm.save()" ><i class="fa fa-save"></i> Salvar</button>
+</div>

@@ -1,0 +1,39 @@
+﻿<div block-ui="blockModalListaHospitais">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="pull-right">
+                <div class="col-xs-12">
+                    <button type="button" ng-click="vm.addHospital(0)" value="Modelo" class="btn btn-primary btn-cons"> + Hospital</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br />
+    <div class="row" ng-if="vm.hospitais.length > 0">
+        <div class="col-md-12">
+            <table class="table table-hover table-condensed table-striped" datatable="ng">
+                <thead>
+                    <tr class="bg-complete-lighter">
+                        <th style="width: 90%">Nome </th>
+                        <th style="width: 10%">Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="x in vm.hospitais">
+                        <td>{{x.Nome}}</td>
+                        <td>
+                            <button type="button" class="btn btn-sm btn-primary" ng-click="vm.addHospital(x.IdHospital)" tooltip="Hospital"> <span class="glyphicon glyphicon-edit"></span>  </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row" ng-if="vm.hospitais.length == 0">
+        <div class="col-md-12">
+            <div class="alert alert-info bordered" role="alert">
+                Não existem Hospitais cadastrados.
+            </div>
+        </div>
+    </div>
+</div>

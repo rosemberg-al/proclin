@@ -1,0 +1,48 @@
+﻿<div class="modal-body">
+    <div class="modal-header">
+        <h4 class="modal-title">{{vm.titulo}}</h4>
+        <small class="font-bold"></small>
+    </div>
+    <div class="modal-body">
+        <div class="alert alert-danger" ng-if="vm.FormMessage.length > 0">
+            <div class="row">
+                <div class="col-md-12">
+                    <i class="fa fa-exclamation-triangle pull-left" style="font-size: 20px;"></i>
+                    {{vm.FormMessage}}
+                </div>
+            </div>
+        </div>
+        <div class="row white-bg dashboard-header" block-ui="blockModalTransf">
+            <div class="row">
+                <div class="col-lg-12">
+                    <form class="form-horizontal" name="forms.transferencias" ng-enter="vm.save()" ng-submit="vm.save()" role="form" id="form" autocomplete="off" novalidate>
+                        <div class="form-group" show-errors>
+                            <label class="col-sm-2 control-label">Conta Origem</label>
+                            <div class="col-sm-10">
+                                <select class="form-control m-b" ng-options="item.IdConta as item.Nome for item in vm.contaOrigem" name="tipos" ng-model="vm.contaOrigemSelecionada" required></select>
+                            </div>
+                        </div>
+                        <div class="form-group" show-errors>
+                            <label class="col-sm-2 control-label">Conta Destino</label>
+                            <div class="col-sm-10">
+                                <select class="form-control m-b" ng-options="item.IdConta as item.Nome for item in vm.contaDestino" name="tipos" ng-model="vm.contaDestinoSelecionada" required></select>
+                            </div>
+                        </div>
+                        <div class="form-group" show-errors>
+                            <label class="col-sm-2 control-label">Valor</label>
+                            <div class="col-sm-10"><input type="text" class="form-control" name="valor" ng-model="vm.transferencia.Valor"  maxlength="100" required></div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Descrição</label>
+                            <div class="col-sm-10"><textarea ng-model="vm.transferencia.Descricao" name="descricao" style="width:100%;" rows="3" cols="30" maxlength="500"></textarea></div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-white" ng-click="vm.cancel()">Fechar</button>
+        <button type="button" class="btn btn-primary pull-right" ng-click="vm.save()">Salvar</button>
+    </div>
+</div>

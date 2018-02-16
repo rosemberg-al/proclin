@@ -1,0 +1,173 @@
+﻿<div class="modal-header">
+    <h3 class="modal-title">{{ vm.State }} </h3>
+</div>
+<div class="modal-body" block-ui="blockModalCrudConvenio">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-danger" ng-if="vm.FormMessage.length > 0">
+                <span><i class="fa fa-exclamation-triangle"></i> <strong>{{ vm.FormMessage }}</strong></span>
+            </div>
+            <div class="row">
+
+                <div class="col-md-12">
+                    <div class="panel">
+                        <ul class="nav nav-tabs nav-tabs-simple" role="tablist">
+                            <li class="active" id="liConvenio">
+                                <a data-toggle="tab" data-target="#tabdados">Dados do Convênio</a>
+                            </li>
+                            <li class="" id="liEndereco">
+                                <a data-toggle="tab" data-target="#tabendereco">Dados de Endereço</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="tabdados">
+                                <div class="row column-seperation">
+                                    <div class="col-md-12">
+                                        <div class="panel-body m-t-20">
+                                            <form name="forms.dadosConvenio" role="form">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group" show-errors>
+                                                            <label for="Nome" class="control-label required">Nome</label>
+                                                            <input class="form-control bg-light" name="Nome" ng-model="vm.convenio.NomeConvenio" type="text" required>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group" show-errors>
+                                                            <label for="contato" class="control-label required">Contato</label>
+                                                            <input class="form-control bg-light" name="contato" ng-model="vm.convenio.NomeContato" type="text" required>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <div class="form-group" show-errors>
+                                                            <label for="TelCelular" class="control-label required">Telefone Celular</label>
+                                                            <input class="form-control bg-light" name="TelCelular" ng-model="vm.convenio.TelefoneCelular" ui-br-phone-number type="text">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="form-group" show-errors>
+                                                            <label for="TelResidencial" class="control-label required">Telefone Residencial</label>
+                                                            <input class="form-control bg-light" name="TelResidencial" ng-model="vm.convenio.TelefonePrincipal" ui-br-phone-number type="text">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="form-group" show-errors>
+                                                            <label for="Email" class="control-label required">Email</label>
+                                                            <input class="form-control bg-light" name="Email" ng-model="vm.convenio.Email" type="email" required>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <div class="form-group" show-errors>
+                                                            <label for="registro" class="control-label required">Registro ANS</label>
+                                                            <input class="form-control bg-light" name="registro" ng-model="vm.convenio.RegistroAns" type="text" required>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="form-group" show-errors>
+                                                            <label for="Situacao" class="control-label">Situação</label>
+                                                            <div class="radio radio-success">
+                                                                <input type="radio" value="A" ng-model="vm.convenio.Situacao" name="Situacao" id="Ativo">
+                                                                <label for="Ativo">Ativo</label>
+                                                                <input type="radio" ng-model="vm.convenio.Situacao" value="I" name="Situacao" id="Inativo">
+                                                                <label for="Inativo">Inativo</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group" show-errors>
+                                                            <label for="obs" class="control-label">Observação</label>
+                                                            <textarea name="obs" ng-model="vm.convenio.Observacao" class="form-control bg-light" style="width:100%;" rows="5"></textarea>
+                                                            <span>{{4000 - vm.convenio.Observacao.length}} Caracteres</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane " id="tabendereco">
+                                <div class="row column-seperation">
+                                    <div class="col-md-12">
+                                        <div class="panel-body m-t-20">
+                                            <form name="forms.dadosendereco" role="form">
+                                                <div class="row">
+                                                    <div class="col-md-3">
+                                                        <div class="form-group" show-errors>
+                                                            <label for="Nome" class="control-label required">Cep</label>
+                                                            <input class="form-control bg-light" name="Nome" ng-model="vm.convenio.Cep" type="text" ui-br-cep-mask required>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group" show-errors>
+                                                            <label for="Logradouro" class="control-label required">Logradouro</label>
+                                                            <input class="form-control bg-light" name="Logradouro" ng-model="vm.convenio.Logradouro" type="text" required>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="form-group" show-errors>
+                                                            <label for="Nr" class="control-label required">Número</label>
+                                                            <input class="form-control bg-light" name="Nr" ng-model="vm.convenio.Numero" type="text" required>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <div class="form-group" show-errors>
+                                                            <label for="Bairro" class="control-label required">Bairro</label>
+                                                            <input class="form-control bg-light" name="Bairro" ng-model="vm.convenio.Bairro" type="text" required>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="form-group" show-errors>
+                                                            <label for="estado" class="control-label required">Estado</label>
+                                                            <select class="form-control m-b" ng-options="item.Id as item.Nome for item in vm.estados" name="estado" ng-model="vm.estadoSelecionado" required></select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="form-group" show-errors>
+                                                            <label for="Cidade" class="control-label required">Cidade</label>
+                                                            <select class="form-control m-b" ng-options="item.Id as item.Nome for item in vm.cidades" name="Cidade" ng-model="vm.cidadeSelecionada" required></select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group" show-errors>
+                                                            <label for="Complemento" class="control-label">Complemento</label>
+                                                            <input class="form-control bg-light" name="Complemento" ng-model="vm.convenio.Complemento" type="text">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group" show-errors>
+                                                            <label for="Referencia" class="control-label">Referência</label>
+                                                            <input class="form-control bg-light" name="Referencia" ng-model="vm.convenio.Referencia" type="text">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="modal-footer">
+    <button class="btn btn-default" ng-click="vm.cancel()">Cancelar</button>
+    <button class="btn btn-primary" ng-click="vm.save()"><i class="fa fa-save"></i> Salvar</button>
+
+</div>
+

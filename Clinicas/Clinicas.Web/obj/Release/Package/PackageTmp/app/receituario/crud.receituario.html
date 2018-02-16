@@ -1,0 +1,63 @@
+﻿<div class="modal-header">
+    <h3 class="modal-title">{{ vm.State }} </h3>
+</div>
+<div class="modal-body">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-danger" ng-if="vm.FormMessage.length > 0">
+                <span><i class="fa fa-exclamation-triangle"></i> <strong>{{ vm.FormMessage }}</strong></span>
+            </div>
+            <form name="forms.receituario" role="form" block-ui="blockModalReceituario">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group" show-errors>
+                            <label for="Paciente" class="control-label required">Paciente</label>
+                            <input class="form-control bg-light" name="Paciente" ng-model="vm.receituario.Paciente" type="text" readonly>
+                        </div>
+                    </div>
+                    <div class="col-md-6" ng-if="vm.exibeModelo">
+                        <div class="form-group" show-errors>
+                            <label for="modelo" class="control-label required">Modelo Receituário</label>
+                            <select class="form-control m-b" ng-options="item.IdModeloProntuario as item.NomeModelo for item in vm.modelosreceituarios" name="modelo" ng-model="vm.modeloSelecionado" required></select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="form-group" show-errors>
+                            <label for="profissional" class="control-label required">Profissional de Saúde</label>
+                            <select class="form-control m-b" ng-options="item.IdFuncionario as item.NmFuncionario for item in vm.profissionais" name="profissional" ng-model="vm.profissionalSelecionado" required></select>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group" show-errors>
+                            <label for="Situacao" class="required">Situação</label>
+                            <div class="radio radio-success mb5">
+                                <input type="radio" id="rSituacaoAtivo" name="rSituacaoAtivo" ng-model="vm.receituario.Situacao" value="A">
+                                <label for="rSituacaoAtivo">Ativo</label>
+                                <input type="radio" id="rSituacaiInativo" name="rSituacaiInativo" ng-model="vm.receituario.Situacao" value="I">
+                                <label for="rSituacaiInativo">Inativo</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group" show-errors>
+                            <label for="htmlcontent" class="control-label required">Descrição</label>
+                            <text-angular style="min-height:200px;" ta-text-editor-class="form-control myform1-height" ta-html-editor-class="form-control myform1-height" ta-toolbar="[ ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'pre', 'quote'],['bold', 'italics', 'underline', 'strikeThrough', 'ul', 'ol', 'redo', 'undo', 'clear'],['justifyLeft', 'justifyCenter', 'justifyRight', 'indent', 'outdent']]" name="htmlcontent" required ng-model="vm.receituario.Descricao"> </text-angular>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+<div class="modal-footer">
+    <button class="btn btn-default" ng-click="vm.cancel()">Cancelar</button>
+    <button class="btn btn-primary" ng-click="vm.save()"><i class="fa fa-save"></i> Salvar</button>
+
+</div>
+

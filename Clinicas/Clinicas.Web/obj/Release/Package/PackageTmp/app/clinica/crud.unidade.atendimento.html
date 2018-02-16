@@ -1,0 +1,212 @@
+﻿
+
+<div class="modal-header" style="margin-bottom:10px;">
+    <button type="button" class="close" ng-click="vm.cancel()" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">×</span>
+    </button>
+    <h5 class="modal-title" id="myModalLabel">{{ vm.State }}</h5>
+</div>
+<div class="modal-body" block-ui="blockCrudUnidade">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="nav-tabs-horizontal">
+                <ul class="nav nav-tabs" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" data-toggle="tab" id="liunidade" data-target="#tabunidade" role="tab" aria-expanded="false">
+                            <i class="fa fa-home"></i>
+                            Dados da Unidade
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" id="liEndereco" data-target="#tabendereco" role="tab" aria-expanded="false">
+                            <i class="fa fa-map-marker"></i>
+                            Dados do Endereço
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" id="liContato" data-target="#tabcontato" role="tab" aria-expanded="false">
+                            <i class="fa fa-phone-square"></i>
+                            Contatos
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" id="liEspec" data-target="#tabEspec" role="tab" aria-expanded="false">
+                            <i class="fa fa-medkit"></i>
+                            Especialidades
+                        </a>
+                    </li>
+                </ul>
+
+                <div class="tab-content padding-vertical-20">
+
+                    <div class="tab-pane active" id="tabunidade" role="tabpanel" aria-expanded="false">
+                        <div class="alert alert-danger" ng-if="vm.FormMessage.length > 0">
+                            <span><i class="fa fa-exclamation-triangle"></i> <strong>{{ vm.FormMessage }}</strong></span>
+                        </div>
+                        <br />
+                        <form name="forms.dadosunidade" role="form">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group" show-errors>
+                                        <label for="Clinica" class="control-label required">Clinica</label>
+                                        <input class="form-control bg-light" name="Clinica" ng-model="vm.unidade.Clinica" readonly type="text" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group" show-errors>
+                                        <label for="nome" class="control-label required">Nome da Unidade</label>
+                                        <input class="form-control bg-light" name="nome" ng-model="vm.unidade.Nome" type="text" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="tab-pane" id="tabendereco" role="tabpanel" aria-expanded="false">
+                        <div class="alert alert-danger" ng-if="vm.FormMessage.length > 0">
+                            <span><i class="fa fa-exclamation-triangle"></i> <strong>{{ vm.FormMessage }}</strong></span>
+                        </div>
+                        <br />
+                        <form name="forms.dadosenderecounidade" role="form">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-group" show-errors>
+                                        <label for="Nome" class="control-label required">Cep</label>
+                                        <input class="form-control bg-light" name="Nome" ng-model="vm.unidade.Cep" type="text" ui-br-cep-mask required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group" show-errors>
+                                        <label for="Logradouro" class="control-label required">Logradouro</label>
+                                        <input class="form-control bg-light" name="Logradouro" ng-model="vm.unidade.Logradouro" maxlength="100" type="text" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group" show-errors>
+                                        <label for="Nr" class="control-label required">Número</label>
+                                        <input class="form-control bg-light" name="Numero" ng-model="vm.unidade.Numero" maxlength="10" type="text" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group" show-errors>
+                                        <label for="Bairro" class="control-label required">Bairro</label>
+                                        <input class="form-control bg-light" name="Bairro" ng-model="vm.unidade.Bairro" maxlength="100" type="text" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group" show-errors>
+                                        <label for="estado" class="control-label required">Estado</label>
+                                        <select class="form-control m-b" ng-options="item.Id as item.Nome for item in vm.estados" name="estado" ng-model="vm.estadoSelecionado" required></select>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group" show-errors>
+                                        <label for="Cidade" class="control-label required">Cidade</label>
+                                        <select class="form-control m-b" ng-options="item.Id as item.Nome for item in vm.cidades" name="Cidade" ng-model="vm.cidadeSelecionada" required></select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group" show-errors>
+                                        <label for="Complemento" class="control-label">Complemento</label>
+                                        <input class="form-control bg-light" name="Complemento" ng-model="vm.unidade.Complemento" maxlength="400" type="text">
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="tab-pane" id="tabcontato" role="tabpanel" aria-expanded="false">
+                        <div class="alert alert-danger" ng-if="vm.FormMessage.length > 0">
+                            <span><i class="fa fa-exclamation-triangle"></i> <strong>{{ vm.FormMessage }}</strong></span>
+                        </div>
+                        <br />
+                        <form name="forms.dadoscontatounidade" role="form">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group" show-errors>
+                                        <label for="TelCelular" class="control-label required">Telefone 1</label>
+                                        <input class="form-control bg-light" name="Telefone1" ng-model="vm.unidade.Telefone1" ui-br-phone-number type="text" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group" show-errors>
+                                        <label for="TelResidencial" class="control-label">Telefone 2</label>
+                                        <input class="form-control bg-light" name="Telefone2" ng-model="vm.unidade.Telefone2" ui-br-phone-number type="text">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group" show-errors>
+                                        <label for="fax" class="control-label">Fax</label>
+                                        <input class="form-control bg-light" name="fax" ng-model="vm.unidade.Fax" ui-br-phone-number type="text">
+                                    </div>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="form-group" show-errors>
+                                        <label for="Email" class="control-label required">Email</label>
+                                        <input class="form-control bg-light" name="Email" ng-model="vm.unidade.Email" type="email" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="tab-pane" id="tabEspec" role="tabpanel" aria-expanded="false">
+                        <div class="alert alert-danger" ng-if="vm.FormMessage.length > 0">
+                            <span><i class="fa fa-exclamation-triangle"></i> <strong>{{ vm.FormMessage }}</strong></span>
+                        </div>
+                        <br />
+                        <form name="forms.especialidades" role="form">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <div class="form-group" show-errors>
+                                        <label for="especialidades" class="control-label required">Especialidades</label>
+                                        <select class="form-control m-b" ng-options="item.IdEspecialidade as item.NmEspecialidade for item in vm.especialidades" name="especialidades" ng-model="vm.especSelecionada"></select>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <button type="button" style="margin-left:20px; margin-top: 25px;" ng-click="vm.add()" tooltip="Adicionar Especialidade" class="btn btn-primary btn-cons"><span class="fa fa-plus"></span> Adicionar</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" ng-if="vm.especialidadesAdicionadas.length > 0">
+                                <div class="col-md-12">
+                                    <table class="table table-hover table-condensed table-striped" datatable="ng" dt-options="vm.dtOptions">
+                                        <thead>
+                                            <tr class="bg-complete-lighter">
+                                                <th style="width:90%">Especialidade </th>
+                                                <th style="width:10%">Ação </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="x in vm.especialidadesAdicionadas">
+                                                <td>{{x.NmEspecialidade | uppercase}}</td>
+                                                <td>
+                                                    <button type="button" class="btn btn-sm btn-danger" ng-click="vm.excluirespecialidade(x)" tooltip="Excluir Especialidade"> <span class="fa fa-remove"></span> Excluir  </button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<div class="modal-footer" block-ui="blockCrudUnidade">
+    <button class="btn btn-default" ng-click="vm.cancel()">Cancelar</button>
+    <button class="btn btn-primary" ng-click="vm.save()"><i class="fa fa-save"></i> Salvar</button>
+
+</div>
+

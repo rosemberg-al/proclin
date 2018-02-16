@@ -1,0 +1,47 @@
+﻿<div class="modal-header" style="margin-bottom:10px;">
+    <button type="button" class="close" ng-click="vm.cancel()" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">×</span>
+    </button>
+    <h5 class="modal-title" id="myModalLabel">{{ vm.State }}</h5>
+</div>
+<div class="modal-body">
+    <div class="row" block-ui="blockModalMaterial">
+        <div class="col-md-12">
+            <div class="alert alert-danger" ng-if="vm.FormMessage.length > 0">
+                <span><i class="fa fa-exclamation-triangle"></i> <strong>{{ vm.FormMessage }}</strong></span>
+            </div>
+            <form name="forms.material" role="form" id="form" autocomplete="off" novalidate>
+                <div class="row">
+
+                    <div class="col-md-8">
+                        <div class="form-group" show-errors>
+                            <label for="materialSelecionado" class="control-label required">Material </label>
+                            <select class="form-control m-b" ng-options="item.IdMaterial as item.Nome for item in vm.materiais" name="materialSelecionado" ng-model="vm.materialSelecionado" required></select>
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-2">
+                        <div class="form-group" show-errors>
+                            <label for="tipoSelecionado" class="control-label required">Tipo </label>
+                            <select class="form-control m-b" ng-options="item.Key as item.Value for item in vm.tipos" name="tipoSelecionado" ng-model="vm.tipoSelecionado" required></select>
+                        </div>
+                    </div>
+
+                    <div class="col-md-2">
+                        <div class="form-group" show-errors>
+                            <label for="Quantidade" class="control-label required">Qtde</label>
+                            <input class="form-control bg-light" name="Quantidade" ng-model="vm.material.Quantidade" type="number" required>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+<div class="modal-footer"  block-ui="blockModalMaterial">
+    <button class="btn btn-default" ng-click="vm.cancel()">Cancelar</button>
+    <button class="btn btn-primary" ng-click="vm.save()"><i class="fa fa-save"></i> Salvar</button>
+</div>

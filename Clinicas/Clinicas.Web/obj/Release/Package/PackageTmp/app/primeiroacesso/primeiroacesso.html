@@ -1,0 +1,255 @@
+﻿<div class="modal-header" style="margin-bottom:10px;">
+    <button type="button" class="close" ng-click="vm.sair()" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true"><i class="fa fa-power-off"></i> </span>
+    </button>
+    <h5 class="modal-title" id="myModalLabel">Vamos começar</h5>
+</div>
+<style>
+    .checkbox label, .radio label {
+        padding-left: 0.25rem;
+    }
+
+    li {
+        list-style: none;
+    }
+
+    .well-sm:hover {
+        background: #FFFACD;
+    }
+
+    .stylish-input-group .input-group-addon {
+        background: white !important;
+    }
+
+    .stylish-input-group .form-control {
+        border-right: 0;
+        box-shadow: 0 0 0;
+        border-color: #ccc;
+    }
+
+    .stylish-input-group button {
+        border: 0;
+        background: transparent;
+    }
+    /* Styles specific to this particular page */
+    .scroll-pane {
+        width: 120%;
+        height: 400px;
+        overflow: auto;
+    }
+
+    .jspCap {
+        display: block;
+        background: #eeeef4;
+    }
+
+    .jspVerticalBar .jspCap {
+        height: 20px;
+    }
+
+    .jspHorizontalBar .jspCap {
+        width: 50px;
+        height: 100%;
+    }
+</style>
+
+<div class="modal-body">
+    <section class="panel panel-with-sidebar">
+        <div class="panel-sidebar">
+            <p>
+               Para começar, vamos completar seu cadaastro.
+            </p>
+            <p>
+                1º - Vamos completar os dados da clinica
+            </p>
+            <p>
+                2º - Vamos cadastrar o profissional de saúde
+            </p>
+            <p>
+                3º - Vamos cadastrar as especialidades do profissional
+            </p>
+            <br />
+            <div class="btn-group-vertical btn-group-justified">
+                <button type="button" class="btn btn-primary" id="btndadosclinica">Dados da clinica</button>
+                <button type="button" class="btn" id="btndadospro">Dados do Profissional</button>
+                <button type="button" class="btn" id="btndadosespec">Dados das Especialidades</button>
+            </div>
+        </div>
+        <div class="panel-heading">
+            
+        </div>
+        <div class="panel-body">
+            <div class="row" ng-if="vm.passo1">
+                <div class="col-lg-12" block-ui="blockModalPasso1">
+                    <form name="forms.primeiroenderecoclinica" role="form">
+                        <div class="alert alert-danger" ng-if="vm.FormMessage.length > 0">
+                            <span><i class="fa fa-exclamation-triangle"></i> <strong>{{ vm.FormMessage }}</strong></span>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group" show-errors>
+                                    <label for="Nome" class="control-label required">Cep</label>
+                                    <input class="form-control bg-light" name="Nome" ng-model="vm.clinica.Cep" type="text" ui-br-cep-mask required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group" show-errors>
+                                    <label for="Logradouro" class="control-label required">Logradouro</label>
+                                    <input class="form-control bg-light" name="Logradouro" ng-model="vm.clinica.Logradouro" maxlength="100" type="text" required>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group" show-errors>
+                                    <label for="Nr" class="control-label required">Número</label>
+                                    <input class="form-control bg-light" name="Numero" ng-model="vm.clinica.Numero" maxlength="10" type="text" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group" show-errors>
+                                    <label for="Bairro" class="control-label required">Bairro</label>
+                                    <input class="form-control bg-light" name="Bairro" ng-model="vm.clinica.Bairro" maxlength="100" type="text" required>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group" show-errors>
+                                    <label for="estado" class="control-label required">Estado</label>
+                                    <select class="form-control m-b" ng-options="item.Id as item.Nome for item in vm.estados" name="estado" ng-model="vm.clinica.IdEstado" required></select>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group" show-errors>
+                                    <label for="Cidade" class="control-label required">Cidade</label>
+                                    <select class="form-control m-b" ng-options="item.Id as item.Nome for item in vm.cidades" name="Cidade" ng-model="vm.clinica.IdCidade" required></select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group" show-errors>
+                                    <label for="Complemento" class="control-label">Complemento</label>
+                                    <input class="form-control bg-light" name="Complemento" ng-model="vm.clinica.Complemento" maxlength="400" type="text">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <button class="btn btn-primary pull-lg-right" ng-click="vm.saveclinica()"><i class="fa fa-save"></i> Salvar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="row" ng-if="vm.passo2">
+                <div class="col-lg-12" block-ui="blockModalPasso2">
+                    <form name="forms.primeiroacessofunc" role="form">
+                        <div class="alert alert-danger" ng-if="vm.FormMessage.length > 0">
+                            <span><i class="fa fa-exclamation-triangle"></i> <strong>{{ vm.FormMessage }}</strong></span>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="form-group" show-errors>
+                                    <label for="Nome" class="control-label required">Nome</label>
+                                    <input class="form-control bg-light" name="Nome" ng-model="vm.funcionario.Nome" type="text" required>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group" show-errors>
+                                    <label for="tipo" class="control-label required">Sexo</label>
+                                    <select class="form-control m-b" ng-options="item.Key as item.Value for item in vm.sexos" name="tipo" ng-model="vm.sexoSelecionado" required></select>
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-4">
+                                <div class="form-group" show-errors>
+                                    <label for="DtNascimento" class="control-label required">Data Nascimento</label>
+                                    <input class="form-control bg-light" name="DtNascimento" ng-model="vm.funcionario.DataNascimento" type="text" ui-date-mask required>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group" show-errors>
+                                    <label for="CPF" class="control-label required">CPF</label>
+                                    <input class="form-control bg-light" name="CPF" ng-model="vm.funcionario.CPF" ui-br-cpf-mask type="text" required>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group" show-errors>
+                                    <label for="Mae" class="control-label">Mãe</label>
+                                    <input class="form-control bg-light" name="Mae" ng-model="vm.funcionario.Mae" type="text">
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group" show-errors>
+                                    <label for="Pai" class="control-label">Pai</label>
+                                    <input class="form-control bg-light" name="Pai" ng-model="vm.funcionario.Pai" type="text">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <button class="btn btn-primary pull-lg-right" ng-click="vm.savefuncionario()"><i class="fa fa-save"></i> Salvar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="row" ng-if="vm.passo3">
+                <div class="col-lg-12" block-ui="blockModalPasso3">
+                    <form name="forms.primeiroacessoespecialidades" role="form">
+                        <div class="alert alert-danger" ng-if="vm.FormMessage.length > 0">
+                            <span><i class="fa fa-exclamation-triangle"></i> <strong>{{ vm.FormMessage }}</strong></span>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="form-group" show-errors>
+                                    <label for="especialidades" class="control-label required">Especialidades</label>
+                                    <select class="form-control m-b" ng-options="item.IdEspecialidade as item.NmEspecialidade for item in vm.especialidades" name="especialidades" ng-model="vm.especSelecionada"></select>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <button type="button" style="margin-left:20px; margin-top: 25px;" ng-click="vm.add()" tooltip="Adicionar Especialidade" class="btn btn-primary btn-cons"><span class="fa fa-plus"></span> Adicionar</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" ng-show="vm.funcionario.Especialidades.length > 0" style="min-height: 220px;">
+                            <div class="col-md-12">
+                                <table class="table table-hover table-condensed table-striped" datatable="ng" dt-options="vm.dtOptions">
+                                    <thead>
+                                        <tr class="bg-complete-lighter">
+                                            <th style="width:90%">Especialidade </th>
+                                            <th style="width:10%">Ação </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="x in vm.funcionario.Especialidades">
+                                            <td>{{x.NmEspecialidade | uppercase}}</td>
+                                            <td>
+                                                <button type="button" class="btn btn-sm btn-danger" ng-click="vm.excluirespecialidade(x)" tooltip="Excluir Especialidade"> <span class="fa fa-remove"></span> Excluir  </button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-md-12">
+                                <button class="btn btn-primary pull-lg-right" ng-click="vm.saveespecialidades()"><i class="fa fa-save"></i> Salvar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

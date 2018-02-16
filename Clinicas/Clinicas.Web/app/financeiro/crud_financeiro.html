@@ -1,0 +1,132 @@
+﻿<div class="modal-header" style="margin-bottom:10px;">
+    <button type="button" class="close" ng-click="vm.cancel()" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">×</span>
+    </button>
+    <h5 class="modal-title" id="myModalLabel">{{ vm.titulo }}</h5>
+</div>
+
+<div class="modal-body">
+
+
+        <div class="row" block-ui="blockModalCFinanc">
+            <form id="frm" name="forms.dadosfinanceiro" role="form" ng-submit="submitForm(frm.$valid)" novalidate>
+
+                <div class="col-md-12" style="margin-bottom:20px;">
+                    <div class="col-sm-8">
+                        <label class="required">{{vm.tituloPessoa}}</label>
+                        <div class="input-group" show-errors>
+                            <input type="text" class="form-control" disabled name="pessoa" ng-model="vm.nomepessoaSelecionada">
+                            <span class="input-group-addon">
+                                <a ng-click="vm.getpessoa()"><i class="fa fa-search" style="cursor:pointer"></i></a>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="col-sm-4">
+                        <div class="form-group" show-errors>
+                            <label class="required">Valor</label>
+                            <input type="text" name="total" class="form-control" ng-model="vm.financeiro.Total" ui-number-mask="2" value="{{vm.financeiro.Total | number: 2 }}" required>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group" show-errors>
+                            <label class="required">Data de Vencimento (1ª parcela)</label>
+                            <input type="text" name="datavenc" ng-model="vm.financeiro.DataVencimento" class="form-control inputcalendar" value="{{vm.financeiro.DataVencimento | date:'dd/MM/yyyy' }}" ui-date-mask required>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group" show-errors>
+                            <label class="required">Plano de Conta</label>
+                            <select class="form-control m-b" ng-options="item.IdPlanoConta as item.NmPlanoConta for item in vm.planos" name="plano" ng-model="vm.planoSelecionado" required></select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="col-sm-4">
+                        <div class="form-group" show-errors>
+                            <label class="required">Conta</label>
+                            <select class="form-control m-b" ng-options="item.IdConta as item.Nome for item in vm.contas" name="contas" ng-model="vm.contaSelecionada" required></select>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group" show-errors>
+                            <label class="required">Tipo Pagamento</label>
+                            <select class="form-control m-b" ng-options="item.tp as item.desc for item in vm.tipos" name="tipos" ng-model="vm.tipopagamentoSelecionado" required></select>
+                        </div>
+                    </div>
+                    <div class="col-sm-4" ng-if="vm.tipopagamentoSelecionado == 'P'">
+                        <div class="form-group" show-errors>
+                            <label class="required">Nº parcelas</label>
+                            <input type="number" name="qtdeparcelas" ng-model="vm.financeiro.QuantidadeParcelas" min="1" ng-blur="vm.geraParcelas()" class="form-control" required>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <div class="row" ng-if="vm.parcelasAdicionadas.length > 0">
+                <div class="col-md-12">
+                    <div class="panel panel-info" style="min-height:210px;">
+                        <div class="panel-heading">
+                            <span class="panel-title">Parcelas adicionadas</span>
+                        </div>
+                        <div class="panel-body">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th style="width:15%;">Nº da parcela</th>
+                                        <th style="width:30%;">Data de vencimento</th>
+                                        <th style="width:30%;">Valor da parcela</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="item in vm.parcelasAdicionadas">
+                                        <td style="text-align:center;"><i class="fa fa-caret-right"></i> {{item.NumeroParcela}}</td>
+                                        <td style="text-align:center;">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="fa fa-calendar"></i>
+                                                </span>
+                                                <input type="text" class="form-control" style="width:50%;" value="{{item.DataVencimento}}" name="date_{{$index}}" ng-model="item.DataVencimento" ui-date-mask />
+                                            </div>
+                                        </td>
+                                        <td style="text-align:center;">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="fa fa-money"></i>
+                                                </span>
+                                                <input type="text" class="form-control" style="width:50%;" value="{{item.Valor}}" ui-number-mask="2" name="val_{{$index}}" ng-model="item.Valor" ui-mask="$99.99" ng-blur="vm.validatotal()" />
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+<div class="modal-footer">
+    <button class="btn btn-default" ng-click="vm.cancel()">Cancelar</button>
+    <button class="btn btn-primary" ng-click="vm.salvar()"><i class="fa fa-save"></i> Salvar</button>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $(".inputcalendar").datepicker({
+            language: "pt-BR",
+            format: 'dd/mm/yyyy',
+            dayNames: ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'],
+            dayNamesMin: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S', 'D'],
+            dayNamesShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'],
+            monthNames: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+            monthNamesShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+            nextText: 'Próximo',
+            prevText: 'Anterior'
+        });
+
+    });
+        </script>

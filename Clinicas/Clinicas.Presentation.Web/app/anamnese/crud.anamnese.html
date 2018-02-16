@@ -1,0 +1,70 @@
+﻿<div class="modal-header">
+    <h3 class="modal-title">{{ vm.State }} </h3>
+</div>
+<div class="modal-body">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-danger" ng-if="vm.FormMessage.length > 0">
+                <span><i class="fa fa-exclamation-triangle"></i> <strong>{{ vm.FormMessage }}</strong></span>
+            </div>
+            <form name="forms.anamnese" role="form" block-ui="blockModalAnamnese">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group" show-errors>
+                            <label for="Paciente" class="control-label">Paciente</label>
+                            <input class="form-control bg-light" name="Paciente" ng-model="vm.anamnese.Paciente" type="text" readonly>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group" show-errors>
+                            <label for="HMA" class="control-label required">HMA - História da Moléstia Atual</label>
+                            <textarea name="hma" ng-model="vm.anamnese.Hma" class="form-control bg-light" style="width:100%;" rows="5" required></textarea>
+                            <span>{{4000 - vm.anamnese.Hma.length}} Caracteres</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group" show-errors>
+                            <label for="Diagnostico" class="control-label required">Diagnóstico</label>
+                            <textarea name="Diagnostico" ng-model="vm.anamnese.Diagnostico" class="form-control bg-light" style="width:100%;" rows="5" required></textarea>
+                            <span>{{4000 - vm.anamnese.Diagnostico.length}} Caracteres</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group" show-errors>
+                            <label for="conduta" class="control-label required">Conduta Médica</label>
+                            <textarea name="CondutaMedica" ng-model="vm.anamnese.CondutaMedica" class="form-control bg-light" style="width:100%;" rows="5" required></textarea>
+                            <span>{{4000 - vm.anamnese.CondutaMedica.length}} Caracteres</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" >
+                    <div class="col-md-6">
+                        <div class="form-group" show-errors>
+                            <label for="Situacao" class="required">Situação</label>
+                            <div class="radio radio-success mb5">
+                                <input type="radio" id="rSituacaoAtivo" name="rSituacaoAtivo" ng-model="vm.anamnese.Situacao" value="A">
+                                <label for="rSituacaoAtivo">Ativo</label>
+                                <input type="radio" id="rSituacaiInativo" name="rSituacaiInativo" ng-model="vm.anamnese.Situacao" value="I">
+                                <label for="rSituacaiInativo">Inativo</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+<div class="modal-footer"  >
+    <button class="btn btn-default" ng-click="vm.cancel()">Cancelar</button>
+    <button class="btn btn-primary" ng-click="vm.save()" ><i class="fa fa-save"></i> Salvar</button>
+
+</div>
+

@@ -1,0 +1,124 @@
+﻿<div block-ui="blockListaGuiaConsulta">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-danger" ng-if="vm.FormMessage.length > 0">
+                <div class="row">
+                    <div class="col-md-12">
+                        <i class="fa fa-exclamation-triangle pull-left" style="font-size: 20px;"></i>
+                        {{vm.FormMessage}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default" block-ui="blockGrid">
+        <div class="panel-heading separator">
+            <div class="panel-title">
+                Filtros de Pesquisa
+            </div>
+        </div>
+        <div class="panel-body m-t-20">
+            <form role="form" name="forms.buscaguiaconsulta" ng-enter="vm.buscar()" ng-submit="vm.buscar()" id="form" autocomplete="off" novalidate>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Período</label>
+                            <div class="input-daterange input-group" id="datepicker-range">
+                                <div id="datepicker-component" class="input-group date" bsdatepicker>
+                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                    <input name="Inicio" type="text" class="form-control inputcalendar" ng-model="vm.busca.DataInicio" ui-date-mask required ng-enter="vm.buscar()" />
+                                </div>
+                                <span class="input-group-addon">até</span>
+                                <div id="datepicker-component" class="input-group date" bsdatepicker>
+                                    <input name="Fim" type="text" class="form-control inputcalendar" ng-model="vm.busca.DataFim" ui-date-mask required ng-enter="vm.buscar()" />
+                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="NomePaciente">Paciente</label>
+                            <input type="text" class="form-control" placeholder="Nome Paciente..." name="nome" ng-model="vm.busca.NomePaciente" maxlength="100">
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="Profissional">Médico</label>
+                            <input type="text" class="form-control" placeholder="Nome Médico..." name="nome" ng-model="vm.busca.Profissional" maxlength="100">
+                        </div>
+                    </div>
+                    <div class="col-md-1">
+                        <div class="form-group">
+                            <label for="NumeroGuia">Guia</label>
+                            <input type="text" class="form-control" placeholder="Guia..." name="nome" ng-model="vm.busca.NumeroGuia" maxlength="100">
+                        </div>
+                    </div>
+                    <div class="col-md-1">
+                        <div class="form-group">
+                            <button class="btn btn-primary btn-animated from-top fa fa-search" style="margin-top:27px;" type="button" ng-click="vm.buscar()"><span>Buscar</span></button>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                
+                <button type="button" style="margin-left:20px;" ng-click="vm.addGuiaConsulta(0)" tooltip="Nova Guia de Consulta" class="btn btn-primary btn-cons pull-right"> + Guia de Consulta</button>
+            </form>
+        </div>
+    </div>
+    
+    <br />
+    <div class="row" ng-if="vm.guiasconsultas.length > 0">
+        <div class="col-md-12">
+            <table class="table table-hover table-condensed table-striped" datatable="ng" dt-options="vm.dtOptions">
+                <thead>
+                    <tr class="bg-complete-lighter">
+                        <th style="width: 10%">Guia </th>
+                        <th style="width: 10%">Data </th>
+                        <th style="width: 30%">Nome </th>
+                        <th style="width: 30%">Profissional </th>
+                        <th style="width: 20%">Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="x in vm.guiasconsultas">
+                        <td>{{x.NumeroGuia}}</td>
+                        <td>{{x.DataEmissaoGuia | date:'dd/MM/y'}}</td>
+                        <td>{{x.NumeroCarteira}} - {{x.Nome}}</td>
+                        <td>{{x.NomeProfissionalExecutante}}</td>
+
+                        <td>
+                            <button type="button" class="btn btn-sm btn-primary" ng-click="vm.addGuiaConsulta(x.IdGuia)" tooltip="Editar Guia de Consulta"> <span class="glyphicon glyphicon-edit"></span> Editar </button>
+                            <button type="button" class="btn btn-sm btn-success" ng-click="vm.print(x.IdGuia)" tooltip="Editar Guia de Consulta"> <span class="glyphicon glyphicon-print"></span> Imprimir </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row" ng-if="vm.guiasconsultas.length == 0">
+        <div class="col-md-12">
+            <div class="alert alert-info bordered" role="alert">
+                Não existem guias de consulta cadastradas.
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+        $(document).ready(function () {
+            $(".inputcalendar").datepicker({
+                language: "pt-BR",
+                format: 'dd/mm/yyyy',
+                dayNames: ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'],
+                dayNamesMin: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S', 'D'],
+                dayNamesShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'],
+                monthNames: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+                monthNamesShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+                nextText: 'Próximo',
+                prevText: 'Anterior'
+            });
+
+        });
+</script>

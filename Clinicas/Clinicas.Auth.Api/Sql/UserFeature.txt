@@ -1,0 +1,17 @@
+-- Create table
+create table `UserFeature`
+(
+  `UserId`    INT(10) not null,
+  `FeatureId` INT(10) not null,
+  `CanAccess` INT(10) not null
+);
+
+ALTER TABLE `UserFeature`
+  ADD CONSTRAINT `fk_feature` FOREIGN KEY (`UserId`) REFERENCES `User` (`Id`);
+
+  ALTER TABLE `UserFeature`
+  ADD CONSTRAINT `fk_feature_user` FOREIGN KEY (`FeatureId`) REFERENCES `Feature` (`Id`);
+
+
+
+

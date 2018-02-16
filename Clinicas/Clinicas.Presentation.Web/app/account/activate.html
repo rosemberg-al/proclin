@@ -1,0 +1,51 @@
+﻿<div class="register-container full-height sm-p-t-30">
+    <div class="container-sm-height full-height">
+        <div class="row row-sm-height">
+            <div class="col-sm-12 col-sm-height col-middle">
+                <img src="assets/img/portal_beneficiario_2x.png" alt="logo">
+                <h3 class="m-t-20" ng-if="!vm.ResetPassword">Cadastre uma senha para ativar sua conta e obter acesso.</h3>
+                <h3 class="m-t-20" ng-if="vm.ResetPassword">Defina uma nova senha para obter acesso.</h3>
+                <p>
+                    <small>
+                        Sua senha deve conter no mínimo 6 e no máximo 20 caracteres.
+                    </small>
+                </p>
+                <div class="alert alert-danger" ng-show="vm.message.length > 0"><i class="fa fa-warning"></i>&nbsp;<strong>{{ vm.message }}</strong> </div>
+                <form id="form-register" name="confirmAccountForm" class="p-t-15" role="form" ng-submit="vm.confirmAccount()" novalidate>
+                    <div class="row">
+                        <div class="form-group form-group-default" show-errors>
+                            <label>Senha</label>
+                            <input type="password" name="Senha" class="form-control" ng-model="vm.Account.NewPassword" placeholder="Digite uma senha para acesso" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group form-group-default" show-errors>
+                            <label>Confirma senha</label>
+                            <input type="password" name="ConfirmaSenha" class="form-control" ng-model="vm.Account.ConfirmPassword" placeholder="Repita sua senha" required>
+
+                        </div>
+                    </div>
+                    <div class="row m-t-10">
+                        <div class="col-md-6">
+                            &nbsp;
+                        </div>
+                        <div class="col-md-6 text-right">
+                            <a href="#" class="text-info small">Precisa de ajuda? Fale com o suporte</a>
+                        </div>
+                    </div>
+                    <button class="btn btn-complete m-t-10 btn-cons btn-animated from-top fa fa-arrow-right" type="submit"><span>Continuar</span></button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class=" full-width">
+    <div class="register-container m-b-10 clearfix">
+        <div class="inline pull-left">
+            <img src="assets/img/demo/pages_icon.png" alt="" class="m-t-5 " data-src="assets/img/demo/pages_icon.png" data-src-retina="assets/img/demo/pages_icon_2x.png" width="60" height="60">
+        </div>
+        <div class="col-md-10 m-t-15">
+            <p class="hinted-text small inline ">No part of this website or any of its contents may be reproduced, copied, modified or adapted, without the prior written consent of the author, unless otherwise indicated for stand-alone materials.</p>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,66 @@
+﻿<div block-ui="blockModalListaEspecialidades">
+    <div class="row white-bg dashboard-header">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="alert alert-danger" ng-if="vm.FormMessage.length > 0">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <i class="fa fa-exclamation-triangle pull-left" style="font-size: 20px;"></i>
+                            {{vm.FormMessage}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="row">
+                <form class="form-horizontal" name="forms.buscapaciente" ng-enter="vm.buscar()" ng-submit="vm.buscar()" role="form" id="form" autocomplete="off" novalidate>
+                    <div class="col-lg-8">
+                        <div class="form-group">
+                            <label class="col-sm-1 control-label"></label>
+                            <div class="col-sm-11"><input type="text" class="form-control" placeholder="Pesquisar..." name="nome" ng-model="vm.nome" maxlength="100"></div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="form-group">
+                            <button type="button" class="btn btn-primary pull-left" ng-click="vm.buscar()"><sppan class="glyphicon glyphicon-search"> </sppan> Buscar</button>
+                            <button type="button" style="margin-left:20px;" ng-click="vm.addEspecialidade(0)" tooltip="Nova Especialidade" class="btn btn-primary btn-cons"> <span class="glyphicon glyphicon-plus-sign"></span> Especialidade</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <br />
+    <div class="row" ng-if="vm.especialidades.length > 0">
+        <div class="col-md-12">
+            <table class="table table-hover table-condensed table-striped" datatable="ng" dt-options="vm.dtOptions">
+                <thead>
+                    <tr class="bg-complete-lighter">
+                        <th style="width: 10%">Código </th>
+                        <th style="width: 80%">Descrição </th>
+                        <th style="width: 20%">Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="x in vm.especialidades">
+                        <td>{{x.IdEspecialidade }}</td>
+                        <td>{{x.NmEspecialidade }}</td>
+                        <td>
+                            <button type="button" class="btn btn-primary btn-xs " ng-click="vm.addEspecialidade(x.IdEspecialidade)" tooltip="Editar"> <span class="glyphicon glyphicon-edit"></span>  </button>
+                            <button type="button" class="btn btn-danger btn-xs" ng-click="vm.excluirEspecialidade(x.IdEspecialidade)" tooltip="Excluir"> <span class="glyphicon glyphicon-remove"></span>  </button>
+                      </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="row" ng-if="vm.especialidades.length == 0">
+        <div class="col-md-12">
+            <div class="alert alert-info bordered" role="alert">
+                Não existem especialidades cadastradas.
+            </div>
+        </div>
+    </div>
+</div>

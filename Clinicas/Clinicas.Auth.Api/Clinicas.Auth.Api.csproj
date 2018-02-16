@@ -1,0 +1,969 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.3\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.3\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{0A3774D3-6D46-4FD7-A849-4347FD9AB104}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Clinicas.Auth.Api</RootNamespace>
+    <AssemblyName>Clinicas.Auth.Api</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.5.0.2, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.2\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.2\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.15.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\log4net.2.0.5\lib\net45-full\log4net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.Agent.Intercept, Version=2.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.2.0.6\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.DependencyCollector, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.2.0\lib\net45\Microsoft.AI.DependencyCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.PerfCounterCollector, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.2.0\lib\net45\Microsoft.AI.PerfCounterCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.ServerTelemetryChannel, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.2.0\lib\net45\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.Web, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Web.2.2.0\lib\net45\Microsoft.AI.Web.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.WindowsServer, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.2.2.0\lib\net45\Microsoft.AI.WindowsServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.2.2.0\lib\net45\Microsoft.ApplicationInsights.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.3\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Cors, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Owin.Cors.3.0.1\lib\net45\Microsoft.Owin.Cors.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.3.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Owin.Security.3.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.3.0.1\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MySql.Data, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.6.9.9\lib\net45\MySql.Data.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MySql.Data.Entity.EF6, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.Entity.6.9.9\lib\net45\MySql.Data.Entity.EF6.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SimpleInjector, Version=3.2.0.0, Culture=neutral, PublicKeyToken=984cb50dea722e99, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\SimpleInjector.3.2.0\lib\net45\SimpleInjector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SimpleInjector.Extensions.ExecutionContextScoping, Version=3.2.0.0, Culture=neutral, PublicKeyToken=984cb50dea722e99, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\SimpleInjector.Extensions.ExecutionContextScoping.3.2.0\lib\net45\SimpleInjector.Extensions.ExecutionContextScoping.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SimpleInjector.Integration.WebApi, Version=3.2.0.0, Culture=neutral, PublicKeyToken=984cb50dea722e99, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\SimpleInjector.Integration.WebApi.3.2.0\lib\net45\SimpleInjector.Integration.WebApi.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Net.Http.2.0.20126.16343\lib\net40\System.Net.Http.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http.Extensions, Version=2.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Net.Http.Formatting.Extension.5.2.3.0\lib\System.Net.Http.Extensions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http.Primitives, Version=4.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Net.Http.Formatting.Extension.5.2.3.0\lib\System.Net.Http.Primitives.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Net.Http.2.0.20126.16343\lib\net40\System.Net.Http.WebRequest.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web.Cors, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Cors.5.0.0\lib\net45\System.Web.Cors.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="WebApp, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebApp.1.0.0.0\lib\net40\WebApp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="WebAppBuilder, Version=0.1.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebAppBuilder.0.1.2\lib\NETFramework40\WebAppBuilder.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ApplicationInsights.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="bin\Clinicas.Application.dll" />
+    <Content Include="bin\Clinicas.Application.pdb" />
+    <Content Include="bin\Clinicas.Auth.Api.dll" />
+    <Content Include="bin\Clinicas.Auth.Api.pdb" />
+    <Content Include="bin\Clinicas.Domain.dll" />
+    <Content Include="bin\Clinicas.Domain.pdb" />
+    <Content Include="bin\Clinicas.Infrastructure.dll" />
+    <Content Include="bin\Clinicas.Infrastructure.pdb" />
+    <Content Include="bin\EntityFramework.dll" />
+    <Content Include="bin\EntityFramework.SqlServer.dll" />
+    <Content Include="bin\log4net.dll" />
+    <Content Include="bin\Microsoft.AI.Agent.Intercept.dll" />
+    <Content Include="bin\Microsoft.AI.DependencyCollector.dll" />
+    <Content Include="bin\Microsoft.AI.PerfCounterCollector.dll" />
+    <Content Include="bin\Microsoft.AI.ServerTelemetryChannel.dll" />
+    <Content Include="bin\Microsoft.AI.Web.dll" />
+    <Content Include="bin\Microsoft.AI.WindowsServer.dll" />
+    <Content Include="bin\Microsoft.ApplicationInsights.dll" />
+    <Content Include="bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll" />
+    <Content Include="bin\Microsoft.Owin.Cors.dll" />
+    <Content Include="bin\Microsoft.Owin.dll" />
+    <Content Include="bin\Microsoft.Owin.Host.SystemWeb.dll" />
+    <Content Include="bin\Microsoft.Owin.Security.dll" />
+    <Content Include="bin\Microsoft.Owin.Security.OAuth.dll" />
+    <Content Include="bin\Microsoft.Web.Infrastructure.dll" />
+    <Content Include="bin\MySql.Data.dll" />
+    <Content Include="bin\MySql.Data.Entity.EF6.dll" />
+    <Content Include="bin\Newtonsoft.Json.dll" />
+    <Content Include="bin\Owin.dll" />
+    <Content Include="bin\roslyn\csc.exe" />
+    <Content Include="bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll" />
+    <Content Include="bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll" />
+    <Content Include="bin\roslyn\Microsoft.CodeAnalysis.dll" />
+    <Content Include="bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll" />
+    <Content Include="bin\roslyn\System.Collections.Immutable.dll" />
+    <Content Include="bin\roslyn\System.Reflection.Metadata.dll" />
+    <Content Include="bin\roslyn\vbc.exe" />
+    <Content Include="bin\roslyn\VBCSCompiler.exe" />
+    <Content Include="bin\SimpleInjector.dll" />
+    <Content Include="bin\SimpleInjector.Extensions.ExecutionContextScoping.dll" />
+    <Content Include="bin\SimpleInjector.Integration.WebApi.dll" />
+    <Content Include="bin\System.Net.Http.dll" />
+    <Content Include="bin\System.Net.Http.Extensions.dll" />
+    <Content Include="bin\System.Net.Http.Formatting.dll" />
+    <Content Include="bin\System.Net.Http.Primitives.dll" />
+    <Content Include="bin\System.Net.Http.WebRequest.dll" />
+    <Content Include="bin\System.Web.Cors.dll" />
+    <Content Include="bin\System.Web.Http.dll" />
+    <Content Include="bin\System.Web.Http.WebHost.dll" />
+    <Content Include="bin\WebApp.dll" />
+    <Content Include="bin\WebAppBuilder.dll" />
+    <Content Include="Index.html" />
+    <Content Include="packages\AutoMapper.3.3.1\AutoMapper.3.3.1.nupkg" />
+    <Content Include="packages\AutoMapper.3.3.1\AutoMapper.3.3.1.nuspec" />
+    <Content Include="packages\AutoMapper.3.3.1\tools\AutoMapper.targets" />
+    <Content Include="packages\AutoMapper.3.3.1\tools\MonoAndroid\Install.ps1" />
+    <Content Include="packages\AutoMapper.3.3.1\tools\MonoAndroid\uninstall.ps1" />
+    <Content Include="packages\AutoMapper.3.3.1\tools\MonoTouch\Install.ps1" />
+    <Content Include="packages\AutoMapper.3.3.1\tools\MonoTouch\uninstall.ps1" />
+    <Content Include="packages\AutoMapper.3.3.1\tools\net40\Install.ps1" />
+    <Content Include="packages\AutoMapper.3.3.1\tools\net40\uninstall.ps1" />
+    <Content Include="packages\AutoMapper.3.3.1\tools\sl5\Install.ps1" />
+    <Content Include="packages\AutoMapper.3.3.1\tools\sl5\uninstall.ps1" />
+    <Content Include="packages\AutoMapper.3.3.1\tools\windows8\Install.ps1" />
+    <Content Include="packages\AutoMapper.3.3.1\tools\windows8\uninstall.ps1" />
+    <Content Include="packages\AutoMapper.3.3.1\tools\wp8\Install.ps1" />
+    <Content Include="packages\AutoMapper.3.3.1\tools\wp8\uninstall.ps1" />
+    <Content Include="packages\AutoMapper.3.3.1\tools\wpa81\Install.ps1" />
+    <Content Include="packages\AutoMapper.3.3.1\tools\wpa81\uninstall.ps1" />
+    <Content Include="packages\AutoMapper.4.2.1\AutoMapper.4.2.1.nupkg" />
+    <Content Include="packages\Baseclass.Contrib.Nuget.Output.2.1.0\Baseclass.Contrib.Nuget.Output.2.1.0.nupkg" />
+    <Content Include="packages\Baseclass.Contrib.Nuget.Output.2.1.0\build\net40\Baseclass.Contrib.Nuget.Output.targets" />
+    <Content Include="packages\bootstrap.3.0.0\bootstrap.3.0.0.nupkg" />
+    <Content Include="packages\bootstrap.3.0.0\content\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="packages\bootstrap.3.0.0\content\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="packages\bootstrap.3.0.0\content\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="packages\CreateNewNuGetPackageFromProjectAfterEachBuild.1.8.9\content\_CreateNewNuGetPackage\Config.ps1" />
+    <Content Include="packages\CreateNewNuGetPackageFromProjectAfterEachBuild.1.8.9\content\_CreateNewNuGetPackage\DoNotModify\CreateNuGetPackage.ps1" />
+    <Content Include="packages\CreateNewNuGetPackageFromProjectAfterEachBuild.1.8.9\content\_CreateNewNuGetPackage\DoNotModify\New-NuGetPackage.ps1" />
+    <Content Include="packages\CreateNewNuGetPackageFromProjectAfterEachBuild.1.8.9\content\_CreateNewNuGetPackage\DoNotModify\UploadNuGetPackage.ps1" />
+    <Content Include="packages\CreateNewNuGetPackageFromProjectAfterEachBuild.1.8.9\content\_CreateNewNuGetPackage\RunMeToUploadNuGetPackage.cmd" />
+    <Content Include="packages\CreateNewNuGetPackageFromProjectAfterEachBuild.1.8.9\CreateNewNuGetPackageFromProjectAfterEachBuild.1.8.9.nupkg" />
+    <Content Include="packages\CreateNewNuGetPackageFromProjectAfterEachBuild.1.8.9\tools\Install.ps1" />
+    <Content Include="packages\CreateNewNuGetPackageFromProjectAfterEachBuild.1.8.9\tools\Uninstall.ps1" />
+    <Content Include="packages\elmah.1.2.2\content\web.config.transform" />
+    <Content Include="packages\elmah.1.2.2\elmah.1.2.2.nupkg" />
+    <Content Include="packages\elmah.corelibrary.1.2.2\elmah.corelibrary.1.2.2.nupkg" />
+    <Content Include="packages\EntityFramework.6.1.3\content\App.config.transform" />
+    <Content Include="packages\EntityFramework.6.1.3\content\Web.config.transform" />
+    <Content Include="packages\EntityFramework.6.1.3\EntityFramework.6.1.3.nupkg" />
+    <Content Include="packages\EntityFramework.6.1.3\tools\EntityFramework.psd1" />
+    <Content Include="packages\EntityFramework.6.1.3\tools\EntityFramework.psm1" />
+    <Content Include="packages\EntityFramework.6.1.3\tools\init.ps1" />
+    <Content Include="packages\EntityFramework.6.1.3\tools\install.ps1" />
+    <Content Include="packages\jQuery.1.10.2\Content\Scripts\jquery-1.10.2.min.map" />
+    <Content Include="packages\jQuery.1.10.2\jQuery.1.10.2.nupkg" />
+    <Content Include="packages\jQuery.1.10.2\Tools\common.ps1" />
+    <Content Include="packages\jQuery.1.10.2\Tools\install.ps1" />
+    <Content Include="packages\jQuery.1.10.2\Tools\uninstall.ps1" />
+    <Content Include="packages\jQuery.1.8.3\jQuery.1.8.3.nupkg" />
+    <Content Include="packages\jQuery.1.8.3\Tools\common.ps1" />
+    <Content Include="packages\jQuery.1.8.3\Tools\install.ps1" />
+    <Content Include="packages\jQuery.1.8.3\Tools\uninstall.ps1" />
+    <Content Include="packages\jQuery.Validation.1.11.1\jQuery.Validation.1.11.1.nupkg" />
+    <Content Include="packages\log4net.2.0.5\log4net.2.0.5.nupkg" />
+    <Content Include="packages\Microsoft.ApplicationInsights.1.2.3\Microsoft.ApplicationInsights.1.2.3.nupkg" />
+    <Content Include="packages\Microsoft.ApplicationInsights.Agent.Intercept.1.2.0\Microsoft.ApplicationInsights.Agent.Intercept.1.2.0.nupkg" />
+    <Content Include="packages\Microsoft.ApplicationInsights.DependencyCollector.1.2.3\content\ApplicationInsights.config.install.xdt" />
+    <Content Include="packages\Microsoft.ApplicationInsights.DependencyCollector.1.2.3\content\ApplicationInsights.config.transform" />
+    <Content Include="packages\Microsoft.ApplicationInsights.DependencyCollector.1.2.3\content\ApplicationInsights.config.uninstall.xdt" />
+    <Content Include="packages\Microsoft.ApplicationInsights.DependencyCollector.1.2.3\Microsoft.ApplicationInsights.DependencyCollector.1.2.3.nupkg" />
+    <Content Include="packages\Microsoft.ApplicationInsights.JavaScript.0.15.0-build58334\Microsoft.ApplicationInsights.JavaScript.0.15.0-build58334.nupkg" />
+    <Content Include="packages\Microsoft.ApplicationInsights.PerfCounterCollector.1.2.3\content\ApplicationInsights.config.install.xdt" />
+    <Content Include="packages\Microsoft.ApplicationInsights.PerfCounterCollector.1.2.3\content\ApplicationInsights.config.transform" />
+    <Content Include="packages\Microsoft.ApplicationInsights.PerfCounterCollector.1.2.3\content\ApplicationInsights.config.uninstall.xdt" />
+    <Content Include="packages\Microsoft.ApplicationInsights.PerfCounterCollector.1.2.3\Microsoft.ApplicationInsights.PerfCounterCollector.1.2.3.nupkg" />
+    <Content Include="packages\Microsoft.ApplicationInsights.Web.1.2.3\content\net40\ApplicationInsights.config.install.xdt" />
+    <Content Include="packages\Microsoft.ApplicationInsights.Web.1.2.3\content\net40\ApplicationInsights.config.transform" />
+    <Content Include="packages\Microsoft.ApplicationInsights.Web.1.2.3\content\net40\ApplicationInsights.config.uninstall.xdt" />
+    <Content Include="packages\Microsoft.ApplicationInsights.Web.1.2.3\content\net40\web.config.install.xdt" />
+    <Content Include="packages\Microsoft.ApplicationInsights.Web.1.2.3\content\net40\web.config.uninstall.xdt" />
+    <Content Include="packages\Microsoft.ApplicationInsights.Web.1.2.3\content\net45\ApplicationInsights.config.install.xdt" />
+    <Content Include="packages\Microsoft.ApplicationInsights.Web.1.2.3\content\net45\ApplicationInsights.config.transform" />
+    <Content Include="packages\Microsoft.ApplicationInsights.Web.1.2.3\content\net45\ApplicationInsights.config.uninstall.xdt" />
+    <Content Include="packages\Microsoft.ApplicationInsights.Web.1.2.3\content\net45\web.config.install.xdt" />
+    <Content Include="packages\Microsoft.ApplicationInsights.Web.1.2.3\content\net45\web.config.uninstall.xdt" />
+    <Content Include="packages\Microsoft.ApplicationInsights.Web.1.2.3\Microsoft.ApplicationInsights.Web.1.2.3.nupkg" />
+    <Content Include="packages\Microsoft.ApplicationInsights.WindowsServer.1.2.3\content\ApplicationInsights.config.install.xdt" />
+    <Content Include="packages\Microsoft.ApplicationInsights.WindowsServer.1.2.3\content\ApplicationInsights.config.transform" />
+    <Content Include="packages\Microsoft.ApplicationInsights.WindowsServer.1.2.3\content\ApplicationInsights.config.uninstall.xdt" />
+    <Content Include="packages\Microsoft.ApplicationInsights.WindowsServer.1.2.3\Microsoft.ApplicationInsights.WindowsServer.1.2.3.nupkg" />
+    <Content Include="packages\Microsoft.ApplicationInsights.WindowsServer.1.2.3\Tools\install.ps1" />
+    <Content Include="packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.1.2.3\content\ApplicationInsights.config.install.xdt" />
+    <Content Include="packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.1.2.3\content\ApplicationInsights.config.transform" />
+    <Content Include="packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.1.2.3\content\ApplicationInsights.config.uninstall.xdt" />
+    <Content Include="packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.1.2.3\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.1.2.3.nupkg" />
+    <Content Include="packages\Microsoft.AspNet.Cors.5.0.0\Microsoft.AspNet.Cors.5.0.0.nupkg" />
+    <Content Include="packages\Microsoft.AspNet.Identity.Core.2.2.1\Microsoft.AspNet.Identity.Core.2.2.1.nupkg" />
+    <Content Include="packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\Microsoft.AspNet.Identity.EntityFramework.2.2.1.nupkg" />
+    <Content Include="packages\Microsoft.AspNet.Identity.Owin.2.2.1\Microsoft.AspNet.Identity.Owin.2.2.1.nupkg" />
+    <Content Include="packages\Microsoft.AspNet.Mvc.5.2.3\Content\Web.config.install.xdt" />
+    <Content Include="packages\Microsoft.AspNet.Mvc.5.2.3\Content\Web.config.uninstall.xdt" />
+    <Content Include="packages\Microsoft.AspNet.Mvc.5.2.3\Microsoft.AspNet.Mvc.5.2.3.nupkg" />
+    <Content Include="packages\Microsoft.AspNet.Razor.3.2.3\Microsoft.AspNet.Razor.3.2.3.nupkg" />
+    <Content Include="packages\Microsoft.AspNet.Web.Optimization.1.1.3\Microsoft.AspNet.Web.Optimization.1.1.3.nupkg" />
+    <Content Include="packages\Microsoft.AspNet.WebApi.5.2.2\Microsoft.AspNet.WebApi.5.2.2.nupkg" />
+    <Content Include="packages\Microsoft.AspNet.WebApi.5.2.3\Microsoft.AspNet.WebApi.5.2.3.nupkg" />
+    <Content Include="packages\Microsoft.AspNet.WebApi.Client.4.0.20710.0\Microsoft.AspNet.WebApi.Client.4.0.20710.0.nupkg" />
+    <Content Include="packages\Microsoft.AspNet.WebApi.Client.5.2.2\Microsoft.AspNet.WebApi.Client.5.2.2.nupkg" />
+    <Content Include="packages\Microsoft.AspNet.WebApi.Client.5.2.3\Microsoft.AspNet.WebApi.Client.5.2.3.nupkg" />
+    <Content Include="packages\Microsoft.AspNet.WebApi.Core.4.0.20710.0\content\web.config.transform" />
+    <Content Include="packages\Microsoft.AspNet.WebApi.Core.4.0.20710.0\Microsoft.AspNet.WebApi.Core.4.0.20710.0.nupkg" />
+    <Content Include="packages\Microsoft.AspNet.WebApi.Core.5.2.2\Content\web.config.transform" />
+    <Content Include="packages\Microsoft.AspNet.WebApi.Core.5.2.2\Microsoft.AspNet.WebApi.Core.5.2.2.nupkg" />
+    <Content Include="packages\Microsoft.AspNet.WebApi.Core.5.2.3\Content\web.config.transform" />
+    <Content Include="packages\Microsoft.AspNet.WebApi.Core.5.2.3\Microsoft.AspNet.WebApi.Core.5.2.3.nupkg" />
+    <Content Include="packages\Microsoft.AspNet.WebApi.HelpPage.5.2.3\Content\Areas\HelpPage\ApiDescriptionExtensions.cs.pp" />
+    <Content Include="packages\Microsoft.AspNet.WebApi.HelpPage.5.2.3\Content\Areas\HelpPage\App_Start\HelpPageConfig.cs.pp" />
+    <Content Include="packages\Microsoft.AspNet.WebApi.HelpPage.5.2.3\Content\Areas\HelpPage\Controllers\HelpController.cs.pp" />
+    <Content Include="packages\Microsoft.AspNet.WebApi.HelpPage.5.2.3\Content\Areas\HelpPage\HelpPage.css.pp" />
+    <Content Include="packages\Microsoft.AspNet.WebApi.HelpPage.5.2.3\Content\Areas\HelpPage\HelpPageAreaRegistration.cs.pp" />
+    <Content Include="packages\Microsoft.AspNet.WebApi.HelpPage.5.2.3\Content\Areas\HelpPage\HelpPageConfigurationExtensions.cs.pp" />
+    <Content Include="packages\Microsoft.AspNet.WebApi.HelpPage.5.2.3\Content\Areas\HelpPage\ModelDescriptions\CollectionModelDescription.cs.pp" />
+    <Content Include="packages\Microsoft.AspNet.WebApi.HelpPage.5.2.3\Content\Areas\HelpPage\ModelDescriptions\ComplexTypeModelDescription.cs.pp" />
+    <Content Include="packages\Microsoft.AspNet.WebApi.HelpPage.5.2.3\Content\Areas\HelpPage\ModelDescriptions\DictionaryModelDescription.cs.pp" />
+    <Content Include="packages\Microsoft.AspNet.WebApi.HelpPage.5.2.3\Content\Areas\HelpPage\ModelDescriptions\EnumTypeModelDescription.cs.pp" />
+    <Content Include="packages\Microsoft.AspNet.WebApi.HelpPage.5.2.3\Content\Areas\HelpPage\ModelDescriptions\EnumValueDescription.cs.pp" />
+    <Content Include="packages\Microsoft.AspNet.WebApi.HelpPage.5.2.3\Content\Areas\HelpPage\ModelDescriptions\IModelDocumentationProvider.cs.pp" />
+    <Content Include="packages\Microsoft.AspNet.WebApi.HelpPage.5.2.3\Content\Areas\HelpPage\ModelDescriptions\KeyValuePairModelDescription.cs.pp" />
+    <Content Include="packages\Microsoft.AspNet.WebApi.HelpPage.5.2.3\Content\Areas\HelpPage\ModelDescriptions\ModelDescription.cs.pp" />
+    <Content Include="packages\Microsoft.AspNet.WebApi.HelpPage.5.2.3\Content\Areas\HelpPage\ModelDescriptions\ModelDescriptionGenerator.cs.pp" />
+    <Content Include="packages\Microsoft.AspNet.WebApi.HelpPage.5.2.3\Content\Areas\HelpPage\ModelDescriptions\ModelNameAttribute.cs.pp" />
+    <Content Include="packages\Microsoft.AspNet.WebApi.HelpPage.5.2.3\Content\Areas\HelpPage\ModelDescriptions\ModelNameHelper.cs.pp" />
+    <Content Include="packages\Microsoft.AspNet.WebApi.HelpPage.5.2.3\Content\Areas\HelpPage\ModelDescriptions\ParameterAnnotation.cs.pp" />
+    <Content Include="packages\Microsoft.AspNet.WebApi.HelpPage.5.2.3\Content\Areas\HelpPage\ModelDescriptions\ParameterDescription.cs.pp" />
+    <Content Include="packages\Microsoft.AspNet.WebApi.HelpPage.5.2.3\Content\Areas\HelpPage\ModelDescriptions\SimpleTypeModelDescription.cs.pp" />
+    <Content Include="packages\Microsoft.AspNet.WebApi.HelpPage.5.2.3\Content\Areas\HelpPage\Models\HelpPageApiModel.cs.pp" />
+    <Content Include="packages\Microsoft.AspNet.WebApi.HelpPage.5.2.3\Content\Areas\HelpPage\SampleGeneration\HelpPageSampleGenerator.cs.pp" />
+    <Content Include="packages\Microsoft.AspNet.WebApi.HelpPage.5.2.3\Content\Areas\HelpPage\SampleGeneration\HelpPageSampleKey.cs.pp" />
+    <Content Include="packages\Microsoft.AspNet.WebApi.HelpPage.5.2.3\Content\Areas\HelpPage\SampleGeneration\ImageSample.cs.pp" />
+    <Content Include="packages\Microsoft.AspNet.WebApi.HelpPage.5.2.3\Content\Areas\HelpPage\SampleGeneration\InvalidSample.cs.pp" />
+    <Content Include="packages\Microsoft.AspNet.WebApi.HelpPage.5.2.3\Content\Areas\HelpPage\SampleGeneration\ObjectGenerator.cs.pp" />
+    <Content Include="packages\Microsoft.AspNet.WebApi.HelpPage.5.2.3\Content\Areas\HelpPage\SampleGeneration\SampleDirection.cs.pp" />
+    <Content Include="packages\Microsoft.AspNet.WebApi.HelpPage.5.2.3\Content\Areas\HelpPage\SampleGeneration\TextSample.cs.pp" />
+    <Content Include="packages\Microsoft.AspNet.WebApi.HelpPage.5.2.3\Content\Areas\HelpPage\Views\Help\Api.cshtml.pp" />
+    <Content Include="packages\Microsoft.AspNet.WebApi.HelpPage.5.2.3\Content\Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml.pp" />
+    <Content Include="packages\Microsoft.AspNet.WebApi.HelpPage.5.2.3\Content\Areas\HelpPage\Views\Help\DisplayTemplates\CollectionModelDescription.cshtml.pp" />
+    <Content Include="packages\Microsoft.AspNet.WebApi.HelpPage.5.2.3\Content\Areas\HelpPage\Views\Help\DisplayTemplates\ComplexTypeModelDescription.cshtml.pp" />
+    <Content Include="packages\Microsoft.AspNet.WebApi.HelpPage.5.2.3\Content\Areas\HelpPage\Views\Help\DisplayTemplates\DictionaryModelDescription.cshtml.pp" />
+    <Content Include="packages\Microsoft.AspNet.WebApi.HelpPage.5.2.3\Content\Areas\HelpPage\Views\Help\DisplayTemplates\EnumTypeModelDescription.cshtml.pp" />
+    <Content Include="packages\Microsoft.AspNet.WebApi.HelpPage.5.2.3\Content\Areas\HelpPage\Views\Help\DisplayTemplates\HelpPageApiModel.cshtml.pp" />
+    <Content Include="packages\Microsoft.AspNet.WebApi.HelpPage.5.2.3\Content\Areas\HelpPage\Views\Help\DisplayTemplates\ImageSample.cshtml.pp" />
+    <Content Include="packages\Microsoft.AspNet.WebApi.HelpPage.5.2.3\Content\Areas\HelpPage\Views\Help\DisplayTemplates\InvalidSample.cshtml.pp" />
+    <Content Include="packages\Microsoft.AspNet.WebApi.HelpPage.5.2.3\Content\Areas\HelpPage\Views\Help\DisplayTemplates\KeyValuePairModelDescription.cshtml.pp" />
+    <Content Include="packages\Microsoft.AspNet.WebApi.HelpPage.5.2.3\Content\Areas\HelpPage\Views\Help\DisplayTemplates\ModelDescriptionLink.cshtml.pp" />
+    <Content Include="packages\Microsoft.AspNet.WebApi.HelpPage.5.2.3\Content\Areas\HelpPage\Views\Help\DisplayTemplates\Parameters.cshtml.pp" />
+    <Content Include="packages\Microsoft.AspNet.WebApi.HelpPage.5.2.3\Content\Areas\HelpPage\Views\Help\DisplayTemplates\Samples.cshtml.pp" />
+    <Content Include="packages\Microsoft.AspNet.WebApi.HelpPage.5.2.3\Content\Areas\HelpPage\Views\Help\DisplayTemplates\SimpleTypeModelDescription.cshtml.pp" />
+    <Content Include="packages\Microsoft.AspNet.WebApi.HelpPage.5.2.3\Content\Areas\HelpPage\Views\Help\DisplayTemplates\TextSample.cshtml.pp" />
+    <Content Include="packages\Microsoft.AspNet.WebApi.HelpPage.5.2.3\Content\Areas\HelpPage\Views\Help\Index.cshtml.pp" />
+    <Content Include="packages\Microsoft.AspNet.WebApi.HelpPage.5.2.3\Content\Areas\HelpPage\Views\Help\ResourceModel.cshtml.pp" />
+    <Content Include="packages\Microsoft.AspNet.WebApi.HelpPage.5.2.3\Content\Areas\HelpPage\Views\Shared\_Layout.cshtml.pp" />
+    <Content Include="packages\Microsoft.AspNet.WebApi.HelpPage.5.2.3\Content\Areas\HelpPage\Views\Web.config" />
+    <Content Include="packages\Microsoft.AspNet.WebApi.HelpPage.5.2.3\Content\Areas\HelpPage\Views\_ViewStart.cshtml.pp" />
+    <Content Include="packages\Microsoft.AspNet.WebApi.HelpPage.5.2.3\Content\Areas\HelpPage\XmlDocumentationProvider.cs.pp" />
+    <Content Include="packages\Microsoft.AspNet.WebApi.HelpPage.5.2.3\Microsoft.AspNet.WebApi.HelpPage.5.2.3.nupkg" />
+    <Content Include="packages\Microsoft.AspNet.WebApi.Owin.5.2.3\Microsoft.AspNet.WebApi.Owin.5.2.3.nupkg" />
+    <Content Include="packages\Microsoft.AspNet.WebApi.WebHost.5.2.2\Microsoft.AspNet.WebApi.WebHost.5.2.2.nupkg" />
+    <Content Include="packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\Microsoft.AspNet.WebApi.WebHost.5.2.3.nupkg" />
+    <Content Include="packages\Microsoft.AspNet.WebPages.3.2.3\Content\Web.config.install.xdt" />
+    <Content Include="packages\Microsoft.AspNet.WebPages.3.2.3\Content\Web.config.uninstall.xdt" />
+    <Content Include="packages\Microsoft.AspNet.WebPages.3.2.3\Microsoft.AspNet.WebPages.3.2.3.nupkg" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\content\web.config.install.xdt" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\content\web.config.uninstall.xdt" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0.nupkg" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\tools\init.ps1" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\tools\uninstall.ps1" />
+    <Content Include="packages\Microsoft.jQuery.Unobtrusive.Validation.3.2.3\Microsoft.jQuery.Unobtrusive.Validation.3.2.3.nupkg" />
+    <Content Include="packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" />
+    <Content Include="packages\Microsoft.Net.Compilers.1.0.0\Microsoft.Net.Compilers.1.0.0.nupkg" />
+    <Content Include="packages\Microsoft.Net.Compilers.1.0.0\ThirdPartyNotices.rtf" />
+    <Content Include="packages\Microsoft.Net.Compilers.1.0.0\tools\Microsoft.CSharp.Core.targets" />
+    <Content Include="packages\Microsoft.Net.Compilers.1.0.0\tools\Microsoft.VisualBasic.Core.targets" />
+    <Content Include="packages\Microsoft.Net.Compilers.1.0.0\tools\VBCSCompiler.exe.config" />
+    <Content Include="packages\Microsoft.Net.Http.2.0.20710.0\lib\net45\_._" />
+    <Content Include="packages\Microsoft.Net.Http.2.0.20710.0\Microsoft.Net.Http.2.0.20710.0.nupkg" />
+    <Content Include="packages\Microsoft.Owin.3.0.1\Microsoft.Owin.3.0.1.nupkg" />
+    <Content Include="packages\Microsoft.Owin.Cors.3.0.1\Microsoft.Owin.Cors.3.0.1.nupkg" />
+    <Content Include="packages\Microsoft.Owin.Host.SystemWeb.3.0.1\Microsoft.Owin.Host.SystemWeb.3.0.1.nupkg" />
+    <Content Include="packages\Microsoft.Owin.Security.3.0.1\Microsoft.Owin.Security.3.0.1.nupkg" />
+    <Content Include="packages\Microsoft.Owin.Security.Cookies.3.0.1\Microsoft.Owin.Security.Cookies.3.0.1.nupkg" />
+    <Content Include="packages\Microsoft.Owin.Security.Facebook.3.0.1\Microsoft.Owin.Security.Facebook.3.0.1.nupkg" />
+    <Content Include="packages\Microsoft.Owin.Security.Google.3.0.1\Microsoft.Owin.Security.Google.3.0.1.nupkg" />
+    <Content Include="packages\Microsoft.Owin.Security.MicrosoftAccount.3.0.1\Microsoft.Owin.Security.MicrosoftAccount.3.0.1.nupkg" />
+    <Content Include="packages\Microsoft.Owin.Security.OAuth.3.0.1\Microsoft.Owin.Security.OAuth.3.0.1.nupkg" />
+    <Content Include="packages\Microsoft.Owin.Security.Twitter.3.0.1\Microsoft.Owin.Security.Twitter.3.0.1.nupkg" />
+    <Content Include="packages\Microsoft.Web.Infrastructure.1.0.0.0\Microsoft.Web.Infrastructure.1.0.0.0.nupkg" />
+    <Content Include="packages\Microsoft.Web.Xdt.2.1.1\Microsoft.Web.Xdt.2.1.1.nupkg" />
+    <Content Include="packages\Modernizr.2.6.2\Modernizr.2.6.2.nupkg" />
+    <Content Include="packages\Modernizr.2.6.2\Tools\common.ps1" />
+    <Content Include="packages\Modernizr.2.6.2\Tools\install.ps1" />
+    <Content Include="packages\Modernizr.2.6.2\Tools\uninstall.ps1" />
+    <Content Include="packages\Newtonsoft.Json.6.0.4\Newtonsoft.Json.6.0.4.nupkg" />
+    <Content Include="packages\Newtonsoft.Json.6.0.4\tools\install.ps1" />
+    <Content Include="packages\Ninject.3.0.1.10\Ninject.3.0.1.10.nupkg" />
+    <Content Include="packages\NuGet.CommandLine.3.3.0\NuGet.CommandLine.3.3.0.nupkg" />
+    <Content Include="packages\NuGet.Core.2.8.6\NuGet.Core.2.8.6.nupkg" />
+    <Content Include="packages\NuGet.Server.2.8.6\content\DataServices\Routes.cs.pp" />
+    <Content Include="packages\NuGet.Server.2.8.6\content\web.config.install.xdt" />
+    <Content Include="packages\NuGet.Server.2.8.6\content\Web.config.transform" />
+    <Content Include="packages\NuGet.Server.2.8.6\NuGet.Server.2.8.6.nupkg" />
+    <Content Include="packages\NUnitTestAdapter.2.0.0\NUnitTestAdapter.2.0.0.nupkg" />
+    <Content Include="packages\NUnitTestAdapter.2.0.0\tools\install.ps1" />
+    <Content Include="packages\Owin.1.0\Owin.1.0.nupkg" />
+    <Content Include="packages\PDev.Api.Core.1.0.0.0\PDev.Api.Core.1.0.0.0.nupkg" />
+    <Content Include="packages\PDev.Infrastructure.Core.1.1.0.0\PDev.Infrastructure.Core.1.1.0.0.nupkg" />
+    <Content Include="packages\PDev.Infrastructure.Crosscutting.1.2.0.0\PDev.Infrastructure.Crosscutting.1.2.0.0.nupkg" />
+    <Content Include="packages\repositories.config" />
+    <Content Include="packages\Respond.1.2.0\Respond.1.2.0.nupkg" />
+    <Content Include="packages\RouteMagic.1.2\RouteMagic.1.2.nupkg" />
+    <Content Include="packages\SimpleInjector.2.7.2\SimpleInjector.2.7.2.nupkg" />
+    <Content Include="packages\SimpleInjector.3.1.2\SimpleInjector.3.1.2.nupkg" />
+    <Content Include="packages\SimpleInjector.3.2.0\SimpleInjector.3.2.0.nupkg" />
+    <Content Include="packages\SimpleInjector.Extensions.ExecutionContextScoping.2.7.2\SimpleInjector.Extensions.ExecutionContextScoping.2.7.2.nupkg" />
+    <Content Include="packages\SimpleInjector.Extensions.ExecutionContextScoping.3.1.2\SimpleInjector.Extensions.ExecutionContextScoping.3.1.2.nupkg" />
+    <Content Include="packages\SimpleInjector.Extensions.ExecutionContextScoping.3.2.0\SimpleInjector.Extensions.ExecutionContextScoping.3.2.0.nupkg" />
+    <Content Include="packages\SimpleInjector.Integration.WebApi.2.7.2\SimpleInjector.Integration.WebApi.2.7.2.nupkg" />
+    <Content Include="packages\SimpleInjector.Integration.WebApi.3.1.2\SimpleInjector.Integration.WebApi.3.1.2.nupkg" />
+    <Content Include="packages\SimpleInjector.Integration.WebApi.3.2.0\SimpleInjector.Integration.WebApi.3.2.0.nupkg" />
+    <Content Include="packages\SimpleInjector.Integration.WebApi.WebHost.QuickStart.2.7.2\content\App_Start\SimpleInjectorWebApiInitializer.cs.pp" />
+    <Content Include="packages\SimpleInjector.Integration.WebApi.WebHost.QuickStart.2.7.2\SimpleInjector.Integration.WebApi.WebHost.QuickStart.2.7.2.nupkg" />
+    <Content Include="packages\System.Net.Http.2.0.20126.16343\System.Net.Http.2.0.20126.16343.nupkg" />
+    <Content Include="packages\System.Net.Http.Formatting.Extension.5.2.3.0\System.Net.Http.Formatting.Extension.5.2.3.0.nupkg" />
+    <Content Include="packages\System.Web.Http.Common.4.0.20126.16343\System.Web.Http.Common.4.0.20126.16343.nupkg" />
+    <Content Include="packages\WebActivator.1.4.4\WebActivator.1.4.4.nupkg" />
+    <Content Include="packages\WebActivatorEx.2.0.2\WebActivatorEx.2.0.2.nupkg" />
+    <Content Include="packages\WebApp.1.0.0.0\content\Web.config" />
+    <Content Include="packages\WebApp.1.0.0.0\WebApp.1.0.0.0.nupkg" />
+    <Content Include="packages\WebAppBuilder.0.1.2\WebAppBuilder.0.1.2.nupkg" />
+    <Content Include="packages\WebGrease.1.5.2\WebGrease.1.5.2.nupkg" />
+    <Content Include="bin\ApplicationInsights.config" />
+    <Content Include="bin\Clinicas.Auth.Api.dll.config" />
+    <Content Include="bin\roslyn\Microsoft.CSharp.Core.targets" />
+    <Content Include="bin\roslyn\Microsoft.VisualBasic.Core.targets" />
+    <Content Include="bin\roslyn\VBCSCompiler.exe.config" />
+    <None Include="Properties\PublishProfiles\api.pubxml" />
+    <None Include="Properties\PublishProfiles\apiproclin - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\apiproclin - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\apiproclinseg - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\apiproclinseg - Web Deploy.pubxml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Manual.txt" />
+   
+    <Content Include="packages\bootstrap.3.0.0\content\Content\bootstrap.css" />
+    <Content Include="packages\bootstrap.3.0.0\content\Content\bootstrap.min.css" />
+    <Content Include="packages\bootstrap.3.0.0\content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="packages\bootstrap.3.0.0\content\Scripts\bootstrap.js" />
+    <Content Include="packages\bootstrap.3.0.0\content\Scripts\bootstrap.min.js" />
+    <Content Include="packages\CreateNewNuGetPackageFromProjectAfterEachBuild.1.8.9\content\_CreateNewNuGetPackage\DoNotModify\NuGet.exe" />
+    <Content Include="packages\elmah.1.2.2\content\App_Readme\Elmah.txt" />
+    <Content Include="packages\elmah.1.2.2\Readme.txt" />
+    <Content Include="packages\elmah.corelibrary.1.2.2\lib\Elmah.dll" />
+    <Content Include="packages\EntityFramework.6.1.3\lib\net40\EntityFramework.dll" />
+    <Content Include="packages\EntityFramework.6.1.3\lib\net40\EntityFramework.SqlServer.dll" />
+    <Content Include="packages\EntityFramework.6.1.3\lib\net40\EntityFramework.SqlServer.xml" />
+    <Content Include="packages\EntityFramework.6.1.3\lib\net40\EntityFramework.xml" />
+    <Content Include="packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll" />
+    <Content Include="packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll" />
+    <Content Include="packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.xml" />
+    <Content Include="packages\EntityFramework.6.1.3\lib\net45\EntityFramework.xml" />
+    <Content Include="packages\EntityFramework.6.1.3\tools\about_EntityFramework.help.txt" />
+    <Content Include="packages\EntityFramework.6.1.3\tools\EntityFramework.PowerShell.dll" />
+    <Content Include="packages\EntityFramework.6.1.3\tools\EntityFramework.PowerShell.Utility.dll" />
+    <Content Include="packages\EntityFramework.6.1.3\tools\migrate.exe" />
+    <Content Include="packages.config" />
+    <None Include="packages\jQuery.1.10.2\Content\Scripts\jquery-1.10.2-vsdoc.js" />
+    <Content Include="packages\jQuery.1.10.2\Content\Scripts\jquery-1.10.2.js" />
+    <Content Include="packages\jQuery.1.10.2\Content\Scripts\jquery-1.10.2.min.js" />
+    <None Include="packages\jQuery.1.10.2\Tools\jquery-1.10.2.intellisense.js" />
+    <None Include="packages\jQuery.1.8.3\Content\Scripts\jquery-1.8.3-vsdoc.js" />
+    <Content Include="packages\jQuery.1.8.3\Content\Scripts\jquery-1.8.3.js" />
+    <Content Include="packages\jQuery.1.8.3\Content\Scripts\jquery-1.8.3.min.js" />
+    <None Include="packages\jQuery.1.8.3\Tools\jquery-1.8.3.intellisense.js" />
+    <None Include="packages\jQuery.Validation.1.11.1\Content\Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="packages\jQuery.Validation.1.11.1\Content\Scripts\jquery.validate.js" />
+    <Content Include="packages\jQuery.Validation.1.11.1\Content\Scripts\jquery.validate.min.js" />
+    <Content Include="packages\knockoutjs.2.2.1\Content\Scripts\knockout-2.2.1.debug.js" />
+    <Content Include="packages\log4net.2.0.5\lib\net10-full\log4net.dll" />
+    <Content Include="packages\log4net.2.0.5\lib\net10-full\log4net.xml" />
+    <Content Include="packages\log4net.2.0.5\lib\net11-full\log4net.dll" />
+    <Content Include="packages\log4net.2.0.5\lib\net11-full\log4net.xml" />
+    <Content Include="packages\log4net.2.0.5\lib\net20-full\log4net.dll" />
+    <Content Include="packages\log4net.2.0.5\lib\net20-full\log4net.xml" />
+    <Content Include="packages\log4net.2.0.5\lib\net35-client\log4net.dll" />
+    <Content Include="packages\log4net.2.0.5\lib\net35-client\log4net.xml" />
+    <Content Include="packages\log4net.2.0.5\lib\net35-full\log4net.dll" />
+    <Content Include="packages\log4net.2.0.5\lib\net35-full\log4net.xml" />
+    <Content Include="packages\log4net.2.0.5\lib\net40-client\log4net.dll" />
+    <Content Include="packages\log4net.2.0.5\lib\net40-client\log4net.xml" />
+    <Content Include="packages\log4net.2.0.5\lib\net40-full\log4net.dll" />
+    <Content Include="packages\log4net.2.0.5\lib\net40-full\log4net.xml" />
+    <Content Include="packages\log4net.2.0.5\lib\net45-full\log4net.dll" />
+    <Content Include="packages\log4net.2.0.5\lib\net45-full\log4net.xml" />
+    <Content Include="packages\Microsoft.ApplicationInsights.1.2.3\lib\net40\Microsoft.ApplicationInsights.dll" />
+    <Content Include="packages\Microsoft.ApplicationInsights.1.2.3\lib\net40\Microsoft.ApplicationInsights.XML" />
+    <Content Include="packages\Microsoft.ApplicationInsights.1.2.3\lib\net45\Microsoft.ApplicationInsights.dll" />
+    <Content Include="packages\Microsoft.ApplicationInsights.1.2.3\lib\net45\Microsoft.ApplicationInsights.XML" />
+    <Content Include="packages\Microsoft.ApplicationInsights.1.2.3\lib\portable-win81+wpa81\Microsoft.ApplicationInsights.dll" />
+    <Content Include="packages\Microsoft.ApplicationInsights.1.2.3\lib\portable-win81+wpa81\Microsoft.ApplicationInsights.XML" />
+    <Content Include="packages\Microsoft.ApplicationInsights.1.2.3\lib\wp8\Microsoft.ApplicationInsights.dll" />
+    <Content Include="packages\Microsoft.ApplicationInsights.1.2.3\lib\wp8\Microsoft.ApplicationInsights.XML" />
+    <Content Include="packages\Microsoft.ApplicationInsights.Agent.Intercept.1.2.0\lib\net40\Microsoft.AI.Agent.Intercept.dll" />
+    <Content Include="packages\Microsoft.ApplicationInsights.Agent.Intercept.1.2.0\lib\net45\Microsoft.AI.Agent.Intercept.dll" />
+    <Content Include="packages\Microsoft.ApplicationInsights.DependencyCollector.1.2.3\lib\net40\Microsoft.AI.DependencyCollector.dll" />
+    <Content Include="packages\Microsoft.ApplicationInsights.DependencyCollector.1.2.3\lib\net40\Microsoft.AI.DependencyCollector.XML" />
+    <Content Include="packages\Microsoft.ApplicationInsights.DependencyCollector.1.2.3\lib\net45\Microsoft.AI.DependencyCollector.dll" />
+    <Content Include="packages\Microsoft.ApplicationInsights.DependencyCollector.1.2.3\lib\net45\Microsoft.AI.DependencyCollector.XML" />
+    <Content Include="packages\Microsoft.ApplicationInsights.JavaScript.0.15.0-build58334\content\scripts\ai.0.15.0-build58334.js" />
+    <Content Include="packages\Microsoft.ApplicationInsights.JavaScript.0.15.0-build58334\content\scripts\ai.0.15.0-build58334.min.js" />
+    <Content Include="packages\Microsoft.ApplicationInsights.JavaScript.0.15.0-build58334\tools\prefix.html" />
+    <Content Include="packages\Microsoft.ApplicationInsights.PerfCounterCollector.1.2.3\lib\net40\Microsoft.AI.PerfCounterCollector.dll" />
+    <Content Include="packages\Microsoft.ApplicationInsights.PerfCounterCollector.1.2.3\lib\net45\Microsoft.AI.PerfCounterCollector.dll" />
+    <Content Include="packages\Microsoft.ApplicationInsights.Web.1.2.3\lib\net40\Microsoft.AI.Web.dll" />
+    <Content Include="packages\Microsoft.ApplicationInsights.Web.1.2.3\lib\net40\Microsoft.AI.Web.XML" />
+    <Content Include="packages\Microsoft.ApplicationInsights.Web.1.2.3\lib\net45\Microsoft.AI.Web.dll" />
+    <Content Include="packages\Microsoft.ApplicationInsights.Web.1.2.3\lib\net45\Microsoft.AI.Web.XML" />
+    <Content Include="packages\Microsoft.ApplicationInsights.WindowsServer.1.2.3\lib\net40\Microsoft.AI.WindowsServer.dll" />
+    <Content Include="packages\Microsoft.ApplicationInsights.WindowsServer.1.2.3\lib\net40\Microsoft.AI.WindowsServer.XML" />
+    <Content Include="packages\Microsoft.ApplicationInsights.WindowsServer.1.2.3\lib\net45\Microsoft.AI.WindowsServer.dll" />
+    <Content Include="packages\Microsoft.ApplicationInsights.WindowsServer.1.2.3\lib\net45\Microsoft.AI.WindowsServer.XML" />
+    <Content Include="packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.1.2.3\lib\net40\Microsoft.AI.ServerTelemetryChannel.dll" />
+    <Content Include="packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.1.2.3\lib\net40\Microsoft.AI.ServerTelemetryChannel.XML" />
+    <Content Include="packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.1.2.3\lib\net45\Microsoft.AI.ServerTelemetryChannel.dll" />
+    <Content Include="packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.1.2.3\lib\net45\Microsoft.AI.ServerTelemetryChannel.XML" />
+    <Content Include="packages\Microsoft.AspNet.Cors.5.0.0\lib\net45\System.Web.Cors.dll" />
+    <Content Include="packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll" />
+    <Content Include="packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.xml" />
+    <Content Include="packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll" />
+    <Content Include="packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.xml" />
+    <Content Include="packages\Microsoft.AspNet.Identity.Owin.2.2.1\lib\net45\Microsoft.AspNet.Identity.Owin.dll" />
+    <Content Include="packages\Microsoft.AspNet.Identity.Owin.2.2.1\lib\net45\Microsoft.AspNet.Identity.Owin.xml" />
+    <Content Include="packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll" />
+    <Content Include="packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.xml" />
+    <Content Include="packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll" />
+    <Content Include="packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.xml" />
+    <Content Include="packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll" />
+    <Content Include="packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\system.web.optimization.xml" />
+    <Content Include="packages\Microsoft.AspNet.WebApi.Client.4.0.20710.0\lib\net40\System.Net.Http.Formatting.dll" />
+    <Content Include="packages\Microsoft.AspNet.WebApi.Client.4.0.20710.0\lib\net40\System.Net.Http.Formatting.xml" />
+    <Content Include="packages\Microsoft.AspNet.WebApi.Client.5.2.2\lib\net45\System.Net.Http.Formatting.dll" />
+    <Content Include="packages\Microsoft.AspNet.WebApi.Client.5.2.2\lib\net45\System.Net.Http.Formatting.xml" />
+    <Content Include="packages\Microsoft.AspNet.WebApi.Client.5.2.2\lib\portable-wp8+netcore45+net45+wp81+wpa81\System.Net.Http.Formatting.dll" />
+    <Content Include="packages\Microsoft.AspNet.WebApi.Client.5.2.2\lib\portable-wp8+netcore45+net45+wp81+wpa81\System.Net.Http.Formatting.xml" />
+    <Content Include="packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll" />
+    <Content Include="packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.xml" />
+    <Content Include="packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\portable-wp8+netcore45+net45+wp81+wpa81\System.Net.Http.Formatting.dll" />
+    <Content Include="packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\portable-wp8+netcore45+net45+wp81+wpa81\System.Net.Http.Formatting.xml" />
+    <Content Include="packages\Microsoft.AspNet.WebApi.Core.4.0.20710.0\lib\net40\System.Web.Http.dll" />
+    <Content Include="packages\Microsoft.AspNet.WebApi.Core.4.0.20710.0\lib\net40\System.Web.Http.xml" />
+    <Content Include="packages\Microsoft.AspNet.WebApi.Core.5.2.2\lib\net45\System.Web.Http.dll" />
+    <Content Include="packages\Microsoft.AspNet.WebApi.Core.5.2.2\lib\net45\System.Web.Http.xml" />
+    <Content Include="packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll" />
+    <Content Include="packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.xml" />
+    <Content Include="packages\Microsoft.AspNet.WebApi.Owin.5.2.3\lib\net45\System.Web.Http.Owin.dll" />
+    <Content Include="packages\Microsoft.AspNet.WebApi.Owin.5.2.3\lib\net45\System.Web.Http.Owin.xml" />
+    <Content Include="packages\Microsoft.AspNet.WebApi.WebHost.5.2.2\lib\net45\System.Web.Http.WebHost.dll" />
+    <Content Include="packages\Microsoft.AspNet.WebApi.WebHost.5.2.2\lib\net45\System.Web.Http.WebHost.xml" />
+    <Content Include="packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll" />
+    <Content Include="packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.xml" />
+    <Content Include="packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll" />
+    <Content Include="packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.xml" />
+    <Content Include="packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll" />
+    <Content Include="packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.xml" />
+    <Content Include="packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll" />
+    <Content Include="packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll" />
+    <Content Include="packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.xml" />
+    <Content Include="packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.xml" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml" />
+    <Content Include="packages\Microsoft.jQuery.Unobtrusive.Validation.3.2.3\Content\Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="packages\Microsoft.jQuery.Unobtrusive.Validation.3.2.3\Content\Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="packages\Microsoft.Net.Compilers.1.0.0\tools\csc.exe" />
+    <Content Include="packages\Microsoft.Net.Compilers.1.0.0\tools\Microsoft.Build.Tasks.CodeAnalysis.dll" />
+    <Content Include="packages\Microsoft.Net.Compilers.1.0.0\tools\Microsoft.CodeAnalysis.CSharp.dll" />
+    <Content Include="packages\Microsoft.Net.Compilers.1.0.0\tools\Microsoft.CodeAnalysis.dll" />
+    <Content Include="packages\Microsoft.Net.Compilers.1.0.0\tools\Microsoft.CodeAnalysis.VisualBasic.dll" />
+    <Content Include="packages\Microsoft.Net.Compilers.1.0.0\tools\System.Collections.Immutable.dll" />
+    <Content Include="packages\Microsoft.Net.Compilers.1.0.0\tools\System.Reflection.Metadata.dll" />
+    <Content Include="packages\Microsoft.Net.Compilers.1.0.0\tools\vbc.exe" />
+    <Content Include="packages\Microsoft.Net.Compilers.1.0.0\tools\VBCSCompiler.exe" />
+    <Content Include="packages\Microsoft.Net.Http.2.0.20710.0\lib\net40\System.Net.Http.dll" />
+    <Content Include="packages\Microsoft.Net.Http.2.0.20710.0\lib\net40\System.Net.Http.WebRequest.dll" />
+    <Content Include="packages\Microsoft.Net.Http.2.0.20710.0\lib\net40\System.Net.Http.WebRequest.xml" />
+    <Content Include="packages\Microsoft.Net.Http.2.0.20710.0\lib\net40\System.Net.Http.xml" />
+    <Content Include="packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll" />
+    <Content Include="packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.XML" />
+    <Content Include="packages\Microsoft.Owin.Cors.3.0.1\lib\net45\Microsoft.Owin.Cors.dll" />
+    <Content Include="packages\Microsoft.Owin.Cors.3.0.1\lib\net45\Microsoft.Owin.Cors.XML" />
+    <Content Include="packages\Microsoft.Owin.Host.SystemWeb.3.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll" />
+    <Content Include="packages\Microsoft.Owin.Host.SystemWeb.3.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.xml" />
+    <Content Include="packages\Microsoft.Owin.Security.3.0.1\lib\net45\Microsoft.Owin.Security.dll" />
+    <Content Include="packages\Microsoft.Owin.Security.3.0.1\lib\net45\Microsoft.Owin.Security.XML" />
+    <Content Include="packages\Microsoft.Owin.Security.Cookies.3.0.1\lib\net45\Microsoft.Owin.Security.Cookies.dll" />
+    <Content Include="packages\Microsoft.Owin.Security.Cookies.3.0.1\lib\net45\Microsoft.Owin.Security.Cookies.xml" />
+    <Content Include="packages\Microsoft.Owin.Security.Facebook.3.0.1\lib\net45\Microsoft.Owin.Security.Facebook.dll" />
+    <Content Include="packages\Microsoft.Owin.Security.Facebook.3.0.1\lib\net45\Microsoft.Owin.Security.Facebook.XML" />
+    <Content Include="packages\Microsoft.Owin.Security.Google.3.0.1\lib\net45\Microsoft.Owin.Security.Google.dll" />
+    <Content Include="packages\Microsoft.Owin.Security.Google.3.0.1\lib\net45\Microsoft.Owin.Security.Google.XML" />
+    <Content Include="packages\Microsoft.Owin.Security.MicrosoftAccount.3.0.1\lib\net45\Microsoft.Owin.Security.MicrosoftAccount.dll" />
+    <Content Include="packages\Microsoft.Owin.Security.MicrosoftAccount.3.0.1\lib\net45\Microsoft.Owin.Security.MicrosoftAccount.XML" />
+    <Content Include="packages\Microsoft.Owin.Security.OAuth.3.0.1\lib\net45\Microsoft.Owin.Security.OAuth.dll" />
+    <Content Include="packages\Microsoft.Owin.Security.OAuth.3.0.1\lib\net45\Microsoft.Owin.Security.OAuth.XML" />
+    <Content Include="packages\Microsoft.Owin.Security.Twitter.3.0.1\lib\net45\Microsoft.Owin.Security.Twitter.dll" />
+    <Content Include="packages\Microsoft.Owin.Security.Twitter.3.0.1\lib\net45\Microsoft.Owin.Security.Twitter.XML" />
+    <Content Include="packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll" />
+    <Content Include="packages\Microsoft.Web.Xdt.2.1.1\lib\net40\Microsoft.Web.XmlTransform.dll" />
+    <Content Include="packages\Modernizr.2.6.2\Content\Scripts\modernizr-2.6.2.js" />
+    <Content Include="packages\Newtonsoft.Json.6.0.4\lib\net20\Newtonsoft.Json.dll" />
+    <Content Include="packages\Newtonsoft.Json.6.0.4\lib\net20\Newtonsoft.Json.xml" />
+    <Content Include="packages\Newtonsoft.Json.6.0.4\lib\net35\Newtonsoft.Json.dll" />
+    <Content Include="packages\Newtonsoft.Json.6.0.4\lib\net35\Newtonsoft.Json.xml" />
+    <Content Include="packages\Newtonsoft.Json.6.0.4\lib\net40\Newtonsoft.Json.dll" />
+    <Content Include="packages\Newtonsoft.Json.6.0.4\lib\net40\Newtonsoft.Json.xml" />
+    <Content Include="packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll" />
+    <Content Include="packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.xml" />
+    <Content Include="packages\Newtonsoft.Json.6.0.4\lib\netcore45\Newtonsoft.Json.dll" />
+    <Content Include="packages\Newtonsoft.Json.6.0.4\lib\netcore45\Newtonsoft.Json.xml" />
+    <Content Include="packages\Newtonsoft.Json.6.0.4\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.dll" />
+    <Content Include="packages\Newtonsoft.Json.6.0.4\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.xml" />
+    <Content Include="packages\Newtonsoft.Json.6.0.4\lib\portable-net45+wp80+win8+wpa81\Newtonsoft.Json.dll" />
+    <Content Include="packages\Newtonsoft.Json.6.0.4\lib\portable-net45+wp80+win8+wpa81\Newtonsoft.Json.xml" />
+    <Content Include="packages\Ninject.3.0.1.10\lib\net35\Ninject.dll" />
+    <Content Include="packages\Ninject.3.0.1.10\lib\net35\Ninject.pdb" />
+    <Content Include="packages\Ninject.3.0.1.10\lib\net35\Ninject.xml" />
+    <Content Include="packages\Ninject.3.0.1.10\lib\net40\Ninject.dll" />
+    <Content Include="packages\Ninject.3.0.1.10\lib\net40\Ninject.pdb" />
+    <Content Include="packages\Ninject.3.0.1.10\lib\net40\Ninject.xml" />
+    <Content Include="packages\Ninject.3.0.1.10\lib\net45-full\Ninject.dll" />
+    <Content Include="packages\Ninject.3.0.1.10\lib\net45-full\Ninject.pdb" />
+    <Content Include="packages\Ninject.3.0.1.10\lib\net45-full\Ninject.xml" />
+    <Content Include="packages\Ninject.3.0.1.10\lib\sl2\Ninject.dll" />
+    <Content Include="packages\Ninject.3.0.1.10\lib\sl2\Ninject.pdb" />
+    <Content Include="packages\Ninject.3.0.1.10\lib\sl2\Ninject.xml" />
+    <Content Include="packages\Ninject.3.0.1.10\lib\sl3-wp\Ninject.dll" />
+    <Content Include="packages\Ninject.3.0.1.10\lib\sl3-wp\Ninject.pdb" />
+    <Content Include="packages\Ninject.3.0.1.10\lib\sl3-wp\Ninject.xml" />
+    <Content Include="packages\Ninject.3.0.1.10\lib\sl3\Ninject.dll" />
+    <Content Include="packages\Ninject.3.0.1.10\lib\sl3\Ninject.pdb" />
+    <Content Include="packages\Ninject.3.0.1.10\lib\sl3\Ninject.xml" />
+    <Content Include="packages\Ninject.3.0.1.10\lib\sl4-windowsphone71\Ninject.dll" />
+    <Content Include="packages\Ninject.3.0.1.10\lib\sl4-windowsphone71\Ninject.pdb" />
+    <Content Include="packages\Ninject.3.0.1.10\lib\sl4-windowsphone71\Ninject.xml" />
+    <Content Include="packages\Ninject.3.0.1.10\lib\sl4\Ninject.dll" />
+    <Content Include="packages\Ninject.3.0.1.10\lib\sl4\Ninject.pdb" />
+    <Content Include="packages\Ninject.3.0.1.10\lib\sl4\Ninject.xml" />
+    <Content Include="packages\Ninject.3.0.1.10\lib\sl5\Ninject.dll" />
+    <Content Include="packages\Ninject.3.0.1.10\lib\sl5\Ninject.pdb" />
+    <Content Include="packages\Ninject.3.0.1.10\lib\sl5\Ninject.xml" />
+    <Content Include="packages\NuGet.CommandLine.3.3.0\tools\NuGet.exe" />
+    <Content Include="packages\NuGet.Core.2.8.6\lib\net40-Client\NuGet.Core.dll" />
+    <Content Include="packages\NuGet.Server.2.8.6\content\DataServices\Packages.svc" />
+    <Content Include="packages\NuGet.Server.2.8.6\content\Default.aspx" />
+    <Content Include="packages\NuGet.Server.2.8.6\content\favicon.ico" />
+    <Content Include="packages\NuGet.Server.2.8.6\content\Packages\Readme.txt" />
+    <Content Include="packages\NuGet.Server.2.8.6\lib\net45\NuGet.Server.dll" />
+    <Content Include="packages\NUnitTestAdapter.2.0.0\lib\nunit.core.dll" />
+    <Content Include="packages\NUnitTestAdapter.2.0.0\lib\nunit.core.interfaces.dll" />
+    <Content Include="packages\NUnitTestAdapter.2.0.0\lib\nunit.util.dll" />
+    <Content Include="packages\NUnitTestAdapter.2.0.0\lib\NUnit.VisualStudio.TestAdapter.dll" />
+    <Content Include="packages\Owin.1.0\lib\net40\Owin.dll" />
+    <Content Include="packages\PDev.Api.Core.1.0.0.0\lib\net451\PDev.Api.Core.dll" />
+    <Content Include="packages\PDev.Api.Core.1.0.0.0\lib\net451\PDev.Infrastructure.Crosscutting.dll" />
+    <Content Include="packages\PDev.Infrastructure.Core.1.1.0.0\content\Sql\AlteraçãoDaTabelaModule.txt" />
+    <Content Include="packages\PDev.Infrastructure.Core.1.1.0.0\lib\net451\PDev.Domain.Core.dll" />
+    <Content Include="packages\PDev.Infrastructure.Core.1.1.0.0\lib\net451\PDev.Infrastructure.Core.dll" />
+    <Content Include="packages\PDev.Infrastructure.Crosscutting.1.2.0.0\lib\net45\PDev.Infrastructure.Crosscutting.dll" />
+    <Content Include="packages\Respond.1.2.0\content\Scripts\respond.js" />
+    <Content Include="packages\Respond.1.2.0\content\Scripts\respond.min.js" />
+    <Content Include="packages\RouteMagic.1.2\lib\net40\RouteMagic.dll" />
+    <Content Include="packages\SimpleInjector.2.7.2\lib\net40-client\SimpleInjector.Diagnostics.dll" />
+    <Content Include="packages\SimpleInjector.2.7.2\lib\net40-client\SimpleInjector.Diagnostics.xml" />
+    <Content Include="packages\SimpleInjector.2.7.2\lib\net40-client\SimpleInjector.dll" />
+    <Content Include="packages\SimpleInjector.2.7.2\lib\net40-client\SimpleInjector.xml" />
+    <Content Include="packages\SimpleInjector.2.7.2\lib\net45\SimpleInjector.Diagnostics.dll" />
+    <Content Include="packages\SimpleInjector.2.7.2\lib\net45\SimpleInjector.Diagnostics.xml" />
+    <Content Include="packages\SimpleInjector.2.7.2\lib\net45\SimpleInjector.dll" />
+    <Content Include="packages\SimpleInjector.2.7.2\lib\net45\SimpleInjector.xml" />
+    <Content Include="packages\SimpleInjector.2.7.2\lib\portable-net4+sl4+wp8+win8+wpa81\SimpleInjector.Diagnostics.dll" />
+    <Content Include="packages\SimpleInjector.2.7.2\lib\portable-net4+sl4+wp8+win8+wpa81\SimpleInjector.Diagnostics.xml" />
+    <Content Include="packages\SimpleInjector.2.7.2\lib\portable-net4+sl4+wp8+win8+wpa81\SimpleInjector.dll" />
+    <Content Include="packages\SimpleInjector.2.7.2\lib\portable-net4+sl4+wp8+win8+wpa81\SimpleInjector.xml" />
+    <Content Include="packages\SimpleInjector.3.1.2\lib\dotnet\SimpleInjector.dll" />
+    <Content Include="packages\SimpleInjector.3.1.2\lib\dotnet\SimpleInjector.xml" />
+    <Content Include="packages\SimpleInjector.3.1.2\lib\net40-client\SimpleInjector.dll" />
+    <Content Include="packages\SimpleInjector.3.1.2\lib\net40-client\SimpleInjector.xml" />
+    <Content Include="packages\SimpleInjector.3.1.2\lib\net45\SimpleInjector.dll" />
+    <Content Include="packages\SimpleInjector.3.1.2\lib\net45\SimpleInjector.xml" />
+    <Content Include="packages\SimpleInjector.3.1.2\lib\portable-net4+sl4+wp8+win8+wpa81\SimpleInjector.dll" />
+    <Content Include="packages\SimpleInjector.3.1.2\lib\portable-net4+sl4+wp8+win8+wpa81\SimpleInjector.xml" />
+    <Content Include="packages\SimpleInjector.3.2.0\lib\net40-client\SimpleInjector.dll" />
+    <Content Include="packages\SimpleInjector.3.2.0\lib\net40-client\SimpleInjector.xml" />
+    <Content Include="packages\SimpleInjector.3.2.0\lib\net45\SimpleInjector.dll" />
+    <Content Include="packages\SimpleInjector.3.2.0\lib\net45\SimpleInjector.xml" />
+    <Content Include="packages\SimpleInjector.3.2.0\lib\netstandard1.6\SimpleInjector.dll" />
+    <Content Include="packages\SimpleInjector.3.2.0\lib\netstandard1.6\SimpleInjector.xml" />
+    <Content Include="packages\SimpleInjector.3.2.0\lib\portable-net4+sl4+wp8+win8+wpa81\SimpleInjector.dll" />
+    <Content Include="packages\SimpleInjector.3.2.0\lib\portable-net4+sl4+wp8+win8+wpa81\SimpleInjector.xml" />
+    <Content Include="packages\SimpleInjector.Extensions.ExecutionContextScoping.2.7.2\lib\net45\SimpleInjector.Extensions.ExecutionContextScoping.dll" />
+    <Content Include="packages\SimpleInjector.Extensions.ExecutionContextScoping.2.7.2\lib\net45\SimpleInjector.Extensions.ExecutionContextScoping.xml" />
+    <Content Include="packages\SimpleInjector.Extensions.ExecutionContextScoping.3.1.2\lib\dotnet\SimpleInjector.Extensions.ExecutionContextScoping.dll" />
+    <Content Include="packages\SimpleInjector.Extensions.ExecutionContextScoping.3.1.2\lib\dotnet\SimpleInjector.Extensions.ExecutionContextScoping.xml" />
+    <Content Include="packages\SimpleInjector.Extensions.ExecutionContextScoping.3.1.2\lib\net45\SimpleInjector.Extensions.ExecutionContextScoping.dll" />
+    <Content Include="packages\SimpleInjector.Extensions.ExecutionContextScoping.3.1.2\lib\net45\SimpleInjector.Extensions.ExecutionContextScoping.xml" />
+    <Content Include="packages\SimpleInjector.Extensions.ExecutionContextScoping.3.2.0\lib\net45\SimpleInjector.Extensions.ExecutionContextScoping.dll" />
+    <Content Include="packages\SimpleInjector.Extensions.ExecutionContextScoping.3.2.0\lib\net45\SimpleInjector.Extensions.ExecutionContextScoping.xml" />
+    <Content Include="packages\SimpleInjector.Extensions.ExecutionContextScoping.3.2.0\lib\netstandard1.6\SimpleInjector.Extensions.ExecutionContextScoping.dll" />
+    <Content Include="packages\SimpleInjector.Extensions.ExecutionContextScoping.3.2.0\lib\netstandard1.6\SimpleInjector.Extensions.ExecutionContextScoping.xml" />
+    <Content Include="packages\SimpleInjector.Integration.WebApi.2.7.2\lib\net45\.gitignore" />
+    <Content Include="packages\SimpleInjector.Integration.WebApi.2.7.2\lib\net45\SimpleInjector.Integration.WebApi.dll" />
+    <Content Include="packages\SimpleInjector.Integration.WebApi.2.7.2\lib\net45\SimpleInjector.Integration.WebApi.xml" />
+    <Content Include="packages\SimpleInjector.Integration.WebApi.3.1.2\lib\net45\SimpleInjector.Integration.WebApi.dll" />
+    <Content Include="packages\SimpleInjector.Integration.WebApi.3.1.2\lib\net45\SimpleInjector.Integration.WebApi.xml" />
+    <Content Include="packages\SimpleInjector.Integration.WebApi.3.2.0\lib\net45\SimpleInjector.Integration.WebApi.dll" />
+    <Content Include="packages\SimpleInjector.Integration.WebApi.3.2.0\lib\net45\SimpleInjector.Integration.WebApi.xml" />
+    <Content Include="packages\System.Net.Http.2.0.20126.16343\lib\net40\System.Net.Http.dll" />
+    <Content Include="packages\System.Net.Http.2.0.20126.16343\lib\net40\System.Net.Http.WebRequest.dll" />
+    <Content Include="packages\System.Net.Http.2.0.20126.16343\lib\net40\System.Net.Http.WebRequest.xml" />
+    <Content Include="packages\System.Net.Http.2.0.20126.16343\lib\net40\System.Net.Http.xml" />
+    <Content Include="packages\System.Net.Http.Formatting.Extension.5.2.3.0\lib\System.Net.Http.Extensions.dll" />
+    <Content Include="packages\System.Net.Http.Formatting.Extension.5.2.3.0\lib\System.Net.Http.Formatting.dll" />
+    <Content Include="packages\System.Net.Http.Formatting.Extension.5.2.3.0\lib\System.Net.Http.Primitives.dll" />
+    <Content Include="packages\System.Web.Http.Common.4.0.20126.16343\lib\net40\System.Web.Http.Common.xml" />
+    <Content Include="packages\WebActivator.1.4.4\lib\net40\WebActivator.dll" />
+    <Content Include="packages\WebActivatorEx.2.0.2\lib\net40\WebActivatorEx.dll" />
+    <Content Include="packages\WebApp.1.0.0.0\lib\net40\WebApp.dll" />
+    <Content Include="packages\WebAppBuilder.0.1.2\lib\net40\WebAppBuilder.dll" />
+    <Content Include="packages\WebAppBuilder.0.1.2\lib\NETFramework40\WebAppBuilder.dll" />
+    <Content Include="packages\WebGrease.1.5.2\lib\WebGrease.dll" />
+    <Content Include="packages\WebGrease.1.5.2\tools\WG.exe" />
+    <Content Include="Sql\clinicasdb.sql" />
+    <Content Include="Sql\Department.txt" />
+    <Content Include="Sql\Feature.txt" />
+    <Content Include="Sql\FeatureAction.txt" />
+    <Content Include="Sql\Module.txt" />
+    <Content Include="Sql\Role.txt" />
+    <Content Include="Sql\RoleFeature.txt" />
+    <Content Include="Sql\User.txt" />
+    <Content Include="Sql\UserFeature.txt" />
+    <Content Include="Sql\UserFeatureAction.txt" />
+    <Content Include="Sql\UserRole.txt" />
+    <Content Include="Sql\UserToken.txt" />
+    <Content Include="TemplateClient\services\auth\authInterceptor.js" />
+    <Content Include="TemplateClient\services\auth\authService.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Attributes\ErrorHandlerAttribute.cs" />
+    <Compile Include="BoundedContexts\ContextInitializer.cs" />
+    <Compile Include="Context\SecurityContext.cs" />
+    <Compile Include="Controllers\PacienteController.cs" />
+    <Compile Include="Controllers\SegurancaController.cs" />
+    <Compile Include="Domain\Department.cs" />
+    <Compile Include="Domain\Feature.cs" />
+    <Compile Include="Domain\FeatureAction.cs" />
+    <Compile Include="Domain\Module.cs" />
+    <Compile Include="Domain\Role.cs" />
+    <Compile Include="Domain\User.cs" />
+    <Compile Include="Domain\UserFeature.cs" />
+    <Compile Include="Domain\UserToken.cs" />
+    <Compile Include="Exception\InvalidUserException.cs" />
+    <Compile Include="Logs\CallerActionPatternConverter.cs" />
+    <Compile Include="Logs\CallerActionPatternLayout.cs" />
+    <Compile Include="Logs\CallerLoggerInfo.cs" />
+    <Compile Include="Mappings\DepartmentConfiguration.cs" />
+    <Compile Include="Mappings\FeatureActionConfiguration.cs" />
+    <Compile Include="Mappings\FeatureConfiguration.cs" />
+    <Compile Include="Mappings\ModuleConfiguration.cs" />
+    <Compile Include="Mappings\RoleConfiguration.cs" />
+    <Compile Include="Mappings\UserConfiguration.cs" />
+    <Compile Include="Mappings\UserFeatureConfiguration.cs" />
+    <Compile Include="Mappings\UserTokenConfiguration.cs" />
+    <Compile Include="Models\ActivateUserModel.cs" />
+    <Compile Include="Models\AlterarSenhaModel.cs" />
+    <Compile Include="Models\LoginResultModel.cs" />
+    <Compile Include="Models\SendNewPasswordModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Providers\ApiAuthorizationServerProvider.cs" />
+    <Compile Include="Service\ApiDeUsuarios.cs" />
+    <Compile Include="Service\AuthorizationService.cs" />
+    <Compile Include="Service\Interface\IApiDeUsuarios.cs" />
+    <Compile Include="Service\Interface\IAuthorizationService.cs" />
+    <Compile Include="Service\Interface\IUserService.cs" />
+    <Compile Include="Service\UserService.cs" />
+    <Compile Include="Startup.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="BuildProcessTemplates\DefaultTemplate.11.1.xaml" />
+    <Content Include="BuildProcessTemplates\LabDefaultTemplate.11.xaml" />
+    <Content Include="BuildProcessTemplates\UpgradeTemplate.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Areas\HelpPage\App_Start\" />
+    <Folder Include="Areas\HelpPage\Controllers\" />
+    <Folder Include="Areas\HelpPage\ModelDescriptions\" />
+    <Folder Include="Areas\HelpPage\Models\" />
+    <Folder Include="Areas\HelpPage\SampleGeneration\" />
+    <Folder Include="Areas\HelpPage\Views\Help\DisplayTemplates\" />
+    <Folder Include="Areas\HelpPage\Views\Shared\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\Proclin\Clinicas\Clinicas.Application\Clinicas.Application.csproj">
+      <Project>{5579D0CD-2582-44B6-A930-C680CE8F4C68}</Project>
+      <Name>Clinicas.Application</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\Proclin\Clinicas\Clinicas.Domain\Clinicas.Domain.csproj">
+      <Project>{46D115F5-29C5-4393-91B3-121B3D4BCA5F}</Project>
+      <Name>Clinicas.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\Proclin\Clinicas\Clinicas.Infrastructure\Clinicas.Infrastructure.csproj">
+      <Project>{BE5484DC-1FF3-4B6B-90D3-3A5EAA7FB224}</Project>
+      <Name>Clinicas.Infrastructure</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>64207</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:64207/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.3\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.3\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

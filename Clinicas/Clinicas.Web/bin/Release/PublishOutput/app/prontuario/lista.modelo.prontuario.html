@@ -1,0 +1,78 @@
+﻿<section class="panel">
+    <div class="panel-heading">
+        <div class="margin-bottom-50">
+            <ul class="list-unstyled breadcrumb breadcrumb-custom" ng-cloak>
+                <li>
+                    <a href="#" class="active"><i class="icmn-home"></i> Página Inicial</a>
+                </li>
+                <li ng-repeat="item in $root.currentCrumbs" ng-cloak>
+                    <a href="#" class="active">{{ item.name }}</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="panel-body" block-ui="blockModalListaModelo">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="alert alert-danger" ng-if="vm.FormMessage.length > 0">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <i class="fa fa-exclamation-triangle pull-left" style="font-size: 20px;"></i>
+                            {{vm.FormMessage}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <button type="button" style="margin-left:20px;" ng-click="vm.addModelo(0)" class="btn btn-primary btn-cons pull-right"><span class="fa fa-plus"> </span> Modelo Prontuário</button>
+                    </div>
+                </div>
+                <br />
+                <div class="row" ng-if="vm.modelos.length > 0">
+                    <div class="col-md-12">
+                        <table class="table table-hover table-condensed table-striped" datatable="ng">
+                            <thead>
+                                <tr class="bg-complete-lighter">
+                                    <th style="width: 60%">Descrição </th>
+                                    <th style="width: 20%">Tipo </th>
+                                    <th style="width: 10%">Situacao</th>
+                                    <th style="width: 10%">Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="x in vm.modelos">
+                                    <td>{{x.NomeModelo}}</td>
+                                    <td>
+                                        <span ng-class="{'label label-warning': x.Tipo == 'Atestado',
+                                                'label label-secondary ': x.Tipo == 'Declaracao',
+                                                'label label-info': x.Tipo == 'Receituario'}">{{ x.Tipo }}</span>
+                                    </td>
+                                    <td>
+                                        <span ng-class="{'label label-pill label-success': x.Situacao == 'Ativo',
+                                                'label label-pill label-warning': x.Situacao == 'Inativo'}">{{ x.Situacao }}</span>
+                                    </td>
+                                    <td>
+                                        <button type="button" class="btn btn-sm btn-icon btn-primary margin-inline" ng-click="vm.addModelo(x.IdModeloProntuario)"><i class="icmn-database-edit" aria-hidden="true"> Editar</i></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="row" ng-if="vm.modelos.length == 0">
+                    <div class="col-md-12">
+                        <div class="alert alert-info bordered" role="alert">
+                            Não existem Modelos de Prontuários cadastrados.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+

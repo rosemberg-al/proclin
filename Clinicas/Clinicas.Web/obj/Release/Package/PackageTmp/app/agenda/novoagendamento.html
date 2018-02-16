@@ -1,0 +1,491 @@
+﻿<div class="modal-header" style="margin-bottom:10px;">
+    <button type="button" class="close" ng-click="vm.cancelar()" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">×</span>
+    </button>
+    <h5 class="modal-title" id="myModalLabel">Novo Agendamento</h5>
+</div>
+<style>
+    .checkbox label, .radio label {
+        padding-left: 0.25rem;
+    }
+
+    li {
+        list-style: none;
+    }
+
+    .well-sm:hover {
+        background: #FFFACD;
+    }
+
+    .stylish-input-group .input-group-addon {
+        background: white !important;
+    }
+
+    .stylish-input-group .form-control {
+        border-right: 0;
+        box-shadow: 0 0 0;
+        border-color: #ccc;
+    }
+
+    .stylish-input-group button {
+        border: 0;
+        background: transparent;
+    }
+    /* Styles specific to this particular page */
+    .scroll-pane {
+        width: 120%;
+        height: 400px;
+        overflow: auto;
+    }
+
+    .jspCap {
+        display: block;
+        background: #eeeef4;
+    }
+
+    .jspVerticalBar .jspCap {
+        height: 20px;
+    }
+
+    .jspHorizontalBar .jspCap {
+        width: 50px;
+        height: 100%;
+    }
+</style>
+
+<div class="modal-body" block-ui="blockModalNovoAgendamento">
+
+    <div id="example-icons" class="cui-wizard wizard clearfix" role="application">
+
+        <div class="steps clearfix">
+            <ul role="tablist">
+                <li role="tab" class="first current" aria-disabled="false" aria-selected="true" id="aba1">
+                    <a id="example-icons-t-0" aria-controls="example-icons-p-0">
+                        <span class="current-info audible">current step: </span>
+                        <span class="number">1.</span>
+                        <i class="fa fa-user-md cui-wizard--steps--icon"></i>
+                        <span class="cui-wizard--steps--title">Escolha o médico</span>
+                    </a>
+                </li>
+                <li role="tab" class="disabled" aria-disabled="false" aria-selected="false" id="aba2">
+                    <a id="example-icons-t-1" aria-controls="example-icons-p-1">
+                        <span class="number">2.</span>
+                        <i class="fa fa-user cui-wizard--steps--icon"></i>
+                        <span class="cui-wizard--steps--title">Escolha o paciente</span>
+                    </a>
+                </li>
+                <li role="tab" class="disabled" aria-disabled="false" aria-selected="false" id="aba3">
+                    <a id="example-icons-t-2" aria-controls="example-icons-p-2">
+                        <span class="number">3.</span> <i class="fa fa-heartbeat cui-wizard--steps--icon"></i>
+                        <span class="cui-wizard--steps--title">Dados do atendimento</span>
+                    </a>
+                </li>
+                <li role="tab" class="disabled" aria-disabled="false" aria-selected="false" id="aba4">
+                    <a id="example-icons-t-3" aria-controls="example-icons-p-3">
+                        <span class="number">4.</span> <i class="fa fa-clock-o cui-wizard--steps--icon"></i>
+                        <span class="cui-wizard--steps--title">Horário</span>
+                    </a>
+                </li>
+                <li role="tab" class="disabled" aria-disabled="false" aria-selected="false" id="aba5">
+                    <a id="example-icons-t-4" aria-controls="example-icons-p-4">
+                        <span class="number">5.</span> <i class="fa fa-check-square-o cui-wizard--steps--icon"></i>
+                        <span class="cui-wizard--steps--title">Confirmação</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+
+    <div class="panel" style="border:none">
+
+
+
+        <div class="tab-content padding-vertical-20">
+
+            <div class="row" ng-show="vm.AlertMessage.length > 0">
+                <div class="col-md-12">
+                    <div class="alert alert-danger">
+                        <span class="fa fa-exclamation-circle" aria-hidden="true"></span>
+                        <strong>Atenção:</strong> {{ vm.AlertMessage }}
+                    </div>
+                </div>
+            </div>
+            <!-- Médico -->
+            <div class="tab-pane active" id="medico" role="tabpanel" aria-expanded="true">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="well well-sm" style="background:#f2f4f8" ng-repeat="item in vm.dados">
+                            <div class="row">
+
+                                <div class="col-md-1 margin-right-5" style="width:50px;">
+                                    <img ng-if="item.Sexo=='M'" src="assets/img/avatar_doc_masc.jpg" style="width:80px; height:80px;" class="img-responsive" />
+                                    <img ng-if="item.Sexo=='F'" src="assets/img/avatar_doc_fem.jpg" style="width:80px; height:80px;" class="img-responsive" />
+                                </div>
+
+                                <div class="col-md-9">
+                                    <ul>
+                                        <li style="font-size:15px; margin-bottom:5px;">
+                                            <input type="radio" name="chk_{{item.IdFuncionario}}" ng-if="item.QtdeAgendaDisponiveis>0" id="chk_{{item.IdFuncionario}}" ng-model="vm.profissionalSelecionado" value="{{item.IdFuncionario}}">  <strong> <a ng-click="vm.addfuncionario(item.IdFuncionario)" style="cursor:pointer">  {{ item.Nome }}  </a></strong>
+                                        </li>
+                                        <li> <Strong> Agendas Disponiveis:</Strong> {{ item.QtdeAgendaDisponiveis }}  </li>
+                                        <li> <Strong> Especialidade:</Strong> <span style="display:inline; margin-left:5px; border-radius:3px; padding:1px;" ng-repeat="x in item.Especialidades"> {{ x.NmEspecialidade }}-</span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Fim Médico -->
+            <!--Paciente -->
+            <div class="tab-pane" id="paciente" role="tabpanel" aria-expanded="false">
+
+                <div class="row margin-bottom-15">
+                    <div class="col-md-12">
+                        <div class="input-group" id="adv-search">
+                            <input class="form-control" id="pesqnome" name="pesqnome" ng-model="vm.pesq.Nome" type="text" placeholder="Nome..">
+                            <div class="input-group-btn">
+                                <div class="btn-group" role="group">
+                                    <div class="dropdown dropdown-lg">
+                                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="caret"></span></button>
+                                        <div class="dropdown-menu dropdown-menu-right" role="menu">
+                                            <form class="form-horizontal" name="forms.buscacaconvenio" ng-enter="vm.buscarpaciente()" ng-submit="vm.buscarpaciente()" role="form" id="form" autocomplete="off" novalidate>
+                                                <div class="form-group" style="margin-bottom:5px;">
+                                                    <input class="form-control" id="pesqcodigo" name="pesqcodigo" ng-model="vm.pesq.Codigo" type="text" placeholder="Código.." style="margin-bottom:5px;" />
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <button type="button" class="btn btn-primary" ng-click="vm.buscarpaciente()"><span class="fa fa-search" aria-hidden="true" tooltip="Pesquisar"></span> Pesquisar </button>
+                                    <button type="button" class="btn btn-default" ng-click="vm.addpaciente(0)"><span class="fa fa-plus" aria-hidden="true" tooltip="Novo Paciente"></span> Novo  </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <table class="table table-hover table-condensed table-striped" datatable="ng" dt-options="vm.dtOptions" ng-if="vm.pacientes.length>0">
+                            <thead>
+                                <tr class="bg-complete-lighter">
+                                    <th style="width: 1%">#</th>
+                                    <th style="width: 5%">Código</th>
+                                    <th style="width: 25%">Nome </th>
+                                    <th style="width: 5%">Tipo </th>
+                                    <th style="width: 15%">Telefone 1</th>
+                                    <th style="width: 15%">E-mail</th>
+                                    <th style="width: 10%">Situação</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="x in vm.pacientes">
+                                    <td>  <input type="radio" name="chk_{{x.IdPaciente}}" id="chk_{{x.IdPaciente}}" ng-model="vm.pacienteSelecionado" value="{{x.IdPaciente}}"></td>
+                                    <td> {{x.IdPaciente }}  </td>
+                                    <td> <a ng-click="vm.addpaciente(x.IdPaciente)" style="cursor:pointer">{{x.Nome | uppercase}} </a></td>
+                                    <td>{{x.Tipo}}</td>
+                                    <td>{{x.Telefone1 | tel }}</td>
+                                    <td>{{x.Email }}</td>
+                                    <td>
+                                        <span ng-class="{'label label-success': x.Situacao == 'Ativo',
+                                                                'label label-default': x.Situacao == 'Inativo',
+                                                                'label label-danger': x.Situacao == 'Excluido' }">{{ x.Situacao }}</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- Fim Paciente -->
+            <!-- Atendimento -->
+            <div class="tab-pane" id="atendimento" role="tabpanel">
+                <form name="forms.atendimento" role="form" id="form" autocomplete="off" novalidate>
+                    <div class="form-group row" show-errors ng-if="vm.unidades.length > 0">
+                        <div class="col-md-2">
+                            <label class="form-control-label required" for="unidade">Unidade de Atendimento</label>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <select class="form-control m-b" ng-options="item.IdUnidadeAtendimento as item.Nome for item in vm.unidades" name="unidade" id="unidade" ng-model="vm.unidadeSelecionada" required></select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row" show-errors>
+                        <div class="col-md-2">
+                            <label class="form-control-label required" for="l0">Especialidade</label>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <select class="form-control m-b" ng-options="item.IdEspecialidade as item.NmEspecialidade for item in vm.especialidades" name="especialidades" id="especialidades" ng-model="vm.especialidadeSelecionada" ng-change="vm.listarprocedimentoporEspecialidade()" required></select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row" show-errors>
+                        <div class="col-md-2">
+                            <label class="form-control-label required" for="l0">Procedimento</label>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <select class="form-control m-b" ng-options="item.IdProcedimento as item.NmProcedimento for item in vm.procedimentos" name="procedimento" id="procedimento" ng-disabled="vm.procedimentos.length==0" ng-model="vm.procedimentoSelecionado" required></select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row" show-errors>
+                        <div class="col-md-2">
+                            <label class="form-control-label required" for="l0">Tipo </label>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <select class="form-control m-b" ng-options="item.Key as item.Value for item in vm.TipoAgendamento" name="tipoagendamento" id="tipoagendamento" ng-disabled="vm.procedimentoSelecionado == undefined" ng-model="vm.tipoAgendamentoSelecionado" required></select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row" ng-if="vm.tipoAgendamentoSelecionado=='C'" show-errors>
+                        <div class="col-md-2">
+                            <label class="form-control-label required" for="l0">Convênio </label>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <select class="form-control m-b" ng-options="item.IdConvenio as item.Nome for item in vm.convenios" name="convenio" id="convenio" ng-model="vm.convenioSelecionado" required></select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row" ng-if="vm.tipoAgendamentoSelecionado != undefined" show-errors>
+                        <div class="col-md-2" ng-if="vm.tabelas.length > 0">
+                            <label class="form-control-label required" for="l0">Tabela de Preço </label>
+                        </div>
+                        <div class="col-md-8" ng-if="vm.tabelas.length > 0">
+                            <div class="form-group">
+                                <select class="form-control m-b" ng-options="item.IdTabelaPreco as item.Nome for item in vm.tabelas" name="tabelapreco" id="tabelapreco" ng-model="vm.tabelaprecoSelecionada" required></select>
+                            </div>
+                        </div>
+                        <!--<div class="col-md-12" ng-if="vm.tabelas.length == 0">
+                            <div class="alert alert-danger" role="alert">
+                                <i class="fa fa-warning"></i>&nbsp;<strong>Atenção: </strong> Não existem tabelas de preço cadastradas para o convênio selecionado.
+                            </div>
+                        </div>-->
+                    </div>
+                    <div class="form-group row" ng-if="vm.tipoAgendamentoSelecionado != undefined">
+                        <div class="col-md-2">
+                            <label class="form-control-label required" for="l0">Valor </label>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <input class="form-control bg-light" name="valor" ng-model="vm.valor" ui-number-mask="2" type="text" required>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <label class="form-control-label required" for="l0">Valor Profissional </label>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <input class="form-control bg-light" name="valorProfissional" ng-model="vm.valorProfissional" ui-number-mask="2" type="text" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="observacoes" class="control-label">Observações</label>
+                                <textarea ng-model="vm.Observacoes" name="observacoes" class="form-control m-b" rows="3" cols="3"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="tab-pane" id="horario" role="tabpanel">
+                <div class="row">
+                    <form name="forms.avulsa" role="form" id="form" autocomplete="off" novalidate>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Avulsa?</label>
+                                <div class="col-sm-10">
+                                    <label class="radio-inline">
+                                        <input type="checkbox" i-check ng-model="vm.avulsa" name="avulsa">
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4" ng-show="vm.avulsa">
+                            <div class="form-group" show-errors>
+                                <label for="DataAvulsa" class="control-label required">Data </label>
+                                <input class="form-control bg-light inputcalendar" name="DataAvulsa" ng-model="vm.DataAvulsa" type="text" valid-date ng-required="vm.avulsa">
+                            </div>
+                        </div>
+                        <div class="col-md-4" ng-show="vm.avulsa">
+                            <div class="form-group" show-errors>
+                                <label for="HoraAvulsa" class="control-label required">Hora </label>
+                                <input class="form-control bg-light" name="HoraAvulsa" ng-model="vm.HoraAvulsa" type="text" ui-time-mask="short" ng-required="vm.avulsa">
+                            </div>
+                        </div>
+                    </form>
+                    <div class="col-md-12">
+
+                        <div id="tabHorario" ng-show="vm.avulsa==false">
+                            <div class="row-fluid">
+                                <div class="span6 col-sm-6">
+                                    <h5>Marque o dia e hora desejados:</h5>
+                                    <div id="myCalendar"></div>
+                                    <div class="col-sm-4 pull-right">
+                                        <div style="background-color: #fff0c3; font-size: 10px; line-height: 25px; width: 115px; text-align: center; margin-top:5px;" class="pull-right">
+                                            <strong>Agenda Disponível</strong>
+                                        </div>
+                                        <div style="background-color: #ffffff; font-size: 10px; line-height: 25px; width: 115px; text-align: center; margin-top:5px;" class="pull-right">
+                                            <strong>Agenda Indisponível</strong>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="span6 col-sm-5">
+                                <br />
+                                <div id="divAgenda">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-pane" id="confirmacao" role="tabpanel">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="col-md-12 b-r b-dashed b-grey">
+                            <div class="col-md-12">
+                                <div class="col-md-12" style="padding:10px 0;">
+                                    <div class="col-md-1">
+                                        <i class="fa fa-user-md fa-2x hint-text"></i>
+                                    </div>
+                                    <div class="col-md-3" style="font-size: 14px;margin-top:4px;">
+                                        Profissional:
+                                    </div>
+                                    <div class="col-md-8" style="font-size: 14px;margin-top:4px;">
+                                        {{ vm.Profissional }}
+                                    </div>
+                                </div>
+                                <div class="col-md-12" style="padding:10px 0;">
+                                    <div class="col-md-1">
+                                        <i class="fa fa-user fa-2x hint-text"></i>
+                                    </div>
+                                    <div class="col-md-3" style="font-size: 14px;margin-top:4px;">
+                                        Paciente:
+                                    </div>
+                                    <div class="col-md-8" style="font-size: 14px;margin-top:4px;">
+                                        {{ vm.Paciente }}
+                                    </div>
+                                </div>
+                                <div class="col-md-12" style="padding:10px 0;">
+                                    <div class="col-md-1">
+                                        <i class="fa fa-calendar fa-2x hint-text"></i>
+                                    </div>
+                                    <div class="col-md-3" style="font-size: 14px;margin-top:4px;">
+                                        Data:
+                                    </div>
+                                    <div class="col-md-8" style="font-size: 14px;margin-top:4px;">
+                                        {{ vm.data | date:'dd/MM/yyyy' }}
+                                    </div>
+                                </div>
+                                <div class="col-md-12" style="padding:10px 0;">
+                                    <div class="col-md-1">
+                                        <i class="fa fa-clock-o fa-2x hint-text"></i>
+                                    </div>
+                                    <div class="col-md-3" style="font-size: 14px;margin-top:4px;">
+                                        Horário:
+                                    </div>
+                                    <div class="col-md-8" style="font-size: 14px;margin-top:4px;">
+                                        {{ vm.hora }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="col-md-12 b-r b-dashed b-grey">
+                            <div class="col-md-12">
+                                <div class="col-md-12" style="padding:10px 0;">
+                                    <div class="col-md-1">
+                                        <i class="fa fa-street-view fa-2x hint-text"></i>
+                                    </div>
+                                    <div class="col-md-3" style="font-size: 14px;margin-top:4px;">
+                                        Especialidade:
+                                    </div>
+                                    <div class="col-md-8" style="font-size: 14px;margin-top:4px;">
+                                        {{ vm.Especialidade }}
+                                    </div>
+                                </div>
+                                <div class="col-md-12" style="padding:10px 0;">
+                                    <div class="col-md-1">
+                                        <i class="fa fa-edit fa-2x hint-text"></i>
+                                    </div>
+                                    <div class="col-md-3" style="font-size: 14px;margin-top:4px;">
+                                        Procedimento:
+                                    </div>
+                                    <div class="col-md-8" style="font-size: 14px;margin-top:4px;">
+                                        {{ vm.Procedimento }}
+                                    </div>
+                                </div>
+                                <div class="col-md-12" style="padding:10px 0;">
+                                    <div class="col-md-1">
+                                        <i class="fa fa-files-o fa-2x hint-text"></i>
+                                    </div>
+                                    <div class="col-md-3" style="font-size: 14px;margin-top:4px;">
+                                        Tipo:
+                                    </div>
+                                    <div class="col-md-8" style="font-size: 14px;margin-top:4px;">
+                                        {{ vm.Tipo }}
+                                    </div>
+                                </div>
+                                <div class="col-md-12" style="padding:10px 0;" ng-if="vm.Tipo == 'Convênio'">
+                                    <div class="col-md-1">
+                                        <i class="fa fa-credit-card fa-2x hint-text"></i>
+                                    </div>
+                                    <div class="col-md-3" style="font-size: 14px;margin-top:4px;">
+                                        Convênio:
+                                    </div>
+                                    <div class="col-md-8" style="font-size: 14px;margin-top:4px;">
+                                        {{ vm.Convenio }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Fim Atendimento -->
+
+
+    </div> <!-- FIM PAINEL -->
+</div>
+<div class="modal-footer" block-ui="blockModalLiberarAgenda">
+    <button type="button" class="btn btn-primary pull-right btn-animated from-top fa" ng-if="vm.passofinal == false" ng-class="{'fa-check': vm.currentIndex >= 3, 'fa-arrow-right': vm.currentIndex < 3}" ng-click="vm.nextStep()"><span>{{ vm.nextStepText }}</span></button>
+    <button type="button" class="btn btn-primary pull-right btn-animated from-top fa" ng-if="vm.passofinal" ng-click="vm.save()"><span>Agendar</span></button>
+    <button type="button" class="btn btn-default pull-right btn-animated from-top fa fa-arrow-left" ng-disabled="vm.currentIndex == 0" ng-click="vm.prevStep()"><span>Anterior</span></button>
+</div>
+<script>
+    $(document).ready(function () {
+        var date = new Date();
+        var today = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+        $(".inputcalendar").datepicker({
+            language: "pt-BR",
+            format: 'dd/mm/yyyy',
+            startDate: today,
+            dayNames: ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'],
+            dayNamesMin: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S', 'D'],
+            dayNamesShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'],
+            monthNames: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+            monthNamesShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+            nextText: 'Próximo',
+            prevText: 'Anterior'
+        });
+
+    });
+</script>

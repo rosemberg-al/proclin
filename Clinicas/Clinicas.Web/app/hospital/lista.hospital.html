@@ -1,0 +1,49 @@
+﻿<section class="panel" block-ui="">
+    <div class="panel-heading">
+        <div class="margin-bottom-10">
+            <ul class="list-unstyled breadcrumb breadcrumb-custom" ng-cloak>
+                <li>
+                    <a href="#" class="active"><i class="icmn-home"></i> Página Inicial</a>
+                </li>
+                <li ng-repeat="item in $root.currentCrumbs" ng-cloak>
+                    <a href="#" class="active">{{ item.name }}</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="panel-body" block-ui="blockModalListaHospitais">
+
+        <div class="row">
+            <div class="col-md-12">
+                <h4> Hospitais </h4>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-12">
+                <br />
+                <div class="row">
+                    <div class="col-md-12">
+                        <table class="table table-hover table-condensed table-striped" datatable="ng">
+                            <thead>
+                                <tr class="bg-complete-lighter">
+                                    <th style="width: 5%">Código </th>
+                                    <th style="width: 95%">Descrição </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="x in vm.hospitais">
+                                    <td>{{x.IdHospital }}</td>
+                                    <td>{{x.Nome }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+

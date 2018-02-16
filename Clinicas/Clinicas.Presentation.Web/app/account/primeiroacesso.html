@@ -1,0 +1,47 @@
+﻿<div class="modal-header clearfix text-left">
+    <h4><span class="semi-bold">{{ vm.primeiroacesso ? 'Cadastrar Acesso' : 'Atualização Cadastral'}}</span></h4>
+    <p class="p-b-10" ng-if="!vm.primeiroacesso">
+        Prezado beneficiário, identificamos que os seus dados cadastrais encontram-se desatualizados em nosso sistema.<br />
+        Para realizar seu acesso ao <strong> Portal Beneficiário</strong>, informe sua Data de Nascimento e clique em <i>Prosseguir</i>.
+    </p>
+    <p class="p-b-10" ng-if="vm.primeiroacesso">
+        Bem vindo ao seu novo canal de serviços Promed!<br />
+        Para realizar seu acesso ao <strong> Portal Beneficiário</strong>, informe sua Data de Nascimento e clique em <i>Prosseguir</i>.
+    </p>
+</div>
+<div class="modal-body" block-ui="blockModal">
+    <div class="row">
+        
+        <div class="col-md-12">
+            
+            <div class="alert alert-danger" ng-if="vm.message.length > 0">
+                <i class="fa fa-warning"></i>&nbsp;<strong>{{ vm.message }}</strong>
+            </div>
+            <form role="form" name="forms.dados">
+
+                <div class="bg-master-light padding-30 b-rad-lg">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group" show-errors>
+                                <label class="required" for="DataDeNascimento">Data de Nascimento </label>
+                                <input name="DataDeNascimento" type="text" class="form-control" ng-model="vm.beneficiario.DataDeNascimento" placeholder="Informe sua Data de Nascimento" required ui-date-mask />
+                                <span ng-show="forms.dados.DataDeNascimento.$touched && forms.dados.DataDeNascimento.$invalid && forms.dados.DataDeNascimento.$viewValue.length > 0" class="label label-important"><strong>Data inválida</strong></span>
+                            </div>
+                        </div>
+                        <div class="col-md-4">  
+                            <div class="form-group" show-errors>
+                                <label class="required" for="NumeroDaCarteira">Nº da Carteira</label>
+                                <input type="text" name="NumeroDaCarteira" ng-model="vm.beneficiario.NumeroDaCarteira" placeholder="Informe o Nº da sua Carteira" class="form-control" required promed-mask>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </form>
+        </div>
+        </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-default" ng-click="vm.cancel()">Cancelar</button>
+    <button class="btn btn-primary btn-animated from-top fa fa-arrow-right" ng-click="vm.obterDadosPrimeiroacesso()" > <span>Prosseguir </span></button>
+</div>

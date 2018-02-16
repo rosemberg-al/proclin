@@ -1,0 +1,313 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{46D115F5-29C5-4393-91B3-121B3D4BCA5F}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Clinicas.Domain</RootNamespace>
+    <AssemblyName>Clinicas.Domain</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.AI.Agent.Intercept, Version=2.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.2.0.6\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.DependencyCollector, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.2.0\lib\net45\Microsoft.AI.DependencyCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.PerfCounterCollector, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.2.0\lib\net45\Microsoft.AI.PerfCounterCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.ServerTelemetryChannel, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.2.0\lib\net45\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.Web, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Web.2.2.0\lib\net45\Microsoft.AI.Web.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.WindowsServer, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.2.2.0\lib\net45\Microsoft.AI.WindowsServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.2.2.0\lib\net45\Microsoft.ApplicationInsights.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+    <Content Include="ApplicationInsights.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DTO\AgendaDTO.cs" />
+    <Compile Include="DTO\AtendimentosDTO.cs" />
+    <Compile Include="DTO\FinanceiroDTO.cs" />
+    <Compile Include="DTO\ModulosModel.cs" />
+    <Compile Include="Mail\InvalidRecipientException.cs" />
+    <Compile Include="Mail\MailQueue.cs" />
+    <Compile Include="Mail\MailQueueStatus.cs" />
+    <Compile Include="Mail\MailTemplate.cs" />
+    <Compile Include="Model\Agenda.cs" />
+    <Compile Include="Model\Anamnese.cs" />
+    <Compile Include="Model\Atestado.cs" />
+    <Compile Include="Model\Banco.cs" />
+    <Compile Include="Model\BloqueioAgenda.cs" />
+    <Compile Include="Model\CaixaDiario.cs" />
+    <Compile Include="Model\Carteira.cs" />
+    <Compile Include="Model\CentroCusto.cs" />
+    <Compile Include="Model\Cheque.cs" />
+    <Compile Include="Model\Cid.cs" />
+    <Compile Include="Model\Cidade.cs" />
+    <Compile Include="Model\Clinica.cs" />
+    <Compile Include="Model\Consultorio.cs" />
+    <Compile Include="Model\Conta.cs" />
+    <Compile Include="Model\Convenio.cs" />
+    <Compile Include="Model\DadosNascimento.cs" />
+    <Compile Include="Model\Department.cs" />
+    <Compile Include="Model\Especialidade.cs" />
+    <Compile Include="Model\Estado.cs" />
+    <Compile Include="Model\Material.cs" />
+    <Compile Include="Model\Feature.cs" />
+    <Compile Include="Model\FeatureAction.cs" />
+    <Compile Include="Model\Financeiro.cs" />
+    <Compile Include="Model\FinanceiroParcela.cs" />
+    <Compile Include="Model\Fornecedor.cs" />
+    <Compile Include="Model\Funcionalidade.cs" />
+    <Compile Include="Model\Funcionario.cs" />
+    <Compile Include="Model\GrupoUsuario.cs" />
+    <Compile Include="Model\HistoriaPregressa.cs" />
+    <Compile Include="Model\Hospital.cs" />
+    <Compile Include="Model\Lote.cs" />
+    <Compile Include="Model\Medicamento.cs" />
+    <Compile Include="Model\Medico.cs" />
+    <Compile Include="Model\MedidasAntropometricas.cs" />
+    <Compile Include="Model\MeioPagamento.cs" />
+    <Compile Include="Model\ModeloProntuario.cs" />
+    <Compile Include="Model\Module.cs" />
+    <Compile Include="Model\Modulo.cs" />
+    <Compile Include="Model\MovimentoEstoque.cs" />
+    <Compile Include="Model\Ocupacao.cs" />
+    <Compile Include="Model\Odontograma.cs" />
+    <Compile Include="Model\Paciente.cs" />
+    <Compile Include="Model\Pessoa.cs" />
+    <Compile Include="Model\PlanoConta.cs" />
+    <Compile Include="Model\Procedimento.cs" />
+    <Compile Include="Model\Receituario.cs" />
+    <Compile Include="Model\ReceituarioMedicamento.cs" />
+    <Compile Include="Model\RegistroVacina.cs" />
+    <Compile Include="Model\Remessa.cs" />
+    <Compile Include="Model\RequisicaoExames.cs" />
+    <Compile Include="Model\Role.cs" />
+    <Compile Include="Model\TabelaPreco.cs" />
+    <Compile Include="Model\TabelaPrecoItens.cs" />
+    <Compile Include="Model\TipoAtendimento.cs" />
+    <Compile Include="Model\TipoMaterial.cs" />
+    <Compile Include="Model\TransferenciaConta.cs" />
+    <Compile Include="Model\UnidadeAtendimento.cs" />
+    <Compile Include="Model\User.cs" />
+    <Compile Include="Model\UserFeature.cs" />
+    <Compile Include="Model\UserToken.cs" />
+    <Compile Include="Model\Usuario.cs" />
+    <Compile Include="Model\Vacina.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tiss\Guia.cs" />
+    <Compile Include="ViewModel\AgendaMedicaViewModel.cs" />
+    <Compile Include="ViewModel\AgendaProcedimentoViewModel.cs" />
+    <Compile Include="ViewModel\AgendaViewModel.cs" />
+    <Compile Include="ViewModel\AlterarFotoPacienteViewModel.cs" />
+    <Compile Include="ViewModel\AnamneseViewModel.cs" />
+    <Compile Include="ViewModel\AniversariantesViewModel.cs" />
+    <Compile Include="ViewModel\AtestadoViewModel.cs" />
+    <Compile Include="ViewModel\BancoViewModel.cs" />
+    <Compile Include="ViewModel\BloqueioAgendaAvisoViewModel.cs" />
+    <Compile Include="ViewModel\BloqueioAgendaViewModel.cs" />
+    <Compile Include="ViewModel\BuscaGuiaViewModel.cs" />
+    <Compile Include="ViewModel\BuscaViewModel.cs" />
+    <Compile Include="ViewModel\CalendarioViewModel.cs" />
+    <Compile Include="ViewModel\CarteiraViewModel.cs" />
+    <Compile Include="ViewModel\ChequeViewModel.cs" />
+    <Compile Include="ViewModel\CidadesViewModel.cs" />
+    <Compile Include="ViewModel\CidViewModel.cs" />
+    <Compile Include="ViewModel\ClinicaViewModel.cs" />
+    <Compile Include="ViewModel\ConsultorioViewModel.cs" />
+    <Compile Include="ViewModel\ContaViewModel.cs" />
+    <Compile Include="ViewModel\ConveniosProcedimentosViewModel.cs" />
+    <Compile Include="ViewModel\ConvenioViewModel.cs" />
+    <Compile Include="ViewModel\DadosNascimentoViewModel.cs" />
+    <Compile Include="ViewModel\EspecialidadeViewModel.cs" />
+    <Compile Include="ViewModel\EstadosViewModel.cs" />
+    <Compile Include="ViewModel\FinanceiroViewModel.cs" />
+    <Compile Include="ViewModel\FornecedorViewModel.cs" />
+    <Compile Include="ViewModel\GerarAgendaViewModel.cs" />
+    <Compile Include="ViewModel\GrupoUsuarioViewModel.cs" />
+    <Compile Include="ViewModel\GuiaConsultaViewModel.cs" />
+    <Compile Include="ViewModel\GuiasLoteViewModel.cs" />
+    <Compile Include="ViewModel\HistoriaPregressaViewModel.cs" />
+    <Compile Include="ViewModel\HorariosAgendaViewModel.cs" />
+    <Compile Include="ViewModel\HospitalViewModel.cs" />
+    <Compile Include="ViewModel\LiberarAgendaViewModel.cs" />
+    <Compile Include="ViewModel\ListaGuiasLoteViewModel.cs" />
+    <Compile Include="ViewModel\LoteViewModel.cs" />
+    <Compile Include="ViewModel\MaterialViewModel.cs" />
+    <Compile Include="ViewModel\MedicamentoViewModel.cs" />
+    <Compile Include="ViewModel\MedicoViewModel.cs" />
+    <Compile Include="ViewModel\MedidasAntropometricasViewModel.cs" />
+    <Compile Include="ViewModel\MeioPagamentoViewModel.cs" />
+    <Compile Include="ViewModel\NovoAgendamentoViewModel.cs" />
+    <Compile Include="ViewModel\OcupacaoViewModel.cs" />
+    <Compile Include="ViewModel\OdontogramaViewModel.cs" />
+    <Compile Include="ViewModel\PacientesConvocadosViewModel.cs" />
+    <Compile Include="ViewModel\PessoaViewModel.cs" />
+    <Compile Include="ViewModel\PlanoContaViewModel.cs" />
+    <Compile Include="ViewModel\ProcedimentosConvenioViewModel.cs" />
+    <Compile Include="ViewModel\ProcedimentosViewModel.cs" />
+    <Compile Include="ViewModel\ProcedimentoViewModel.cs" />
+    <Compile Include="ViewModel\ProntuarioViewModel.cs" />
+    <Compile Include="ViewModel\FuncionarioViewModel.cs" />
+    <Compile Include="ViewModel\ModeloProntuarioViewModel.cs" />
+    <Compile Include="ViewModel\PacienteViewModel.cs" />
+    <Compile Include="ViewModel\ReceituarioMedicamentoViewModel.cs" />
+    <Compile Include="ViewModel\ReceituarioViewModel.cs" />
+    <Compile Include="ViewModel\RegistroVacinaViewModel.cs" />
+    <Compile Include="ViewModel\Relatorios\RelAgendaMedica.cs" />
+    <Compile Include="ViewModel\Relatorios\RelCheque.cs" />
+    <Compile Include="ViewModel\Relatorios\RelAniversariante.cs" />
+    <Compile Include="ViewModel\Relatorios\RelConvenio.cs" />
+    <Compile Include="ViewModel\Relatorios\RelDespesasCategoria.cs" />
+    <Compile Include="ViewModel\Relatorios\RelFinanceiro.cs" />
+    <Compile Include="ViewModel\Relatorios\RelFornecedor.cs" />
+    <Compile Include="ViewModel\Relatorios\RelOcupacao.cs" />
+    <Compile Include="ViewModel\Relatorios\RelEspecialidades.cs" />
+    <Compile Include="ViewModel\Relatorios\RelPaciente.cs" />
+    <Compile Include="ViewModel\Relatorios\RelPlanoAgenda.cs" />
+    <Compile Include="ViewModel\Relatorios\RelProcedimento.cs" />
+    <Compile Include="ViewModel\Relatorios\RelProcedimentosRealizados.cs" />
+    <Compile Include="ViewModel\Relatorios\RelReceitasPorDespesas.cs" />
+    <Compile Include="ViewModel\RequisicaoExamesViewModel.cs" />
+    <Compile Include="ViewModel\SolicitarAcessoViewModel.cs" />
+    <Compile Include="ViewModel\TabelaConvenioViewModel.cs" />
+    <Compile Include="ViewModel\TabelaPrecoItensViewModel.cs" />
+    <Compile Include="ViewModel\TabelaPrecoViewModel.cs" />
+    <Compile Include="ViewModel\TipoAtendimentoViewModel.cs" />
+    <Compile Include="ViewModel\TipoPesquisaViewModel.cs" />
+    <Compile Include="ViewModel\UltimosAtendimentosViewModel.cs" />
+    <Compile Include="ViewModel\UnidadeAtendimentoViewModel.cs" />
+    <Compile Include="ViewModel\UsuarioViewModel.cs" />
+    <Compile Include="ViewModel\VacinaViewModel.cs" />
+    <Compile Include="ViewModel\ValorProcedimentoViewModel.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>52702</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:52702/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

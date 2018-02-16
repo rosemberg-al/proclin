@@ -1,0 +1,43 @@
+﻿<section class="panel">
+    <div class="panel-heading">
+        <div class="margin-bottom-10">
+            <ul class="list-unstyled breadcrumb breadcrumb-custom" ng-cloak>
+                <li>
+                    <a href="#" class="active"><i class="icmn-home"></i> Página Inicial</a>
+                </li>
+                <li ng-repeat="item in $root.currentCrumbs" ng-cloak>
+                    <a href="#" class="active">{{ item.name }}</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="panel-body" block-ui="blockModalListaFor">
+            <div class="row">
+                <div class="col-md-12">
+                    <h4> Banco </h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <table class="table table-hover table-condensed table-striped" datatable="ng" dt-options="vm.dtOptions">
+                                <thead>
+                                    <tr class="bg-complete-lighter">
+                                        <th style="width: 30%">Nome </th>
+                                        <th style="width: 30%">Código Febraban </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="x in vm.bancos">
+                                        <td>{{x.NomeBanco | uppercase}}</td>
+                                        <td>{{x.Codigo | uppercase}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</section>

@@ -1,0 +1,477 @@
+﻿<style>
+    li {
+        list-style: none;
+    }
+</style>
+<section class="panel" block-ui="">
+    <div class="panel-heading">
+        <div class="margin-bottom-10">
+            <ul class="list-unstyled breadcrumb breadcrumb-custom" ng-cloak>
+                <li>
+                    <a href="#" class="active"><i class="icmn-home"></i> Página Inicial</a>
+                </li>
+                <li ng-repeat="item in $root.currentCrumbs" ng-cloak>
+                    <a href="#" class="active">{{ item.name }}</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="panel-body" block-ui="blockModalWizard">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-with-borders">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <!-- Example State Default -->
+                                <div class="step-block step-primary" id="aba1">
+                                    <span class="step-digit">1</span>
+                                    <div class="step-desc">
+                                        <span class="step-title">Profissional da Agenda</span>
+                                        <p>escolha o profissional</p>
+                                    </div>
+                                </div>
+                                <!-- End Example State Default -->
+                            </div>
+                            <div class="col-lg-4">
+                                <!-- Example State Error -->
+                                <div class="step-block step-default step-disabled" id="aba2">
+                                    <span class="step-digit">2</span>
+                                    <div class="step-desc">
+                                        <span class="step-title">Datas e Horários</span>
+                                        <p>selecione os dias</p>
+                                    </div>
+                                </div>
+                                <!-- End Example State Error -->
+                            </div>
+                            <div class="col-lg-4">
+                                <!-- Example State Current -->
+                                <div class="step-block step-default step-disabled" id="aba3">
+                                    <span class="step-digit">3</span>
+                                    <div class="step-desc">
+                                        <span class="step-title">Confirmação</span>
+                                        <p>Confirme os Horários</p>
+                                    </div>
+                                </div>
+                                <!-- End Example State Current -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-content padding-vertical-20">
+                        <div class="tab-pane active" id="medicos" role="tabpanel" aria-expanded="true">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="col-md-12">
+                                        <div class="bordered" ng-class="vm.AlertClassDiv" ng-show="vm.AlertMessage.length > 0">
+                                            <p class="pull-left">
+                                                <i ng-class="vm.AlertClassI"></i>
+                                                <strong>Atenção!</strong> {{ vm.AlertMessage }}
+                                            </p>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="well well-sm" ng-repeat="item in vm.medicos">
+                                        <div class="row">
+
+                                            <div class="col-md-12">
+                                                <div class="col-md-1" style="width:60px">
+                                                    <img ng-if="item.Sexo=='M'" src="assets/img/avatar_doc_masc.jpg"  style="width:80px; height:80px;" class="img-responsive" />
+                                                    <img ng-if="item.Sexo=='F'" src="assets/img/avatar_doc_fem.jpg" style="width:80px; height:80px;" class="img-responsive" />
+
+                                                </div>
+                                                <div class="col-md-10">
+
+                                                    <ul>
+                                                        <li style="font-size:15px; margin-bottom:5px;">
+                                                            <input type="radio" name="chk_{{item.IdFuncionario}}" id="chk_{{item.IdFuncionario}}" ng-model="vm.profissionalSelecionado" value="{{item.IdFuncionario}}">  <strong> <a ng-click="vm.addfuncionario(item.IdFuncionario)" style="cursor:pointer">  {{ item.Nome }}  </a>     </strong>
+                                                        </li>
+                                                        <li> <Strong> Agendas Disponiveis:</Strong> {{ item.QtdeAgendaDisponiveis }}  </li>
+                                                        <li> <Strong> Especialidade:</Strong> <span style="display:inline; margin-left:5px;   border-radius:3px; padding:1px;" ng-repeat="x in item.Especialidades"> {{ x.NmEspecialidade }}</span> - </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="horarios" role="tabpanel" aria-expanded="false" style="padding-left:20px;padding-right:20px;">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="bordered" ng-class="vm.AlertClassDiv" ng-show="vm.AlertMessage.length > 0">
+                                        <p class="pull-left">
+                                            <i ng-class="vm.AlertClassI"></i>
+                                            <strong>Atenção!</strong> {{ vm.AlertMessage }}
+                                        </p>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row margin-bottom-20">
+                                <form id="frm" name="forms.datas" role="form" novalidate>
+                                    <div class="col-lg-12">
+                                        <div class="col-md-6" ng-if="vm.unidades.length > 0">
+                                            <div class="form-group" show-errors>
+                                                <label for="unidade" class="control-label required">Unidade de Atendimento</label>
+                                                <select class="form-control m-b" ng-options="item.IdUnidadeAtendimento as item.Nome for item in vm.unidades" name="unidade" id="unidade" ng-model="vm.unidadeSelecionada" required></select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group" show-errors>
+                                                <label for="DataInicio" class="control-label required">Data Início</label>
+                                                <input class="form-control bg-light inputcalendar" name="DataInicio" ng-model="vm.DataInicio" type="text" ui-date-mask="pt-br" valid-date required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group" show-errors>
+                                                <label for="DataTermino" class="control-label required">Data Término</label>
+                                                <input class="form-control bg-light inputcalendar" name="DataTermino" ng-model="vm.DataTermino" type="text" ui-date-mask valid-date required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <form id="frm" name="forms.diasagenda" role="form" novalidate>
+                                        <table class="table table-hover table-condensed table-striped">
+                                            <thead>
+                                                <tr class="bg-complete-lighter">
+                                                    <th style="width: 8%;">Dia</th>
+                                                    <th style="width: 5%;">#</th>
+                                                    <th style="width: 11%;">Intervalo</th>
+                                                    <th style="width: 16%;">Hora Inicio</th>
+                                                    <th style="width: 16%;">Hora Fim</th>
+                                                    <th style="width: 10%;">Possui Intervalo?</th>
+                                                    <th style="width: 17%;">Intervalo Inicio</th>
+                                                    <th style="width: 17%;">Intervalo Fim</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>Domingo</td>
+                                                    <td><input type="checkbox" name="Domingo" id="Domingo" i-check ng-model="vm.domingo.checado" value="6"></td>
+                                                    <td>
+                                                        <div class="form-group" show-errors>
+                                                            <input class="form-control bg-light" name="intervaloMinutosDomingo"  ng-model="vm.domingo.IntervaloMinutos" ng-disabled="!vm.domingo.checado" type="number" maxlength="2" min="10" max="60" ng-required="vm.domingo.checado">
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-group" show-errors>
+                                                            <input class="form-control bg-light" name="DataHoraInicioDomingo"  ng-model="vm.domingo.HoraInicio" type="text" ng-disabled="!vm.domingo.checado" ui-time-mask="short" ng-required="vm.domingo.checado">
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-group" show-errors>
+                                                            <input class="form-control bg-light" name="DataHoraTerminoDomingo"  ng-model="vm.domingo.HoraTermino" type="text" ng-disabled="!vm.domingo.checado" ui-time-mask="short" ng-required="vm.domingo.checado">
+                                                        </div>
+                                                    </td>
+                                                    <td><input type="checkbox" ng-model="vm.domingo.possuiintervalos" i-check value="1" name="intevalosDomingo" ng-disabled="!vm.domingo.checado" id="intevalosDomingo"></td>
+                                                    <td>
+                                                        <div class="form-group" show-errors>
+                                                            <input class="form-control bg-light" name="dataIntervaloInicioDomingo" ng-show="vm.domingo.possuiintervalos && vm.domingo.checado" ng-model="vm.domingo.IntervaloInicio" ui-time-mask="short" type="text" ng-required="vm.domingo.possuiintervalos">
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-group" show-errors>
+                                                            <input class="form-control bg-light" name="dataIntervaloTerminoDomingo" ng-show="vm.domingo.possuiintervalos && vm.domingo.checado" ng-model="vm.domingo.IntervaloTermino" ui-time-mask="short" type="text" ng-required="vm.domingo.possuiintervalos">
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Segunda</td>
+                                                    <td><input type="checkbox" name="Segunda" id="Segunda" i-check ng-model="vm.segunda.checado" value="6"></td>
+                                                    <td>
+                                                        <div class="form-group" show-errors>
+                                                            <input class="form-control bg-light" name="intervaloMinutosSegunda" ng-model="vm.segunda.IntervaloMinutos" ng-disabled="!vm.segunda.checado" type="number" maxlength="2" min="10" max="60" ng-required="vm.segunda.checado">
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-group" show-errors>
+                                                            <input class="form-control bg-light" name="DataHoraInicioSegunda"  ng-model="vm.segunda.HoraInicio" type="text" ng-disabled="!vm.segunda.checado" ui-time-mask="short" ng-required="vm.segunda.checado">
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-group" show-errors>
+                                                            <input class="form-control bg-light" name="DataHoraTerminoSegunda"  ng-model="vm.segunda.HoraTermino" type="text" ng-disabled="!vm.segunda.checado" ui-time-mask="short" ng-required="vm.segunda.checado">
+                                                        </div>
+                                                    </td>
+                                                    <td><input type="checkbox" ng-model="vm.segunda.possuiintervalos" i-check value="1" name="intevalosDomingo" ng-disabled="!vm.segunda.checado" id="intevalosSegunda"></td>
+                                                    <td>
+                                                        <div class="form-group" show-errors>
+                                                            <input class="form-control bg-light" name="dataIntervaloInicioSegunda" ng-show="vm.segunda.possuiintervalos && vm.segunda.checado" ng-model="vm.segunda.IntervaloInicio" ui-time-mask="short" type="text" ng-required="vm.segunda.possuiintervalos">
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-group" show-errors>
+                                                            <input class="form-control bg-light" name="dataIntervaloTerminoSegunda" ng-show="vm.segunda.possuiintervalos && vm.segunda.checado" ng-model="vm.segunda.IntervaloTermino" ui-time-mask="short" type="text" ng-required="vm.segunda.possuiintervalos">
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Terça</td>
+                                                    <td><input type="checkbox" name="Terca" id="Terca" i-check ng-model="vm.terca.checado" value="6"></td>
+                                                    <td>
+                                                        <div class="form-group" show-errors>
+                                                            <input class="form-control bg-light" name="intervaloMinutosTerca"  ng-model="vm.terca.IntervaloMinutos" ng-disabled="!vm.terca.checado" type="number" maxlength="2" min="10" max="60" ng-required="vm.terca.checado">
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-group" show-errors>
+                                                            <input class="form-control bg-light" name="DataHoraInicioTerca"  ng-model="vm.terca.HoraInicio" type="text" ng-disabled="!vm.terca.checado" ui-time-mask="short" ng-required="vm.terca.checado">
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-group" show-errors>
+                                                            <input class="form-control bg-light" name="DataHoraTerminoTerca"  ng-model="vm.terca.HoraTermino" type="text" ng-disabled="!vm.terca.checado" ui-time-mask="short" ng-required="vm.terca.checado">
+                                                        </div>
+                                                    </td>
+                                                    <td><input type="checkbox" ng-model="vm.terca.possuiintervalos" i-check value="1" name="intevalosTerca" ng-disabled="!vm.terca.checado" id="intevalosTerca"></td>
+                                                    <td>
+                                                        <div class="form-group" show-errors>
+                                                            <input class="form-control bg-light" name="dataIntervaloInicioTerca" ng-show="vm.terca.possuiintervalos && vm.terca.checado" ng-model="vm.terca.IntervaloInicio" ui-time-mask="short" type="text" ng-required="vm.terca.possuiintervalos">
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-group" show-errors>
+                                                            <input class="form-control bg-light" name="dataIntervaloTerminoTerca" ng-show="vm.terca.possuiintervalos && vm.terca.checado" ng-model="vm.terca.IntervaloTermino" ui-time-mask="short" type="text" ng-required="vm.terca.possuiintervalos">
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Quarta</td>
+                                                    <td><input type="checkbox" name="Quarta" id="Quarta" i-check ng-model="vm.quarta.checado" value="6"></td>
+                                                    <td>
+                                                        <div class="form-group" show-errors>
+                                                            <input class="form-control bg-light" name="intervaloMinutosQuarta"  ng-model="vm.quarta.IntervaloMinutos" ng-disabled="!vm.quarta.checado" type="number" maxlength="2" min="10" max="60" ng-required="vm.quarta.checado">
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-group" show-errors>
+                                                            <input class="form-control bg-light" name="DataHoraInicioQuarta"  ng-model="vm.quarta.HoraInicio" type="text" ng-disabled="!vm.quarta.checado" ui-time-mask="short" ng-required="vm.quarta.checado">
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-group" show-errors>
+                                                            <input class="form-control bg-light" name="DataHoraTerminoQuarta" ng-model="vm.quarta.HoraTermino" type="text" ng-disabled="!vm.quarta.checado" ui-time-mask="short" ng-required="vm.quarta.checado">
+                                                        </div>
+                                                    </td>
+                                                    <td><input type="checkbox" ng-model="vm.quarta.possuiintervalos" i-check value="1" name="intevalosQuarta" ng-disabled="!vm.quarta.checado" id="intevalosQuarta"></td>
+                                                    <td>
+                                                        <div class="form-group" show-errors>
+                                                            <input class="form-control bg-light" name="dataIntervaloInicioQuarta" ng-show="vm.quarta.possuiintervalos && vm.quarta.checado" ng-model="vm.quarta.IntervaloInicio" ui-time-mask="short" type="text" ng-required="vm.quarta.possuiintervalos">
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-group" show-errors>
+                                                            <input class="form-control bg-light" name="dataIntervaloTerminoQuarta" ng-show="vm.quarta.possuiintervalos && vm.quarta.checado" ng-model="vm.quarta.IntervaloTermino" ui-time-mask="short" type="text" ng-required="vm.quarta.possuiintervalos">
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Quinta</td>
+                                                    <td><input type="checkbox" name="Quinta" id="Quinta" i-check ng-model="vm.quinta.checado" value="6"></td>
+                                                    <td>
+                                                        <div class="form-group" show-errors>
+                                                            <input class="form-control bg-light" name="intervaloMinutosQuinta"  ng-model="vm.quinta.IntervaloMinutos" ng-disabled="!vm.quinta.checado" type="number" maxlength="2" min="10" max="60" ng-required="vm.quinta.checado">
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-group" show-errors>
+                                                            <input class="form-control bg-light" name="DataHoraInicioQuinta"  ng-model="vm.quinta.HoraInicio" type="text" ng-disabled="!vm.quinta.checado" ui-time-mask="short" ng-required="vm.quinta.checado">
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-group" show-errors>
+                                                            <input class="form-control bg-light" name="DataHoraTerminoQuinta"  ng-model="vm.quinta.HoraTermino" type="text" ng-disabled="!vm.quinta.checado" ui-time-mask="short" ng-required="vm.quinta.checado">
+                                                        </div>
+                                                    </td>
+                                                    <td><input type="checkbox" ng-model="vm.quinta.possuiintervalos" i-check value="1" name="intevalosQuinta" ng-disabled="!vm.quinta.checado" id="intevalosQuinta"></td>
+                                                    <td>
+                                                        <div class="form-group" show-errors>
+                                                            <input class="form-control bg-light" name="dataIntervaloInicioQuinta" ng-show="vm.quinta.possuiintervalos && vm.quinta.checado" ng-model="vm.quinta.IntervaloInicio" ui-time-mask="short" type="text" ng-required="vm.quinta.possuiintervalos">
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-group" show-errors>
+                                                            <input class="form-control bg-light" name="dataIntervaloTerminoQuinta" ng-show="vm.quinta.possuiintervalos && vm.quinta.checado" ng-model="vm.quinta.IntervaloTermino" ui-time-mask="short" type="text" ng-required="vm.quinta.possuiintervalos">
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Sexta</td>
+                                                    <td><input type="checkbox" name="Sexta" id="Sexta" i-check ng-model="vm.sexta.checado" value="6"></td>
+                                                    <td>
+                                                        <div class="form-group" show-errors>
+                                                            <input class="form-control bg-light" name="intervaloMinutosSexta"  ng-model="vm.sexta.IntervaloMinutos" ng-disabled="!vm.sexta.checado" type="number" maxlength="2" min="10" max="60" ng-required="vm.sexta.checado">
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-group" show-errors>
+                                                            <input class="form-control bg-light" name="DataHoraInicioSexta"  ng-model="vm.sexta.HoraInicio" type="text" ng-disabled="!vm.sexta.checado" ui-time-mask="short" ng-required="vm.sexta.checado">
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-group" show-errors>
+                                                            <input class="form-control bg-light" name="DataHoraTerminoSexta"  ng-model="vm.sexta.HoraTermino" type="text" ng-disabled="!vm.sexta.checado" ui-time-mask="short" ng-required="vm.sexta.checado">
+                                                        </div>
+                                                    </td>
+                                                    <td><input type="checkbox" ng-model="vm.sexta.possuiintervalos" i-check value="1" name="intevalosSexta" ng-disabled="!vm.sexta.checado" id="intevalosSexta"></td>
+                                                    <td>
+                                                        <div class="form-group" show-errors>
+                                                            <input class="form-control bg-light" name="dataIntervaloInicioSexta" ng-show="vm.sexta.possuiintervalos && vm.sexta.checado" ng-model="vm.sexta.IntervaloInicio" ui-time-mask="short" type="text" ng-required="vm.sexta.possuiintervalos">
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-group" show-errors>
+                                                            <input class="form-control bg-light" name="dataIntervaloTerminoSexta" ng-show="vm.sexta.possuiintervalos && vm.sexta.checado" ng-model="vm.sexta.IntervaloTermino" ui-time-mask="short" type="text" ng-required="vm.sexta.possuiintervalos">
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Sábado</td>
+                                                    <td><input type="checkbox" name="Sabado" id="Sabado" i-check ng-model="vm.sabado.checado" value="6"></td>
+                                                    <td>
+                                                        <div class="form-group" show-errors>
+                                                            <input class="form-control bg-light" name="intervaloMinutosSabado"  ng-model="vm.sabado.IntervaloMinutos" ng-disabled="!vm.sabado.checado" type="number" maxlength="2" min="10" max="60" ng-required="vm.sabado.checado">
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-group" show-errors>
+                                                            <input class="form-control bg-light" name="DataHoraInicioSabado"  ng-model="vm.sabado.HoraInicio" type="text" ng-disabled="!vm.sabado.checado" ui-time-mask="short" ng-required="vm.sabado.checado">
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-group" show-errors>
+                                                            <input class="form-control bg-light" name="DataHoraTerminoSabado"  ng-model="vm.sabado.HoraTermino" type="text" ng-disabled="!vm.sabado.checado" ui-time-mask="short" ng-required="vm.sabado.checado">
+                                                        </div>
+                                                    </td>
+                                                    <td><input type="checkbox" ng-model="vm.sabado.possuiintervalos" i-check value="1" name="intevalos" ng-disabled="!vm.sabado.checado" id="intevalosSabado"></td>
+                                                    <td>
+                                                        <div class="form-group" show-errors>
+                                                            <input class="form-control bg-light" name="dataIntervaloInicioSabado" ng-show="vm.sabado.possuiintervalos && vm.sabado.checado" ng-model="vm.sabado.IntervaloInicio" ui-time-mask="short" type="text" ng-required="vm.sabado.possuiintervalos">
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-group" show-errors>
+                                                            <input class="form-control bg-light" name="dataIntervaloTerminoSabado" ng-show="vm.sabado.possuiintervalos && vm.sabado.checado" ng-model="vm.sabado.IntervaloTermino" ui-time-mask="short" type="text" ng-required="vm.sabado.possuiintervalos">
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="confirmacao" role="tabpanel" style="padding-left:20px;padding-right:20px;">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="col-md-12 b-r b-dashed b-grey">
+                                        <div class="col-md-12">
+                                            <div class="col-md-12" style="padding:10px 0;">
+                                                <div class="col-md-1">
+                                                    <i class="fa fa-user-md fa-2x hint-text"></i>
+                                                </div>
+                                                <div class="col-md-3" style="font-size: 14px;margin-top:4px;">
+                                                    Profissional:
+                                                </div>
+                                                <div class="col-md-8" style="font-size: 14px;margin-top:4px;">
+                                                    {{ vm.Profissional }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="col-md-12 b-r b-dashed b-grey">
+                                        <div class="col-md-12">
+                                            <div class="col-md-12" style="padding:10px 0;">
+                                                <div class="col-md-1">
+                                                    <i class="fa fa-calendar fa-2x hint-text"></i>
+                                                </div>
+                                                <div class="col-md-3" style="font-size: 14px;margin-top:4px;">
+                                                    Data de geração da agenda:
+                                                </div>
+                                                <div class="col-md-8" style="font-size: 14px;margin-top:4px;">
+                                                    {{ vm.dataIni }} à {{ vm.dataFim }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="col-md-12 b-r b-dashed b-grey">
+                                        <div class="col-md-12">
+                                            <div class="col-md-12" style="padding:10px 0;">
+                                                <div class="col-md-1">
+                                                    <i class="fa fa-clock-o fa-2x hint-text"></i>
+                                                </div>
+                                                <div class="col-md-11" style="font-size: 14px;margin-top:4px;">
+                                                    Horários e dias da agenda:
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <table class="table table-hover table-condensed table-striped">
+                                        <thead>
+                                            <tr class="bg-complete-lighter">
+                                                <th style="width: 20%">Dia </th>
+                                                <th style="width: 20%">Atendimento(em minutos)</th>
+                                                <th style="width: 20%">Inicio</th>
+                                                <th style="width: 20%">Termino</th>
+                                                <th style="width: 20%">Intervalo?</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="item in vm.agendamedica">
+                                                <td>{{item.Dia}}</td>
+                                                <td>{{item.IntervaloMinutos }}</td>
+                                                <td>{{item.HoraInicio }}</td>
+                                                <td>{{item.HoraTermino }}</td>
+                                                <td ng-if="item.IntervaloInicio != undefined">{{item.IntervaloInicio }} às {{item.IntervaloTermino }}</td>
+                                                <td ng-if="item.IntervaloInicio == undefined">Sem Intervalo</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel-footer" style="height: 55px;"  block-ui="blockModalWizard">
+        <button type="button" class="btn btn-primary pull-right btn-animated from-top fa" ng-if="vm.passofinal == false" ng-class="{'fa-check': vm.currentIndex >= 2, 'fa-arrow-right': vm.currentIndex < 2}" ng-click="vm.nextStep()"><span> {{ vm.nextStepText }}</span></button>
+        <button type="button" class="btn btn-primary pull-right btn-animated from-top fa" ng-if="vm.passofinal" ng-class="{'fa-save': vm.currentIndex == 2}" ng-click="vm.gerar()"><span> Gerar</span></button>
+        <button type="button" class="btn btn-default pull-right btn-animated from-top fa fa-arrow-left" ng-disabled="vm.currentIndex == 0  || vm.finalizado == true" ng-click="vm.prevStep()"><span> Anterior</span></button>
+    </div>
+    <script>
+        $(document).ready(function () {
+            var date = new Date();
+            var today = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+
+            $(".inputcalendar").datepicker({
+                language: "pt-BR",
+                format: 'dd/mm/yyyy',
+                startDate: today,
+                dayNames: ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'],
+                dayNamesMin: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S', 'D'],
+                dayNamesShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'],
+                monthNames: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+                monthNamesShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+                nextText: 'Próximo',
+                prevText: 'Anterior'
+            });
+
+        });
+    </script>
+</section>
+

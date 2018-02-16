@@ -1,0 +1,36 @@
+﻿<div class="modal-header" style="margin-bottom:10px;">
+    <button type="button" class="close" ng-click="vm.cancelar()" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">×</span>
+    </button>
+    <h5 class="modal-title" id="myModalLabel">Criar Lote</h5>
+</div>
+<div class="modal-body" block-ui="blockModalloteGuias">
+    <form name="forms.lote" role="form">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="alert alert-danger" ng-if="vm.FormMessage.length > 0">
+                    <span><i class="fa fa-exclamation-triangle"></i> <strong>{{ vm.FormMessage }}</strong></span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="form-group" show-errors>
+                    <label for="convenios" class="control-label required">Convênio</label>
+                    <select class="form-control m-b" ng-options="item.IdConvenio as item.Nome for item in vm.convenios" name="convenios" ng-model="vm.convenioselecionado" required></select>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="form-group" show-errors>
+                    <label for="tipo" class="control-label required">Tipo Lote</label>
+                    <select class="form-control m-b" ng-options="item.Key as item.Value for item in vm.tipos" name="tipo" ng-model="vm.tiposelecionado" required></select>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="modal-footer" block-ui="blockModalLiberarAgenda">
+    <button type="button" class="btn btn-primary pull-right" ng-click="vm.save()"><i class="fa fa-save"></i> Criar Lote</></button>
+</div>

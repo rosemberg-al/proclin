@@ -1,0 +1,56 @@
+﻿<div class="modal-header" style="margin-bottom:10px;">
+    <button type="button" class="close" ng-click="vm.cancel()" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">×</span>
+    </button> 
+    <h5 class="modal-title" id="myModalLabel"><span class="fa fa-medkit"></span> {{ vm.State }} - {{ vm.procedimento.NomeProcedimento }} </h5>
+</div>
+<div class="modal-body">
+    <div class="row">
+        <table class="table table-striped">
+
+            <tbody>
+                <tr>
+                    <td><strong>Código:</strong> {{ vm.procedimento.Codigo }}    </td>
+                </tr>
+                <tr>
+                    <td><strong>Nome:</strong> {{ vm.procedimento.NomeProcedimento }} </td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+    <div class="row">
+        <div class="nav-tabs-horizontal">
+            <ul class="nav nav-tabs" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="lidados1" data-toggle="tab" data-target="#tabdados1" role="tab" aria-expanded="true">
+                        <i class="fa fa-user-md"></i>
+                        Especialidades
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="tab-content padding-vertical-20">
+            <div class="tab-pane active" id="tabdados1" role="tabpanel" aria-expanded="true">
+                <table class="table table-hover table-condensed table-striped" datatable="ng" dt-options="vm.dtOptions">
+                    <thead>
+                        <tr class="bg-complete-lighter">
+                            <th style="width: 80%">Descrição </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="x in vm.procedimento.Especialidades">
+                            <td>{{x.NmEspecialidade }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal-footer">
+    <button class="btn btn-default" ng-click="vm.cancel()">Cancelar</button>
+</div>

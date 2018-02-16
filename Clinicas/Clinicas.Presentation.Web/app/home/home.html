@@ -1,0 +1,47 @@
+﻿<div class="row">
+    <div class="col-md-12">
+        <div class="container-fluid container-fixed-lg">
+            <div class="panel panel-transparent">
+                <div class="panel-heading">
+                    <div class="panel-title">
+                        Pacientes em espera
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="panel-body">
+                    <table class="table table-hover demo-table-dynamic" id="tableWithDynamicRows">
+                        <thead>
+                            <tr>
+                                <th style="width:50%;">Nome</th>
+                                <th style="width:10%;">Sexo</th>
+                                <th style="width:10%;">Idade</th>
+                                <th style="width:20%;">Convênio</th>
+                                <th style="width:10%;">Atender</th>
+                            </tr>
+                        </thead>
+                        <tr ng-repeat="item in vm.pacientesemespera">
+                            <td class="v-align-middle">
+                                <p>{{item.Nome}}</p>
+                            </td>
+                            <td class="v-align-middle">
+                                <p>{{item.Sexo}}</p>
+                            </td>
+                            <td class="v-align-middle">
+                                <p>{{item.Idade}}</p>
+                            </td>
+                            <td class="v-align-middle">
+                                <p>{{item.Convenio}}</p>
+                            </td>
+                            <td class="v-align-middle">
+                                <p><a ui-sref="atendimento({id:item.Id})" class="btn btn-sm btn-success" data-toggle="tooltip" title="Atender"><i class="fa fa-pencil"></i></a></p>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

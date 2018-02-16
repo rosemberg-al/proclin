@@ -1,0 +1,35 @@
+﻿<div class="modal-header" style="margin-bottom:10px;">
+    <button type="button" class="close" ng-click="vm.cancel()" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">×</span>
+    </button>
+    <h5 class="modal-title" id="myModalLabel"><span class="fa fa-info-circle"> </span> Esqueci minha senha</h5>
+</div>
+<div class="modal-body">
+    <div class="row" block-ui="blockModal">
+        <div class="col-md-12">
+            <div class="alert alert-danger" ng-if="vm.FormMessage.length > 0">
+                <span><i class="fa fa-exclamation-triangle"></i> <strong>{{ vm.FormMessage }}</strong></span>
+            </div>
+            <form name="forms.esqueci" role="form" id="form" autocomplete="off" novalidate>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div> Para recuperar sua senha, insira seu endereço de e-mail associado à sua conta. </div>
+                    </div>
+                </div>
+                <div class="row" style="margin-top:30px;">
+                    <div class="col-md-8">
+                        <div class="form-group" show-errors>
+                            <label for="login" class="control-label required">Informe seu Usuário</label>
+                            <input class="form-control bg-light" name="login" ng-model="vm.login" placeholder="Informe seu Email" maxlength="150" type="email" required>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal-footer"  block-ui="blockModal">
+    <button class="btn btn-default" ng-click="vm.cancel()">Cancelar</button>
+    <button class="btn btn-primary" ng-click="vm.enviar()"><i class="fa fa-save"></i> Recuperar Senha</button>
+</div>

@@ -1,0 +1,106 @@
+﻿<div class="modal-header" style="margin-bottom:10px;">
+    <button type="button" class="close" ng-click="vm.cancel()" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">×</span>
+    </button>
+    <h5 class="modal-title" id="myModalLabel">{{ vm.State }}</h5>
+</div>
+<div class="modal-body">
+    <div class="row" block-ui="blockModalMaterial">
+        <div class="col-md-12">
+            <div class="alert alert-danger" ng-if="vm.FormMessage.length > 0">
+                <span><i class="fa fa-exclamation-triangle"></i> <strong>{{ vm.FormMessage }}</strong></span>
+            </div>
+            <form name="forms.material" role="form" id="form" autocomplete="off" novalidate>
+                <div class="row">
+
+                    <div class="col-md-8">
+                        <div class="form-group" show-errors>
+                            <label for="Nome" class="control-label required">Descrição</label>
+                            <input class="form-control bg-light" name="nome" ng-model="vm.material.Nome"  type="text" required>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group" show-errors>
+                            <label for="Cidade" class="control-label required">Tipo</label>
+                            <select class="form-control m-b" ng-options="item.IdTipoMaterial as item.Nome for item in vm.tipos" name="UnidadeAtendimento" ng-model="vm.tipoMaterialSelecionado" required></select>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group" show-errors>
+                            <label for="EstoqueMinimo" class="control-label required">Estoque Mínimo</label>
+                            <input class="form-control bg-light" name="EstoqueMinimo" ng-model="vm.material.EstoqueMinimo" type="number" required>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4" ng-if="vm.id==0">
+                        <div class="form-group" show-errors>
+                            <label for="EstoqueAtual" class="control-label required">Estoque Atual</label>
+                            <input class="form-control bg-light" name="EstoqueAtual" ng-model="vm.material.EstoqueAtual" type="number" required>
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-4">
+                        <div class="form-group" show-errors>
+                            <label for="Marca" class="control-label ">Marca</label>
+                            <input class="form-control bg-light" name="Marca" ng-model="vm.material.Marca" type="text">
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-4">
+                        <div class="form-group" show-errors>
+                            <label for="Modelo" class="control-label">Modelo</label>
+                            <input class="form-control bg-light" name="Modelo" ng-model="vm.material.Modelo" type="text" >
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group" show-errors>
+                            <label for="EstadoConservacao" class="control-label">Estado de Conservação </label>
+                            <input class="form-control bg-light" name="EstadoConservacao" ng-model="vm.material.EstadoConservacao" type="text">
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group" show-errors>
+                            <label for="Identificador" class="control-label">Identificador </label>
+                            <input class="form-control bg-light" name="Identificador" ng-model="vm.material.Identificador" type="text">
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group" show-errors>
+                            <label for="ValorVenda" class="control-label">Valor Venda </label>
+                            <input class="form-control bg-light" name="ValorVenda" ng-model="vm.material.ValorVenda" type="text" ui-number-mask="2">
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-4">
+                        <div class="form-group" show-errors>
+                            <label for="ValorCompra" class="control-label">Valor Compra </label>
+                            <input class="form-control bg-light" name="ValorCompra" ng-model="vm.material.ValorCompra" type="text" ui-number-mask="2">
+                        </div>
+                    </div>
+
+                        <div class="col-md-12">
+                            <div class="form-group" show-errors>
+                                <label for="obs" class="control-label">Observação</label>
+                                <textarea name="obs" ng-model="vm.material.Observacao" class="form-control bg-light" style="width:100%;" rows="5"></textarea>
+                                <span>{{255 - vm.material.Observacao.length}} Caracteres</span>
+                            </div>
+                        </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+<div class="modal-footer"  block-ui="blockModalMaterial">
+    <button class="btn btn-default" ng-click="vm.cancel()">Cancelar</button>
+    <button class="btn btn-primary" ng-click="vm.save()"><i class="fa fa-save"></i> Salvar</button>
+</div>

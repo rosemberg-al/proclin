@@ -1,0 +1,127 @@
+﻿<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>{{vm.titulo}} </h5>
+                </div>
+                <div class="ibox-content">
+                    <div class="row" ng-if="vm.msgalert.length>0">
+                        <div class="col-md-12">
+                            <div class="alert alert-danger" role="alert">
+                                <strong>Atenção</strong> {{ vm.msgalert }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" block-ui="blockModalEditParcela">
+                        <form id="frm" name="forms.editparcela" novalidate>
+
+                            <div class="col-md-12">
+                                <div class="col-sm-4">
+                                    <div class="form-group" show-errors>
+                                        <label>Código</label>
+                                        <input type="text" name="codigo" ng-model="vm.parcela.IdParcela" class="form-control" readonly>
+                                    </div>
+                                </div>
+                                <div class="col-sm-8">
+                                    <div class="form-group" show-errors>
+                                        <label>{{vm.tituloPessoa}}</label>
+                                        <input type="text" name="pessoa" ng-model="vm.parcela.NomeCliente" class="form-control" readonly>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="col-sm-4">
+                                    <div class="form-group" show-errors>
+                                        <label>Valor</label>
+                                        <input type="text" name="valor" placeholder="Valor" class="form-control" ng-model="vm.parcela.Valor" ui-number-mask="2" value="{{vm.parcela.Valor | number: 2 }}" readonly>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group" show-errors>
+                                        <label>Data Vencimento *</label>
+                                        <input type="text" name="datavenc" placeholder="Data Vencimento" ng-model="vm.parcela.DataVencimento" class="form-control" value="{{vm.parcela.DataVencimento | date:'dd/MM/yyyy' }}" ui-date-mask required readonly>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group" show-errors>
+                                        <label>Plano de Conta *</label>
+                                        <select class="form-control m-b" ng-options="item.IdPlanoConta as item.NmPlanoConta for item in vm.planos" name="plano" ng-model="vm.planoSelecionado" required></select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="col-sm-4">
+                                    <div class="form-group" show-errors>
+                                        <label>Conta *</label>
+                                        <select class="form-control m-b" ng-options="item.IdConta as item.Nome for item in vm.contas" name="contas" ng-model="vm.contaSelecionada" required></select>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group" show-errors>
+                                        <label>Situação *</label>
+                                        <select class="form-control m-b" ng-options="item.Key as item.Value for item in vm.situacoes" name="tipos" ng-model="vm.situacaoSelecionada" required></select>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group" show-errors>
+                                        <label>Meio de Pagamento *</label>
+                                        <select class="form-control m-b" ng-options="item.IdMeioPagamento as item.Nome for item in vm.meiospagamentos" name="meiospagamentos" ng-model="vm.tipopagamentoSelecionado" required></select>
+                                    </div>
+                                </div>  
+                            </div>
+                            <div class="col-md-12">
+                                <div class="col-sm-2">
+                                    <div class="form-group" show-errors>
+                                        <label>Data Acerto</label>
+                                        <input type="text" name="datavencAcerto" placeholder="Data Acerto" ng-model="vm.parcela.DataAcerto" class="form-control" value="{{vm.parcela.DataAcerto | date:'dd/MM/yyyy' }}" ui-date-mask >
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <div class="form-group" show-errors>
+                                        <label>Valor Acerto</label>
+                                        <input type="text" name="valorAcerto" placeholder="Valor Acerto" class="form-control" ng-model="vm.parcela.ValorAcerto" ui-number-mask="2" value="{{vm.parcela.ValorAcerto | number: 2 }}" >
+                                    </div>
+                                </div>
+                                <div class="col-sm-2">
+                                    <div class="form-group">
+                                        <label>Desconto</label> 
+                                        <input type="text" name="desconto" placeholder="Desconto" class="form-control" ng-model="vm.parcela.ValorDesconto" ui-number-mask="2" ng-blur="vm.calcularDesconto()" value="{{vm.parcela.ValorDesconto | number: 2 }}">
+                                    </div>
+                                </div>
+                                <div class="col-sm-2">
+                                    <div class="form-group">
+                                        <label>Acréscimo</label>
+                                        <input type="text" name="valorAcerto" placeholder="Acréscimo" class="form-control" ng-model="vm.parcela.ValorAcrescimo" ui-number-mask="2" ng-blur="vm.calcularAcrescimo()" value="{{vm.parcela.ValorAcrescimo | number: 2 }}">
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <div class="form-group">
+                                        <label>Total</label>
+                                        <input type="text" name="totalPago" placeholder="Total Pago" class="form-control" ng-model="vm.parcela.TotalPago" ui-number-mask="2" value="{{vm.parcela.TotalPago | number: 2 }}" readonly>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="col-sm-12">
+                                    <div class="form-group" show-errors>
+                                        <label>Observação</label>
+                                        <textarea name="obs" ng-model="vm.parcela.Observacao" rows="3" cols="3" style="width:100%;">{{vm.parcela.Observacao}}</textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+
+                    </div>
+                    <div class="row">
+                        <div class="form-group pull-right">
+                            <a ng-click="vm.cancelar()" class="btn btn-white"><span class="fa fa-times-circle-o"></span>  Cancelar</a>
+                            <button id="btnSalvar" ng-click="vm.salvar()" class="btn btn-primary"><span class="fa fa-save"></span> Salvar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

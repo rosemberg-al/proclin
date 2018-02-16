@@ -1,0 +1,15 @@
+CREATE table 
+`Department`
+(
+  `Id`  INT(10) AUTO_INCREMENT PRIMARY KEY,
+  `Name` VARCHAR(50) not null
+)
+
+
+
+
+
+
+
+
+
